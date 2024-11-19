@@ -2,7 +2,7 @@ import React from 'react'
 import Container from '../_component/shared'
 const Report = () => {
   return (
-          <section className="relative bg-white shadow-lg pb-[5rem] pt-[2rem] md:-mt-[20rem] -mt-[10rem]">
+          <section className="relative bg-white pb-[5rem] pt-[2rem] md:-mt-[20rem] -mt-[10rem]">
       <Container>
         <h1 className="text-yellow text-[32px] text-center md:text-left md:text-[40px] font-[500] my-8">
           Reporting Progress
