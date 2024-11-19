@@ -14,7 +14,7 @@ const config: Config = {
         yellow: "#FFB400",
       },
       backgroundImage: {
-        hero: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./../assets/home/home-hero.png')",
+        hero: "linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./../assets/home/home-hero.png')",
         payment: "url('./../assets/home/impact.png')",
         navbg:
           "linear-gradient(90deg, rgba(53,53,53,1) 0%, rgba(127,127,127,1) 35%, rgba(255,255,255,1) 100%);",
