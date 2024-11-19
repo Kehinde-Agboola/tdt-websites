@@ -15,7 +15,7 @@ const Future = () => {
        
         <Image
           src={future}
-          alt="children-with-the-desting-trust-bag"
+          alt="children-with-the-desting-trust-bag h-[445px] md:h-[0]"
           width={1280}
           height={568}
         />
