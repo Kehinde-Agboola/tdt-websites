@@ -6,6 +6,9 @@ import Future from "./_home/Future";
 import Impact from "./_home/Impact";
 import Report from "./_home/Report";
 import Numbers from "./_home/Numbers"
+import Empower from "./_home/Empower";
+import Community from "./_home/Community";
+import Blog from "./_home/Blog";
 const page = () => {
   return (
     <div>
@@ -16,7 +19,10 @@ const page = () => {
       <Future />
       <Impact />
       <Report/>
-      <Numbers/>
+      <Numbers />
+      <Empower />
+      <Community />
+      <Blog/>
     </div>
   );
 };
