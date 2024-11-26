@@ -8,7 +8,8 @@ heading?: string;
 buttonText: string;
 buttonText2?: string;
 image?: string;
-spanText?: string; 
+  spanText?: string; 
+  spanText2?: string;
 subtext?: string; 
 };
 
@@ -18,6 +19,7 @@ export const HeroComponent = ({
   buttonText,
   buttonText2,
   spanText,
+  spanText2,
   subtext,
 }: HeroPropsType) => {
   return (
@@ -26,7 +28,7 @@ export const HeroComponent = ({
         <section className="text-white pt-[4rem] xl:pt-[8rem]">
           <div className="">
             <h1 className="text-4xl leading-6 text-center md:text-left md:text-6xl font-bold mb-4">
-              {heading}
+              {heading}  {spanText2 && <span className="text-[#FFBC00]"> {spanText2}</span>}
             </h1>
             <p className="text-4xl leading-6 text-center md:text-left md:text-6xl font-bold mb-4">
               {" "}
@@ -43,11 +45,11 @@ export const HeroComponent = ({
           )}
 
           <div className="flex flex-col md:flex-row gap-6">
-            <Button className="transition-all ease-in-out duration-700 border border-[#FFB400] hover:bg-[#FFB400] hover:text-white text-white px-8 py-2">
+            <Button className="bg-[#FFB400] text-black px-8 py-2">
               {buttonText}
             </Button>
             {buttonText2 && (
-              <Button className="bg-[#FFB400] text-black px-8 py-2">
+              <Button className="transition-all ease-in-out duration-700 border border-[#FFB400] hover:bg-[#FFB400] hover:text-white text-white px-8 py-2">
                 {buttonText2}
               </Button>
             )}
