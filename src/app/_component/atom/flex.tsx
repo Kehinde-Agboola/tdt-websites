@@ -6,7 +6,8 @@ type FlexComponentProps = {
   columnReversed?: boolean;
   data?: Array<{
     description?: string;
-    heading1: string;
+    heading1?: string;
+    heading3?: string;
     imageSrc?: string | StaticImageData;
     text3?: string;
     text1?: string;
@@ -39,10 +40,11 @@ export const FlexComponent = ({
             <div className="lg:basis-[50%] w-full lg:text-justify">
               <div className=" pb-3">
                 <p className="text-[2.5rem] text-[#FFB400] ">{el.heading1}</p>
-                <span className="text-[#FFB400] font-bold text-[1.5rem] ">
+                <span className="text-[#ffb400] font-bold text-[1.5rem] ">
                   {el.spanText}
-                </span>{" "}
+                </span>
                 {el.heading}
+                <h1 className="text-[26px] md:text-[64px]">{el.heading3}</h1>
               </div>
               <p className={`pb-3 font-extralight ${descClassName}`}>
                 {el?.description}
