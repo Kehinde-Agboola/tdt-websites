@@ -47,7 +47,7 @@ export default function Navbar() {
 
   return (
     <section className="bg-black sticky top-0 z-50 shadow-md">
-      <nav className="max-w-6xl mx-auto flex w-full  justify-between px-4 py-5 text-sm">
+      <nav className="max-w-6xl mx-auto flex w-full  justify-between px-4 md:px-0 py-5 text-sm">
         {/* Left side: Logo */}
         <div ref={animationParent} className="flex items-center gap-10">
           <Link href="/">
