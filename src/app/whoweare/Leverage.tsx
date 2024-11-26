@@ -3,6 +3,8 @@ import Container from "@/app/_component/shared"
 import Virtual from "@/assets/who/virtual.png"
 import Platform from "@/assets/who/platform.png"
 import Game from "@/assets/who/game.png"
+import Image from 'next/image'
+import Girls from "@/assets/who/twogirls.png"
 const Leverage = () => {
     const data = [
       {
@@ -22,22 +24,36 @@ const Leverage = () => {
       },
     ];
   return (
-    <main className="bg-black text-white">
+    <main className="bg-black text-white py-8">
       <Container>
-        <div>
-          <h1 className="text-[64px]">
-            Leveraging <br /><span className="text-yellow">Technology</span> for
-            Education.
+        <div className="mb-[4rem] ">
+          <h1 className="text-[26px] md:text-[64px]">
+            Leveraging <br />
+            <span className="text-yellow">Technology</span> for Education.
           </h1>
-          <p>
+          <p className="w-full md:w-[40rem]">
             Our mission is to educate millions of disadvantage Nigeria children
             driven by technology solutions that ensure access to quality
             education everywhere.
           </p>
+        </div>
+        <section className="flex flex-col-reverse md:flex-row  justify-between">
+          <div className="">
+            {data.map((items) => (
+              <div
+                key={items.heading}
+                className="flex flex-col md:flex-row justify-between mt-4"
+              >
+                <Image src={items.Img} alt={items.text} className="" />
+                <div className="w-full md:w-[35rem] px-2 md:px-0">
+                  <p className="md:text-[24px] pb-[5px]">{items.heading}</p>
+                  <p className="text-[#CECECE]  ">{items.text}</p>
+                </div>
               </div>
-              <section>
-                  
-              </section>
+            ))}
+          </div>
+          <Image src={Girls} alt="two girls reading" />
+        </section>
       </Container>
     </main>
   );
