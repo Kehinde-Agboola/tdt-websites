@@ -17,7 +17,7 @@ export const Nav: NavItem[] = [
 
     dropdownItems: [
       { title: "About Us", path: "/whoweare/aboutUs" },
-      { title: "Our Team", path: "/whoweare/team" },
+      { title: "Our Team", path: "/whoweare/ourteam" },
       { title: "Blog", path: "/whoweare/blog" },
       { title: "FAQS", path: "/whoweare/faqs" },
     ],
