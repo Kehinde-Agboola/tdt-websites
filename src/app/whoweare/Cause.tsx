@@ -13,7 +13,7 @@ const Cause = () => {
             "Our initiatives are designed to enable us come through for the children in areas where they need us most. Education is the centrepiece of our mission to uplift disadvantaged children. With education, we empower them to break free from the cycle of poverty that has held their families and communities back for generations. Our approach goes beyond literacy. We are harnessing the power of education for the social and economic inclusion of children who have been left behind by society and creating a brighter future. ",
           text2: "While education is the cornerstone of our work, we provide a holistic care programme which guarantees shelter, food, protection and all basic needs to categories of children who need a safe and stable home environment to benefit from the transformative potential of our education initiatives.",
           text3: "We collaborate and promote efforts and solutions that break down barriers on children’s way to greatness. We do not have all the answers. Sometimes children teach us how. By being attentive to them, we learn new ideas and innovative approaches that help us to deliver solutions that are both relevant and sustainable.",
-          buttonText: "",
+          buttonText: "Join Us",
           imageSrc: Reading,
         },
       ];
@@ -71,6 +71,7 @@ const Cause = () => {
         <FlexComponent
           data={data}
           columnReversed={false}
+          
         />
       </section>
     </main>
