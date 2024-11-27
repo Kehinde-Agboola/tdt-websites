@@ -6,7 +6,7 @@ const Volunteer = () => {
     <section className="bg-yellow">
       <Container>
         <div className="text-black py-8 px-6 flex flex-col md:flex-row justify-between items-center">
-          <h2 className="text-2xl md:text-[64px] font-bold mb-4">
+          <h2 className="text-2xl md:text-[44px] font-bold mb-4">
             Join Our Volunteers
           </h2>
           <div className="w-full md:w-[40rem] text-center md:text-right">
