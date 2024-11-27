@@ -5,12 +5,13 @@ import Abimbola from "@/assets/team/abimbola.png"
 import TeamSection from './TeamSection';
 import Container from '@/app/_component/shared';
 import Volunteer from './Volunteer';
+import { Button } from '@/app/_component/atom/button';
 const page = () => {
     const boardMembers = [
       {
         name: "Abimbola Ojenike",
         role: "Co-founder & CEO",
-        description: "Lorem ipsum dolor sit amet consectetur.",
+        description: "Expert in technology and innovation.",
         image: Abimbola,
       },
       {
@@ -94,6 +95,12 @@ const page = () => {
         <section className="">
           <TeamSection title="Management" members={boardMembers} />
         </section>
+        <hr />
+        <div className="max-w-[12rem] mx-auto mt-8 mb-16">
+          <Button className="border-2 border-yellow   text-center px-4 py-2">
+            View all memebers
+          </Button>
+        </div>
       </Container>
     </main>
   );
