@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-10">
+    <footer className="bg-black text-white py-10 px-2">
       <Container>
         {/* Subscription Section */}
         <div className=" flex flex-col md:flex-row justify-between items-center">
@@ -18,7 +18,7 @@ const Footer = () => {
               together
             </p>
           </div>
-          <form className="flex md:justify-center relative pt-4">
+          <form className="flex md:justify-center relative pt-4 ">
             <input
               type="email"
               placeholder="Enter your email"

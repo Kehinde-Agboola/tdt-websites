@@ -3,6 +3,7 @@ import HeroSection from "@/app/_component/atom/HeroSection";
 import Container from "@/app/_component/shared";
 import Hero from "@/assets/edu/hero.png"
 import Teacher from "@/assets/edu/teacher.png"
+import Enrolment from "./Enrolment";
 const Home: React.FC = () => {
      const data = [
        {
@@ -19,26 +20,39 @@ const Home: React.FC = () => {
         description="This initiative allows youths to experience independent living as young adults while adhering to the same standards of discipline instilled during their upbringing."
         imagePath={Hero}
       />
+      <Container>
+        <section className="mt-[5rem]">
+          <p className="xl:text-[25px] text-[18px] text-[#333333] w-full md:max-w-[60rem] text-justify">
+            <span className="text-yellow">
+              Our Education Access initiative{" "}
+            </span>
+            targets children in informal settlements. This unique demography has
+            peculiar difficulty in taking advantage of the free education policy
+            where it is offered.
+          </p>
+        </section>
+      </Container>
       <section className="my-[4rem]">
         <FlexComponent data={data} columnReversed={true} buttonClassName="" />
       </section>
       <Container>
-        <section className="bg-black bg-payment">
+        <section className="bg-black bg-payment mb-[5rem]">
           <div className="py-8 px-8 flex flex-col md:flex-row justify-between items-center">
-            <h2 className=" text-center text-2xl md:text-[44px] mb-4 text-white">
+            <h2 className=" text-center text-2xl md:text-[40px] mb-4 text-white">
               Empower their Dreams
             </h2>
-            <div className="text-center md:text-right flex gap-4">
-              <button className="border-2 border-yellow text-white  w-full">
+            <div className="text-center md:text-right flex flex-col md:flex-row gap-4">
+              <button className="border-2 border-yellow text-white  w-full md:w-[15rem]  py-2 px-4 ">
                 Sponsor a Scholarship
               </button>
-              <button className="bg-yellow text-white  w-full  mt-4 md:mt-0">
+              <button className="bg-yellow text-white  w-full md:w-[15rem]  mt-4 md:mt-0 px-4 py-2 md:px-0 md:py-0">
                 Sponsor a Child
               </button>
             </div>
           </div>
         </section>
       </Container>
+      <Enrolment />
     </main>
   );
 };
