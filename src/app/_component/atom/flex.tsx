@@ -9,6 +9,7 @@ type FlexComponentProps = {
     heading1?: string;
     heading3?: string;
     imageSrc?: string | StaticImageData;
+    imageSrc1?: string | StaticImageData;
     text3?: string;
     text1?: string;
     text2?: string;
@@ -39,12 +40,19 @@ export const FlexComponent = ({
           >
             <div className="lg:basis-[50%] w-full lg:text-justify">
               <div className=" pb-3">
+                {el?.imageSrc1 && (
+                  <Image
+                    src={el?.imageSrc1}
+                    alt={el?.heading || "Image"}
+                    className=" object-cover"
+                  />
+                )}
                 <p className="text-[2.5rem] text-[#FFB400] ">{el.heading1}</p>
+                <p className="pt-2">{el.heading}</p>
                 <span className="text-[#ffb400] font-bold text-[1.5rem] ">
                   {el.spanText}
                 </span>
-                {el.heading}
-                <h1 className="text-[26px] md:text-[64px]">{el.heading3}</h1>
+                <h1 className="text-[18px] md:text-[26px]">{el.heading3}</h1>
               </div>
               <p className={`pb-3 font-extralight ${descClassName}`}>
                 {el?.description}
