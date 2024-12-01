@@ -92,3 +92,43 @@ export const EnableGlobalData: EnableGlobaleData[] = [
     columnReversed: false,
   },
 ];
+
+type FrequntlyAskedQuestion = {
+  heading: string;
+  description: string;
+};
+
+export const FAQuestions: FrequntlyAskedQuestion[] = [
+  {
+    heading: "Can I Sponsor a scholarship?",
+    description:
+      "Yes, you can sponsor a scholarship! We welcome and appreciate your generosity. Sponsoring a scholarship helps support deserving students in achieving their educational goals. Please contact our scholarship coordinator at [email/contact details] for more information on how you can become a sponsor.",
+  },
+
+  {
+    heading: "How can I sponsor a child?",
+    description:
+      "Sponsoring a child involves providing financial support for their education, healthcare, and general well-being. You can sign up to sponsor a child through our website.",
+  },
+
+  {
+    heading: "Do you partner with other organizations or institutions?",
+    description:
+      "Yes, we actively partner with other NGOs, educational institutions, healthcare providers, and community organizations to enhance our services and reach more children in need.",
+  },
+  {
+    heading: "How can I get involved?",
+    description:
+      "You can get involved by volunteering, donating, sponsoring a child, participating in our fundraising events, or spreading the word about our work. Visit our website or contact us directly for more information on how to get started.",
+  },
+  {
+    heading: "How can I volunteer with your organization?",
+    description:
+      "Absolutely! We welcome volunteers who are passionate about helping children. Please visit our website to learn more about our volunteer opportunities and application process.",
+  },
+  {
+    heading: "What types of volunteer opportunities are available?",
+    description:
+      "We offer a variety of volunteer opportunities, including teaching, mentoring, organizing activities, administrative support, fundraising, and helping with day-to-day operations at our shelter facilities.",
+  },
+];
