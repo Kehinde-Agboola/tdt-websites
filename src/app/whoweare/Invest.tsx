@@ -1,5 +1,6 @@
 import React from 'react'
-import Girl from "@/assets/who/destiny.png"
+// import Girl from "@/assets/who/destiny.png"
+import Girl from "../../../public/assets/who/destiny.png"
 import { FlexComponent } from '../_component/atom/flex';
 const Invest = () => {
          const data = [

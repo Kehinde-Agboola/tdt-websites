@@ -1,9 +1,9 @@
 import React from 'react'
-import Boy from "@/assets/who/boy.png"
+import Boy from "../../../public/assets/who/boy.png"
 import Image from 'next/image'
 import Container from '../_component/shared'
 import { FlexComponent } from '../_component/atom/flex'
-import Reading from "@/assets/who/reading.png"
+import Reading from "../../../public/assets/who/reading.png";
 const Cause = () => {
       const data = [
         {

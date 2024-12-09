@@ -1,6 +1,5 @@
 
 import React from "react";
-// import background from "../../../public/assets/home/home-hero.png"
 import Container from "../_component/shared";
 import { Button } from "../_component/atom/button";
 const Head = () => {

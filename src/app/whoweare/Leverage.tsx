@@ -1,10 +1,10 @@
 import React from 'react'
 import Container from "@/app/_component/shared"
-import Virtual from "@/assets/who/virtual.png"
-import Platform from "@/assets/who/platform.png"
-import Game from "@/assets/who/game.png"
+import Virtual from "../../../public/assets/who/virtual.png"
+import Platform from "../../../public/assets/who/platform.png";
+import Game from "../../../public/assets/who/game.png";
 import Image from 'next/image'
-import Girls from "@/assets/who/twogirls.png"
+import Girls from "../../../public/assets/who/twogirls.png";
 const Leverage = () => {
     const data = [
       {
