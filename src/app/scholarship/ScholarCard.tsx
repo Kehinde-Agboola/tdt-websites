@@ -9,7 +9,7 @@ const Scholars = () => {
     <main>
       <section className="relative h-[150vh] w-full">
         <Image
-          src={Background} // Replace with your image path
+          src={Background}
           alt="Our Team"
           fill
           className="object-cover object-center bg-no-repeat"
