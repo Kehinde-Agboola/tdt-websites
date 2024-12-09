@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 import { FAQuestions } from '@/app/constant'
 import { FiPlusCircle } from "react-icons/fi";
 import { TbCircleMinus } from "react-icons/tb";
-import YellowLine from "@/assets/edu/Lineyellow.png"
+import YellowLine from "../../../../public/assets/edu/Lineyellow.png";
 import Image from 'next/image';
 import Container from '@/app/_component/shared';
-import Hero from "@/assets/faq/headhero.png"
+import Hero from "../../../../public/assets/faq/headhero.png"
 const page = () => {
-     // eslint-disable-next-line react-hooks/rules-of-hooks
+    //  eslint-disable-next-line react-hooks/rules-of-hooks
      const [selected, setSelected] = useState<null | number>(null);
 
      const toggle = (i: number) => {

@@ -2,7 +2,7 @@ import React from "react";
 import ScholarCard from "../_component/atom/Cards";
 import GraduateGirl from "@/assets/scholarship/graduategirl.png"
 import Container from "../_component/shared";
-import Background from "@/assets/scholarship/scholarsbg.png"
+import Background from "../../../public/assets/scholarship/scholarsbg.png"
 import Image from "next/image";
 const Scholars = () => {
   return (
