@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Nav } from "@/app/constant/index";
-import logo from "@/assets/tdtlogo.png";
+import logo from "../../../../public/assets/tdtlogo.png";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 

@@ -1,4 +1,4 @@
-import Logo from "@/assets/Logowhite.png"
+import Logo from "../../../../public/assets/Logowhite.png"
 import Container from "../shared";
 import Image from "next/image";
 
@@ -111,7 +111,13 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="text-center text-sm mt-10">
-          &copy; 2024 The Destiny Trust. All Rights Reserved.
+          &copy; 2024 The Destiny Trust. All Rights Reserved.{" "}
+          <p className="text-white text-center md:text-right">
+            powered by the{" "}
+            <a href="https://www.kidsinnovation.africa/">
+              Kid&apos;s Innovation Hub Africa
+            </a>
+          </p>
         </div>
       </Container>
     </footer>

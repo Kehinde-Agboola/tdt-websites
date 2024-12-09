@@ -1,8 +1,8 @@
 import React from 'react'
-import Pic1 from "@/assets/home/pic1.png"
-import Pic2 from "@/assets/home/pic2.png"
-import Pic3 from "@/assets/home/pic3.png"
-import Pic4 from "@/assets/home/pic4.png"
+import Pic1 from "../../../public/assets/home/pic1.png"
+import Pic2 from "../../../public/assets/home/pic2.png";
+import Pic3 from "../../../public/assets/home/pic3.png";
+import Pic4 from "../../../public/assets/home/pic4.png";
 import Container from "@/app/_component/shared"
 import { Button } from '../_component/atom/button'
 import Image from 'next/image'

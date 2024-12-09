@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from '../_component/shared'
-import future from "@/assets/home/future.png"
+import future from "../../../public/assets/home/future.png"
 import Image from 'next/image'
 
 const Future = () => {

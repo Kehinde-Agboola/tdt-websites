@@ -1,11 +1,11 @@
 import React from 'react'
 import Container from '../_component/shared'
-import Education from "../../assets/home/education.png"
-import Shelter from "../../assets/home/shelter.png"
-import Steam from "../../assets/home/stem.png"
-import Support from "../../assets/home/support.png"
-import Accelerated from "../../assets/home/accelerated.png"
-import Family from "../../assets/home/family.png"
+import Education from "../../../public/assets/home/education.png"
+import Shelter from "../../../public/assets/home/shelter.png"
+import Steam from "../../../public/assets/home/stem.png"
+import Support from "../../../public/assets/home/support.png"
+import Accelerated from "../../../public/assets/home/accelerated.png"
+import Family from "../../../public/assets/home/family.png"
 import { Button } from '../_component/atom/button'
 import Image from 'next/image'
 import { GoArrowRight } from "react-icons/go";

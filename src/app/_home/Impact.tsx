@@ -1,8 +1,8 @@
 import React from 'react'
 import Container from '../_component/shared';
-import Boy from "@/assets/home/boybag.png"
+import Boy from "../../../public/assets/home/impact.png"
 import Image from 'next/image';
-import Line from "@/assets/home/line.png"
+import Line from "../../../public/assets/home/line.png"
 import { Button } from '../_component/atom/button';
 const Impact = () => {
   return (

@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import Latest from "@/assets/home/latest.png"
+import Latest from "../../../public/assets/home/latest.png"
 import Container from "../_component/shared";
 type BoxProps = {
   imgSrc: string | StaticImageData;

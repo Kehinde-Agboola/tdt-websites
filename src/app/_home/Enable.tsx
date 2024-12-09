@@ -1,6 +1,6 @@
 import React from 'react'
 import { FlexComponent } from '../_component/atom/flex';
-import Committed from "../../assets/home/commited.png"
+import Committed from "../../../public/assets/home/commited.png"
 const Enable = () => {
   const data = [
     {

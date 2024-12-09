@@ -12,7 +12,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return (
     <main>
-      <div className="relative w-full h-[70vh] flex items-center text-white">
+      <div className="relative w-full h-[86vh] flex items-center text-white">
         <div className="absolute inset-0 z-0">
           <Image
             src={imagePath}

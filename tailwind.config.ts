@@ -14,11 +14,11 @@ const config: Config = {
         yellow: "#FFB400",
       },
       backgroundImage: {
-        hero: "url('./../assets/home/home-hero.png')",
+        hero: "url('./../../public/assets/home/home-hero.png')",
         whero:
-          "linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./../assets/who/whero.png')",
-        payment: "url('./../assets/home/impact.png')",
-        community: "url('./../assets/home/community.png')",
+          "linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./../../public/assets/who/whero.png')",
+        payment: "url('./../../public/assets/home/impact.png')",
+        community: "url('./../../public/assets/home/community.png')",
         navbg:
           "linear-gradient(90deg, rgba(53,53,53,1) 0%, rgba(127,127,127,1) 35%, rgba(255,255,255,1) 100%);",
         mobile:

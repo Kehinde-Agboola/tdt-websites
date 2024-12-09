@@ -1,13 +1,13 @@
 import React from 'react'
 import HeroSection from '@/app/_component/atom/HeroSection'
-import CareHero from "@/assets/care/carehero.png"
+import CareHero from "../../../../public/assets/care/carehero.png"
 import { FlexComponent } from '@/app/_component/atom/eduFlex'
 import { AltComponent } from '@/app/_component/atom/altFlex'
-import Line from "@/assets/edu/Lineyellow.png"
-import Rehab from "@/assets/care/children.png"
-import Nothing from "@/assets/care/nothing.png"
-import ChildHealth from "@/assets/care/eyecheck.png"
-import HungerRelief from "@/assets/care/hunger.png"
+import Line from "../../../../public/assets/edu/Lineyellow.png";
+import Rehab from "../../../../public/assets/care/children.png";
+import Nothing from "../../../../public/assets/care/nothing.png";
+import ChildHealth from "../../../../public/assets/care/eyecheck.png";
+import HungerRelief from "../../../../public/assets/care/hunger.png";
 const page = () => {
       const data = [
         {

@@ -1,5 +1,5 @@
 import { FaArrowRight } from "react-icons/fa6";
-import Committed from "../../assets/home/commited.png"
+import Committed from "../../../public/assets/home/commited.png"
 import { IconType } from "react-icons";
 import { StaticImageData } from "next/image";
 export interface NavItem {

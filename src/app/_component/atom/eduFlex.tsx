@@ -13,6 +13,7 @@ type FlexComponentProps = {
     text1?: string;
     text2?: string;
     spanText?: string;
+    spanText2?: string;
     heading?: string;
     buttonText?: string;
   }>;
@@ -45,13 +46,18 @@ export const FlexComponent = ({
                     className=" object-cover pb-3"
                   />
                 )}
-                <span className="text-[#ffb400] text-[16px] md:text-[24px]">
+                <span className="text-[#ffb400] text-[16px] md:text-[32px]">
                   {el.spanText}
                 </span>
                 <p className=" text-[16px] md:text-[24px]   text-[#333333] ">
                   {el.heading1}
                 </p>
-                <p className=" text-[16px] md:text-[24px]   text-[#fff]"> {el.heading}</p>
+                <span className="text-[#ffb400] text-[16px] md:text-[32px]">
+                  {el.spanText2}
+                </span>
+                <p className=" text-[16px] md:text-[24px]   text-[#fff]">
+                  {el.heading}
+                </p>
               </div>
 
               <div className="xl:max-w-[100%] lg:text-justify">

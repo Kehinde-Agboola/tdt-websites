@@ -14,6 +14,7 @@ type FlexComponentProps = {
     text1?: string;
     text2?: string;
     spanText?: string;
+    spanText2?: string;
     heading?: string;
     buttonText?: string;
   }>;
@@ -52,7 +53,13 @@ export const FlexComponent = ({
                 <span className="text-[#ffb400] font-bold text-[1.5rem] ">
                   {el.spanText}
                 </span>
-                <h1 className="text-[18px] md:text-[26px]">{el.heading3}</h1>
+                <h1 className="text-[18px] md:text-[40px]">
+                  {" "}
+                  <span className="text-[#ffb400]">
+                    {el.spanText2}
+                  </span>
+                  {el.heading3}
+                </h1>
               </div>
               <p className={`pb-3 font-extralight ${descClassName}`}>
                 {el?.description}
