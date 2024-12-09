@@ -1,8 +1,8 @@
 import { FlexComponent } from "@/app/_component/atom/flex";
 import HeroSection from "@/app/_component/atom/HeroSection";
 import Container from "@/app/_component/shared";
-import Hero from "@/assets/edu/hero.png"
-import Teacher from "@/assets/edu/teacher.png"
+import Hero from "../../../../public/assets/edu/hero.png"
+import Teacher from "../../../../public/assets/edu/teacher.png";
 import Enrolment from "./Enrolment";
 const Home: React.FC = () => {
      const data = [

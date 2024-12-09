@@ -3,7 +3,7 @@ import React from "react";
 import Container from "@/app/_component/shared";
 const Volunteer = () => {
   return (
-    <section className="bg-yellow">
+    <section className="bg-yellow bg-payment">
       <Container>
         <div className="text-black py-8 px-6 flex flex-col md:flex-row justify-between items-center">
           <h2 className="text-2xl md:text-[44px] font-bold mb-4">

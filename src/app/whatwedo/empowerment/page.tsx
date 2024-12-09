@@ -1,9 +1,9 @@
 import React from 'react'
 import HeroSection from '@/app/_component/atom/HeroSection'
-import EmpowerHero from "@/assets/empower/empowerhero.png"
+import EmpowerHero from "../../../../public/assets/empower/empowerhero.png";
 import { FlexComponent } from '@/app/_component/atom/flex';
-import BoyWithTap from "@/assets/edu/BoywithTap.png"
-import Line from "@/assets/edu/Lineyellow.png"
+import BoyWithTap from "../../../../public/assets/edu/BoywithTap.png"
+import Line from "../../../../public/assets/edu/Lineyellow.png";
 const page = () => {
          const data = [
            {
