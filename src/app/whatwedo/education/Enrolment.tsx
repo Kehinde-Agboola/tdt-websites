@@ -1,12 +1,12 @@
 import React from 'react'
-import School from "@/assets/edu/school.png"
-import Line from "@/assets/edu/Lineyellow.png"
-import TeacherStudent from "@/assets/edu/teacherstudent.png"
+import School from "../../../../public/assets/edu/school.png"
+import Line from "../../../../public/assets/edu/Lineyellow.png";
+import TeacherStudent from "../../../../public/assets/edu/teacherstudent.png";
 import { FlexComponent } from '@/app/_component/atom/eduFlex';
 import { AltComponent } from '@/app/_component/atom/altFlex';
-import WhiteLine from "@/assets/edu/whiteLine.png"
-import Scholar from "@/assets/edu/scholar.png"
-import BoyWithTap from "@/assets/edu/BoywithTap.png"
+import WhiteLine from "../../../../public/assets/edu/whiteLine.png";
+import Scholar from "../../../../public/assets/edu/scholar.png";
+import BoyWithTap from "../../../../public/assets/edu/BoywithTap.png";
 const Enrolment = () => {
 
      const data = [

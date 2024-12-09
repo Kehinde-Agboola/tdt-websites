@@ -1,10 +1,10 @@
 import React from 'react'
-import ScholarshipHero from "@/assets/scholarship/scholarshiphero.png"
+import ScholarshipHero from "../../../public/assets/scholarship/scholarshiphero.png";
 import Image, { StaticImageData } from 'next/image'
 import Container from '../_component/shared'
 import { GoArrowRight } from 'react-icons/go';
 import { Button } from '../_component/atom/button';
-import Symbol from "@/assets/scholarship/henry.png"
+import Symbol from "../../../public/assets/scholarship/henry.png";
 import { FlexComponent } from "@/app/_component/atom/eduFlex";
 import WritingGirl from  "../../../public/assets/scholarship/girlwriting.png"
 import Scholars from './ScholarCard';
