@@ -1,6 +1,9 @@
+'use client'
 import { Button } from "./button";
 import Image, { StaticImageData } from "next/image";
 import Container from "../shared/index";
+import { motion } from "framer-motion";
+
 type FlexComponentProps = {
   buttonClassName?: string;
   columnReversed?: boolean;
@@ -29,33 +32,46 @@ export const FlexComponent = ({
     <Container>
       {data?.map((el, index) => {
         return (
-          <div
+          <motion.div
             key={index}
             className={`flex ${
               columnReversed
                 ? "flex-col-reverse lg:flex-row-reverse"
                 : "flex-col-reverse lg:flex-row"
             } justify-center items-center gap-10 lg:gap-10 lg:justify-between`}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut",
+              delay: index * 0.2, // Stagger animation for each component
+            }}
           >
-            <div className="lg:basis-[65%] w-full ">
-              <div className="">
+            <motion.div
+              className="lg:basis-[65%] w-full"
+              initial={{ x: columnReversed ? 50 : -50, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <div>
                 {el?.imageSrc1 && (
                   <Image
                     src={el?.imageSrc1}
                     alt={el?.spanText || "Image"}
-                    className=" object-cover pb-3"
+                    className="object-cover pb-3"
                   />
                 )}
                 <span className="text-[#ffb400] text-[16px] md:text-[32px]">
                   {el.spanText}
                 </span>
-                <p className=" text-[16px] md:text-[24px]   text-[#333333] ">
+                <p className="text-[16px] md:text-[24px] text-[#333333]">
                   {el.heading1}
                 </p>
                 <span className="text-[#ffb400] text-[16px] md:text-[32px]">
                   {el.spanText2}
                 </span>
-                <p className=" text-[16px] md:text-[24px]   text-[#fff]">
+                <p className="text-[16px] md:text-[24px] text-[#fff]">
                   {el.heading}
                 </p>
               </div>
@@ -66,22 +82,26 @@ export const FlexComponent = ({
                 <p className="pb-4">{el.text3}</p>
               </div>
               <div>
-                <Button className={buttonClassName}>
-                  {`${el?.buttonText}`}
-                </Button>
+                <Button
+                  className={buttonClassName}
+                >{`${el?.buttonText}`}</Button>
               </div>
-            </div>
-            <div className="lg:basis-[50%] flex-basis-[50%]">
-              {/* Image Section */}
+            </motion.div>
+            <motion.div
+              className="lg:basis-[50%] flex-basis-[50%]"
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
               {el?.imageSrc && (
                 <Image
                   src={el?.imageSrc}
                   alt={el?.heading || "Image"}
-                  className=" object-cover"
+                  className="object-cover"
                 />
               )}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         );
       })}
     </Container>
