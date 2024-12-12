@@ -35,3 +35,11 @@ html {
   flex-shrink: 0;
   width: 80%;
 }
+
+input[type="checkbox"] {
+ 
+  border-radius: 4px; 
+  transition: background-color 0.3s;
+  accent-color: #FFB400;
+   border-style: #FFB400;
+}
