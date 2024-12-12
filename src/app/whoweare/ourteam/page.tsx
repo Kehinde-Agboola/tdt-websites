@@ -1,4 +1,6 @@
+'use client'
 import React from 'react'
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Ourteam from "../../../../public/assets/team/hero.png"
 import Abimbola from "../../../../public/assets/team/abimbola.png";
@@ -58,28 +60,46 @@ const page = () => {
       },
     ];
   return (
-    <main>
+    <main className="bg-[#F4F4F4]">
       <section className="relative h-[400px] md:h-[500px] w-full">
-        {/* Background Image */}
-        <Image
-          src={Ourteam} // Replace with your image path
-          alt="Our Team"
-          fill
-          className="object-cover object-center bg-no-repeat"
-        />
+        {/* Background Image with Framer Motion for slight movement */}
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+        >
+          <Image
+            src={Ourteam}
+            alt="Our Team"
+            fill
+            className="object-cover object-center bg-no-repeat"
+          />
+        </motion.div>
 
         {/* Text Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 text-white">
-          <h1 className="text-4xl md:text-5xl">
+          <motion.h1
+            className="text-4xl md:text-5xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
             Meet Our <span className="text-yellow">Team</span>
-          </h1>
-          <p className="mt-4 text-base md:text-lg max-w-4xl">
+          </motion.h1>
+
+          <motion.p
+            className="mt-4 text-base md:text-lg max-w-4xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+          >
             Our Management Team members bring experience from diverse
             professional backgrounds. We take pride in the commitment of a
             volunteer-driven management team supported by a full-time workforce.
             Management Team members give their time and expertise at no cost to
             us.
-          </p>
+          </motion.p>
         </div>
       </section>
       <Container>
@@ -96,7 +116,7 @@ const page = () => {
           <TeamSection title="Management" members={boardMembers} />
         </section>
         <hr />
-        <div className="max-w-[12rem] mx-auto mt-8 mb-16">
+        <div className="max-w-[12rem] mx-auto mt-8 pb-16">
           <Button className="border-2 border-yellow   text-center px-4 py-2">
             View all memebers
           </Button>
