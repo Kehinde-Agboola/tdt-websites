@@ -1,20 +1,37 @@
+'use client'
+import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import Image, { StaticImageData } from "next/image";
-import Latest from "../../../public/assets/home/latest.png"
+import Latest from "../../../public/assets/home/latest.png";
 import Container from "../_component/shared";
+
 type BoxProps = {
   imgSrc: string | StaticImageData;
   title: string;
-    author: string;
-    date: string;
-    description: string;
+  author: string;
+  date: string;
+  description: string;
   buttonText: string;
 };
 
 const Card = ({ title, author, date, description, imgSrc }: BoxProps) => (
-  <div className=" overflow-hidden">
-    <div className="relative w-full h-60">
+  <motion.div
+    initial={{ opacity: 0, y: 20 }} // Animation on load
+    whileInView={{ opacity: 1, y: 0 }} // Animation when in viewport
+    viewport={{ once: true }} // Trigger animation only once
+    transition={{ duration: 0.5, delay: 0.1 }} // Smooth transition
+    className="overflow-hidden"
+  >
+    <motion.div
+      className="relative w-full h-60 overflow-hidden"
+      whileHover={{ scale: 1.1 }} // Zoom in on hover
+      transition={{ duration: 0.8, ease: "easeInOut" }} // Slow zoom-in and zoom-out
+    >
       <Image src={imgSrc} alt={title} layout="fill" objectFit="cover" />
-    </div>
+    </motion.div>
     <div className="pt-4">
       <h3 className="text-lg font-[500] text-[18px] text-[#232323]">{title}</h3>
       <p className="text-sm text-[#333333] mb-2 py-4">
@@ -23,8 +40,10 @@ const Card = ({ title, author, date, description, imgSrc }: BoxProps) => (
       <p className="text-sm text-[#333333] mb-4">{description}</p>
       <button className="bg-[#FFB400] text-black py-2 px-4">Read More</button>
     </div>
-  </div>
+  </motion.div>
 );
+
+
 
 const Blog = () => {
   const articles = [
@@ -59,12 +78,47 @@ const Blog = () => {
     <div className="py-10 bg-[#F4F4F4]">
       <Container>
         <h2 className="text-2xl font-bold text-center mb-6">
-          The <span className="text-yellow-500">Lastest</span>
+          The <span className="text-yellow-500">Latest</span>
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Desktop Cards */}
+        <motion.div
+          className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.2 },
+            },
+          }}
+        >
           {articles.map((article, index) => (
             <Card buttonText={""} key={index} {...article} />
           ))}
+        </motion.div>
+
+        {/* Mobile Swiper */}
+        <div className="md:hidden">
+          <Swiper
+            spaceBetween={16}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            className="pb-6"
+          >
+            {articles.map((article, index) => (
+              <SwiperSlide key={index}>
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Card buttonText={""} {...article} />
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </Container>
     </div>

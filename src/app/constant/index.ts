@@ -67,6 +67,7 @@ export const Nav: NavItem[] = [
       },
       { title: "Subomi Plumptre ​Trust Scholarship", path: "#" },
       { title: "Lolu Arr Scholarship", path: "#" },
+      { title: "A4 Foundation Scholarship", path: "#" },
     ],
   },
   {
