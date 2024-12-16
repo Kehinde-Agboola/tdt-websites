@@ -71,7 +71,6 @@ const Blog = () => {
         "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
       imgSrc: Latest,
     },
-    // Add more articles as needed
   ];
 
   return (
