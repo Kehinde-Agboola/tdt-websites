@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Container from "../shared";
 import Logo from "../../../../public/assets/Logowhite.png";
-
+import Email from "../atom/Email";
 const Footer = () => {
   // Animation Variants
   const fadeIn = {
@@ -49,23 +49,7 @@ const Footer = () => {
               together
             </p>
           </motion.div>
-          <motion.form
-            className="flex md:justify-center relative pt-4"
-            variants={fadeIn}
-            custom={0.4}
-          >
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="focus:outline-none px-6 py-3 w-[350px] md:w-[600px]"
-            />
-            <button
-              type="submit"
-              className="bg-[#FFB400] absolute right-1 top-5 px-6 text-black py-2"
-            >
-              Subscribe
-            </button>
-          </motion.form>
+          <Email/>
         </motion.div>
       </Container>
 

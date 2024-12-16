@@ -11,6 +11,7 @@ type FlexComponentProps = {
     description?: string;
     heading1?: string;
     heading3?: string;
+    heading4?: string;
     imageSrc?: string | StaticImageData;
     imageSrc1?: string | StaticImageData;
     text3?: string;
@@ -69,7 +70,8 @@ export const FlexComponent = ({
                 <span className="text-[#ffb400] font-bold text-[1.5rem]">
                   {el.spanText}
                 </span>
-                <h1 className="text-[18px] md:text-[40px]">
+                <p>{ el.heading4}</p>
+                <h1 className="text-[18px] md:text-[25px]">
                   <span className="text-[#ffb400]">{el.spanText2}</span>
                   {el.heading3}
                 </h1>

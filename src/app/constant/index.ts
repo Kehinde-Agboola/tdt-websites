@@ -2,6 +2,11 @@ import { FaArrowRight } from "react-icons/fa6";
 import Committed from "../../../public/assets/home/commited.png"
 import { IconType } from "react-icons";
 import { StaticImageData } from "next/image";
+import Abimbola from "../../../public/assets/blog/abimbola.png"
+import OutReach from "../../../public/assets/blog/outreach.png"
+import Help from "../../../public/assets/blog/helpinhand.png"
+import Latest from "../../../public/assets/home/latest.png"
+
 export interface NavItem {
   title: string;
   path: string;
@@ -133,3 +138,151 @@ export const FAQuestions: FrequntlyAskedQuestion[] = [
       "We offer a variety of volunteer opportunities, including teaching, mentoring, organizing activities, administrative support, fundraising, and helping with day-to-day operations at our shelter facilities.",
   },
 ];
+
+
+  export const recentPosts = [
+    {
+      image: Abimbola,
+      author: "Samuel Adeshina • September 12, 2024 ",
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home.",
+    },
+    {
+      image: OutReach,
+      author: "Samuel Adeshina • September 12, 2024 ",
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home.",
+    },
+    {
+      image: Help,
+      author: "Samuel Adeshina • September 12, 2024 ",
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home.",
+    },
+  ];
+
+  export const articles = [
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+  ];
