@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import Image, { StaticImageData } from "next/image";
 import Latest from "../../../public/assets/home/latest.png";
 import Container from "../_component/shared";
+import Link from "next/link";
 
 type BoxProps = {
   imgSrc: string | StaticImageData;
@@ -38,7 +39,9 @@ const Card = ({ title, author, date, description, imgSrc }: BoxProps) => (
         {author} • {date}
       </p>
       <p className="text-sm text-[#333333] mb-4">{description}</p>
-      <button className="bg-[#FFB400] text-black py-2 px-4">Read More</button>
+      <Link href={'/whoweare/blog'}>
+        <button className="bg-[#FFB400] text-black py-2 px-4">Read More</button>
+      </Link>
     </div>
   </motion.div>
 );

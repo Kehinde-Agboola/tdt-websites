@@ -18,11 +18,11 @@ const page = () => {
       <Initaitive />
       <Future />
       <Impact />
-      <Report/>
+      <Report />
       <Numbers />
       <Empower />
       <Community />
-      <Blog/>
+      <Blog />
     </div>
   );
 };

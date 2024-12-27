@@ -1,9 +1,27 @@
-import React from 'react'
+'use client';
+import React from 'react';
 import Container from '../_component/shared';
-import Boy from "../../../public/assets/home/impact.png"
+import Boy from "../../../public/assets/home/boybag.png";
 import Image from 'next/image';
-import Line from "../../../public/assets/home/line.png"
+import Line from "../../../public/assets/home/line.png";
 import { Button } from '../_component/atom/button';
+import Link from 'next/link';
+
+// File URLs for each year
+const reports = {
+  2024: "/../../../../../files/The Destiny Trust Mid-year Report 2024_.pdf",
+};
+
+// Function to open and download a file
+const openAndDownloadFile = (fileUrl: string, fileName: string) => {
+  const link = document.createElement('a');
+  link.href = fileUrl; // Open file URL
+  link.download = fileName; // File will download
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 const Impact = () => {
   return (
     <section className="bg-payment bg-[#FFB400]">
@@ -12,29 +30,36 @@ const Impact = () => {
           <Image src={Boy} alt="Schoolboy" width={618} />
           <div className="md:w-[45%]">
             <Image src={Line} alt="line" className="pb-3 hidden md:block" />
-            <p className="text-[40px] text-center md:text-left  md:text-[40px] pb-3">
+            <p className="text-[40px] text-center md:text-left md:text-[40px] pb-3">
               Our Impact Reports
             </p>
             <p className="pb-3 text-center md:text-left">
-              We celebrate the impact we make together and highlighting
-              opportunities to transform more lives
+              We celebrate the impact we make together and highlight
+              opportunities to transform more lives.
             </p>
-            <div className="flex flex-col items-center  md:flex-row gap-5 py-4">
-              <Button className="border-2 border-black w-[160px] py-2">
-                2022
+            <div className="flex flex-col items-center md:flex-row gap-5 py-4">
+              {/* 2022 Button */}
+              <Button
+                className="border-2 border-black w-[200px] py-2"
+                onClick={() =>
+                  openAndDownloadFile(
+                    reports[2024],
+                    "2024-TDT-Impact-Report.pdf"
+                  )
+                }
+              >
+                2024 Impact Reports
               </Button>
-              <Button className="border-2 border-black w-[160px] py-2">
-                2023
-              </Button>
-              <Button className="bg-black w-[160px] text-white py-2">
-                2024
-              </Button>
+              {/* 2023 Button */}
+              <Link href="/impact-report-financial">
+                <Button>View more</Button>
+              </Link>
             </div>
           </div>
         </div>
       </Container>
     </section>
   );
-}
+};
 
-export default Impact
+export default Impact;

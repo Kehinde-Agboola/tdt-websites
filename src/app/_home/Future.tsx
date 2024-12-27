@@ -49,7 +49,7 @@ const Future = () => {
           <div className="w-full ">
             <iframe
               className="w-full h-[580px]"
-              src="https://www.youtube.com/embed/9iMfZlVI6Os"
+              src="https://www.youtube.com/embed/OvQCekfyP6c"
               title="YouTube video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
