@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import Container from "../shared";
 import { Button } from "./button";
@@ -9,7 +9,7 @@ type HeroPropsType = {
   heading2?: string;
   buttonText: string;
   buttonText2?: string;
-  image?: string;
+  image?: string; // Pass the image URL here
   spanText?: string;
   spanText2?: string;
   subtext?: string;
@@ -20,14 +20,19 @@ export const HeroComponent = ({
   heading2,
   buttonText,
   buttonText2,
+  image,
   spanText,
   spanText2,
   subtext,
 }: HeroPropsType) => {
   return (
-    <div className="relative">
+    <div
+      className="relative bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${image})` }} // Use the image prop
+    >
+      <div className="absolute inset-0 bg-black/50" /> {/* Optional overlay */}
       <Container>
-        <section className="text-white pt-[4rem] xl:pt-[8rem]">
+        <section className="relative text-white pt-[4rem] xl:pt-[8rem]">
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
