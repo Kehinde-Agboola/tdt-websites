@@ -11,7 +11,7 @@ const Head = () => {
         heading2="EMPOWERMENT."
         buttonText="Contact Us"
         buttonText2="Get Involved"
-        image="../../../public/assets/home/home-hero.png"
+        // image="../../../public/assets/home/home-hero.png"
         subtext="Empowering children to be their best, recreating our future"
       />
     </main>
