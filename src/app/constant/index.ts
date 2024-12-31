@@ -71,7 +71,7 @@ export const Nav: NavItem[] = [
         path: "https://ofilischolarship.destinytrust.org/",
       },
       { title: "Subomi Plumptre ​Trust Scholarship", path: "#" },
-      { title: "Lolu Arr Scholarship", path: "#" },
+      { title: "Lolu Arr Scholarship", path: "/scholarship/LoluArrScholarship" },
       { title: "A4 Foundation Scholarship", path: "#" },
     ],
   },

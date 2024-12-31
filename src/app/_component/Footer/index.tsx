@@ -49,7 +49,7 @@ const Footer = () => {
               together
             </p>
           </motion.div>
-          <Email/>
+          <Email />
         </motion.div>
       </Container>
 
@@ -146,9 +146,12 @@ const Footer = () => {
         >
           &copy; 2024 The Destiny Trust. All Rights Reserved.
           <p className="text-white text-center md:text-right">
+            Developed by the Destiny Trust Children
+          </p>
+          <p className="text-white text-center md:text-right">
             powered by the{" "}
-            <a href="https://www.kidsinnovation.africa/" className="underline">
-              Kid&apos;s Innovation Hub Africa
+            <a href="https://www.kidsinnovation.africa/" target="_blank" className="underline">
+              Kids Innovation Hub Africa
             </a>
           </p>
         </motion.div>
