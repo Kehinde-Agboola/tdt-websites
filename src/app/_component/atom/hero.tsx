@@ -38,7 +38,7 @@ export const HeroComponent = ({
       />
 
 
-      <div className="absolute inset-0 flex items-center    text-white text-center md:pl-[4rem] pl-0 px-8 md:px-0 z-10">
+      <div className="absolute inset-0 flex items-center text-white text-center md:text-left md:pl-[4rem] pl-0 px-8 md:px-0 z-10">
 
           <section>
             <motion.div
