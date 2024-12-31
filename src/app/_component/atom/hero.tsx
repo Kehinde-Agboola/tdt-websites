@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Container from "../shared";
 import { Button } from "./button";
 import { motion } from "framer-motion";
 
@@ -38,9 +37,9 @@ export const HeroComponent = ({
         className="z-0"
       />
 
-      {/* Content Layer */}
+
       <div className="absolute inset-0 flex items-center    text-white text-center md:pl-[4rem] pl-0 px-8 md:px-0 z-10">
-        {/* <Container> */}
+
           <section>
             <motion.div
               initial={{ opacity: 0, y: -50 }}
