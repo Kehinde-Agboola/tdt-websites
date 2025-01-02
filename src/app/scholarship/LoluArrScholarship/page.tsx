@@ -6,6 +6,7 @@ import BackgroundPciture from "../../../../public/assets/scholarship/bg.png";
 import Hero from "../../../../public/assets/scholarship/hero.png";
 import Hero1 from "../../../../public/assets/scholarship/hero2.png";
 import EligibilityCriteria from "./Eligibility";
+import Empowes from "./Empowes";
 import About from "./About";
 const page = () => {
   return (
@@ -24,7 +25,7 @@ const page = () => {
         {/* Content section positioned on top of the background image */}
         <div className="relative z-10  pt-20 pb-20 px-4 sm:px-8">
           <Container>
-            <section className="flex flex-col-reverse md:flex-row justify-between items-center">
+            <section className="flex flex-col md:flex-row justify-between items-center">
               {/* Text and Button */}
               <div className="max-w-[100%] md:max-w-[60%]">
                 <h1 className="text-[30px] sm:text-[48px]">
@@ -64,6 +65,7 @@ const page = () => {
       </section>
       <EligibilityCriteria />
       <About />
+      <Empowes/>
     </main>
   );
 };
