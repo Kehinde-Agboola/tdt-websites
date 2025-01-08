@@ -38,7 +38,7 @@ export const HeroComponent = ({
       />
 
 
-      <div className="absolute inset-0 flex items-center    text-white text-center md:pl-[4rem] pl-0 px-8 md:px-0 z-10">
+      <div className="absolute inset-0 flex items-center text-white text-center md:text-left md:pl-[4rem] pl-0  md:px-0 z-10">
 
           <section>
             <motion.div
@@ -87,7 +87,7 @@ export const HeroComponent = ({
             )}
 
             <motion.div
-              className="flex flex-col md:flex-row gap-6 "
+              className="flex flex-col md:flex-row gap-6 px-8 md:px-0"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}

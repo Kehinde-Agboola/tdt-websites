@@ -78,7 +78,7 @@ const page = () => {
     <main>
       <section className="relative h-[86vh] w-full">
         <Image
-          src={ScholarshipHero} // Replace with your image path
+          src={ScholarshipHero} 
           alt="Our Team"
           fill
           className="object-cover object-center bg-no-repeat"
@@ -89,7 +89,7 @@ const page = () => {
           <div className="absolute inset-0 flex flex-col  justify-center px-8 md:px-16 text-white">
             <div className="">
               <h1 className=" md:text-left text-4xl md:text-5xl xl:text-[64px] md:w-[40rem]  leading-10">
-                Let’s Invest In Our <span className="text-yellow">​Future</span>{" "}
+                Let’s Invest In Our <span className="text-yellow">​Future</span>
                  Together
               </h1>
               <p className="mt-4 text-base md:text-lg  md:text-left w-full md:w-[45rem] pt-4 pb-8">

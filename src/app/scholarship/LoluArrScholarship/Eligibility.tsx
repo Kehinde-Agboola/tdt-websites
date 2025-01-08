@@ -28,7 +28,7 @@ const EligibilityCriteria = () => {
   ];
 
   return (
-    <section className= "py-[4rem] -mt-[10rem]  bg-[#F8F8F8]">
+    <section className= "py-[4rem] mt-[7rem] md:-mt-[10rem]  bg-[#F8F8F8]">
       <Container>
         <div className="px-6">
           <h2 className="text-3xl font-bold mb-4 text-center">
