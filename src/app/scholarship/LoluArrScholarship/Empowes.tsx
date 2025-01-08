@@ -29,7 +29,7 @@ const Empowes = () => {
             to break the cycle of multigenerational poverty.
           </p>
           <p className="my-4">
-            98% of university undergraduates supported by{" "}
+            98% of university undergraduates supported by
             <strong>The Destiny Trust</strong> are the first generation of
             undergraduates in their families. The Trust is bridging agelong
             education gaps and ensuring the socio-economic inclusion of more
