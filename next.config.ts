@@ -1,3 +1,4 @@
+import { Domain } from "domain";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
