@@ -1,5 +1,6 @@
 'use client'
-import React, {useState} from "react";
+import React from "react";
+import { useState } from "react";
 import Hero from "./_components/Hero";
 import Banner from "./_components/Banner";
 import { products } from "./_components/Products";

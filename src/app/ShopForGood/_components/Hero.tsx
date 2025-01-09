@@ -21,8 +21,8 @@ const Hero = () => {
             </p>
             <Search />
           </div>
-          <div className='w-full md:w-1/2'>
-            <Image src={Cart} alt="carts with cartoons" className='block mx-auto' />
+          <div className="w-full md:w-1/2">
+            <Image src={Cart} alt="carts with cartoons" className="block mx-auto" />
           </div>
         </section>
       </Container>

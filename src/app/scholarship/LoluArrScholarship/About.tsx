@@ -8,7 +8,6 @@ import Container from "@/app/_component/shared";
 const About = () => {
   return (
     <main className="bg-[#F2F3FF] pb-[4rem]">
-      {/* Image Section */}
       <div className="md:h-[500px]">
         <Image
           src={ScholarsHero}
@@ -18,16 +17,16 @@ const About = () => {
         />
       </div>
 
-      {/* Overlay Section */}
+      
       <Container>
         <section className="md:-mt-[12rem] bg-white  shadow-md pb-[2rem]">
           <div className="text-black md:text-white p-8 md:p-0">
             <div className="text-center">
-              <p className=" uppercase">About</p>
+              <p className="uppercase">About</p>
               <h1 className="text-[32px]  font-bold  mb-4">
                 The Henry Chijioke Ofili Foundation
               </h1>
-              <p className=" mb-4 w-full md:max-w-[50rem] mx-auto">
+              <p className="mb-4 w-full md:max-w-[50rem] mx-auto">
                 We recognize the innate potential of every young person to
                 achieve lifelong fulfillment and collectively invest in
                 resilient youth who are taking up the power to transform the
@@ -40,26 +39,26 @@ const About = () => {
                 <p className=" mb-4 ">
                   <span className="font-bold">
                     The Henry Chijioke Ofili Foundation
-                  </span>{" "}
+                  </span>
                   is dedicated to supporting the education of young people from
                   disadvantaged backgrounds who demonstrate exceptional academic
                   potential and are pursuing undergraduate degrees in Science,
                   Technology, Engineering, and Mathematics (STEM) disciplines.
                 </p>
-                <p className=" mb-4">
+                <p className="mb-4">
                   Through this collaboration, we recognize the innate potential
                   of every young person to achieve lifelong fulfillment and
                   collectively invest in resilient youth who are taking up the
                   power to transform the social and economic circumstances of
                   their families and communities.
                 </p>
-                <p className="">
+                <p>
                   This policy and procedure document provides general
                   information on the selection processes, principles, and
                   framework for the implementation of the scholarship.
                 </p>
               </div>
-              <Image src={Henry} alt="" />
+              <Image src={Henry} alt="henry boy" />
             </div>
           </div>
           <div>
@@ -87,7 +86,7 @@ const About = () => {
               <div className="w-full md:w-[20%] text-center text-[#555555] leading-7">
                 "Together, we are writing stories of greatness, enabling
                 academically exceptional STEM students to dream
-                boldly and thrive."
+                boldly and thrive."
                 <button className="bg-black text-white px-6 py-2 mt-8">
                   Join our Scholars
                 </button>
