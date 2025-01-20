@@ -1,7 +1,6 @@
 'use client'
 import { StaticImageData } from 'next/image';
-import { Image } from 'next/image';
-import React from 'react'
+import Image from 'next/image';
 interface ProductDetailsProps { 
     product: {
         id: string;
@@ -22,7 +21,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   return (
     <div key={product.id}>
       {product.images.length > 0 && (
-        <Image src={resolveImageSrc(product.images[0].image)} />
+        <Image src={resolveImageSrc(product.images[0].image)} alt={product.name} />
        
       )}
       <p className="p-[5rem]">{product.name}</p>
