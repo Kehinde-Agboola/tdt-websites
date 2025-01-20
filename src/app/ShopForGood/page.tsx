@@ -1,25 +1,36 @@
-'use client'
-import React from "react";
-import { useState } from "react";
+"use client";
+import React, { useState } from "react";
 import Hero from "./_components/Hero";
 import Banner from "./_components/Banner";
 import { products } from "./_components/Products";
-import ProductCard from "./_components/ProductCard"
+import ProductCard from "./_components/ProductCard";
 import Container from "../_component/shared";
 import Bimpe from "./_components/Bimpe";
+import { StaticImageData } from "next/image";
+
+type Product = {
+  id: string;
+  category: string;
+  inStock: boolean;
+  images: { color: string; colorCode: string; image: StaticImageData }[];
+  [key: string]: string | number | boolean | { color: string; colorCode: string; image: StaticImageData }[]; 
+};
+
 const Page = () => {
   const [filter, setFilter] = useState<string>("All Category");
-  const filteredProducts =
+
+  const filteredProducts: Product[] =
     filter === "All Category"
       ? products
       : products.filter((product) => product.category === filter);
+
   return (
     <main>
       <Hero />
       <Banner />
       <Container>
         <div className="pt-[4rem]">
-          <h2 className="text-center text-[40px]  mb-4">Trending Items</h2>
+          <h2 className="text-center text-[40px] mb-4">Trending Items</h2>
           <p className="text-center text-[#777777] mb-6 w-full md:w-[50%] mx-auto">
             Find everything you need to look and feel your best, and shop our
             latest trending fashion and lifestyle products.
@@ -40,8 +51,8 @@ const Page = () => {
             ))}
           </div>
         </div>
-        <div className=" grid grid-cols-1 sm:grid-col-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-[4rem]">
-          {filteredProducts.map((product: { id: string; category: string; [key: string]: any }) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-[4rem]">
+          {filteredProducts.map((product) => {
             return <ProductCard key={product.id} data={product} />;
           })}
         </div>
