@@ -1,11 +1,13 @@
-import Black from "../../../../public/assets/ecommerce/pictures/black.png"
-import NavyBlue from "../../../../public/assets/ecommerce/pictures/navyblue.png"
-import Blue from "../../../../public/assets/ecommerce/pictures/blue.png"
-import Gray from "../../../../public/assets/ecommerce/pictures/gray.png"
-import Bag from "../../../../public/assets/ecommerce/pictures/bag.png"
-import Shirt from "../../../../public/assets/ecommerce/pictures/shirt.png"
+import { v4 as uuidv4 } from "uuid";
+import Black from "../../../../public/assets/ecommerce/pictures/black.png";
+import NavyBlue from "../../../../public/assets/ecommerce/pictures/navyblue.png";
+import Blue from "../../../../public/assets/ecommerce/pictures/blue.png";
+import Gray from "../../../../public/assets/ecommerce/pictures/gray.png";
+import Bag from "../../../../public/assets/ecommerce/pictures/bag.png";
+import Shirt from "../../../../public/assets/ecommerce/pictures/shirt.png";
 export const products = [
   {
+    id: uuidv4(),
     name: "Kid Innovation Africa Hoodie",
     price: 5000,
     category: "Hoodie",
@@ -34,6 +36,7 @@ export const products = [
     ],
   },
   {
+    id: uuidv4(),
     name: "Kid Innovation Africa Hoodie",
     price: 5000,
     category: "Hoodie",
@@ -62,6 +65,7 @@ export const products = [
     ],
   },
   {
+    id: uuidv4(),
     name: "The Destiny Trust Bag",
     price: 5000,
     category: "Bags",
@@ -90,6 +94,7 @@ export const products = [
     ],
   },
   {
+    id: uuidv4(),
     name: "Kid Innovation Africa Shirt",
     price: 5000,
     category: "T-Shirts",
@@ -118,6 +123,7 @@ export const products = [
     ],
   },
   {
+    id: uuidv4(),
     name: "Kid Innovation Africa Hoodie",
     price: 5000,
     category: "Hoodie",
@@ -147,6 +153,7 @@ export const products = [
   },
 
   {
+    id: uuidv4(),
     name: "Kid Innovation Africa Hoodie",
     price: 5000,
     category: "hoodies",
@@ -175,6 +182,7 @@ export const products = [
     ],
   },
   {
+    id: uuidv4(),
     name: "Kid Innovation Africa Hoodie",
     price: 5000,
     category: "Hoodie",
@@ -203,6 +211,7 @@ export const products = [
     ],
   },
   {
+    id: uuidv4(),
     name: "Kid Innovation Africa Hoodie",
     price: 5000,
     category: "Hoodie",
