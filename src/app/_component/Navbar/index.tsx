@@ -29,13 +29,13 @@ export default function Navbar() {
   let hideTimeout: NodeJS.Timeout;
 
   const handleMouseEnter = (index: number) => {
-    clearTimeout(hideTimeout); // Clear any hide delay
-    setOpenDropdownIndex(index); // Show the dropdown immediately on hover
+    clearTimeout(hideTimeout); 
+    setOpenDropdownIndex(index); 
   };
   const handleMouseLeave = () => {
     hideTimeout = setTimeout(() => {
-      setOpenDropdownIndex(null); // Hide the dropdown after a delay
-    }, 500); // Adjust delay as desired (500ms in this case)
+      setOpenDropdownIndex(null); 
+    }, 500); 
   };
   function openSideMenu() {
     setSideMenuOpen(true);
@@ -44,6 +44,8 @@ export default function Navbar() {
   function closeSideMenu() {
     setSideMenuOpen(false);
   }
+
+  const amount = 1000; 
 
   return (
     <section className="bg-black sticky top-0 z-50 shadow-md">
@@ -104,9 +106,15 @@ export default function Navbar() {
 
         {/* Right side: Donate Button */}
         <div className="hidden xl:flex items-center">
-          <button className="h-fit bg-[#FFB400] px-4 py-2 text-black transition-all hover:border-black">
-            Donate Now
-          </button>
+          <a
+            href={`https://paystack.com/pay/ie-pg23h4p?amount=${amount}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="h-fit bg-[#FFB400] px-4 py-2 text-black transition-all hover:border-black">
+              Donate Now
+            </button>
+          </a>
         </div>
 
         {/* Mobile Menu Icon */}

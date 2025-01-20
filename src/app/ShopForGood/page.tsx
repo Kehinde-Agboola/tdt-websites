@@ -7,7 +7,7 @@ import { products } from "./_components/Products";
 import ProductCard from "./_components/ProductCard"
 import Container from "../_component/shared";
 import Bimpe from "./_components/Bimpe";
-const page = () => {
+const Page = () => {
   const [filter, setFilter] = useState<string>("All Category");
   const filteredProducts =
     filter === "All Category"
@@ -41,8 +41,8 @@ const page = () => {
           </div>
         </div>
         <div className=" grid grid-cols-1 sm:grid-col-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-[4rem]">
-          {filteredProducts.map((product: any) => {
-            return <ProductCard data={product} />;
+          {filteredProducts.map((product: { id: string; category: string; [key: string]: any }) => {
+            return <ProductCard key={product.id} data={product} />;
           })}
         </div>
       </Container>
@@ -51,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

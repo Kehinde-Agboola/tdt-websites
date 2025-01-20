@@ -15,7 +15,7 @@ const Hero = () => {
             </h1>
             <p>
               Buying our items means more than just getting a product; it means
-              changing a child's life. Our goal is to give underprivileged
+              changing a child&apos;s life. Our goal is to give underprivileged
               children care, education, and housing, and every item sold on our
               website helps us achieve this goal.
             </p>
