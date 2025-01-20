@@ -21,7 +21,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   return (
     <div key={product.id}>
       {product.images.length > 0 && (
-        <Image src={resolveImageSrc(product.images[0].image)} alt={product.name} />
+        <Image src={resolveImageSrc(product.images[0].image)} alt={product.name} fill />
        
       )}
       <p className="p-[5rem]">{product.name}</p>

@@ -7,11 +7,11 @@ import Container from "../_component/shared";
 const Payment = () => {
   const [amount, setAmount] = useState("1000"); 
 
-  const handleInputChange = (e: any) => {
-     const value = e.target.value;
-     if (/^\d+$/.test(value) || value === "") {
-       setAmount(value);
-     }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (/^\d+$/.test(value) || value === "") {
+      setAmount(value);
+    }
   };
 
   return (
