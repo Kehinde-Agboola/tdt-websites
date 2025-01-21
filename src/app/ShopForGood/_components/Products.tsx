@@ -12,6 +12,7 @@ export const products = [
     price: 5000,
     category: "Hoodie",
     inStock: true,
+    image: Black,
     images: [
       {
         color: "Black",
@@ -41,6 +42,7 @@ export const products = [
     price: 5000,
     category: "Hoodie",
     inStock: true,
+    image: NavyBlue,
     images: [
       {
         color: "Blue",
@@ -70,6 +72,7 @@ export const products = [
     price: 5000,
     category: "Bags",
     inStock: true,
+    image: Bag,
     images: [
       {
         color: "Black",
@@ -99,6 +102,7 @@ export const products = [
     price: 5000,
     category: "T-Shirts",
     inStock: true,
+    image: Shirt,
     images: [
       {
         color: "Black",
@@ -128,6 +132,7 @@ export const products = [
     price: 5000,
     category: "Hoodie",
     inStock: true,
+    image: Gray,
     images: [
       {
         color: "Black",
@@ -158,6 +163,7 @@ export const products = [
     price: 5000,
     category: "hoodies",
     inStock: true,
+    image: Blue,
     images: [
       {
         color: "Black",
@@ -187,6 +193,7 @@ export const products = [
     price: 5000,
     category: "Hoodie",
     inStock: true,
+    image: Black,
     images: [
       {
         color: "Black",
@@ -216,6 +223,7 @@ export const products = [
     price: 5000,
     category: "Hoodie",
     inStock: true,
+    image: NavyBlue,
     images: [
       {
         color: "Blue",
