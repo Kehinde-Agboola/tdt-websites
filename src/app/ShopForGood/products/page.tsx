@@ -4,16 +4,8 @@ import { products } from "../_components/Products";
 import ProductCard from "../_components/ProductCard";
 import { StaticImageData } from "next/image";
 
-type ProductData = {
-  id: number;
-  name: string;
-  price: number;
-  category: string;
-  inStock: boolean;
-  image: string | StaticImageData;
-};
 
-const ProductList = ({id, name, price, category, inStock, image}:ProductData) => {
+const ProductList = () => {
   const [filter, setFilter] = useState<string>("All Category");
 
   const categories = ["All Category", "T-Shirts", "Hoodie", "Bags"];
