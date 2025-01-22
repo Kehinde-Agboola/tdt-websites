@@ -2,7 +2,6 @@
 import React, { useState, useMemo } from "react";
 import { products } from "../_components/Products";
 import ProductCard from "../_components/ProductCard";
-import { StaticImageData } from "next/image";
 
 
 const ProductList = () => {
