@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Communiti from "../../../public/assets/home/community.png"
+import Communiti from "../../../public/assets/home/communities.jpg"
 import Container from "../_component/shared";
 import { Button } from "../_component/atom/button";
 
@@ -39,10 +39,10 @@ const Community = () => {
             className="object-cover object-center bg-no-repeat"
           />
         </motion.div>
-        <section className="absolute inset-0">
+        <section className="absolute inset-0 text-white">
           <Container>
             <motion.div
-              className="flex flex-col justify-center text-center pt-[4rem]"
+              className="flex flex-col justify-center  pt-[4rem]"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -54,7 +54,7 @@ const Community = () => {
                 Join Our <span className="text-yellow">Community</span>
               </motion.p>
               <motion.p
-                className="w-full md:w-[682px] mx-auto"
+                className="w-full md:w-[682px]"
                 variants={itemVariants}
               >
                 It takes a community to raise a child. Be part of the caring
