@@ -1,6 +1,7 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Virtual } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -8,6 +9,7 @@ import Image, { StaticImageData } from "next/image";
 import Latest from "../../../public/assets/home/latest.png";
 import Container from "../_component/shared";
 import Link from "next/link";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import the arrow icons
 
 type BoxProps = {
   imgSrc: string | StaticImageData;
@@ -39,17 +41,60 @@ const Card = ({ title, author, date, description, imgSrc }: BoxProps) => (
         {author} • {date}
       </p>
       <p className="text-sm text-[#333333] mb-4">{description}</p>
-      <Link href={'/whoweare/blog'}>
+      <Link href={"/whoweare/blog"}>
         <button className="bg-[#FFB400] text-black py-2 px-4">Read More</button>
       </Link>
     </div>
   </motion.div>
 );
 
+const NavigationButtons = () => {
+  const swiper = useSwiper();
 
+  return (
+    <div className="flex justify-end gap-4 mt-4">
+      <button
+        onClick={() => swiper.slidePrev()}
+        className="p-2 bg-[#FFB400] rounded-full text-black"
+      >
+        <FaArrowLeft />
+      </button>
+      <button
+        onClick={() => swiper.slideNext()}
+        className="p-2 bg-[#FFB400] rounded-full text-black"
+      >
+        <FaArrowRight />
+      </button>
+    </div>
+  );
+};
 
 const Blog = () => {
   const articles = [
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
+    {
+      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
+      author: "Samuel Adeshina",
+      date: "September 12, 2024",
+      description:
+        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      imgSrc: Latest,
+    },
     {
       title: "1,000 children benefit as NGO embarks on back-to-school outreach",
       author: "Samuel Adeshina",
@@ -80,48 +125,34 @@ const Blog = () => {
     <div className="py-10 bg-[#F4F4F4]">
       <Container>
         <h2 className="text-2xl font-bold text-center mb-6">
-          The <span className="text-yellow-500">Latest</span>
+          <span className="text-yellow-500">Our Stories</span>
         </h2>
-        {/* Desktop Cards */}
-        <motion.div
-          className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.2 },
-            },
+
+        <Swiper
+          spaceBetween={16}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          className="pb-6"
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
           }}
         >
           {articles.map((article, index) => (
-            <Card buttonText={""} key={index} {...article} />
+            <SwiperSlide key={index}>
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card buttonText={""} {...article} />
+              </motion.div>
+            </SwiperSlide>
           ))}
-        </motion.div>
-
-        {/* Mobile Swiper */}
-        <div className="md:hidden">
-          <Swiper
-            spaceBetween={16}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            className="pb-6"
-          >
-            {articles.map((article, index) => (
-              <SwiperSlide key={index}>
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Card buttonText={""} {...article} />
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+          <NavigationButtons />
+        </Swiper>
       </Container>
     </div>
   );
