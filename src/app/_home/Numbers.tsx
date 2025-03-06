@@ -1,5 +1,5 @@
-'use client'
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Container from "../_component/shared";
 
@@ -18,7 +18,7 @@ const CountUp: React.FC<CountUpProps> = ({ end, duration, startCount }) => {
     let start = 0;
     const frameRate = 1000 / 60; // ~60 frames per second
     const increment = Math.ceil(
-      (end - start) / (duration * (100000 / frameRate))
+      (end - start) / (duration * (1000 / frameRate))
     );
 
     const interval = setInterval(() => {
@@ -38,6 +38,35 @@ const CountUp: React.FC<CountUpProps> = ({ end, duration, startCount }) => {
 };
 
 const Numbers = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Start counting when visible
+        } else {
+          setIsVisible(false); // Reset when not visible
+        }
+      },
+      {
+        root: null, // Use the viewport as the root
+        threshold: 0.1, // Trigger when 10% of the component is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const gridData = [
     {
       title: 1700,
@@ -71,7 +100,7 @@ const Numbers = () => {
   ];
 
   return (
-    <section className="bg-[#F4F4F4] pt-[5rem] pb-[3rem]">
+    <section ref={sectionRef} className="bg-[#F4F4F4] pt-[5rem] pb-[3rem]">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,13 +121,17 @@ const Numbers = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.5,
-                delay: index * 0.2,
+                duration: 0.10,
+                delay: index * 0.60,
                 ease: "easeOut",
               }}
             >
               <p className="text-[#FFB400] text-[70px] font-[500]">
-                <CountUp end={grid?.title} duration={2} startCount={true} />
+                <CountUp
+                  end={grid?.title}
+                  duration={2}
+                  startCount={isVisible} // Restart count-up when visible
+                />
               </p>
               <p>{grid?.paragraph}</p>
             </motion.div>
