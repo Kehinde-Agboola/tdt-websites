@@ -7,7 +7,6 @@ import Line from "../../../public/assets/home/line.png";
 import { Button } from '../_component/atom/button';
 import Link from 'next/link';
 
-// File URLs for each year
 const reports = {
   2024: "/../../../../../files/The Destiny Trust Mid-year Report 2024_.pdf",
 };
@@ -15,8 +14,8 @@ const reports = {
 // Function to open and download a file
 const openAndDownloadFile = (fileUrl: string, fileName: string) => {
   const link = document.createElement('a');
-  link.href = fileUrl; // Open file URL
-  link.download = fileName; // File will download
+  link.href = fileUrl; 
+  link.download = fileName; 
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
