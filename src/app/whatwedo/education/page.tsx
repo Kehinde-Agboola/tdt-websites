@@ -1,12 +1,16 @@
 import { FlexComponent } from "@/app/_component/atom/flex";
 import HeroSection from "@/app/_component/atom/HeroSection";
 import Container from "@/app/_component/shared";
-import Hero from "../../../../public/assets/edu/hero.png"
+import Hero from "../../../../public/assets/edu/landing.png"
 import Teacher from "../../../../public/assets/edu/teacher.png";
+import Line from "../../../../public/assets/edu/Lineyellow.png";
 import Enrolment from "./Enrolment";
 const Home: React.FC = () => {
      const data = [
        {
+          imageSrc1: Line,
+         spanText: "School Enrolment & Back-to-School",
+         heading1: "School Enrolment & Back-to-School",
          text1:
            "Homeless families in urban centers have little motivation to send their children to school, even if education is said to be free because there is no guarantee of a stable home. When informal settlements are demolished, they relocate without preparation and the new location may not be within school vicinity. After repeated experience displacement, children have a great sense of loss that diminishes interest in going back to school. We provide the materials the children need to enroll or reintegrate into school. We eliminate all the barriers to schooling and hold their hands into the classroom. ",
          imageSrc: Teacher,
@@ -16,19 +20,19 @@ const Home: React.FC = () => {
   return (
     <main>
       <HeroSection
-        title="EDUCATION"
-        description="This initiative allows youths to experience independent living as young adults while adhering to the same standards of discipline instilled during their upbringing."
+        title="Educating for a Brighter Future
+"
+        description="
+Education is at the heart of our mission to empower disadvantaged children. We believe in the power of education to break the cycle of transgenerational poverty."
         imagePath={Hero}
       />
       <Container>
         <section className="mt-[5rem]">
           <p className="xl:text-[25px] text-[18px] text-[#333333] w-full md:max-w-[60rem] text-justify">
             <span className="text-yellow">
-              Our Education Access initiative{" "}
+              Educating homeless and out-of-school children {""}
             </span>
-            targets children in informal settlements. This unique demography has
-            peculiar difficulty in taking advantage of the free education policy
-            where it is offered.
+            through tailored education initiatives, driven by technology.
           </p>
         </section>
       </Container>

@@ -22,12 +22,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   return (
     <div key={product.id}>
       {product.images.length > 0 && (
-        <Image src={resolveImageSrc(product.images[0].image)} alt={product.name} fill />
+        <Image src={resolveImageSrc(product.images[0].image)} alt={product.name} objectFit='fit' />
        
       )}
-      <p className="p-[5rem]">{product.name}</p>
-      <p>{product.price}</p>
-      <p>{product.category}</p>
       <p
         className={`text-sm ${
           product.inStock ? "text-green-500" : "text-red-500"
@@ -35,6 +32,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
       >
         {product.inStock ? "In Stock" : "Out of Stock"}
       </p>
+      <p className="p-[5rem]">{product.name}</p>
+      <p>{product.price}</p>
+      <p>{product.category}</p>
+      <button>Add to cart</button>
     </div>
   );
 };

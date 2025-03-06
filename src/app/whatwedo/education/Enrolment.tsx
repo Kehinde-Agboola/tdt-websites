@@ -1,5 +1,6 @@
 import React from 'react'
-import School from "../../../../public/assets/edu/school.png"
+import School from "../../../../public/assets/edu/school.png";
+import Image from 'next/image';
 import Line from "../../../../public/assets/edu/Lineyellow.png";
 import TeacherStudent from "../../../../public/assets/edu/teacherstudent.png";
 import { FlexComponent } from '@/app/_component/atom/eduFlex';
@@ -7,6 +8,8 @@ import { AltComponent } from '@/app/_component/atom/altFlex';
 import WhiteLine from "../../../../public/assets/edu/whiteLine.png";
 import Scholar from "../../../../public/assets/edu/scholar.png";
 import BoyWithTap from "../../../../public/assets/edu/BoywithTap.png";
+import EnrolmentImage from "../../../../public/assets/edu/enrolment.jpg";
+// import { StaticImageData } from 'next/image';
 const Enrolment = () => {
 
      const data = [
@@ -16,7 +19,7 @@ const Enrolment = () => {
          heading1:
            "Our Education Access initiative targets children in informal settlements. ",
          text1:
-           "This unique demography has peculiar difficulty in taking advantage of the free education policy where it is offered. Homeless families in urban centres have little motivation to send their children to school, even if education is said to be free because there is no guarantee of a stable home. When informal settlements are demolished, they relocate without preparation and the new location may not be within school vicinity. After repeated experience displacement, children have a great sense of loss that diminishes interest in going back to school. Every year, hundreds of out-of-school children get the opportunity to be in school for the first time or to return to school with the support of the Destiny Trust. We provide the materials the children need to enrol or reintegrate into school. We eliminate all the barriers to schooling and hold their hands into the classroom. ",
+           "Every year, thousands of out-of-school children get the opportunity to be in school for the first time or to return to school with the support of the Destiny Trust. We provide the materials the children need to enrol or reintegrate into school. We eliminate all the barriers to schooling and hold their hands into the classroom. ",
          imageSrc: School,
          buttonText: "Learn More",
        },
@@ -60,11 +63,12 @@ const Enrolment = () => {
   return (
     <main className="py-[4rem] bg-[#F9F9F9]">
       <section className="my-[4rem] ">
-        <FlexComponent
+        <Image src={EnrolmentImage} alt="children back-to-school" />
+        {/* <FlexComponent
           data={data}
           columnReversed={true}
           buttonClassName="bg-yellow py-2 px-4"
-        />
+        /> */}
       </section>
       <section className="my-[8rem]">
         <AltComponent
