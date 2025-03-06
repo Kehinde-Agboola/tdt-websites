@@ -4,7 +4,7 @@ import Committed from "../../../public/assets/home/commited.png"
 const Enable = () => {
   const data = [
     {
-      spanText: "We are committed to one cause: ",
+      spanText1: "We are committed to one cause: ",
       heading4:
         "enabling every child to be the best he or she can be regardless of where he or she was born.",
       text1:
@@ -22,6 +22,7 @@ const Enable = () => {
         columnReversed={false}
         buttonClassName="bg-[#FFB400] text-black w-[160px] py-2"
       />
+
     </section>
    
   );
