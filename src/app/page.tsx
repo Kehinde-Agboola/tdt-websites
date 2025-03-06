@@ -9,6 +9,8 @@ import Numbers from "./_home/Numbers"
 import Empower from "./_home/Empower";
 import Community from "./_home/Community";
 import Blog from "./_home/Blog";
+import Features from "./_home/Features";
+import Banner from "./_home/Banner";
 const page = () => {
   return (
     <div>
@@ -22,7 +24,9 @@ const page = () => {
       <Numbers />
       <Empower />
       <Community />
+      <Banner/>
       <Blog />
+      <Features/>
     </div>
   );
 };
