@@ -6,6 +6,7 @@ import Pic3 from "../../../public/assets/home/pic3.png";
 import Pic4 from "../../../public/assets/home/pic4.png";
 import Container from "@/app/_component/shared";
 import { Button } from "../_component/atom/button";
+import Sponsor from "../../../public/assets/home/sponsor.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -33,7 +34,13 @@ const Empower = () => {
 
   return (
     <section className="max-w-7xl mx-auto">
-      <div className="grid grid-cols-2 sm:grid-cols-4 w-full">
+      <Image
+        src={Sponsor}
+        alt="smiling children"
+        className="w-full h-[90vh]"
+      />
+
+      {/* <div className="grid grid-cols-2 sm:grid-cols-4 w-full">
         {[Pic1, Pic2, Pic3, Pic4].map((pic, index) => (
           <motion.div
             key={index}
@@ -49,7 +56,7 @@ const Empower = () => {
             />
           </motion.div>
         ))}
-      </div>
+      </div> */}
       <section className="bg-payment bg-cover bg-no-repeat bg-yellow py-[4rem]">
         <Container>
           <motion.section
