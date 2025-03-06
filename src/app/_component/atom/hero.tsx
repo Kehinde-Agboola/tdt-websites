@@ -26,7 +26,7 @@ export const HeroComponent = ({
   subtext,
 }: HeroPropsType) => {
   return (
-    <div className="relative w-full h-[500px]">
+    <div className="relative w-full h-[90vh]">
       {/* Background Image */}
       <Image
         src={image}
@@ -92,14 +92,14 @@ export const HeroComponent = ({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
             >
-              <Button className="bg-[#FFB400] text-black px-8 py-2">
+              <Button className="transition-all ease-in-out duration-700 border border-[#FFB400] hover:bg-[#FFB400] hover:text-white text-white px-8 py-2">
                 {buttonText}
               </Button>
-              {buttonText2 && (
+              {/* {buttonText2 && (
                 <Button className="transition-all ease-in-out duration-700 border border-[#FFB400] hover:bg-[#FFB400] hover:text-white text-white px-8 py-2">
                   {buttonText2}
                 </Button>
-              )}
+              )} */}
             </motion.div>
           </section>
         {/* </Container> */}
