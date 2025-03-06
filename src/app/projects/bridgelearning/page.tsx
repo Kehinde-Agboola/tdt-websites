@@ -6,7 +6,7 @@ import Container from "@/app/_component/shared";
 import BlcHero from "../../../../public/assets/blc/blchero.png";
 import BlcLogo from "../../../../public/assets/blc/logo.png";
 import BlcImage from "../../../../public/assets/blc/students.png";
-import Hope from "../../../../public/assets/blc/hope.png";
+import Hope from "../../../../public/assets/blc/ajoke.jpg";
 import { FlexComponent } from "@/app/_component/atom/flex";
 import Cards from "./Cards";
 import Banner from "./Banner";
@@ -16,9 +16,9 @@ const Page = () => {
     {
       heading3: "A Story of Hope​",
       text1:
-        "Meet Naomi. She is 15 years old and has never been to school. Her dream is to become a doctor and return to Chibok, her desolate homeland, to build hospitals and schools for children. Unfortunately, she cannot enroll in a nursery class and isn't ready for an age-appropriate class due to her lack of grade-level competence.",
+        "At 16, Ajoke had never been to school, moving between relatives who couldn’t support her education. By the time we met  her  during  our  school  enrollment drive,  she  believed  her  chance  ateducation had passed. She thought noschool  would  accept  a  16-year-old into  nursery  class.",
       text2:
-        "The Bridge Learning Centre exists for Naomi and countless other children like her, providing a pathway to the education they deserve and the futures they dream of.",
+        "At  our  BridgeLearning  Centre,  she  found  a  placeamong peers  her age.  Despite  having no  prior  schooling,  Ajoke  is  catching up  at  an  impressive  rate,  even out pacing  some  peers  with  previous experience.  With  access  to  digital learning afterschool, she is on track to integrate  into  secondary  school, proving it’s never too late to start.",
       imageSrc: Hope,
       buttonText: "",
     },
