@@ -12,6 +12,12 @@ import Image from "next/image";
 import { GoArrowRight } from "react-icons/go";
 import { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import arrow icons
 
 type BoxProps = {
   iconSrc: string | StaticImageData;
@@ -54,6 +60,27 @@ const Box = ({ iconSrc, title, text, buttonText }: BoxProps) => {
   );
 };
 
+const NavigationButtons = () => {
+  const swiper = useSwiper();
+
+  return (
+    <>
+      <button
+        onClick={() => swiper.slidePrev()}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2  rounded-full text-black shadow-lg hover:bg-[#e6a200] transition duration-300"
+      >
+        <FaArrowLeft size={24} />
+      </button>
+      <button
+        onClick={() => swiper.slideNext()}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full text-black shadow-lg hover:bg-[#e6a200] transition duration-300"
+      >
+        <FaArrowRight size={24} />
+      </button>
+    </>
+  );
+};
+
 const Initaitive = () => {
   const support = [
     {
@@ -69,22 +96,22 @@ const Initaitive = () => {
     {
       imgSrc: Steam,
       heading: "STEAM Empowerment",
-      text: "We empower underprivileged kids by providing in-demand tech  our Kids Innovation initiative, focusing on STEAM to create a creative space for street children transitioning from and low-income backgrounds.",
+      text: "We empower underprivileged kids by providing in-demand tech through our Kids Innovation initiative, focusing on STEAM to create a creative space for street children transitioning from and low-income backgrounds.",
     },
-    {
-      imgSrc: Support,
-      heading: "School Support",
-      text: "We break down the barriers that prevent homeless and disadvantaged children from accessing quality education. We enroll out-of-school children, reintegrate dropouts, and provide ongoing support to ensure they stay in school and thrive.",
-    },
-    {
-      imgSrc: Accelerated,
-      heading: "Accelerated Education",
-      text: "We empower underprivileged kids by providing in-demand tech  our Kids Innovation initiative, focusing on STEAM to create a creative space for street children transitioning from and low-income backgrounds.",
-    },
+    // {
+    //   imgSrc: Support,
+    //   heading: "School Support",
+    //   text: "We break down the barriers that prevent homeless and disadvantaged children from accessing quality education. We enroll out-of-school children, reintegrate dropouts, and provide ongoing support to ensure they stay in school and thrive.",
+    // },
+    // {
+    //   imgSrc: Accelerated,
+    //   heading: "Accelerated Education",
+    //   text: "We empower underprivileged kids by providing in-demand tech through our Kids Innovation initiative, focusing on STEAM to create a creative space for street children transitioning from and low-income backgrounds.",
+    // },
     {
       imgSrc: Family,
       heading: "Family Empowerment",
-      text: "We empower underprivileged kids by providing in-demand tech  our Kids Innovation initiative, focusing on STEAM to create a creative space for street children transitioning from and low-income backgrounds.",
+      text: "We empower underprivileged kids by providing in-demand tech through our Kids Innovation initiative, focusing on STEAM to create a creative space for street children transitioning from and low-income backgrounds.",
     },
   ];
 
@@ -98,29 +125,32 @@ const Initaitive = () => {
             ensuring we are always there for them where they need us the most.
           </p>
         </div>
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.2 },
-            },
-          }}
-        >
-          {support.map((box, index) => (
-            <Box
-              key={index}
-              iconSrc={box.imgSrc}
-              title={box.heading}
-              text={box.text}
-              buttonText={"Read More"}
-            />
-          ))}
-        </motion.div>
+        <div className="relative mt-10">
+          <Swiper
+            modules={[Navigation, Pagination, Keyboard]}
+            spaceBetween={24}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            // pagination={{ clickable: true }}
+            keyboard={{ enabled: true }}
+            grabCursor={true}
+          >
+            {support.map((box, index) => (
+              <SwiperSlide key={index}>
+                <Box
+                  iconSrc={box.imgSrc}
+                  title={box.heading}
+                  text={box.text}
+                  buttonText={"Read More"}
+                />
+              </SwiperSlide>
+            ))}
+            <NavigationButtons />
+          </Swiper>
+        </div>
       </section>
     </Container>
   );
