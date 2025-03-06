@@ -3,6 +3,7 @@ import ScholarCard from "../_component/atom/Cards";
 import GraduateGirl from "../../../public/assets/scholarship/graduategirl.png"
 import Container from "../_component/shared";
 import Background from "../../../public/assets/scholarship/scholarsbg.png"
+// import Sponsor from "../../../public/assets/scholarship/sponsor.jpg"
 import Image from "next/image";
 const Scholars = () => {
   return (
@@ -95,6 +96,7 @@ const Scholars = () => {
               />
             </div>
           </div>
+          {/* <Image src={Sponsor} alt="smiling girl" /> */}
         </section>
       </Container>
     </main>
