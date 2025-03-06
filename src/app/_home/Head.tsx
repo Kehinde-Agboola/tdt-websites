@@ -9,9 +9,9 @@ const Head = () => {
         heading="CARE."
         spanText="EDUCATION."
         heading2="EMPOWERMENT."
-        buttonText="Contact Us"
-        buttonText2="Get Involved"
-        image="/assets/home/home-hero.png"
+        // buttonText=""
+        buttonText="Get Involved"
+        image="/assets/home/landing2.png"
         subtext="Empowering children to be their best, recreating our future"
       />
     </main>
