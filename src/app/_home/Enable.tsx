@@ -16,7 +16,7 @@ const Enable = () => {
 
   return (
    
-    <section className="my-[8rem]">
+    <section className="mt-[25rem] mb-[3rem]">
         <FlexComponent
         data={data}
         columnReversed={false}

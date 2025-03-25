@@ -4,8 +4,8 @@ import Container from "../_component/shared";
 import Education from "../../../public/assets/home/education.png";
 import Shelter from "../../../public/assets/home/shelter.png";
 import Steam from "../../../public/assets/home/stem.png";
-import Support from "../../../public/assets/home/support.png";
-import Accelerated from "../../../public/assets/home/accelerated.png";
+// import Support from "../../../public/assets/home/support.png";
+// import Accelerated from "../../../public/assets/home/accelerated.png";
 import Family from "../../../public/assets/home/family.png";
 import { Button } from "../_component/atom/button";
 import Image from "next/image";
@@ -36,20 +36,20 @@ const Box = ({ iconSrc, title, text, buttonText }: BoxProps) => {
       transition={{ duration: 0.6, ease: "easeInOut" }}
       whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.2)" }}
     >
-      <div className="p-6 hover:bg-[#FFB400] h-full bg-white border-2 flex flex-col items-center text-center">
+      <div className="p-6 hover:bg-[#fff7e5] h-full border bg-white  flex flex-col items-center text-center text-[14px] text-[#333333] hover:text-[#000]">
         <Image
           src={iconSrc}
           alt="SDG Icon"
-          width={74}
-          height={74}
-          className="object-cover pb-5 transition duration-300 ease-in-out group-hover:grayscale group-hover:brightness-0"
+          width={54}
+          height={54}
+          className="object-cover pb-5 transition duration-300 ease-in-out "
         />
         <div className="flex flex-col items-center h-[80%]">
-          <h3 className="text-[24px] font-[500] mb-2">{title}</h3>
-          <p className="text-black mb-4">{text}</p>
+          <h3 className="text-[24px] font-[500] mb-2 text-black">{title}</h3>
+          <p className=" mb-4">{text}</p>
         </div>
         <Button
-          className="hover:text-white hover:bg-black bg-white border-2 border-black w-[177px] py-2 transition duration-300 ease-in-out"
+          className="hover:text-white hover:bg-black bg-white hover:border-2 hover:border-black outline-1 border-2 border-[#f4f4f4f4] w-[177px] py-2 transition duration-300 ease-in-out"
           btnFlex={true}
           icon={<GoArrowRight />}
         >
@@ -128,8 +128,8 @@ const Initaitive = () => {
         <div className="relative mt-10">
           <Swiper
             modules={[Navigation, Pagination, Keyboard]}
-            spaceBetween={24}
-            slidesPerView={1}
+            spaceBetween={50}
+            slidesPerView={3}
             breakpoints={{
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },

@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { Button } from "../_component/atom/button";
-import Container from "../_component/shared";
 
 const Payment = () => {
   const [amount, setAmount] = useState("1000"); 
@@ -15,13 +14,13 @@ const Payment = () => {
   };
 
   return (
-    <Container>
-      <section className="bg-payment bg-cover bg-no-repeat bg-[#FFB400] text-center p-[2rem] xl:px-[5rem] md:-mt-[6rem] -mt-[4rem]">
-        <h1 className="text-[25px] xl:text-[40px]">
+    <main>
+      <section className="bg-payment h-[50vh] max-w-6xl mx-auto absolute top-[43rem] left-0 right-0 bottom-0 bg-cover bg-no-repeat bg-[#FFB400] text-center p-[2rem] xl:pt-[.9rem]">
+        <h1 className="text-[25px] xl:text-[32px]">
           <span className="font-bold">Your Giving, Their Hope,</span> Our
           Collective Future.
         </h1>
-        <p className="md:w-[63rem] py-3 mx-auto pb-4">
+        <p className="w-full md:max-w-[40rem] mx-auto py-3 pb-4 text-sm">
           We can collectively ignite hope. By extending a helping hand to
           disadvantaged children, we building a brighter, more inclusive and
           safer future. Start giving. It’s safe and easy
@@ -51,7 +50,7 @@ const Payment = () => {
           </a>
         </form>
       </section>
-    </Container>
+    </main>
   );
 };
 
