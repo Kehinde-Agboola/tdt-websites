@@ -382,7 +382,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <RelatedProducts productId={product.id} />
       </main>
 
-      <footer className="bg-black text-white pb-6 pt-12">
+      {/* <footer className="bg-black text-white pb-6 pt-12">
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h3 className="text-xl font-semibold mb-4">
@@ -404,7 +404,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             © 2021 The Destiny Trust. All Rights Reserved.
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
@@ -449,10 +449,10 @@ function RelatedProducts({ productId }: { productId: number }) {
     );
   }
 
-  return (
-    <section className="mb-16">
-      <h2 className="text-2xl font-semibold mb-6">You Might Also Like</h2>
-      <ProductGrid onPaymentComplete={() => {}} />
-    </section>
-  );
+  // return (
+  //   <section className="mb-16">
+  //     <h2 className="text-2xl font-semibold mb-6">You Might Also Like</h2>
+  //     <ProductGrid onPaymentComplete={() => {}} />
+  //   </section>
+  // );
 }

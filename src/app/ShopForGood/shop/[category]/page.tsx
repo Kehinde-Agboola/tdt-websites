@@ -1,6 +1,6 @@
 import TrendingItems from "../../_components/Trending";
 import ProductGrid from "../../_components/product-grid";
-// import Link from "next/link";
+import Link from "next/link";
 export default function CategoryPage({
   params,
 }: {
@@ -16,9 +16,9 @@ export default function CategoryPage({
         showFilters={false}
         limit={12}
       />
-      {/* <Link href={'/ShopForGood/product/[id]'} as={'/ShopForGood/product/1'}> */}
+      <Link href={'/ShopForGood/product/[id]'} as={'/ShopForGood/product/1'}>
       <ProductGrid/>
-      {/* </Link> */}
+      </Link>/
     </div>
   );
 }
