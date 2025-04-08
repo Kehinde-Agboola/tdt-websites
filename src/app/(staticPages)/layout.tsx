@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Head from "next/head";
-// import "./../globals.css";
-// import Navbar from "@/app/_component/Navbar";
-// import Footer from "./_component/Footer";
+import "./globals.css";
+import Navbar from "@/app/_component/Navbar";
+import Footer from "@/app/_component/Footer";
 
 
 export const metadata: Metadata = {
@@ -21,9 +21,9 @@ export default function RootLayout({
       <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
 
       <body  suppressHydrationWarning={true}>
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
