@@ -130,7 +130,7 @@ const Footer = () => {
               target="_blank"
               className="underline"
             >
-              Kid's Innovation Africa
+              Kid&apos;s Innovation Africa
             </a>
           </p>
         </motion.div>
