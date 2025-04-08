@@ -1,26 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Black from "../../../../public/assets/ecommerce/pictures/black.png"
-import Blue from "../../../../public/assets/ecommerce/pictures/blue.png"
-import NavyBlue from "../../../../public/assets/ecommerce/pictures/navyblue.png"
-import Shirt from "../../../../public/assets/ecommerce/pictures/shirt.png"
-import Bag from "../../../../public/assets/ecommerce/pictures/bag.png"
-// Define types
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  numericPrice: number;
-  image: string | StaticImageData;
-  category: string;
-  isNew?: boolean;
-  isSale?: boolean;
-}
+import { useCartStore } from "../_components/stores/cart-store";
 
 interface TrendingItemsProps {
   title?: string;
@@ -34,58 +19,31 @@ interface TrendingItemsProps {
 export default function TrendingItems({
   showFilters = true,
   showViewAll = true,
-  limit = 8,
+  limit = 12, // Default matches API limit
   category,
 }: TrendingItemsProps) {
   const [activeCategory, setActiveCategory] = useState("all");
   const [favorites, setFavorites] = useState<number[]>([]);
+  const [sort, setSort] = useState<string | undefined>(undefined); // e.g., "10" for price ascending
 
-  // Mock products data - in a real app, this would come from an API
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "Kid Innovation Africa Hoodie",
-      price: "₦5,000",
-      numericPrice: 5000,
-      image: Black,
-      category: "hoodie",
-      isNew: true,
-    },
-    {
-      id: 2,
-      name: "Kid Innovation Africa Hoodie",
-      price: "₦5,000",
-      numericPrice: 5000,
-      image: NavyBlue,
-      category: "hoodie",
-      isSale: true,
-    },
-    {
-      id: 3,
-      name: "Kid Innovation Africa Backpack",
-      price: "₦5,000",
-      numericPrice: 5000,
-      image: Bag,
-      category: "bags",
-    },
-    {
-      id: 4,
-      name: "Kid Innovation Africa T-Shirt",
-      price: "₦5,000",
-      numericPrice: 5000,
-      image: Shirt,
-      category: "t-shirts",
-    },
-    {
-      id: 4,
-      name: "Kid Innovation Africa T-Shirt",
-      price: "₦5,000",
-      numericPrice: 5000,
-      image: Blue,
-      category: "hoodie",
-    },
-    // Add more products as needed
-  ];
+  const {
+    products,
+    loading,
+    error,
+    fetchProducts,
+    addItem,
+    totalPages,
+    currentPage,
+  } = useCartStore();
+
+  useEffect(() => {
+    fetchProducts({
+      category: category || (activeCategory !== "all" ? activeCategory : undefined),
+      page: currentPage,
+      limit,
+      sort,
+    });
+  }, [activeCategory, currentPage, sort, category, limit, fetchProducts]);
 
   const toggleFavorite = (id: number) => {
     setFavorites((prev) =>
@@ -93,69 +51,98 @@ export default function TrendingItems({
     );
   };
 
-  const filteredProducts = products
-    .filter((product) => (category ? product.category === category : true))
-    .filter((product) =>
-      activeCategory === "all" ? true : product.category === activeCategory
-    )
-    .slice(0, limit);
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      fetchProducts({
+        category: category || (activeCategory !== "all" ? activeCategory : undefined),
+        page: newPage,
+        limit,
+        sort,
+      });
+    }
+  };
+
+  if (loading) {
+    return <p className="text-center text-gray-500">Loading products...</p>;
+  }
+
+  if (error && !products.length) {
+    return (
+      <p className="text-center text-gray-500">
+        {error === "No products found" ? "No products available at the moment." : `Error: ${error}`}
+      </p>
+    );
+  }
 
   return (
     <section className="pb-12">
       <div className="container mx-auto px-4">
-
         {showFilters && (
-          <div className="flex justify-center mb-8 space-x-4">
-            <Button
-              variant={activeCategory === "all" ? "default" : "outline"}
-              className={
-                activeCategory === "all"
-                  ? "bg-black text-white hover:bg-black/90"
-                  : ""
-              }
-              onClick={() => setActiveCategory("all")}
-            >
-              All Category
-            </Button>
-            <Button
-              variant={activeCategory === "t-shirts" ? "default" : "outline"}
-              className={
-                activeCategory === "t-shirts"
-                  ? "bg-black text-white hover:bg-black/90"
-                  : ""
-              }
-              onClick={() => setActiveCategory("t-shirts")}
-            >
-              T-shirts
-            </Button>
-            <Button
-              variant={activeCategory === "hoodie" ? "default" : "outline"}
-              className={
-                activeCategory === "hoodie"
-                  ? "bg-black text-white hover:bg-black/90"
-                  : ""
-              }
-              onClick={() => setActiveCategory("hoodie")}
-            >
-              Hoodie
-            </Button>
-            <Button
-              variant={activeCategory === "bags" ? "default" : "outline"}
-              className={
-                activeCategory === "bags"
-                  ? "bg-black text-white hover:bg-black/90"
-                  : ""
-              }
-              onClick={() => setActiveCategory("bags")}
-            >
-              Bags
-            </Button>
+          <div className="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="flex space-x-4">
+              <Button
+                variant={activeCategory === "all" ? "default" : "outline"}
+                className={
+                  activeCategory === "all"
+                    ? "bg-black(I have a problem here) text-white hover:bg-black/90"
+                    : ""
+                }
+                onClick={() => setActiveCategory("all")}
+              >
+                All Category
+              </Button>
+              <Button
+                variant={activeCategory === "t-shirts" ? "default" : "outline"}
+                className={
+                  activeCategory === "t-shirts"
+                    ? "bg-black text-white hover:bg-black/90"
+                    : ""
+                }
+                onClick={() => setActiveCategory("t-shirts")}
+              >
+                T-shirts
+              </Button>
+              <Button
+                variant={activeCategory === "hoodie" ? "default" : "outline"}
+                className={
+                  activeCategory === "hoodie"
+                    ? "bg-black text-white hover:bg-black/90"
+                    : ""
+                }
+                onClick={() => setActiveCategory("hoodie")}
+              >
+                Hoodie
+              </Button>
+              <Button
+                variant={activeCategory === "bags" ? "default" : "outline"}
+                className={
+                  activeCategory === "bags"
+                    ? "bg-black text-white hover:bg-black/90"
+                    : ""
+                }
+                onClick={() => setActiveCategory("bags")}
+              >
+                Bags
+              </Button>
+            </div>
+            <div>
+              <select
+                value={sort || ""}
+                onChange={(e) => setSort(e.target.value || undefined)}
+                className="p-2 border rounded"
+              >
+                <option value="">Sort By</option>
+                <option value="10">Price: Low to High</option>
+                <option value="-10">Price: High to Low</option>
+                {/* Add more sort options based on API support */}
+              </select>
+            </div>
           </div>
         )}
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="group relative">
+          {products.map((product) => (
+            <div key={`${product.id}-${product.color}-${product.size}`} className="group relative">
               <div className="bg-gray-100 rounded-md aspect-square overflow-hidden relative">
                 <Link href={`ShopForGood/product/${product.id}`}>
                   <Image
@@ -196,14 +183,43 @@ export default function TrendingItems({
                   className="block"
                 >
                   <h3 className="text-sm font-medium">{product.name}</h3>
-                  <p className="font-medium mt-1">{product.price}</p>
+                  <p className="font-medium mt-1">{product.formattedPrice || `₦${product.price.toLocaleString()}`}</p>
                 </Link>
+                <Button
+                  onClick={() => addItem({ ...product, quantity: 1 })}
+                  className="mt-2 bg-blue-500 hover:bg-blue-600"
+                >
+                  Add to Cart
+                </Button>
               </div>
             </div>
           ))}
         </div>
 
-        {showViewAll && filteredProducts.length >= limit && (
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-8 space-x-4">
+            <Button
+              variant="outline"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              Previous
+            </Button>
+            <span className="self-center">
+              Page {currentPage} of {totalPages}
+            </span>
+            <Button
+              variant="outline"
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              Next
+            </Button>
+          </div>
+        )}
+
+        {showViewAll && products.length >= limit && (
           <div className="text-center mt-8">
             <Link href={`/products${category ? `?category=${category}` : ""}`}>
               <Button variant="outline" size="lg">

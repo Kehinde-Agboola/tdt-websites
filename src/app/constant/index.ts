@@ -21,7 +21,7 @@ export const Nav: NavItem[] = [
     path: "/whoweare",
 
     dropdownItems: [
-      { title: "About Us", path: "/whoweare/aboutUs" },
+      { title: "About Us", path: "/#" },
       { title: "Our Team", path: "/whoweare/ourteam" },
       { title: "Blog", path: "/whoweare/blog" },
       { title: "FAQS", path: "/whoweare/faqs" },
@@ -29,7 +29,7 @@ export const Nav: NavItem[] = [
   },
   {
     title: "What We Do",
-    path: "/whatwedo",
+    path: "/#",
     dropdownItems: [
       {
         title: "Education",
@@ -49,7 +49,7 @@ export const Nav: NavItem[] = [
     path: "/projects",
     // Icon for this main link
     dropdownItems: [
-      { title: "Our School", path: "/projects/ourschool" },
+      { title: "Our School", path: "#" },
       { title: "Bridge Learning", path: "/projects/bridgelearning" },
       {
         title: "Kids Innovation Africa",

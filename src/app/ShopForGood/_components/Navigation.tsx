@@ -10,8 +10,8 @@ export default function Navigation() {
   const { items: wishlistItems } = useWishlistStore();
 
   return (
-    <div className="border-b bg-white sticky top-20 z-50 ">
-      <div className=" max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div className="border-b bg-white sticky top-20 z-40">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <nav className="flex items-center space-x-6 text-sm">
           <Link href="/ShopForGood/shop/men" className="hover:text-amber-400">
             Men
