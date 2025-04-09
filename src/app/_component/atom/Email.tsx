@@ -19,7 +19,7 @@ const Email = () => {
       animate="visible"
     >
       <form className="pt-4">
-        <div className="relative w-[350px] md:w-[600px] mx-auto">
+        <div className="relative">
           <label htmlFor="email" className="sr-only">
             Email address
           </label>

@@ -3,7 +3,7 @@ import Hero from "./_components/Hero";
 import Banner from "./_components/Banner";
 import Container from "../_component/shared";
 import Bimpe from "./_components/Bimpe";
-import ProductList from "./products/page";
+import Trending from "./_components/Trending"
 
 
 
@@ -13,17 +13,19 @@ const Page = () => {
 
   return (
     <main>
+      {/* <Navigation/> */}
       <Hero />
       <Banner />
       <Container>
         <div className="pt-[4rem]">
-          <h2 className="text-center text-[40px] mb-4">Trending Items</h2>
-          <p className="text-center text-[#777777] mb-6 w-full md:w-[50%] mx-auto">
+          <h2 className="text-[40px] text-center mb-4">Trending Items</h2>
+          <p className="text-[#777777] text-center w-full mb-6 md:w-[50%] mx-auto">
             Find everything you need to look and feel your best, and shop our
             latest trending fashion and lifestyle products.
           </p>
         </div>
-        <ProductList />
+        <Trending /> 
+        {/* <ProductList /> */}
       </Container>
       <Bimpe />
     </main>

@@ -18,6 +18,7 @@ type FlexComponentProps = {
     text1?: string;
     text2?: string;
     spanText?: string;
+    spanText1?: string;
     spanText2?: string;
     heading?: string;
     buttonText?: string;
@@ -67,8 +68,11 @@ export const FlexComponent = ({
                 )}
                 <p className="text-[2.5rem] text-[#FFB400]">{el.heading1}</p>
                 <p className="pt-2">{el.heading}</p>
-                <span className="text-[#ffb400] font-bold text-[1.5rem]">
+                <span className="text-[#ffb400]  text-[1.5rem]">
                   {el.spanText}
+                </span>
+                <span className="text-[#ffb400]   text-[2.5rem]">
+                  {el.spanText1}
                 </span>
                 <p>{ el.heading4}</p>
                 <h1 className="text-[18px] md:text-[25px]">
@@ -100,7 +104,7 @@ export const FlexComponent = ({
                 <Image
                   src={el?.imageSrc}
                   alt={el?.heading || "Image"}
-                  className="object-cover"
+                  className="object-cover h-[450px] w-full" 
                 />
               )}
             </motion.div>

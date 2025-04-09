@@ -35,7 +35,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Content with animations */}
         <div className="relative px-4 md:px-16">
           <motion.h1
-            className="md:text-[64px] text-[40px] text-yellow"
+            className="md:text-[50px] text-[40px] text-yellow w-[28rem]"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -43,7 +43,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             {title}
           </motion.h1>
           <motion.p
-            className="mt-4 text-lg max-w-[37rem]"
+            className="mt-4 text-lg max-w-[30rem]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}

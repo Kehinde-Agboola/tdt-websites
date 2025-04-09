@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Head from "next/head";
-import "./globals.css";
-import Navbar from "@/app/_component/Navbar";
-import Footer from "./_component/Footer";
+// import "./../globals.css";
+// import Navbar from "@/app/_component/Navbar";
+// import Footer from "./_component/Footer";
 
 
 export const metadata: Metadata = {
@@ -20,10 +20,10 @@ export default function RootLayout({
       <Head>The Destiny Trust Foundation</Head>
       <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
 
-      <body>
-        <Navbar />
+      <body  suppressHydrationWarning={true}>
+        {/* <Navbar /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

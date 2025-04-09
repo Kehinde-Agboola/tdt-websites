@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Nav } from "@/app/constant/index";
 import logo from "../../../../public/assets/tdtlogo.png";
 import Link from "next/link";
@@ -26,6 +26,20 @@ export default function Navbar() {
   const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(
     null
   );
+ const [scrolling, setScrolling] = useState(false);
+
+ useEffect(() => {
+   window.addEventListener("scroll", handleScroll);
+   return () => window.removeEventListener("scroll", handleScroll);
+ }, []);
+
+ const handleScroll = () => {
+   if (window.scrollY > 20) {
+     setScrolling(true);
+   } else {
+     setScrolling(false);
+   }
+ };
   let hideTimeout: NodeJS.Timeout;
 
   const handleMouseEnter = (index: number) => {
@@ -48,10 +62,10 @@ export default function Navbar() {
   const amount = 1000; 
 
   return (
-    <section className="bg-black sticky top-0 z-50 shadow-md">
-      <nav className="max-w-6xl mx-auto flex w-full  justify-between px-4 md:px-0 py-5 text-sm">
+    <section className="bg-black shadow-md sticky top-0 z-50">
+      <nav className="flex justify-between text-[12px] w-full max-w-6xl md:px-0 mx-auto px-4 py-5">
         {/* Left side: Logo */}
-        <div ref={animationParent} className="flex items-center gap-10">
+        <div ref={animationParent} className="flex gap-10 items-center">
           <Link href="/">
             <Image src={logo} alt="logo" width={150} height={50} />
           </Link>
@@ -59,16 +73,19 @@ export default function Navbar() {
 
         {/* Center: Nav Links */}
         {isSideMenuOpen && <MobileNav closeSideMenu={closeSideMenu} />}
-        <div className="hidden xl:flex items-center gap-4 transition-all">
+        <div className="gap-4 hidden items-center transition-all xl:flex">
           {Nav.map((item, index) => (
             <div
               key={index}
-              className="relative group px-2 py-3"
+              className="group px-2 py-3 relative"
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <Link href={item.path ?? "#"} className="text-white">
-                <span className="flex items-center gap-2 cursor-pointer group-hover:text-[#FFB400]">
+              <Link
+                href={item.path ?? "#"}
+                className="text-white"
+              >
+                <span className="flex cursor-pointer gap-2 group-hover:text-[#FFB400] items-center">
                   {item.title}
                   {item.dropdownItems && (
                     <IoIosArrowDown
@@ -83,16 +100,17 @@ export default function Navbar() {
               {/* Dropdown */}
               {item.dropdownItems && openDropdownIndex === index && (
                 <div
-                  className="w-[240px] transition-opacity duration-300 ease-in-out absolute top-16 -right-20 flex-col gap-1 border-t-2 border-[#FFB400] 
-                    navlink py-3 shadow-md"
+                  className="w-[240px] transition-opacity duration-300 ease-in-out absolute top-16 -right-20 flex-col gap-1 border-t-2 border-[#FFB400]
+                    navlink py-3 text-[12px]  shadow-md"
                 >
                   {item.dropdownItems.map((child, i) => (
                     <Link
                       key={i}
                       href={child.path ?? "#"}
-                      className="flex items-center justify-between py-1 text-white hover:text-[#FFB400] pr-2"
+                      className={`flex justify-between  hover:text-[#FFB400] items-center pr-2 py-2 ${
+                        scrolling ? "text-black" : "text-white"}`}
                     >
-                      <span className=" pl-3">{child.title}</span>
+                      <span className="pl-3">{child.title}</span>
                       <span className="text-navbg">
                         {child.icon && <child.icon />}
                       </span>
@@ -105,13 +123,13 @@ export default function Navbar() {
         </div>
 
         {/* Right side: Donate Button */}
-        <div className="hidden xl:flex items-center">
+        <div className="hidden items-center xl:flex">
           <a
             href={`https://paystack.com/pay/ie-pg23h4p?amount=${amount}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="h-fit bg-[#FFB400] px-4 py-2 text-black transition-all hover:border-black">
+            <button className="bg-[#FFB400] h-fit text-black hover:border-black px-4 py-2 transition-all">
               Donate Now
             </button>
           </a>
@@ -120,7 +138,7 @@ export default function Navbar() {
         {/* Mobile Menu Icon */}
         <FiMenu
           onClick={openSideMenu}
-          className="cursor-pointer text-4xl xl:hidden text-white"
+          className="text-4xl text-white cursor-pointer xl:hidden"
         />
       </nav>
     </section>
@@ -129,22 +147,22 @@ export default function Navbar() {
 
 function MobileNav({ closeSideMenu }: { closeSideMenu: () => void }) {
   return (
-    <section className="fixed left-0 top-0 flex h-full min-h-screen w-full justify-end bg-black/60 md:hidden">
-      <div className="h-full w-[100%] bg-black self-end px-4 py-4">
+    <section className="flex bg-black/60 h-full justify-end w-full fixed left-0 md:hidden min-h-screen top-0">
+      <div className="bg-black h-full w-[100%] px-4 py-4 self-end">
         <div className="flex h-1/6 text-white">
           <AiOutlineClose
             onClick={closeSideMenu}
-            className="cursor-pointer text-4xl"
+            className="text-4xl cursor-pointer"
           />
         </div>
-        <div className="flex flex-col justify-items-end items-center text-base gap-5 transition-all">
+        <div className="flex flex-col justify-items-end text-base gap-5 items-center transition-all">
           {Nav.map((item, index) => (
             <SingleNavItem key={index} item={item} />
           ))}
         </div>
 
-        <section className="flex flex-col gap-12 mt-4 items-center">
-          <button className="h-fit bg-[#FFB400] px-4 py-2 text-black transition-all hover:border-black">
+        <section className="flex flex-col gap-12 items-center mt-4">
+          <button className="bg-[#FFB400] h-fit text-black hover:border-black px-4 py-2 transition-all">
             Donate Now
           </button>
         </section>
@@ -162,10 +180,10 @@ function SingleNavItem({ item }: { item: NavItem }) {
   }
 
   return (
-    <div ref={animationParent} className="relative px-2 py-3">
+    <div ref={animationParent} className="px-2 py-3 relative">
       <div
         onClick={toggleItem}
-        className="flex items-center gap-2 text-white cursor-pointer"
+        className="flex text-white cursor-pointer gap-2 items-center"
       >
         <span>{item.title}</span>
         {item.dropdownItems && (
@@ -184,9 +202,9 @@ function SingleNavItem({ item }: { item: NavItem }) {
             <Link
               key={i}
               href={child.path ?? "#"}
-              className="flex items-center justify-center py-1 pl-6 pr-8 text-white hover:text-[#FFB400]"
+              className="flex justify-center text-white hover:text-[#FFB400] items-center pl-6 pr-8 py-1"
             >
-              <span className="whitespace-nowrap pl-3">{child.title}</span>
+              <span className="pl-3 whitespace-nowrap">{child.title}</span>
             </Link>
           ))}
         </div>
