@@ -1,17 +1,18 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import PaymentMethods from "../../_components/payment-method";
 
 export default function PaymentPage() {
   const router = useRouter();
-  const [isProcessing, setIsProcessing] = useState(false);
+  // Removed unused isProcessing state
 
   const handlePaymentComplete = () => {
-    setIsProcessing(true);
+    // Removed setIsProcessing as it is unused
     // Simulate payment processing
     setTimeout(() => {
       router.push("/order/HD8845");
@@ -31,7 +32,7 @@ export default function PaymentPage() {
         <div className="container flex justify-between items-center mx-auto px-4 py-4">
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center space-x-2">
-              <img
+              <Image
                 src="/logo.svg"
                 alt="The Destiny Trust"
                 className="h-10 w-10"

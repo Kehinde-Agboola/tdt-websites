@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -5,8 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-// import Header from "../../_components/Hero";
-import ProductGrid from "../../_components/payment-method";
+
 import { getProductById, getRelatedProducts } from "../../libs/api/product";
 import { addToCart } from "../../libs/api/cart";
 import { toggleWishlistItem, isInWishlist } from "../../libs/api/wishlist";
