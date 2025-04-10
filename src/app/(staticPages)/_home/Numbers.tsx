@@ -16,7 +16,7 @@ const CountUp: React.FC<CountUpProps> = ({ end, duration, startCount }) => {
     if (!startCount) return;
 
     let start = 0;
-    const frameRate = 1000 / 60; // ~60 frames per second
+    const frameRate = 1000 / 60; 
     const increment = Math.ceil(
       (end - start) / (duration * (1000 / frameRate))
     );
@@ -45,24 +45,25 @@ const Numbers = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true); // Start counting when visible
+          setIsVisible(true); 
         } else {
-          setIsVisible(false); // Reset when not visible
+          setIsVisible(false); 
         }
       },
       {
-        root: null, // Use the viewport as the root
-        threshold: 0.1, // Trigger when 10% of the component is visible
+        root: null,
+        threshold: 0.1, 
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentSection = sectionRef.current;
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);

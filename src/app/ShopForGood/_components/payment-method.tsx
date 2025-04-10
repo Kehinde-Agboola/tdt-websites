@@ -3,6 +3,7 @@
 import type React from "react";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -200,17 +201,17 @@ export default function PaymentMethods({
               <span className="text-xs text-gray-500">Secure payment</span>
             </div>
             <div className="flex gap-2">
-              <img
+              <Image
                 src="/placeholder.svg?height=24&width=36"
                 alt="Visa"
                 className="h-6"
               />
-              <img
+              <Image
                 src="/placeholder.svg?height=24&width=36"
                 alt="Mastercard"
                 className="h-6"
               />
-              <img
+              <Image
                 src="/placeholder.svg?height=24&width=36"
                 alt="Amex"
                 className="h-6"
