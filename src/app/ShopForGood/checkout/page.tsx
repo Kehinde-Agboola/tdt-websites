@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -408,17 +407,17 @@ export default function CheckoutPage() {
                   Secured by SSL encryption
                 </div>
                 <div className="flex space-x-4">
-                  <img
+                  <Image
                     src="/placeholder.svg?height=30&width=40"
                     alt="Mastercard"
                     className="h-8"
                   />
-                  <img
+                  <Image
                     src="/placeholder.svg?height=30&width=40"
                     alt="Visa"
                     className="h-8"
                   />
-                  <img
+                  <Image
                     src="/placeholder.svg?height=30&width=40"
                     alt="PayPal"
                     className="h-8"
@@ -454,7 +453,7 @@ export default function CheckoutPage() {
 
           <div className="grid grid-cols-1 gap-8 mb-8 md:grid-cols-4">
             <div>
-              <img
+              <Image
                 src="/logo.svg"
                 alt="The Destiny Trust"
                 className="h-16 w-16 mb-4"

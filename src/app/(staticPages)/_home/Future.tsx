@@ -4,33 +4,34 @@ import { motion } from "framer-motion";
 import Container from "../../_component/shared";
 
 const Future = () => {
-  const videoId = "OvQCekfyP6c"; // Replace with your YouTube video ID
-  const videoRef = useRef<HTMLIFrameElement>(null); // Ref for the iframe
-  const [isVisible, setIsVisible] = useState(false); // Track visibility
+  const videoId = "OvQCekfyP6c"; 
+  const videoRef = useRef<HTMLIFrameElement>(null); 
+  const [isVisible, setIsVisible] = useState(false); 
 
-  // Intersection Observer to detect when the component is in view
+ 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true); // Component is in view
+          setIsVisible(true); 
         } else {
-          setIsVisible(false); // Component is out of view
+          setIsVisible(false); 
         }
       },
       {
-        root: null, // Use the viewport as the root
-        threshold: 0.5, // Trigger when 50% of the component is visible
+        root: null,
+        threshold: 0.5,
       }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current); // Observe the iframe
+    const currentVideoRef = videoRef.current;
+    if (currentVideoRef) {
+      observer.observe(currentVideoRef); 
     }
 
     return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current); // Cleanup observer
+      if (currentVideoRef) {
+        observer.unobserve(currentVideoRef); 
       }
     };
   }, []);
