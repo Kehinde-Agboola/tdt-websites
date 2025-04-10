@@ -12,7 +12,13 @@ import { addToCart } from "../../libs/api/cart";
 import { toggleWishlistItem, isInWishlist } from "../../libs/api/wishlist";
 import type { Product, ProductVariant } from "../../libs/type";
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default function ProductPage({ params }: PageProps) {
   const productId = Number.parseInt(params.id);
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -382,34 +388,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <RelatedProducts productId={product.id} />
       </main>
 
-      {/* <footer className="bg-black text-white pb-6 pt-12">
-        <div className="container mx-auto px-4">
-          <div className="mb-8">
-            <h3 className="text-xl font-semibold mb-4">
-              Be part of a better tommorow
-            </h3>
-            <div className="flex max-w-md">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 text-black px-4 py-2"
-              />
-              <Button className="bg-amber-400 text-black hover:bg-amber-500">
-                Subscribe
-              </Button>
-            </div>
-          </div>
-
-          <div className="border-gray-800 border-t text-center text-gray-400 text-sm pt-8">
-            © 2021 The Destiny Trust. All Rights Reserved.
-          </div>
-        </div>
-      </footer> */}
+     
     </div>
   );
 }
 
-// Related Products Component
+  // Removed unused relatedProducts state
 function RelatedProducts({ productId }: { productId: number }) {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -448,11 +432,4 @@ function RelatedProducts({ productId }: { productId: number }) {
       </section>
     );
   }
-
-  // return (
-  //   <section className="mb-16">
-  //     <h2 className="text-2xl font-semibold mb-6">You Might Also Like</h2>
-  //     <ProductGrid onPaymentComplete={() => {}} />
-  //   </section>
-  // );
 }
