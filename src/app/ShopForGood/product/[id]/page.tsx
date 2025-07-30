@@ -172,7 +172,6 @@ export default function ProductPage({ params }: PageProps) {
   if (!product) {
     return (
       <div className="bg-white min-h-screen">
-       
         <main className="container mx-auto px-4 py-8">
           <div className="text-center py-12">
             <h2 className="text-2xl font-semibold mb-4">Product Not Found</h2>
@@ -190,7 +189,6 @@ export default function ProductPage({ params }: PageProps) {
 
   return (
     <div className="bg-white min-h-screen">
-
       <main className="container mx-auto px-4 py-8">
         <div className="text-gray-500 text-sm mb-6">
           <Link href="/" className="hover:text-amber-400">
@@ -387,13 +385,11 @@ export default function ProductPage({ params }: PageProps) {
 
         <RelatedProducts productId={product.id} />
       </main>
-
-     
     </div>
   );
 }
 
-  // Removed unused relatedProducts state
+// Fixed: RelatedProducts now returns loaded state
 function RelatedProducts({ productId }: { productId: number }) {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -432,4 +428,34 @@ function RelatedProducts({ productId }: { productId: number }) {
       </section>
     );
   }
+
+  // Return loaded related products
+  return (
+    <section className="mb-16">
+      <h2 className="text-2xl font-semibold mb-6">You Might Also Like</h2>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+        {relatedProducts.map((product) => (
+          <Link
+            key={product.id}
+            href={`/ShopForGood/product/${product.id}`}
+            className="block group"
+          >
+            <div className="bg-gray-100 rounded-md aspect-square overflow-hidden">
+              <Image
+                src={product.images[0] || "/placeholder.svg"}
+                alt={product.name}
+                width={300}
+                height={300}
+                className="h-full w-full object-cover group-hover:scale-105 transition"
+              />
+            </div>
+            <div className="mt-3">
+              <h3 className="text-lg font-semibold">{product.name}</h3>
+              <p className="text-gray-600">{product.formattedPrice}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
 }
