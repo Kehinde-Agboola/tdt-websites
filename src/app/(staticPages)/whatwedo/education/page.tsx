@@ -5,7 +5,9 @@ import Hero from "../../../../../public/assets/edu/landing.png"
 import Teacher from "../../../../../public/assets/edu/teacher.png";
 // import Line from "../../../../public/assets/edu/Lineyellow.png";
 import Line from "../../../../../public/assets/edu/Lineyellow.png"
+import Cards from "./Cards";
 import Enrolment from "./Enrolment";
+// import { Card } from "@/components/ui/card";
 const Home: React.FC = () => {
      const data = [
        {
@@ -58,6 +60,9 @@ Education is at the heart of our mission to empower disadvantaged children. We b
         </section>
       </Container>
       <Enrolment />
+      <div className="mt-[2rem]">
+        <Cards />
+      </div>
     </main>
   );
 };

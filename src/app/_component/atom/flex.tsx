@@ -71,7 +71,7 @@ export const FlexComponent = ({
                 <span className="text-[#ffb400]  text-[1.5rem]">
                   {el.spanText}
                 </span>
-                <span className="text-[#ffb400]   text-[2.5rem]">
+                <span className="text-[#ffb400]  text-[2.5rem]">
                   {el.spanText1}
                 </span>
                 <p>{ el.heading4}</p>

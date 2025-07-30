@@ -70,9 +70,9 @@ const Cards = () => {
     <Container>
       <section className="relative">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <h1 className="text-[30px] md:text-[45px] font-[400] md:w-[35rem] md:leading-[45px]">
-            Our Accelerated{" "}
-            <span className="text-yellow font-bold">Education Strategy</span>
+          <h1 className="text-[30px] md:text-[50px] font-[400] md:w-[30rem]">
+            Our Thinking About{" "}
+            <span className="text-yellow font-bold">Education</span>
           </h1>
 
           {/* Animated Image */}

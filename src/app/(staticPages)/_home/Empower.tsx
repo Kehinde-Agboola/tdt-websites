@@ -2,8 +2,8 @@
 import React from "react";
 import Container from "@/app/_component/shared";
 import { Button } from "@/app/_component/atom/button";
-import Sponsor from "../../../../public/assets/home/sponsor.jpg";
-import Image from "next/image";
+// import Sponsor from "../../../../public/assets/home/sponsor.jpg";
+// import Image from "next/image";
 import { motion } from "framer-motion";
 
 const Empower = () => {
@@ -24,11 +24,11 @@ const Empower = () => {
 
   return (
     <section className="max-w-7xl mx-auto">
-      <Image
+      {/* <Image
         src={Sponsor}
         alt="smiling children"
         className="w-full h-[90vh]"
-      />
+      /> */}
 
       {/* <div className="grid grid-cols-2 sm:grid-cols-4 w-full">
         {[Pic1, Pic2, Pic3, Pic4].map((pic, index) => (

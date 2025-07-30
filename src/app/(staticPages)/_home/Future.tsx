@@ -50,7 +50,7 @@ const Future = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <p className="pb-10 w-full md:w-[90%] ml-auto text-right text-[25px] md:text-[34px] xl:text-[64px] font-400">
+          <p className="pb-10 w-full md:w-[90%] ml-auto text-right text-[25px] md:text-[34px] xl:text-[64px] font-400 leading-[3.5rem]">
             A future where more children prosper because we care.
           </p>
         </motion.div>
