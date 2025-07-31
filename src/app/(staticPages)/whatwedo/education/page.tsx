@@ -23,7 +23,7 @@ const Home: React.FC = () => {
   return (
     <main>
       <HeroSection
-        title="Educating for a Brighter Future
+        title="Transforming Lives With Education
 "
         description="
 Education is at the heart of our mission to empower disadvantaged children. We believe in the power of education to break the cycle of transgenerational poverty."
