@@ -7,7 +7,7 @@ export interface ButtonInterface
   type?: "button" | "submit" | "reset";
   children: ReactElement | string;
   icon?: ReactElement;
-  btnFlex?: boolean; // For optional styling if you want to use Flexbox
+  btnFlex?: boolean; 
 }
 
 export const Button = ({
