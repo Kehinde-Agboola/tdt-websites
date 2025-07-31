@@ -124,7 +124,7 @@ const Blog = () => {
     <div className="py-10 bg-[#F4F4F4]">
       <Container>
         <h2 className="text-2xl font-bold text-center mb-6">
-          <span className="text-yellow-500">Our Stories</span>
+          <span className="text-yellow-500 text-[1.5rem] md:text-[2.5rem]">Our Stories</span>
         </h2>
 
         <Swiper

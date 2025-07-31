@@ -14,11 +14,11 @@ import Banner from "./Banner";
 const Page = () => {
   const data2 = [
     {
-      heading3: "A Story of Hope​",
+      heading3: "Mariah - From the Sreet to School​",
       text1:
-        "At 16, Ajoke had never been to school, moving between relatives who couldn’t support her education. By the time we met  her  during  our  school  enrollment drive,  she  believed  her  chance  ateducation had passed. She thought noschool  would  accept  a  16-year-old into  nursery  class.",
+        "At 16, Mariah had never been to school, moving between relatives who couldn’t support her education and back to the streets. By the time we met  her  during  our  school  enrollment drive,  she  believed  her  chance  at education had passed. She thought no school would accept a 16-year-old into nursery class.",
       text2:
-        "At  our  BridgeLearning  Centre,  she  found  a  placeamong peers  her age.  Despite  having no  prior  schooling,  Ajoke  is  catching up  at  an  impressive  rate,  even out pacing  some  peers  with  previous experience.  With  access  to  digital learning afterschool, she is on track to integrate  into  secondary  school, proving it’s never too late to start.",
+        "At  our  BridgeLearning  Centre,  she  found  a  place among peers  her age.  Despite  having no  prior  schooling,  Ajoke  is  catching up  at  an  impressive  rate,  even out pacing  some  peers  with  previous experience.  With  access  to  digital learning afterschool, she is on track to integrate  into  secondary  school, proving it’s never too late to start.",
       imageSrc: Hope,
       buttonText: "",
     },
@@ -29,7 +29,7 @@ const Page = () => {
       spanText2: "Education",
       heading3: " for Over-aged Out-of-School Children​",
       text1:
-        "According to UNESCO, over 20 million Nigerian children are out of school. The term “out-of-school children” covers various demographics and unique circumstances, each requiring tailored interventions. Our over a decade of experience working with housing-insecure children and youths has highlighted a staggering number of children aged 10-18 who missed out on or had their education disrupted due to displacement.",
+        "According to UNICEF, over 18.3 million Nigerian children are out of school. The term “out-of-school children” covers various demographics and unique circumstances, each requiring tailored interventions. Our over a decade of experience working with housing-insecure children and youths has highlighted a staggering number of children aged 10-18 who missed out on or had their education disrupted due to displacement.",
       imageSrc: BlcImage,
       buttonText: "",
     },

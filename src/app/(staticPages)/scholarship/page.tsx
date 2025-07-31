@@ -1,5 +1,5 @@
 import React from 'react'
-import ScholarshipHero from "../../../../public/assets/scholarship/scholarshiphero.png";
+import ScholarshipHero from "../../../../public/assets/scholarship/heros.png";
 import Image, { StaticImageData } from 'next/image'
 import Container from '../../_component/shared'
 import { GoArrowRight } from 'react-icons/go';
@@ -92,7 +92,7 @@ const page = () => {
                 Let’s Invest In Our <span className="text-yellow">​Future</span>
                  Together
               </h1>
-              <p className="mt-4 text-base md:text-lg  md:text-left w-full md:w-[45rem] pt-4 pb-8">
+              <p className="mt-4 text-base md:text-lg  md:text-left w-full md:w-[40rem] pt-4 pb-8">
                 We partner with compassionate individuals and organisations to
                 ​administer scholarship programmes that meet our shared goal of
                 ​empowering children with education from primary school to the

@@ -22,8 +22,8 @@ const Banner = () => {
           {/* Left Section with Text */}
           <div className="w-full pt-[2rem] md:pt-0 px-2 md:px-0">
             <h2 className="text-[25px] md:text-4xl font-bold">
-              Collaborate On Research On
-              <span className="text-yellow"> Accelerated Education</span>
+              Collaborate with us on Research
+              {/* <span className="text-yellow"></span> */}
             </h2>
             <p className="mt-6 text-gray-300 leading-relaxed w-full  md:w-[37rem]">
               We recognize the importance of collaboration, research, and

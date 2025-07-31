@@ -119,7 +119,7 @@ const Initaitive = () => {
     <Container>
       <section>
         <div className="text-center md:text-left">
-          <p className="text-[40px] md:text-[64px] font-[400]">What We Do.</p>
+          <p className="text-[40px] md:text-[64px] font-[400]">What We Do</p>
           <p className="text-[14px] md:text-[16px] text-[#555555] md:w-[45rem]">
             Our initiatives support the overall development of children,
             ensuring we are always there for them where they need us the most.

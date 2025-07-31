@@ -15,7 +15,7 @@ const Payment = () => {
 
   return (
     <main>
-      <section className="bg-payment h-[50vh] max-w-6xl mx-auto absolute top-[43rem] left-0 right-0 bottom-0 bg-cover bg-no-repeat bg-[#FFB400] text-center p-[2rem] xl:pt-[.9rem]">
+      <section className="bg-payment h-[50vh] max-w-6xl mx-auto absolute top-[40rem] left-0 right-0 bottom-0 bg-cover bg-no-repeat bg-[#FFB400] text-center p-[2rem] xl:pt-[2rem]">
         <h1 className="text-[25px] xl:text-[32px]">
           <span className="font-bold">Your Giving, Their Hope,</span> Our
           Collective Future.
@@ -25,7 +25,7 @@ const Payment = () => {
           disadvantaged children, we building a brighter, more inclusive and
           safer future. Start giving. It’s safe and easy
         </p>
-        <form className="flex flex-col md:flex-row md:justify-center items-center pt-16 gap-6">
+        <form className="flex flex-col md:flex-row md:justify-center items-center pt-8 gap-6">
           <div className="flex relative">
             <input
              
