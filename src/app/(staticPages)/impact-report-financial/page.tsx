@@ -137,14 +137,7 @@ const FinancialReports = () => {
             </div>
 
             {/* Download Button */}
-            <a
-              href={report.file}
-              download
-              className="text-blue-600 hover:text-blue-800 font-medium self-start"
-              onClick={(e) => e.stopPropagation()} // Prevents link conflict
-            >
-              Download
-            </a>
+            
           </motion.a>
         ))}
       </div>

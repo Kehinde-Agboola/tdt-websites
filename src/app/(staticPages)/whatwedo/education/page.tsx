@@ -1,7 +1,8 @@
 import { FlexComponent } from "@/app/_component/atom/flex";
-import HeroSection from "@/app/_component/atom/HeroSection";
+// import HeroSection from "@/app/_component/atom/HeroSection";
+import Head from "./Head";
 import Container from "@/app/_component/shared";
-import Hero from "../../../../../public/assets/edu/landing.png"
+// import Hero from "../../../../../public/assets/edu/landing.png"
 import Teacher from "../../../../../public/assets/edu/teacher.png";
 // import Line from "../../../../public/assets/edu/Lineyellow.png";
 import Line from "../../../../../public/assets/edu/Lineyellow.png"
@@ -11,24 +12,51 @@ import Enrolment from "./Enrolment";
 const Home: React.FC = () => {
      const data = [
        {
-          imageSrc1: Line,
-         spanText: "School Enrolment & Back-to-School",
-         heading1: "School Enrolment & Back-to-School",
+         imageSrc1: Line,
+         heading3: "School Enrolment and Back-to-School",
+         spanText3: "Education Access",
          text1:
-           "Homeless families in urban centers have little motivation to send their children to school, even if education is said to be free because there is no guarantee of a stable home. When informal settlements are demolished, they relocate without preparation and the new location may not be within school vicinity. After repeated experience displacement, children have a great sense of loss that diminishes interest in going back to school. We provide the materials the children need to enroll or reintegrate into school. We eliminate all the barriers to schooling and hold their hands into the classroom. ",
+           "We take children off the streets and slums and get them back in school. Through our Education Access programme, thousands of out-of-school children across Nigeria are enrolled or reintegrated into school every year.",
+         text2: "Children in informal settlements and homeless communities often face multiple barriers to education: frequent displacement, lack of documentation, and the absence of a stable home. These challenges make it difficult to benefit from even free education where it is available.",
+         text3:"We walk with them, every step of the way providing school supplies, and covering hidden costs of schooling. We ensure that nothing stands in the way of a child’s right to education.",
+         imageSrc: Teacher,
+         buttonText: "",
+       },
+     ];
+     const support = [
+       {
+         imageSrc1: Line,
+         heading3: "School Support",
+         text1:
+           "To ensure that the children we enrol in school have a rewarding learning experience, we also support under-resourced schools that serve poor communities. We work with these schools to improve the learning environment through improvising school infrastructure, Supply of books and teaching aids, access to clean water and personnel support. ",
+
+         imageSrc: Teacher,
+         buttonText: "",
+       },
+     ];
+     const literacy = [
+       {
+         imageSrc1: Line,
+         heading3: "Literacy Campaign – Back2Basics",
+         text1:
+           "Back2Basics is our flagship literacy campaign to help children learn to read and write in a fun and simple way. Many children in underserved communities lack basic literacy even in upper primary classes. Without the ability to read, learning becomes nearly impossible.",
+         text2:
+           "Our literacy programme uses inclusive, play-based learning methods to make reading enjoyable. We also provide teacher training, incentives, and resources to improve literacy outcomes in schools.",
          imageSrc: Teacher,
          buttonText: "",
        },
      ];
   return (
     <main>
-      <HeroSection
+      <Head />
+      {/* Hero Section */}
+      {/* <HeroSection
         title="Transforming Lives With Education
 "
         description="
 Education is at the heart of our mission to empower disadvantaged children. We believe in the power of education to break the cycle of transgenerational poverty."
         imagePath={Hero}
-      />
+      /> */}
       <Container>
         <section className="mt-[5rem]">
           <p className="xl:text-[25px] text-[18px] text-[#333333] w-full md:max-w-[60rem] text-justify">
@@ -63,6 +91,12 @@ Education is at the heart of our mission to empower disadvantaged children. We b
       <div className="mt-[2rem]">
         <Cards />
       </div>
+      <section className="my-[4rem]">
+        <FlexComponent data={support} columnReversed={false} buttonClassName="" />
+      </section>
+      <section className="my-[4rem]">
+        <FlexComponent data={literacy} columnReversed={true} buttonClassName="" />
+      </section>
     </main>
   );
 };

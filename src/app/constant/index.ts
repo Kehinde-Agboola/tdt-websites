@@ -23,7 +23,7 @@ export interface NavDropdownItem {
 export interface NavItem {
   title: string;
   path: string;
-  icon?: IconType; // Optional icon property
+  icon?: IconType; 
   dropdownItems?: NavDropdownItem[];
 }
 
@@ -33,8 +33,9 @@ export const Nav: NavItem[] = [
     path: "/whoweare",
     dropdownItems: [
       { title: "About Us", path: "/whoweare/about-us" },
-      { title: "Our Team", path: "/whoweare/ourteam" },
+      { title: "Our People", path: "/whoweare/ourteam" },
       { title: "Blog", path: "/whoweare/blog" },
+      { title: "Impact Report & Financials", path: "/impact-report-financial" },
       { title: "FAQS", path: "/whoweare/faqs" },
     ],
   },
@@ -46,31 +47,49 @@ export const Nav: NavItem[] = [
         title: "Education",
         path: "/whatwedo/education",
         subItems: [
-          { title: "Education Access", path: "/whatwedo/education/access" },
-          { title: "Bridge Learning", path: "/whatwedo/education/bridgelearning" },
-          { title: "Education Technology", path: "/whatwedo/education/technology" },
-          { title: "Scholarships", path: "/whatwedo/education/scholarships" },
-          { title: "School Support", path: "/whatwedo/education/schoolsupport" },
-          { title: "Literacy Campaign", path: "/whatwedo/education/literacycampaign" },
+          { title: "Education Access", path: "/whatwedo/education" },
+          {
+            title: "Bridge Learning",
+            path: "/whatwedo/education",
+          },
+          {
+            title: "Education Technology",
+            path: "/whatwedo/education",
+          },
+          { title: "Scholarships", path: "/whatwedo/education" },
+          {
+            title: "School Support",
+            path: "/whatwedo/education",
+          },
+          {
+            title: "Literacy Campaign",
+            path: "/whatwedo/education",
+          },
         ],
       },
       {
         title: "Care",
         path: "/whatwedo/care",
         subItems: [
-          { title: "Rehabilitation and Care", path: "/whatwedo/care/rehabilitation" },
-          { title: "Shelter and Wellbeing", path: "/whatwedo/care/shelter" },
-          { title: "Supported Independent Living", path: "/whatwedo/care/independentliving" },
-          { title: "Child Healthcare", path: "/whatwedo/care/healthcare" },
-          { title: "Hunger Relief", path: "/whatwedo/care/hungerrelief" },
+          {
+            title: "Rehabilitation and Care",
+            path: "/whatwedo/care",
+          },
+          { title: "Shelter and Wellbeing", path: "/whatwedo/care" },
+          {
+            title: "Supported Independent Living",
+            path: "/whatwedo/care",
+          },
+          { title: "Child Healthcare", path: "/whatwedo/care" },
+          { title: "Hunger Relief", path: "/whatwedo/care" },
         ],
       },
       {
         title: "Empowerment",
         path: "/whatwedo/empowerment",
         subItems: [
-          { title: "STEAM Empowerment", path: "/whatwedo/empowerment/steam" },
-          { title: "Family Empowerment", path: "/whatwedo/empowerment/family" },
+          { title: "STEAM Empowerment", path: "/whatwedo/empowerment" },
+          { title: "Family Empowerment", path: "/whatwedo/empowerment" },
         ],
       },
     ],
@@ -83,20 +102,35 @@ export const Nav: NavItem[] = [
       { title: "Residential Care", path: "/projects/residentialcare" },
       { title: "Bridge Learning", path: "/projects/bridgelearning" },
       { title: "OurSchool Africa Edtech", path: "/projects/ourschoolafrica" },
-      { title: "Kids Innovation Africa", path: "https://www.kidsinnovation.africa/" },
+      {
+        title: "Kids Innovation Africa",
+        path: "https://www.kidsinnovation.africa/",
+      },
       { title: "Child HealthCare", path: "/projects/childhealthcare" },
       { title: "Hunger Relief", path: "/projects/hungerrelief" },
-      { title: "BackToBasics Literacy Campaign", path: "/projects/backtobasics" },
-      { title: "Project Enable - Family Empowerment", path: "/projects/projectenable" },
+      {
+        title: "BackToBasics Literacy Campaign",
+        path: "/projects/backtobasics",
+      },
+      {
+        title: "Project Enable - Family Empowerment",
+        path: "/projects/projectenable",
+      },
     ],
   },
   {
     title: "Scholarship",
     path: "/scholarship",
     dropdownItems: [
-      { title: "Henre Ofili STEAM Scholarship", path: "https://ofilischolarship.destinytrust.org/" },
+      {
+        title: "Henry Ofili STEAM Scholarship",
+        path: "https://ofilischolarship.destinytrust.org/",
+      },
       { title: "Subomi Plumptre ​Trust Scholarship", path: "#" },
-      { title: "Lolu Arr Scholarship", path: "/scholarship/LoluArrScholarship" },
+      {
+        title: "Lolu Arr Scholarship",
+        path: "#",
+      },
       { title: "A4 Foundation Scholarship", path: "#" },
     ],
   },

@@ -71,15 +71,15 @@ export const FlexComponent = ({
                 <span className="text-[#ffb400] text-[16px] md:text-[32px]">
                   {el.spanText2}
                 </span>
-                <p className="text-[16px] md:text-[24px] text-[#fff]">
+                <p className="text-[16px] md:text-[16px] text-[#fff]">
                   {el.heading}
                 </p>
               </div>
 
               <div className="xl:max-w-[100%] lg:text-justify">
                 <p className="pt-4">{el.text1}</p>
-                <p className="pt-4">{el.text2}</p>
-                <p className="pb-4">{el.text3}</p>
+                <p className="py-4">{el.text2}</p>
+                <p className="">{el.text3}</p>
               </div>
               <div>
                 <Button
