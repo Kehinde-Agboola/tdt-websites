@@ -1,8 +1,9 @@
 import React from 'react'
-import HeroSection from '@/app/_component/atom/HeroSection'
+import Head from './Head'
+// import HeroSection from '@/app/_component/atom/HeroSection'
 import { FlexComponent } from '@/app/_component/atom/eduFlex'
 import { AltComponent } from '@/app/_component/atom/altFlex'
-import CareHero from "../../../../../public/assets/care/carehero.png"
+// import CareHero from "../../../../../public/assets/care/carehero.png"
 import Line from "../../../../../public/assets/edu/Lineyellow.png";
 import Rehab from "../../../../../public/assets/care/children.png";
 import Nothing from "../../../../../public/assets/care/nothing.png";
@@ -12,14 +13,13 @@ const page = () => {
       const data = [
         {
           imageSrc1: Line,
-          spanText: "Rehabilitation and Residential care",
+          spanText: "Rehabilitation and Care",
           heading1:
             "More Children Rescued and New Hopes for Children on Transition from Residential Care. ",
           text1:
-                  "The Trust operates 4 residential learning centres Lagos and Oyo State. Our centres are home to children who have no home. Many children find love, support and a safe place to play and learn at the Centre.",
-          text2: "Through this initiative, The Destiny Trust is adopting innovative methods to engage children in activities leading to improved academic abilities and acquisition of creative and recreational skills. We anticipate the prospects of this initiative providing an opportunity for children to acquire skills in computer programming, arts, music, fashion design, sports and other vocational fields. Our mission is to enable every child to be the best he or she can be regardless of where he or she was born, and we have kept that promise for the past decade of our existence.",
+            "We provide urgent rescue and safe spaces for children facing homelessness, abuse, or neglect. But rescue is only the beginning. Through trauma-informed care, counselling, and a structured support system, we help children heal from emotional wounds and regain a sense of safety and self-worth. Our goal is to restore hope, renew confidence, and help every child regain their dignity.",
           imageSrc: Rehab,
-          buttonText: "Learn More",
+          buttonText: "",
         },
       ];
       const data2 = [
@@ -29,9 +29,7 @@ const page = () => {
           heading1:
             "Supported Independent Living Programme: Providing Stability for Youths in Transition",
           text1:
-            "This initiative supports teenagers transitioning from residential care by providing stable housing when family reintegration or alternative care isn't possible. While promoting deinstitutionalization and independent living, we recognize the need for safe accommodation, especially during academic breaks.",
-          text2:
-            "To address this, we opened our first Supported Independent Living Apartment (SIL) in February 2023, licensed by the Lagos State Ministry of Youth and Social Development, offering young adults a chance to experience independence while maintaining discipline.",
+            "For teenagers transiting from residential care, we provide transitional support through our Supported Independent Living programme. This initiative equips young people with essential life skills, mentorship, and stable housing while they continue their education. We walk alongside them as they navigate adulthood—supporting their journey to self-reliance, responsible decision making, and long-term stability.",
           imageSrc: Nothing,
           buttonText: "",
         },
@@ -40,35 +38,41 @@ const page = () => {
         {
           imageSrc1: Line,
           spanText: "Child Healthcare",
-          heading1:
-            "Providing scholarships and school sponsorships to ensure that every child has the opportunity to learn, grow, and thrive, regardless of their background.",
           text1:
-            "Hands of Care is our community-based health outreach organized under a collaboration with our partner, Dr. Funmi Alakija Foundation (DFAF). Every year, hundreds of homeless children and family depend on our healthcare programmes in communities. We provide onsite health screening, treatment and referral in appropriate cases.",
+            "Health is central to a child’s development. That’s why we prioritise timely access to medical care for all children under our care and in the communities we serve. Our child healthcare programme covers routine check-ups, emergency medical treatment, immunisations, mental health support, and access to clean water and hygiene essentials.",
           text2:
-            "Our goal is to extend the reach of health care to children and families who are most exposed to diseases because of homeless. We also educate children and their families on how they can improve their quality of life and provide sanitary items and other relief materials needed to keep disease away.",
+            "The flagship of our healthcare initiative is Hands of Care—a medical outreach that brings essential healthcare services to children living in slums, underserved communities, and institutional facilities. By taking care of their health, we give children the strength they need to grow and learn.",
           imageSrc: ChildHealth,
           buttonText: "",
         },
-    ];
-    const data4 = [
-        {
-          imageSrc1: Line,
-          spanText: "Hunger Relief",
-          heading1:
-            "Providing scholarships and school sponsorships to ensure that every child has the opportunity to learn, grow, and thrive, regardless of their background.",
-          text1:
-            "We partner with compassionate individuals and organisations to ​administer scholarship programmes that meet our shared goal of ​empowering children with education from primary school to the ​university. We are committed to transforming lives by providing scholarships and school sponsorships to underprivileged children. We believe that every child deserves access to quality education, regardless of their financial background. Through this programs, we aim to break the cycle of poverty and create opportunities for a brighter future. ",
-          imageSrc: HungerRelief,
-          buttonText: "",
-        },
       ];
+    const data4 = [
+      {
+        imageSrc1: Line,
+        spanText: "Hunger Relief",
+        text1:
+          "No child should have to live or learn on an empty stomach. Our hunger relief efforts provide daily nutritious meals for children in our residential homes, education centres, and vulnerable communities. We also extend emergency food aid to families in crisis and under-resourced communities where hunger puts children’s education and health at risk.",
+        text2:
+          "To further support the education objective, we provide school feeding to ensure children in our learning centres and programme schools are nourished and better able to focus on their learning. This basic provision opens the door to learning, stability, and a chance at a better life.",
+        imageSrc: HungerRelief,
+        buttonText: "",
+      },
+    ];
+    const data5 = [
+      {
+        imageSrc1: Line,
+        spanText: "Shelter and Wellbeing",
+        text1:
+          "A stable home is the foundation of every child’s growth. We offer children rescued from the streets, under bridges, or in slums a loving home they can call their own. Our homes are designed as places where children live, learn and play – a nurturing environment where they feel safe, cared for, and free to dream. This ensures a stable and secure environment, enabling them to pursue education without disruption.",
+        text2:
+          "Our residential homes provide round-the-clock care, nutritious meals, and routines that support physical, emotional, and educational wellbeing. For children who cannot return to family, our homes become the home where they are loved and guided toward a better future ahead of a reintegration.",
+        imageSrc: HungerRelief,
+        buttonText: "",
+      },
+    ];
   return (
     <main>
-      <HeroSection
-        title="CARE"
-        description="Our mission is to enable every child to be the best he or she can be regardless of where he or she was born, and we have kept that promise for the past decade of our existence."
-        imagePath={CareHero}
-      />
+      <Head/>
       <section className="py-[4rem] bg-[#F9F9F9]">
         <FlexComponent
           data={data}
@@ -77,25 +81,16 @@ const page = () => {
         />
       </section>
       <section className=" my-[4rem]">
-        <FlexComponent
-          data={data2}
-          columnReversed={false}
-          buttonClassName=""
-        />
+        <FlexComponent data={data5} columnReversed={false} buttonClassName="" />
+      </section>
+      <section className=" my-[4rem]">
+        <FlexComponent data={data2} columnReversed={false} buttonClassName="" />
       </section>
       <section className=" mt-[4rem]">
-        <AltComponent
-          data={data3}
-          columnReversed={true}
-          buttonClassName=""
-        />
+        <AltComponent data={data3} columnReversed={true} buttonClassName="" />
       </section>
       <section className="py-[4rem] bg-[#F9F9F9]">
-        <FlexComponent
-          data={data4}
-          columnReversed={false}
-          buttonClassName=""
-        />
+        <FlexComponent data={data4} columnReversed={false} buttonClassName="" />
       </section>
     </main>
   );
