@@ -1,49 +1,49 @@
 import Container from "@/app/_component/shared";
 // import Image from "next/image";
 
-const boardMembers = [
-  {
-    name: "ABIMBOLA OJENIKE",
-    role: "Co-founder, Destiny Trust; Managing Partner, Slingstone LP.",
-  },
-  {
-    name: "IKEM ISIEKWENA",
-    role: "Co-founder, Destiny Trust; Managing Partner, SimmonsCooper; Ex-Director, NSIA.",
-  },
-  {
-    name: "KEMI OJENIKE",
-    role: "Co-founder, Destiny Trust; COO at Meristem Family Office.",
-  },
-  {
-    name: "ODODO OWODEHA-ASHAKA",
-    role: "Early Child Education Consultant; Proprietor, Adventure Schools.",
-  },
-  {
-    name: "FOLUKE IRUKERA",
-    role: "Early Child Education Consultant; Proprietor, Adventure Schools.",
-  },
-  {
-    name: "NGOZI KEN-UDOCHUKWU",
-    role: "Child development advocate; Founder, Olive Bloom Foundation.",
-  },
-];
+// const boardMembers = [
+//   {
+//     name: "ABIMBOLA OJENIKE",
+//     role: "Co-founder, Destiny Trust; Managing Partner, Slingstone LP.",
+//   },
+//   {
+//     name: "IKEM ISIEKWENA",
+//     role: "Co-founder, Destiny Trust; Managing Partner, SimmonsCooper; Ex-Director, NSIA.",
+//   },
+//   {
+//     name: "KEMI OJENIKE",
+//     role: "Co-founder, Destiny Trust; COO at Meristem Family Office.",
+//   },
+//   {
+//     name: "ODODO OWODEHA-ASHAKA",
+//     role: "Early Child Education Consultant; Proprietor, Adventure Schools.",
+//   },
+//   {
+//     name: "FOLUKE IRUKERA",
+//     role: "Early Child Education Consultant; Proprietor, Adventure Schools.",
+//   },
+//   {
+//     name: "NGOZI KEN-UDOCHUKWU",
+//     role: "Child development advocate; Founder, Olive Bloom Foundation.",
+//   },
+// ];
 
-const managementTeam = [
-  { name: "Oluwatosin Olaseinde", role: "Growth and Partnerships" },
-  { name: "Tejumade Adeyinka", role: "Technology and Skills Development" },
-  { name: "Daniel Amuda", role: "Administration/HR" },
-  { name: "Sandra Okwundu", role: "Technology and Skills Development" },
-  { name: "Jesulayomi Oyelami", role: "Education" },
-  { name: "Adegoke Adedoyin", role: "Governance" },
-  { name: "Ifeyinwa Obienu", role: "Strategy and Communication" },
-  { name: "Sanmi Abiodun", role: "Partnerships" },
-  { name: "Jumoke Muftau", role: "Care Programmes" },
-  { name: "Toyosi Abikoye", role: "Volunteering and Outreach" },
-  { name: "Temitope Akinterinwa", role: "" },
-  { name: "Oyindamola Fatusin", role: "Finance" },
-  { name: "Jesutofunmi Olabenjo", role: "Non-executive Member" },
-  { name: "Athina Jeje", role: "Chief Operating Officer" },
-];
+// const managementTeam = [
+//   { name: "Oluwatosin Olaseinde", role: "Growth and Partnerships" },
+//   { name: "Tejumade Adeyinka", role: "Technology and Skills Development" },
+//   { name: "Daniel Amuda", role: "Administration/HR" },
+//   { name: "Sandra Okwundu", role: "Technology and Skills Development" },
+//   { name: "Jesulayomi Oyelami", role: "Education" },
+//   { name: "Adegoke Adedoyin", role: "Governance" },
+//   { name: "Ifeyinwa Obienu", role: "Strategy and Communication" },
+//   { name: "Sanmi Abiodun", role: "Partnerships" },
+//   { name: "Jumoke Muftau", role: "Care Programmes" },
+//   { name: "Toyosi Abikoye", role: "Volunteering and Outreach" },
+//   { name: "Temitope Akinterinwa", role: "" },
+//   { name: "Oyindamola Fatusin", role: "Finance" },
+//   { name: "Jesutofunmi Olabenjo", role: "Non-executive Member" },
+//   { name: "Athina Jeje", role: "Chief Operating Officer" },
+// ];
 
 export default function AboutPage() {
   return (
@@ -137,7 +137,7 @@ export default function AboutPage() {
         </section>
 
         {/* Our People Section */}
-        <section>
+        {/* <section>
           <h2 className="text-2xl font-semibold mb-6 text-[#FFB400]">
             Our People
           </h2>
@@ -175,7 +175,7 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
     </Container>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "../../_component/atom/button"; // Adjust path as needed
+import Link from 'next/link';
 const reports = [
   {
     year: 2024,
@@ -40,9 +41,15 @@ const Head = () => {
             </p>
 
             <div className="flex flex-col gap-6 md:flex-row md:px-0 px-8">
-              <Button className="border border-[#FFB400] text-white duration-700 ease-in-out hover:bg-[#FFB400] hover:text-white px-8 py-2 transition-all">
+              {/* <Button className="border border-[#FFB400] text-white duration-700 ease-in-out hover:bg-[#FFB400] hover:text-white px-8 py-2 transition-all">
                 Get Involved
-              </Button>
+              </Button> */}
+              <Link 
+  href="/get-involve"
+  className="inline-block border border-[#FFB400] text-white duration-700 ease-in-out hover:bg-[#FFB400] hover:text-white px-8 py-2 transition-all text-center"
+>
+  Get Involved
+</Link>
               <Button className="border border-[#FFB400] text-white duration-700 ease-in-out hover:bg-[#FFB400] hover:text-white px-8 py-2 transition-all">
                 <a
                   href={reports[0].file}

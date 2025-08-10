@@ -14,7 +14,7 @@ import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Modal from '../../_component/ui/Modal';
 import ScholarshipModal from '../../_component/ui/ScholarshipModal';
-
+import ActionButtons from '@/app/_component/ui/Button';
 type ScholarshipData = {
   imgSrc: string | StaticImageData;
   heading: string;
@@ -201,43 +201,87 @@ const page = () => {
       imgSrc: Symbol,
       heading: "The Henry Ofili STEM ​Scholarship",
       text: "The Henry Ofili Scholarship ​empowers academically ​exceptional children and youths ​from disadvantaged ​backgrounds to pursue career ​excellence in STEM",
-      fullDescription: "The Henry Ofili STEM Scholarship is a comprehensive program designed to support academically exceptional students from disadvantaged backgrounds in pursuing STEM careers. This scholarship covers tuition, books, and living expenses while providing mentorship and career guidance.",
+      fullDescription:
+        "The Henry Ofili STEM Scholarship is a comprehensive program designed to support academically exceptional students from disadvantaged backgrounds in pursuing STEM careers. This scholarship covers tuition, books, and living expenses while providing mentorship and career guidance.",
       eligibility: [
         "Must be from a disadvantaged economic background",
         "Minimum GPA of 3.5 in STEM subjects",
         "Demonstrated interest in STEM career paths",
-        "Must be enrolled or accepted into a recognized institution"
+        "Must be enrolled or accepted into a recognized institution",
       ],
       benefits: [
         "Full tuition coverage",
         "Monthly stipend for living expenses",
         "Textbook and equipment allowance",
         "One-on-one mentorship program",
-        "Internship opportunities"
+        "Internship opportunities",
       ],
       applicationDeadline: "Applications close on March 31st, 2024",
-      contactEmail: "henry.ofili@scholarship.org",
-      website: "https://henryofili-scholarship.org"
+      contactEmail: "hello@destinytrust.org",
+      website: "https://ofilischolarship.destinytrust.org/",
     },
     {
       imgSrc: Symbol,
       heading: "Lolu Arr Scholarship",
       text: "The scholarship aims at providing ​education support to children ​within vulnerable groups as a ​means of ensuring their social ​and economic inclusion.",
-      fullDescription: "The Lolu Arr Scholarship focuses on providing comprehensive educational support to children from vulnerable communities. This program aims to break the cycle of poverty through education and ensure social and economic inclusion for marginalized groups.",
+      fullDescription:
+        "The Lolu Arr Scholarship focuses on providing comprehensive educational support to children from vulnerable communities. This program aims to break the cycle of poverty through education and ensure social and economic inclusion for marginalized groups.",
       eligibility: [
         "Must be from a vulnerable or marginalized community",
         "Demonstrated financial need",
         "Good academic standing",
-        "Age between 12-25 years"
+        "Age between 12-25 years",
       ],
       benefits: [
         "School fees coverage",
         "Educational materials",
         "Nutritional support",
-        "Counseling and guidance services"
+        "Counseling and guidance services",
       ],
       applicationDeadline: "Rolling admissions throughout the year",
-      contactEmail: "info@loluarr-scholarship.org"
+      contactEmail: "info@loluarr-scholarship.org",
+    },
+    {
+      imgSrc: Symbol,
+      heading: "GA Scholarship",
+      text: "The scholarship aims at providing ​education support to children ​within vulnerable groups as a ​means of ensuring their social ​and economic inclusion.",
+      fullDescription:
+        "The GA Scholarship focuses on providing comprehensive educational support to children from vulnerable communities. This program aims to break the cycle of poverty through education and ensure social and economic inclusion for marginalized groups.",
+      eligibility: [
+        "Must be from a vulnerable or marginalized community",
+        "Demonstrated financial need",
+        "Good academic standing",
+        "Age between 12-25 years",
+      ],
+      benefits: [
+        "School fees coverage",
+        "Educational materials",
+        "Nutritional support",
+        "Counseling and guidance services",
+      ],
+      applicationDeadline: "Rolling admissions throughout the year",
+      contactEmail: "info@ga-scholarship.org",
+    },
+    {
+      imgSrc: Symbol,
+      heading: "Subomi Plumptre Trust Scholarship",
+      text: "Subomi Plumptre Trust provides ​education opportunities for ​rehabilitated street children and ​orphans under residential care ​and supports them from primary ​school to the university.",
+      fullDescription:
+        "Subomi Plumptre Trust provides ​education opportunities for ​rehabilitated street children and ​orphans under residential care ​and supports them from primary ​school to the university.",
+      eligibility: [
+        "Must be from a vulnerable or marginalized community",
+        "Demonstrated financial need",
+        "Good academic standing",
+        "Age between 12-25 years",
+      ],
+      benefits: [
+        "School fees coverage",
+        "Educational materials",
+        "Nutritional support",
+        "Counseling and guidance services",
+      ],
+      applicationDeadline: "Rolling admissions throughout the year",
+      contactEmail: "subomiplumter-scholarship.org",
     },
     // Add more detailed scholarship data...
   ];
@@ -267,13 +311,8 @@ const page = () => {
                 ​university.
               </p>
             </div>
-            <div className="text-center md:text-right flex flex-col md:flex-row gap-4">
-              <button className="border-2 border-yellow text-white w-full md:w-[15rem] py-2 px-4">
-                Sponsor a Scholarship
-              </button>
-              <button className="bg-yellow text-black w-full md:w-[10rem] mt-4 md:mt-0 px-4 py-2 md:px-0 md:py-0">
-                Sponsor a Child
-              </button>
+            <div className="flex flex-col md:flex-row gap-4">
+              <ActionButtons />
             </div>
           </div>
         </Container>

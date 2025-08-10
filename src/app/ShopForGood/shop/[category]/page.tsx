@@ -4,7 +4,7 @@ import Link from "next/link";
 export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
   const awaitedParams = await params;
 

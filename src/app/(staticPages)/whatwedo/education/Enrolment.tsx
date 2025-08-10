@@ -8,7 +8,7 @@ import { FlexComponent } from '@/app/_component/atom/eduFlex';
 import { AltComponent } from '@/app/_component/atom/altFlex';
 import WhiteLine from "../../../../../public/assets/edu/whiteLine.png";
 import Scholar from "../../../../../public/assets/edu/scholar.png";
-import BoyWithTap from "../../../../../public/assets/edu/BoywithTap.png";
+import Leverage from "./Leverage"
 import EnrolmentImage from "../../../../../public/assets/edu/enrolment.jpg";
 // import { StaticImageData } from 'next/image';
 const Enrolment = () => {
@@ -51,21 +51,7 @@ const Enrolment = () => {
          buttonText: "Learn More",
        },
      ];
-     const data4 = [
-       {
-         imageSrc1: Line,
-         spanText: "Education Technology",
-         heading1: "OurSchool Africa",
-         text1:
-           "We embrace technology to democratise learning and reach even the most remote and underserved communities. Our digital learning initiative, OurSchool.africa, delivers quality learning resources to children who are out of school.",
-         text2:
-           "OurSchool.Africa is one digital school for out-of-school children, created to bring learning to children wherever they are. With pre recorded video lessons, animation, games, offline access, and AI support for personalised learning, we’re reaching children who are often forgotten those in slums, remote villages, and displacement camps.",
-         text3:
-           "We’re helping them learn in their own way, at their own pace, and in a language they understand. OurSchool is more than just a platform—it’s a chance for every child to catch up, keep up, and dream again.",
-         imageSrc: BoyWithTap,
-         buttonText: "",
-       },
-     ];
+ 
   return (
     <main className="py-[4rem] bg-[#F9F9F9]">
       <section className="my-[4rem] ">
@@ -83,20 +69,21 @@ const Enrolment = () => {
           buttonClassName=""
         />
       </section>
-      <section className="my-[4rem] bg-black py-[4rem] text-white">
+      <section className="mt-[4rem] bg-black py-[4rem] text-white">
         <FlexComponent
           data={data3}
           columnReversed={false}
           buttonClassName="bg-yellow py-2 px-4"
         />
       </section>
-      <section className="mt-[4rem]">
+      {/* <section className="mt-[4rem]">
         <FlexComponent
           data={data4}
           columnReversed={true}
           buttonClassName=""
         />
-      </section>
+      </section> */}
+      <Leverage />
     </main>
   );
 }

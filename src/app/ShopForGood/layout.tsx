@@ -3,7 +3,6 @@ import Head from "next/head";
 import Navbar from "@/app/_component/Navbar";
 import Footer from "@/app/_component/Footer";
 import Navigation from "./_components/Navigation";
-
 export const metadata: Metadata = {
   title: "The Destiny Trust Foundation",
   description: "The Destiny Trust Foundation",

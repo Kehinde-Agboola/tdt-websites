@@ -1,9 +1,10 @@
 'use client'
 import React from "react";
 import Container from "@/app/_component/shared";
-import { Button } from "@/app/_component/atom/button";
+// import { Button } from "@/app/_component/atom/button";
 // import Sponsor from "../../../../public/assets/home/sponsor.jpg";
 // import Image from "next/image";
+import ActionButtons from "./Button";
 import { motion } from "framer-motion";
 
 const Empower = () => {
@@ -66,12 +67,13 @@ const Empower = () => {
               className="flex flex-col md:flex-row gap-4 justify-center"
               variants={textItemVariants}
             >
-              <Button className="border-2 border-black w-full md:w-[238px] mx-auto md:py-2 py-4">
+              <ActionButtons/>
+              {/* <Button className="border-2 border-black w-full md:w-[238px] mx-auto md:py-2 py-4">
                 Sponsor a Scholarship
               </Button>
               <Button className="bg-black text-white w-full md:w-[187px] mx-auto md:py-2 py-4">
                 Sponsor a Child
-              </Button>
+              </Button> */}
             </motion.div>
           </motion.section>
         </Container>

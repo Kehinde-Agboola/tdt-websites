@@ -33,10 +33,10 @@ export const Nav: NavItem[] = [
     path: "/whoweare",
     dropdownItems: [
       { title: "About Us", path: "/whoweare/about-us" },
-      { title: "Our People", path: "/whoweare/ourteam" },
-      { title: "Blog", path: "/whoweare/blog" },
+      { title: "Board", path: "/whoweare/ourteam" },
       { title: "Impact Report & Financials", path: "/impact-report-financial" },
       { title: "FAQS", path: "/whoweare/faqs" },
+      { title: "Blog", path: "/whoweare/blog" },
     ],
   },
   {
@@ -96,7 +96,7 @@ export const Nav: NavItem[] = [
   },
   {
     title: "Our Projects",
-    path: "/projects",
+    path: "#",
     dropdownItems: [
       { title: "School Enrolment", path: "/projects/schoolenrolment" },
       { title: "Residential Care", path: "/projects/residentialcare" },
@@ -132,6 +132,8 @@ export const Nav: NavItem[] = [
         path: "#",
       },
       { title: "A4 Foundation Scholarship", path: "#" },
+      { title: "GA Scholarship", path: "#" },
+      { title: "Zolala Scholarship", path: "#" },
     ],
   },
   {
