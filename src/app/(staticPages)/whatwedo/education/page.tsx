@@ -5,9 +5,11 @@ import Container from "@/app/_component/shared";
 // import Hero from "../../../../../public/assets/edu/landing.png"
 import Teacher from "../../../../../public/assets/edu/teacher.png";
 // import Line from "../../../../public/assets/edu/Lineyellow.png";
+import BoyWithTap from "../../../../../public/assets/edu/BoywithTap.png";
 import Line from "../../../../../public/assets/edu/Lineyellow.png"
 import Cards from "./Cards";
 import Enrolment from "./Enrolment";
+import Empower from "@/app/_component/ui/Empower";
 // import { Card } from "@/components/ui/card";
 const Home: React.FC = () => {
      const data = [
@@ -22,7 +24,22 @@ const Home: React.FC = () => {
          imageSrc: Teacher,
          buttonText: "",
        },
-     ];
+  ];
+      const data4 = [
+         {
+           imageSrc1: Line,
+           spanText: "Education Technology",
+           heading1: "OurSchool Africa",
+           text1:
+             "We embrace technology to democratise learning and reach even the most remote and underserved communities. Our digital learning initiative, OurSchool.africa, delivers quality learning resources to children who are out of school.",
+           text2:
+             "OurSchool.Africa is one digital school for out-of-school children, created to bring learning to children wherever they are. With pre recorded video lessons, animation, games, offline access, and AI support for personalised learning, we’re reaching children who are often forgotten those in slums, remote villages, and displacement camps.",
+           text3:
+             "We’re helping them learn in their own way, at their own pace, and in a language they understand. OurSchool is more than just a platform—it’s a chance for every child to catch up, keep up, and dream again.",
+           imageSrc: BoyWithTap,
+           buttonText: "",
+         },
+       ];
      const support = [
        {
          imageSrc1: Line,
@@ -70,7 +87,10 @@ Education is at the heart of our mission to empower disadvantaged children. We b
       <section className="my-[4rem]">
         <FlexComponent data={data} columnReversed={true} buttonClassName="" />
       </section>
-      <Container>
+      <section className="my-[4rem]">
+        <FlexComponent data={data4} columnReversed={false} buttonClassName="" />
+      </section>
+      {/* <Container>
         <section className="bg-black bg-payment mb-[5rem]">
           <div className="py-8 px-8 flex flex-col md:flex-row justify-between items-center">
             <h2 className=" text-center text-2xl md:text-[40px] mb-4 text-white">
@@ -86,7 +106,8 @@ Education is at the heart of our mission to empower disadvantaged children. We b
             </div>
           </div>
         </section>
-      </Container>
+      </Container> */}
+      <Empower/>
       <Enrolment />
       <div className="mt-[2rem]">
         <Cards />
@@ -97,6 +118,9 @@ Education is at the heart of our mission to empower disadvantaged children. We b
       <section className="my-[4rem]">
         <FlexComponent data={literacy} columnReversed={true} buttonClassName="" />
       </section>
+      {/* <section className="my-[4rem]">
+        <FlexComponent data={literacy} columnReversed={true} buttonClassName="" />
+      </section> */}
     </main>
   );
 };

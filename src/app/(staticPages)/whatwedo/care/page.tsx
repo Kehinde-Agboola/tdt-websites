@@ -5,10 +5,11 @@ import { FlexComponent } from '@/app/_component/atom/eduFlex'
 import { AltComponent } from '@/app/_component/atom/altFlex'
 // import CareHero from "../../../../../public/assets/care/carehero.png"
 import Line from "../../../../../public/assets/edu/Lineyellow.png";
-import Rehab from "../../../../../public/assets/care/children.png";
+import Rehab from "../../../../../public/assets/care/rehab.jpg";
 import Nothing from "../../../../../public/assets/care/nothing.png";
 import ChildHealth from "../../../../../public/assets/care/eyecheck.png";
-import HungerRelief from "../../../../../public/assets/care/hunger.png";
+import Wellbeing from "../../../../../public/assets/care/wellbeing.jpg";
+import HungerRelief from "../../../../../public/assets/care/hunger.jpg";
 const page = () => {
       const data = [
         {
@@ -66,7 +67,8 @@ const page = () => {
           "A stable home is the foundation of every child’s growth. We offer children rescued from the streets, under bridges, or in slums a loving home they can call their own. Our homes are designed as places where children live, learn and play – a nurturing environment where they feel safe, cared for, and free to dream. This ensures a stable and secure environment, enabling them to pursue education without disruption.",
         text2:
           "Our residential homes provide round-the-clock care, nutritious meals, and routines that support physical, emotional, and educational wellbeing. For children who cannot return to family, our homes become the home where they are loved and guided toward a better future ahead of a reintegration.",
-        imageSrc: HungerRelief,
+       
+        imageSrc: Wellbeing,
         buttonText: "",
       },
     ];

@@ -6,7 +6,7 @@ import Future from "@/app/(staticPages)/_home/Future";
 import Impact from "@/app/(staticPages)/_home/Impact";
 import Report from "@/app/(staticPages)/_home/Report";
 import Numbers from "@/app/(staticPages)/_home/Numbers";
-import Empower from "@/app/(staticPages)/_home/Empower";
+import Empower from "@/app/_component/ui/Empower";
 import Community from "@/app/(staticPages)/_home/Community";
 import Blog from "@/app/(staticPages)/_home/Blog";
 import Features from "@/app/(staticPages)/_home/Features";

@@ -6,6 +6,7 @@ import { useState} from "react";
 import { Nav } from "@/app/constant/index";
 import logo from "../../../../public/assets/tdtlogo.png";
 import Link from "next/link";
+// import LoadingLink from "@/components/ui/LoadingLink";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -55,25 +56,7 @@ export default function Navbar() {
   };
 
   // Keyboard navigation
-  const handleKeyDown = (
-    e: React.KeyboardEvent,
-    idx: number,
-    hasDropdown: boolean
-  ) => {
-    if (
-      hasDropdown &&
-      (e.key === "Enter" ||
-        e.key === " " ||
-        e.key === "ArrowDown" ||
-        e.key === "ArrowRight")
-    ) {
-      setOpenDropdownIndex(idx);
-    }
-    if (e.key === "Escape") {
-      setOpenDropdownIndex(null);
-      setOpenSubMenuIndex(null);
-    }
-  };
+
 
   // Mobile handlers
   const handleMobileToggle = (idx: number) => {
@@ -112,10 +95,11 @@ export default function Navbar() {
                 className="text-white flex gap-2 items-center group-hover:text-[#FFB400] focus:outline-none"
                 aria-haspopup={!!item.dropdownItems}
                 aria-expanded={openDropdownIndex === index}
-                tabIndex={0}
-                onKeyDown={(e) => handleKeyDown(e, index, !!item.dropdownItems)}
+                tabIndex={0}  
               >
-                {item.title}
+                <Link href={item.path}>
+                  {item.title}
+                </Link>
                 {item.dropdownItems && (
                   <IoIosArrowDown
                     className={`transition-transform duration-300 ${
@@ -132,7 +116,7 @@ export default function Navbar() {
                   onMouseEnter={() => setOpenDropdownIndex(index)}
                   onMouseLeave={handleMouseLeave}
                   role="menu"
-                  style={{ backdropFilter: "blur(12px)" }} // fallback for older browsers
+                  style={{ backdropFilter: "blur(12px)" }} 
                 >
                   {item.dropdownItems.map((child, i) => (
                     <div
@@ -322,14 +306,3 @@ function MobileNav({
     </section>
   );
 }
-
-// Add this CSS for dropdown animation (can be in your global CSS or module)
-/*
-@keyframes dropdown {
-  0% { opacity: 0; transform: translateY(-10px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-.animate-dropdown {
-  animation: dropdown 0.3s ease;
-}
-*/
