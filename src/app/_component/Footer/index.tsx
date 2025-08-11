@@ -70,19 +70,19 @@ const Footer = () => {
               <h4 className="text-yellow font-semibold mb-4">Explore</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#">About Us</a>
+                  <a href="/whoweare">who we aew</a>
                 </li>
                 <li>
-                  <a href="/whowearem">who we are</a>
+                  <a href="/whatwedo">what we do</a>
                 </li>
                 <li>
-                  <a href="/blog">Blog</a>
-                </li>
-                <li>
-                  <a href="/projects/bridgelearning">Bridge Learning</a>
+                  <a href="/OurProject">Projects</a>
                 </li>
                 <li>
                   <a href="/scholarship">Scholarship</a>
+                </li>
+                <li>
+                  <a href="/ShopForGood">Shop for Good</a>
                 </li>
               </ul>
             </motion.div>
@@ -119,7 +119,7 @@ const Footer = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          &copy; 2024 The Destiny Trust. All Rights Reserved.
+          &copy; 2025 The Destiny Trust. All Rights Reserved.
           <p className="text-white text-center md:text-right">
             Developed by the Destiny Trust Children at
           </p>

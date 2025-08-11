@@ -109,6 +109,16 @@ input[type="checkbox"] {
 
 
 
+/* Loading Bar Animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(200%) skewX(-12deg); }
+}
+
+.shimmer-animation {
+  animation: shimmer 1.5s infinite;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -116,4 +126,44 @@ input[type="checkbox"] {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* Add this to your globals.css file */
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.animate-fall {
+  animation: fall 2s ease-out both;
+}
+
+.animate-fall-delay-1 {
+  animation: fall 2s ease-out 0.1s both;
+}
+
+.animate-fall-delay-2 {
+  animation: fall 2s ease-out 0.3s both;
+}
+
+.animate-fall-delay-3 {
+  animation: fall 2s ease-out 0.5s both;
+}
+
+.animate-fall-delay-4 {
+  animation: fall 2s ease-out 0.7s both;
+}
+
+.animate-fall-delay-5 {
+  animation: fall 2s ease-out 0.9s both;
 }

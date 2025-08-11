@@ -19,6 +19,7 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
     namedScholarship: "",
     scholarshipName: "",
     additionalInfo: "",
+    customDiscussion: "", // Added property
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -160,6 +161,30 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
               onChange={handleInputChange}
               className="w-full md:w-32 px-3 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
             />
+          </div>
+
+          {/* Custom Sponsorship Discussion */}
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Alternative Sponsorship Options
+            </label>
+            <div className="bg-gray-50 p-4 rounded-md">
+              <label className="flex items-start">
+                <input
+                  type="checkbox"
+                  name="customDiscussion"
+                  value="yes"
+                  checked={formData.customDiscussion === "yes"}
+                  onChange={handleInputChange}
+                  className="h-4 w-4 text-[#FFB400] focus:ring-[#FFB400] border-gray-300 mt-0.5"
+                />
+                <div className="ml-3">
+                  <span className="text-sm font-medium text-gray-900">
+                    I&apos;d prefer to discuss a sponsorship arrangements
+                  </span>
+                </div>
+              </label>
+            </div>
           </div>
 
           {/* Preferred Gender */}

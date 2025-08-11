@@ -88,7 +88,7 @@ const GetInvolvedPage = () => {
         <Container>
           <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 text-white">
             <div className="max-w-4xl">
-              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl xl:text-6xl mb-6 leading-tight">
                 Join us to Create a <span className="text-[#FFB400]">Better Future</span>
               </h1>
               <p className="text-lg md:text-xl mb-8 leading-relaxed max-w-3xl">

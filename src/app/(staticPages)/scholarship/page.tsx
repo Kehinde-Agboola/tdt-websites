@@ -15,6 +15,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Modal from '../../_component/ui/Modal';
 import ScholarshipModal from '../../_component/ui/ScholarshipModal';
 import ActionButtons from '@/app/_component/ui/Button';
+import Empower from '@/app/_component/ui/Empower';
 type ScholarshipData = {
   imgSrc: string | StaticImageData;
   heading: string;
@@ -290,7 +291,7 @@ const page = () => {
     <main>
       <section className="relative h-[86vh] w-full">
         <Image
-          src={ScholarshipHero} 
+          src={ScholarshipHero}
           alt="Our Team"
           fill
           className="object-cover object-center bg-no-repeat"
@@ -301,10 +302,11 @@ const page = () => {
           <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 text-white">
             <div className="">
               <h1 className="md:text-left text-4xl md:text-5xl xl:text-[64px] md:w-[40rem] leading-10">
-                Let&apos;s Invest In Our <span className="text-yellow">​Future</span>
-                 Together
+                Let&apos;s Invest In Our{" "}
+                <span className="text-yellow">​Future</span>
+                Together
               </h1>
-              <p className="mt-4 text-base md:text-lg md:text-left w-full md:w-[40rem] pt-4 pb-8">
+              <p className="mt-4 text-base md:text-lg md:text-left w-full md:w-[37rem] pt-4 pb-8">
                 We partner with compassionate individuals and organisations to
                 ​administer scholarship programmes that meet our shared goal of
                 ​empowering children with education from primary school to the
@@ -333,7 +335,10 @@ const page = () => {
         />
       </section>
       <section>
-       <Scholars/>
+        <Scholars />
+      </section>
+      <section className=''>
+        <Empower />
       </section>
     </main>
   );

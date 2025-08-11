@@ -39,5 +39,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# ShopForGood e-commerce folder
-src/app/ShopForGood/
+# ShopForGood e-commerce folder (temporarily disabled)
+# src/app/ShopForGood/
