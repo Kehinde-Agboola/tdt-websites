@@ -50,11 +50,11 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
         </p>
       )}
       
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 place-items-center gap-8">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
         {members.map((member, index) => (
           <motion.div
             key={index}
-            className="flex flex-col cursor-pointer"
+            className="flex flex-col cursor-pointer w-full max-w-[280px]"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -62,13 +62,15 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
             onClick={() => setSelectedMember(member)}
           >
             <div className="relative group">
-              <Image
-                src={member.image}
-                alt={member.name}
-                width={400}
-                height={297}
-                className="object-cover w-full h-[297px] rounded-lg transition-transform duration-300 group-hover:scale-105"
-              />
+              {/* Fixed container with consistent aspect ratio */}
+              <div className="relative w-full aspect-[4/5] overflow-hidden rounded-lg">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-lg flex items-center justify-center">
                 <span className="text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Read More
@@ -155,63 +157,19 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
                         </div> */}
                         <h3 className="text-2xl font-semibold text-gray-800">About</h3>
                       </div>
-                      <p className="text-gray-700 leading-relaxed text-base">
+                      <p className="text-gray-700 text-justify leading-relaxed text-base">
                         {selectedMember.description}
                       </p>
                     </div>
 
-                    {/* Role & Impact Section */}
-                    {/* <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-100">
-                      <div className="flex items-center mb-4">
-                        <div className="w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mr-3">
-                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <h4 className="text-xl font-semibold text-gray-800">Leadership & Impact</h4>
-                      </div>
-                      <p className="text-gray-700 leading-relaxed">
-                        As {selectedMember.role}, {selectedMember.name} plays a pivotal role in driving our organization&apos;s mission forward, ensuring we deliver transformative results for the communities we serve across Nigeria.
-                      </p>
-                    </div> */}
+               
 
-                    {/* Key Qualities */}
-                    {/* <div className="mt-6">
-                      <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                        <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-2">
-                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        Key Strengths
-                      </h4>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">Leadership</span>
-                        </div>
-                        <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">Innovation</span>
-                        </div>
-                        <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">Strategy</span>
-                        </div>
-                        <div className="bg-white rounded-lg p-3 border border-gray-200 shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">Community Focus</span>
-                        </div>
-                      </div>
-                    </div> */}
+                    
                   </div>
                 </div>
               </div>
 
-                {/* Contact Section */}
-                {/* <div className="mt-6 flex gap-4">
-                  <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300">
-                    Contact
-                  </button>
-              
-                </div> */}
-              {/* </div> */}
+               
             </motion.div>
           </motion.div>
         )}

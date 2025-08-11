@@ -2,7 +2,8 @@
 import Committed from "../../../public/assets/home/commited.png";
 import { IconType } from "react-icons";
 import { StaticImageData } from "next/image";
-import Abimbola from "../../../public/assets/team/Abimbola Ojenike.jpg";
+import Abimbola from "../../../public/assets/team/Abimbola.jpg";
+import oyinda from "../../../public/assets/team/oyinda.jpg"
 import Ododo from "../../../public/assets/team/Ododo Owodeha-Ashaka.jpg";
 import Olabenjo from "../../../public/assets/team/Tofunmi Olabenjo.jpg";
 import Teju from "../../../public/assets/team/Tejumade Adeyinka.jpg"
@@ -378,7 +379,6 @@ export const articles = [
 
 
   export const managementTeam = [
-
     // {
     //   name: "Sandra Okwundu",
     //   role: "Technology and Skills Development",
@@ -414,19 +414,20 @@ export const articles = [
         "Temitope is a creative professional with diverse experience in directing, producing, and acting within the entertainment industry. She is a member of the Director's Guild of Canada, Ontario District, and has served as Assistant Director on notable productions including the Canadian Screen Award-winning sitcom Children Ruin Everything (Season 4), Netflix's mini-series The Madness, and the Canadian crime comedy-drama Pretty Hard Cases (Season 3). Temitope is also the writer, producer, and director of the award-winning short film Ego, which explores conflict resolution, self-reflection, and relationship building. At The Destiny Trust, Temi is Co-lead, overseeing care services and residential programmes.",
       image: Terinwa,
     },
-    // {
-    //   name: "Oyindamola Fatusin",
-    //   role: "Finance",
-    //   description:
-    //     "Oyindamola Fatusin is a Chartered Accountant with experience in audit and accounting across diverse industries, including shipping, financial services, and technology. She works at Chapel Hill Denham and brings her expertise in financial management to her role overseeing financial control at The Destiny Trust. Oyindamola is committed to ensuring transparent and efficient stewardship of resources in support of the Trust's mission.",
-    //   image: "/assets/team/placeholder-female.jpg",
-    // },
+
     {
       name: "Jesutofunmi Olabenjo",
       role: "Legal Advisory",
       description:
         "Jesutofunmi is a Senior Associate Attorney at DGILaw (Farrell LLP, allied with Deloitte) with expertise in business immigration, oil and gas law, employment law, and corporate advisory. She holds an LLM in Corporate Law, Finance, and Governance from Harvard Law School and an LLB from Lagos State University, and is licensed to practice in Nigeria, New York, and Ontario. Passionate about mentoring young lawyers and supporting youth-focused causes, Jesutofunmi combines her legal career with active community service.",
       image: Olabenjo,
+    },
+    {
+      name: "Oyindamola Fatusin",
+      role: "Finance",
+      description:
+        "Oyindamola Fatusin is a Chartered Accountant with experience in audit and accounting across diverse industries, including shipping, financial services, and technology. She works at Chapel Hill Denham and brings her expertise in financial management to her role overseeing financial control at The Destiny Trust. Oyindamola is committed to ensuring transparent and efficient stewardship of resources in support of the Trust's mission.",
+      image: oyinda,
     },
     // {
     //   name: "Athina Jeje",
