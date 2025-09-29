@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Container from "../../_component/shared";
 
 const Report = () => {
-  // Define animation variants
+  // Animation variants for scroll-triggered effect
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -13,7 +13,6 @@ const Report = () => {
       transition: { duration: 0.8, staggerChildren: 0.3 },
     },
   };
-
   const childVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -25,12 +24,10 @@ const Report = () => {
         {/* Heading Animation */}
         <motion.h1
           className="text-yellow text-[32px] text-center md:text-left md:text-[40px] font-[500] my-8"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0, x: -100 },
-            visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-          }}
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: false, amount: 0.3 }}
         >
           Reporting Progress
         </motion.h1>
@@ -38,9 +35,10 @@ const Report = () => {
         {/* Content Animation */}
         <motion.div
           className="flex flex-col xl:flex-row items-center justify-between gap-[3rem]"
-          variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: false, amount: 0.3 }}
         >
           {/* Left Paragraph */}
           <motion.div

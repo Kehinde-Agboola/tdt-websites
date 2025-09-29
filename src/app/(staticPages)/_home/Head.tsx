@@ -1,65 +1,136 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-import { Button } from "../../_component/atom/button"; // Adjust path as needed
-import Link from 'next/link';
-const reports = [
-  {
-    year: 2024,
-    title: "2024 Mid-year Report",
-    file: "/../../../../../files/The Destiny Trust Mid-year Report 2024_.pdf",
-  }
-];
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+// Text fade-up variants
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay, duration: 0.8, ease: "easeOut" },
+  }),
+};
+
+// Zoom effect for background
+const zoomVariant = {
+  initial: { scale: 1 },
+  animate: {
+    scale: [1, 1.1, 1],
+    transition: { duration: 10, ease: "easeInOut", repeat: Infinity },
+  },
+};
+
 const Head = () => {
   return (
-    <main className="h-full">
-      <div className="bg-black h-[100vh] w-full relative">
-        {/* Background Image */}
-        <Image
-          src="/assets/heos.png"
-          alt="Background Image"
-          fill
-          style={{
-            objectFit: "cover",
-            objectPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-          priority
-          className="z-0"
-        />
+    <main>
+      <div className="relative h-screen w-full bg-black overflow-hidden">
+        {/* Desktop Background */}
+        <motion.div
+          className="absolute inset-0 hidden md:block"
+          variants={zoomVariant}
+          initial="initial"
+          animate="animate"
+        >
+          <Image
+            src="/assets/care/carem.png"
+            alt="Background desktop"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </motion.div>
 
-        <div className="flex text-center text-white absolute inset-0 items-center md:pl-[4rem] md:px-0 md:text-left pl-0 z-10">
-          <section className="-leading-16">
-            <div>
-              <h1 className="text-4xl leading-8 mb-4 md:text-6xl">CARE. </h1>
-              <p className="text-4xl font-semibold mb-4 md:text-6xl">
-                <span className="text-[#FFBC00]">EDUCATION.</span>
-              </p>
-              <h1 className="text-4xl mb-4 md:text-6xl">EMPOWERMENT.</h1>
-            </div>
-            <p className="text-[16px] mb-6">
+        {/* Mobile Background */}
+        <motion.div
+          className="absolute inset-0 block md:hidden"
+          variants={zoomVariant}
+          initial="initial"
+          animate="animate"
+        >
+          <Image
+            src="/assets/mobilebg.png"
+            alt="Background mobile"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </motion.div>
+
+        {/* Overlay Content */}
+        <div className="absolute inset-0 flex flex-col justify-end md:justify-center items-center text-center md:text-left md:items-start md:pl-[4rem] bottom-[120px] md:bottom-0 z-10 px-6">
+          <section className="space-y-4 text-white flex flex-col">
+            {/* CARE */}
+            <motion.h1
+              className="text-[2.4rem] md:text-[4.5rem] font-normal"
+              variants={fadeUpVariant}
+              custom={0}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              CARE.
+            </motion.h1>
+
+            {/* EDUCATION */}
+            <motion.h1
+              className="text-[2.4rem] md:text-[4.5rem] text-[#FFBC00] font-semibold"
+              variants={fadeUpVariant}
+              custom={0.3}
+              initial="hidden"
+              whileInView="visible"
+            >
+              EDUCATION.
+            </motion.h1>
+
+            {/* EMPOWERMENT */}
+            <motion.h1
+              className="text-[2.4rem] md:text-[4.5rem] font-normal"
+              variants={fadeUpVariant}
+              custom={0.6}
+              initial="hidden"
+              whileInView="visible"
+            >
+              EMPOWERMENT.
+            </motion.h1>
+
+            {/* Paragraph */}
+            <motion.p
+              className="text-sm md:text-[16px] leading-snug tracking-tight max-w-[70%] md:max-w-[480px] mx-auto md:mx-0"
+              variants={fadeUpVariant}
+              custom={0.9}
+              initial="hidden"
+              whileInView="visible"
+            >
               Empowering children to be their best, recreating our future.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col gap-6 md:flex-row md:px-0 px-8">
-              {/* <Button className="border border-[#FFB400] text-white duration-700 ease-in-out hover:bg-[#FFB400] hover:text-white px-8 py-2 transition-all">
+            {/* Buttons */}
+            <motion.div
+              className="flex flex-col items-center gap-4 md:flex-row md:gap-6 mt-6"
+              variants={fadeUpVariant}
+              custom={1.2}
+              initial="hidden"
+              whileInView="visible"
+            >
+              {/* Contact Us (outlined) */}
+              <Link
+                href="/contact"
+                className="border w-[160px] h-[46px] border-[#FFBC00] px-6 py-2 text-white text-center transition hover:bg-[#FFBC00]"
+              >
+                Contact Us
+              </Link>
+
+              {/* Get Involved (filled) */}
+              <Link
+                href="/get-involve"
+                className="bg-[#FFBC00] w-[160px] h-[46px] px-6 py-2 text-black text-center transition hover:bg-[#e0a800]"
+              >
                 Get Involved
-              </Button> */}
-              <Link 
-  href="/get-involve"
-  className="inline-block border border-[#FFB400] text-white duration-700 ease-in-out hover:bg-[#FFB400] hover:text-white px-8 py-2 transition-all text-center"
->
-  Get Involved
-</Link>
-              <Button className="border border-[#FFB400] text-white duration-700 ease-in-out hover:bg-[#FFB400] hover:text-white px-8 py-2 transition-all">
-                <a
-                  href={reports[0].file}
-                  download
-                  className=""
-                >
-                  Read 2024 Impact report
-                </a>
-              </Button>
-            </div>
+              </Link>
+            </motion.div>
           </section>
         </div>
       </div>

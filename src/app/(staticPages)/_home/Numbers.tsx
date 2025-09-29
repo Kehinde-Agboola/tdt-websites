@@ -130,7 +130,7 @@ const Numbers = () => {
               <p className="text-[#FFB400] text-[70px] font-[500]">
                 <CountUp
                   end={grid?.title}
-                  duration={2}
+                  duration={5}
                   startCount={isVisible} // Restart count-up when visible
                 />
               </p>

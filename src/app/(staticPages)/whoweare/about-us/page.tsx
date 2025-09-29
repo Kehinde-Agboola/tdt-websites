@@ -28,16 +28,8 @@ export default function AboutPage() {
         {/* Hero Content */}
         <div className="relative z-10 flex items-center h-full px-4">
           <div className="max-w-[100%] text-white md:max-w-6xl pl-[5rem]">
-            {/* <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-            >
-              About <span className="text-[#FFB400]">Us</span>
-            </motion.h1> */}
             <motion.blockquote
-              className="max-w-[55%] text-xl md:text-2xl leading-relaxed border-l-4 border-[#FFB400] pl-6 italic bg-black/30 py-4"
+              className="max-w-[55%] text-xl md:text-2xl leading-relaxed border-l-4 border-[#FFB400] pl-6 italic"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}

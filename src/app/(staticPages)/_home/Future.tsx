@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Container from "../../_component/shared";
 
 const Future = () => {
-  const videoId = "OvQCekfyP6c"; 
+  const videoId = "twGwloF3Zag"; 
   const videoRef = useRef<HTMLIFrameElement>(null); 
   const [isVisible, setIsVisible] = useState(false); 
 
@@ -50,7 +50,7 @@ const Future = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <p className="pb-10 w-full md:w-[90%] ml-auto text-right text-[25px] md:text-[34px] xl:text-[64px] font-400 leading-[3.5rem]">
+          <p className="pb-0 md:pb-10 w-full md:w-[90%] ml-auto text-right text-[25px] md:text-[34px] xl:text-[64px] font-400 leading-[2rem] md:leading-[3.5rem]">
             A future where more children prosper because we care.
           </p>
         </motion.div>

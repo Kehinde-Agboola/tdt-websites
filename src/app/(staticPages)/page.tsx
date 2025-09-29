@@ -2,7 +2,7 @@ import Head from "@/app/(staticPages)/_home/Head";
 import Payment from "@/app/(staticPages)/_home/Payment";
 import Enable from "@/app/(staticPages)/_home/Enable";
 import Initaitive from "@/app/(staticPages)/_home/Initaitive";
-import Future from "@/app/(staticPages)/_home/Future";
+// import Future from "@/app/(staticPages)/_home/Future";
 import Impact from "@/app/(staticPages)/_home/Impact";
 import Report from "@/app/(staticPages)/_home/Report";
 import Numbers from "@/app/(staticPages)/_home/Numbers";
@@ -18,7 +18,7 @@ const page = () => {
       <Payment />
       <Enable />
       <Initaitive />
-      <Future />
+      {/* <Future /> */}
       <Impact />
       <Report />
       <Numbers />

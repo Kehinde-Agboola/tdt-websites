@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Hero from "../../../../../public/assets/edu/landing.png";
+import Hero from "../../../../../public/assets/heos.png";
+// /assets/ehos.png;
 const Head = () => {
   return (
     <main className="h-full">
@@ -20,7 +21,7 @@ const Head = () => {
         />
 
         <div className="flex text-center text-white absolute inset-0 items-center md:pl-[4rem] md:px-0 md:text-left pl-0 z-10">
-          <section className="-leading-14">
+          <section className="-leading-10">
             <div className="md:max-w-[50%]">
               <h1 className="text-4xl leading-8 mb-4 md:text-6xl">
                 Transforming Lives With
