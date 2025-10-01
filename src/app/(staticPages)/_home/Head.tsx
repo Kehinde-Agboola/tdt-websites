@@ -60,11 +60,11 @@ const Head = () => {
         </motion.div>
 
         {/* Overlay Content */}
-        <div className="absolute inset-0 flex flex-col justify-end md:justify-center items-center text-center md:text-left md:items-start md:pl-[4rem] bottom-[120px] md:bottom-0 z-10 px-6">
-          <section className="space-y-4 text-white flex flex-col">
+        <div className="absolute inset-0 flex flex-col justify-end md:justify-center items-center text-center md:text-left md:items-start md:pl-[4rem] bottom-[40px] md:bottom-0 z-10 px-6">
+          <section className="text-white flex flex-col items-center md:items-start">
             {/* CARE */}
             <motion.h1
-              className="text-[2.4rem] md:text-[4.5rem] font-normal"
+              className="text-4xl md:text-6xl leading-tight"
               variants={fadeUpVariant}
               custom={0}
               initial="hidden"
@@ -76,7 +76,7 @@ const Head = () => {
 
             {/* EDUCATION */}
             <motion.h1
-              className="text-[2.4rem] md:text-[4.5rem] text-[#FFBC00] font-semibold"
+              className="text-4xl md:text-6xl text-[#FFBC00] font-semibold"
               variants={fadeUpVariant}
               custom={0.3}
               initial="hidden"
@@ -87,7 +87,7 @@ const Head = () => {
 
             {/* EMPOWERMENT */}
             <motion.h1
-              className="text-[2.4rem] md:text-[4.5rem] font-normal"
+              className="text-4xl md:text-6xl leading-tight mb-2"
               variants={fadeUpVariant}
               custom={0.6}
               initial="hidden"
@@ -139,3 +139,5 @@ const Head = () => {
 };
 
 export default Head;
+
+

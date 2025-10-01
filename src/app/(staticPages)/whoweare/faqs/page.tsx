@@ -69,7 +69,7 @@ const page = () => {
             {FAQuestions?.map((d, i) => (
               <motion.div
                 key={i}
-                className="py-6 px-10 border-y border-[#E8E8E8]"
+                className="py-6 px-2 border-y border-[#E8E8E8]"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: i * 0.1 }}

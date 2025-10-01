@@ -37,7 +37,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
   };
 
   return (
-    <section className="py-8 px-4 max-w-7xl mx-auto">
+    <section className="py-8 px-2 max-w-7xl mx-auto">
       {title && (
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
           {title}
@@ -50,7 +50,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
         </p>
       )}
       
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+      <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
         {members.map((member, index) => (
           <motion.div
             key={index}
@@ -106,7 +106,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
             
             {/* Modal Content */}
             <motion.div
-              className="relative bg-white rounded-2xl max-w-5xl w-full max-h-[95vh] overflow-y-auto shadow-2xl mx-4"
+              className="relative bg-white rounded-2xl max-w-5xl w-[95%] md:w-full max-h-[95vh] overflow-y-auto shadow-2xl mx-2 md:mx-4"
               variants={modalVariants}
               onClick={(e) => e.stopPropagation()}
             >
@@ -121,13 +121,13 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
               </button>
 
               {/* Modal Content - Side by Side Layout */}
-              <div className="p-8">
-                <div className="grid md:grid-cols-5 gap-8 items-start">
+              <div className="p-4 md:p-8">
+                <div className="grid md:grid-cols-5 gap-6 md:gap-8 items-start">
                   {/* Left Side - Profile Image */}
                   <div className="md:col-span-2">
                     <div className="relative">
                       {/* Profile Image with Better Aspect Ratio */}
-                      <div className="relative w-full aspect-[3/4] max-w-sm mx-auto">
+                      <div className="relative w-full aspect-[3/4] max-w-xs md:max-w-sm mx-auto">
                         <Image
                           src={selectedMember.image}
                           alt={selectedMember.name}
@@ -138,26 +138,26 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
                       </div>
                       
                       {/* Name and Role Card Overlay */}
-                      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-xl px-6 py-4 border border-gray-100">
-                        <h2 className="text-xl font-bold text-gray-800 text-center">{selectedMember.name}</h2>
-                        <p className="text-yellow-600 font-medium text-center text-sm mt-1">{selectedMember.role}</p>
+                      <div className="absolute -bottom-4 md:-bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-xl px-4 md:px-6 py-3 md:py-4 border border-gray-100 w-[90%] max-w-xs">
+                        <h2 className="text-lg md:text-xl font-bold text-gray-800 text-center">{selectedMember.name}</h2>
+                        <p className="text-yellow-600 font-medium text-center text-xs md:text-sm mt-1">{selectedMember.role}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Right Side - Content */}
-                  <div className="md:col-span-3 mt-8 md:mt-0">
+                  <div className="md:col-span-3 mt-12 md:mt-0 px-2 md:px-0">
                     {/* About Section */}
-                    <div className="mb-8">
+                    <div className="mb-6 md:mb-8">
                       <div className="flex items-center mb-4">
                         {/* <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
                           <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                           </svg>
                         </div> */}
-                        <h3 className="text-2xl font-semibold text-gray-800">About</h3>
+                        <h3 className="text-xl md:text-2xl font-semibold text-gray-800">About</h3>
                       </div>
-                      <p className="text-gray-700 text-justify leading-relaxed text-base">
+                      <p className="text-gray-700 text-justify leading-relaxed text-sm md:text-base">
                         {selectedMember.description}
                       </p>
                     </div>
