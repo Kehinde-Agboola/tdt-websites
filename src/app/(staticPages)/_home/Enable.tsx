@@ -6,6 +6,8 @@ import { Button } from "../../_component/atom/button";
 import Container from "../../_component/shared";
 import { motion, useAnimation, useInView } from "framer-motion";
 import Committed from "../../../../public/assets/home/commited.png";
+// import DonationModal from "@/app/_component/ui/DonationModal";
+// import { useModal } from "@/app/_component/ui/useModal";
 
 // Animation variants
 const variants = {
@@ -79,7 +81,7 @@ const Enable: React.FC = () => {
           className="w-full lg:w-1/2 text-justify"
         >
           <div className="pb-6">
-            <span className="text-black text-[1.6rem] md:text-[2rem] leading-[2rem] md:leading-[3rem]">
+            <span className="text-black text-[1.6rem] md:text-[2rem] leading-[2rem] md:leading-[2.5rem]">
               We are committed to
               <span className="text-[#ffb400]"> one cause: </span>
               enabling every child to be the best he or she can be regardless of
@@ -87,7 +89,7 @@ const Enable: React.FC = () => {
             </span>
           </div>
           <p className="pb-3 text-black">
-            At The Destiny Trust, we are all about the wellbeing, education and
+            At <span className="font-bold">The Destiny Trust</span>, we are all about the wellbeing, education and
             empowerment of homeless children and other classes of young people
             in disadvantaged circumstances. We give children at-risk a new
             start, nurture them and hold their hands into the future through our
@@ -100,7 +102,7 @@ const Enable: React.FC = () => {
             className="flex flex-col lg:flex-row gap-4 pt-4"
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <Button className="bg-[#ffb400] hover:bg-[#e6a200] text-black w-full sm:w-40 py-2.5  transition-colors duration-200">
+              <Button className="bg-[#ffb400] hover:bg-[#e6a200] text-black w-full sm:w-40 py-4  transition-colors duration-200">
                 Join Us
               </Button>
             </motion.div>
@@ -113,7 +115,7 @@ const Enable: React.FC = () => {
             >
               <Button
                 type="button"
-                className="bg-black hover:bg-gray-800 text-white w-full sm:w-44 py-2.5 border-2 border-black hover:border-gray-800  transition-colors duration-200"
+                className="bg-black hover:bg-gray-800 text-white w-full sm:w-44 py-4 border-2 border-black hover:border-gray-800  transition-colors duration-200"
               >
                 Donate
               </Button>

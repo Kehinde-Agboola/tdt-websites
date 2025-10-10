@@ -118,7 +118,7 @@ const Head = () => {
               {/* Contact Us (outlined) */}
               <Link
                 href="/contact"
-                className="border w-[160px] h-[46px] border-[#FFBC00] px-6 py-2 text-white text-center transition hover:bg-[#FFBC00]"
+                className="border w-[250px] md:w-[160px] h-[50px] border-[#FFBC00] px-6 py-2 text-white text-center transition hover:bg-[#FFBC00]"
               >
                 Contact Us
               </Link>
@@ -126,7 +126,7 @@ const Head = () => {
               {/* Get Involved (filled) */}
               <Link
                 href="/get-involve"
-                className="bg-[#FFBC00] w-[160px] h-[46px] px-6 py-2 text-black text-center transition hover:bg-[#e0a800]"
+                className="bg-[#FFBC00] w-[250px] md:w-[160px] h-[50px] px-6 py-2 text-black text-center transition hover:bg-[#e0a80"
               >
                 Get Involved
               </Link>

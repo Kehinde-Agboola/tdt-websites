@@ -2,10 +2,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState} from "react";
+import { useState, useEffect} from "react";
 import { Nav } from "@/app/constant/index";
 import logo from "../../../../public/assets/tdtlogo.png";
-import Link from "next/link";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -13,6 +12,8 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { motion, AnimatePresence } from "framer-motion";
 // import { IconType } from "react-icons";
 import clsx from "clsx";
+import { useLoading } from "@/contexts/LoadingContext";
+import { useRouter, usePathname } from "next/navigation";
 
 
 export default function Navbar() {
@@ -22,6 +23,21 @@ export default function Navbar() {
     null
   );
   const [openSubMenuIndex, setOpenSubMenuIndex] = useState<number | null>(null);
+  
+  // Basic loading and navigation
+  const { startLoading, stopLoading } = useLoading();
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  // Auto-stop loading when route changes
+  useEffect(() => {
+    // Stop loading when pathname changes (navigation complete)
+    const timer = setTimeout(() => {
+      stopLoading();
+    }, 100); // Small delay to ensure page has loaded
+    
+    return () => clearTimeout(timer);
+  }, [pathname, stopLoading]);
 
   // Mobile state
   const [mobileOpenMenus, setMobileOpenMenus] = useState<{
@@ -30,6 +46,18 @@ export default function Navbar() {
   const [mobileOpenSubMenus, setMobileOpenSubMenus] = useState<{
     [k: string]: boolean;
   }>({});
+
+  // Navigation handler with loading
+  const handleNavigation = (href: string, label?: string) => {
+    if (href === window.location.pathname) return; // Don't load if same page
+    
+    startLoading(label || "Loading page...");
+    
+    // Small delay to show loading started, then navigate
+    setTimeout(() => {
+      router.push(href);
+    }, 100);
+  };
 
   // Desktop handlers
   let hideTimeout: NodeJS.Timeout;
@@ -61,13 +89,13 @@ export default function Navbar() {
   const amount = 1000;
 
   return (
-    <section className="bg-black shadow-md sticky top-0 z-50">
+    <section className="bg-black  sticky top-0 z-50">
       <nav className="flex justify-between text-[12px] w-full max-w-6xl md:px-0 mx-auto px-4 py-5">
         {/* Logo */}
         <div ref={animationParent} className="flex gap-10 items-center">
-          <Link href="/">
+          <button onClick={() => handleNavigation("/", "Loading home page...")}>
             <Image src={logo} alt="logo" width={150} height={50} />
-          </Link>
+          </button>
         </div>
 
         {/* Desktop Nav */}
@@ -84,11 +112,12 @@ export default function Navbar() {
                 className="text-white flex gap-2 items-center group-hover:text-[#FFB400] focus:outline-none"
                 aria-haspopup={!!item.dropdownItems}
                 aria-expanded={openDropdownIndex === index}
-                tabIndex={0}  
+                tabIndex={0}
+                onClick={() => !item.dropdownItems && handleNavigation(item.path, `Loading ${item.title}...`)}
               >
-                <Link href={item.path}>
+                <span className="cursor-pointer">
                   {item.title}
-                </Link>
+                </span>
                 {item.dropdownItems && (
                   <IoIosArrowDown
                     className={`transition-transform duration-300 ${
@@ -114,10 +143,10 @@ export default function Navbar() {
                       onMouseEnter={() => setOpenSubMenuIndex(i)}
                       onMouseLeave={() => setOpenSubMenuIndex(null)}
                     >
-                      <Link
-                        href={child.path}
+                      <button
+                        onClick={() => !child.subItems && handleNavigation(child.path, `Loading ${child.title}...`)}
                         className={clsx(
-                          "flex items-center justify-between px-4 py-2 text-white hover:text-[#FFB400]",
+                          "flex items-center justify-between px-4 py-2 text-white hover:text-[#FFB400] w-full text-left",
                           child.subItems && "pr-8"
                         )}
                         tabIndex={0}
@@ -127,7 +156,7 @@ export default function Navbar() {
                         {child.subItems && (
                           <IoIosArrowForward className="ml-2 text-[#FFB400]" />
                         )}
-                      </Link>
+                      </button>
                       {/* Second-level submenu (side) */}
                       {child.subItems && openSubMenuIndex === i && (
                         <div
@@ -136,15 +165,15 @@ export default function Navbar() {
                           style={{ backdropFilter: "blur(12px)" }}
                         >
                           {child.subItems.map((sub, j) => (
-                            <Link
+                            <button
                               key={j}
-                              href={sub.path}
-                              className="block px-4 py-2 text-white hover:text-[#FFB400]"
+                              onClick={() => handleNavigation(sub.path, `Loading ${sub.title}...`)}
+                              className="block px-4 py-2 text-white hover:text-[#FFB400] w-full text-left"
                               tabIndex={0}
                               role="menuitem"
                             >
                               {sub.title}
-                            </Link>
+                            </button>
                           ))}
                         </div>
                       )}
@@ -185,6 +214,7 @@ export default function Navbar() {
             handleMobileToggle={handleMobileToggle}
             mobileOpenSubMenus={mobileOpenSubMenus}
             handleMobileSubToggle={handleMobileSubToggle}
+            handleNavigation={handleNavigation}
           />
         )}
       </AnimatePresence>
@@ -198,12 +228,14 @@ function MobileNav({
   handleMobileToggle,
   mobileOpenSubMenus,
   handleMobileSubToggle,
+  handleNavigation,
 }: {
   closeSideMenu: () => void;
   mobileOpenMenus: { [k: number]: boolean };
   handleMobileToggle: (idx: number) => void;
   mobileOpenSubMenus: { [k: string]: boolean };
   handleMobileSubToggle: (parentIdx: number, subIdx: number) => void;
+  handleNavigation: (href: string, label?: string) => void;
 }) {
   return (
     <motion.section
@@ -247,13 +279,15 @@ function MobileNav({
             >
               {/* Main nav item */}
               {!item.dropdownItems ? (
-                <Link
-                  href={item.path}
-                  className="flex text-white cursor-pointer gap-2 items-center justify-between py-2 hover:text-[#FFB400] transition-colors"
-                  onClick={closeSideMenu}
+                <button
+                  onClick={() => {
+                    handleNavigation(item.path, `Loading ${item.title}...`);
+                    closeSideMenu();
+                  }}
+                  className="flex text-white cursor-pointer gap-2 items-center justify-between py-2 hover:text-[#FFB400] transition-colors w-full text-left"
                 >
                   <span>{item.title}</span>
-                </Link>
+                </button>
               ) : (
                 <div
                   className="flex text-white cursor-pointer gap-2 items-center justify-between py-2 hover:text-[#FFB400] transition-colors"
@@ -287,13 +321,15 @@ function MobileNav({
                         className="mb-2"
                       >
                         {!child.subItems ? (
-                          <Link
-                            href={child.path}
-                            className="block text-[#FFB400] hover:text-white py-2 transition-colors"
-                            onClick={closeSideMenu}
+                          <button
+                            onClick={() => {
+                              handleNavigation(child.path, `Loading ${child.title}...`);
+                              closeSideMenu();
+                            }}
+                            className="block text-[#FFB400] hover:text-white py-2 transition-colors w-full text-left"
                           >
                             {child.title}
-                          </Link>
+                          </button>
                         ) : (
                           <>
                             <div
@@ -326,13 +362,15 @@ function MobileNav({
                                       animate={{ opacity: 1, x: 0 }}
                                       transition={{ delay: j * 0.05, duration: 0.2 }}
                                     >
-                                      <Link
-                                        href={sub.path}
-                                        className="block text-white hover:text-[#FFB400] py-1 transition-colors"
-                                        onClick={closeSideMenu}
+                                      <button
+                                        onClick={() => {
+                                          handleNavigation(sub.path, `Loading ${sub.title}...`);
+                                          closeSideMenu();
+                                        }}
+                                        className="block text-white hover:text-[#FFB400] py-1 transition-colors w-full text-left"
                                       >
                                         {sub.title}
-                                      </Link>
+                                      </button>
                                     </motion.div>
                                   ))}
                                 </motion.div>

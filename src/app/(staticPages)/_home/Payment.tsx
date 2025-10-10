@@ -82,13 +82,13 @@ const Payment: React.FC = () => {
   };
 
   return (
-    <main>
+    <main className="mx-6 md:mx-0">
       <motion.section
         ref={ref}
         initial="hidden"
         animate={controls}
-        variants={variants.container}
-        className="relative max-w-6xl mx-auto bg-[#FFB400] text-center p-6 md:p-8 xl:pt-10 overflow-hidden md:bottom-[5rem] bottom-0"
+        variants={variants.container} 
+        className="relative max-w-6xl mx-auto bg-[#FFB400] text-center p-6 md:p-8 xl:pt-10 overflow-hidden md:bottom-[5rem] bottom-0 "
       >
         {/* Background Zoom Animation */}
         <motion.div

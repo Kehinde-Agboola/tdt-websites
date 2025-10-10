@@ -7,7 +7,9 @@ import CommunityMobile from "../../../../public/assets/home/community-mobile.png
 import Container from "@/app/_component/shared";
 import { Button } from "@/app/_component/atom/button";
 
+
 const Community = () => {
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -68,7 +70,10 @@ const Community = () => {
                 community donating to give hope to children.
               </motion.p>
               <motion.div variants={itemVariants}>
-                <Button className="mt-4 bg-[#FFB400] text-black w-[224px] mx-auto py-2">
+                <Button 
+                  className="mt-4 bg-[#FFB400] text-black w-[224px] mx-auto py-2"
+                 
+                >
                   Become a Volunteer
                 </Button>
               </motion.div>
@@ -76,6 +81,8 @@ const Community = () => {
           </Container>
         </section>
       </section>
+
+
     </main>
   );
 };

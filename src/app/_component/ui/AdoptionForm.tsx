@@ -228,11 +228,8 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
             >
               <option value="">Select a location</option>
               <option value="Lagos">Lagos</option>
-              <option value="Abuja">Abuja</option>
+              <option value="Ibadan">Ibadan</option>
               <option value="Oyo">Oyo</option>
-              <option value="Rivers">Rivers</option>
-              <option value="Borno">Borno</option>
-              <option value="Kano">Kano</option>
               <option value="Other">Other</option>
               <option value="No Preference">No Preference</option>
             </select>

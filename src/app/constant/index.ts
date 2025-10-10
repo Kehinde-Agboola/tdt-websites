@@ -281,35 +281,102 @@ export const recentPosts = [
 
 export const articles = [
   {
+    id: 1,
     title: "1,000 children benefit as NGO embarks on back-to-school outreach",
     author: "Samuel Adeshina",
     date: "September 12, 2024",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      "The Destiny Trust NGO has successfully reached over 1,000 children in their latest back-to-school outreach program, providing essential educational materials and support to vulnerable communities.",
+    content: `
+      <p>The Destiny Trust NGO has made a significant impact in the lives of over 1,000 children through their comprehensive back-to-school outreach program launched in September 2024.</p>
+      
+      <p>This initiative focused on providing essential educational materials including school bags, notebooks, writing materials, and uniforms to children from underserved communities across Lagos State.</p>
+      
+      <p>"Education is the foundation for breaking the cycle of poverty," said the program coordinator. "By removing barriers to education, we're investing in the future of these children and their communities."</p>
+      
+      <p>The outreach program also included:</p>
+      <ul>
+        <li>Health screenings and basic medical care</li>
+        <li>Nutritional support programs</li>
+        <li>Mentorship and counseling services</li>
+        <li>Parent and guardian education workshops</li>
+      </ul>
+      
+      <p>The success of this program demonstrates the power of community partnership and the commitment of The Destiny Trust to creating lasting change in the lives of vulnerable children.</p>
+    `,
     imgSrc: Latest,
   },
   {
-    title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-    author: "Samuel Adeshina",
-    date: "September 12, 2024",
+    id: 2,
+    title: "Empowering Communities Through Educational Support Programs",
+    author: "Sarah Johnson",
+    date: "August 28, 2024",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      "Our latest educational support programs have reached new heights, providing comprehensive learning opportunities and resources to children in need across multiple communities.",
+    content: `
+      <p>The Destiny Trust continues to expand its educational support programs, reaching children who would otherwise be left behind by traditional educational systems.</p>
+      
+      <p>Our comprehensive approach includes not just academic support, but also life skills training, vocational education opportunities, and emotional wellness programs.</p>
+      
+      <p>Key achievements include:</p>
+      <ul>
+        <li>Establishment of 5 new learning centers</li>
+        <li>Training of 50+ volunteer educators</li>
+        <li>Implementation of digital literacy programs</li>
+        <li>Creation of scholarship opportunities for outstanding students</li>
+      </ul>
+      
+      <p>These programs are designed to create sustainable change, empowering not just individual children but entire communities.</p>
+    `,
     imgSrc: Latest,
   },
   {
-    title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-    author: "Samuel Adeshina",
-    date: "September 12, 2024",
+    id: 3,
+    title: "Building Sustainable Futures Through Community Partnership",
+    author: "Michael Chen",
+    date: "August 15, 2024",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      "Discover how community partnerships are creating lasting change and building sustainable futures for vulnerable children and their families.",
+    content: `
+      <p>Community partnership lies at the heart of everything we do at The Destiny Trust. We believe that sustainable change can only happen when communities are actively involved in the solution.</p>
+      
+      <p>Our partnership model involves:</p>
+      <ul>
+        <li>Local community leaders as program ambassadors</li>
+        <li>Parent and guardian involvement in decision-making</li>
+        <li>Youth-led initiatives and peer mentoring</li>
+        <li>Collaboration with local businesses and organizations</li>
+      </ul>
+      
+      <p>Through these partnerships, we've been able to create programs that are not only effective but also culturally relevant and sustainable long-term.</p>
+      
+      <p>The impact of this approach is evident in the success stories of children who have gone on to become community leaders themselves, creating a positive cycle of change.</p>
+    `,
     imgSrc: Latest,
   },
   {
-    title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-    author: "Samuel Adeshina",
-    date: "September 12, 2024",
+    id: 4,
+    title: "Healthcare Access: A Critical Component of Child Development",
+    author: "Dr. Amara Okafor",
+    date: "July 30, 2024",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      "Exploring the vital role of healthcare access in child development and how The Destiny Trust is addressing healthcare gaps in underserved communities.",
+    content: `
+      <p>Access to quality healthcare is fundamental to a child's ability to learn, grow, and thrive. At The Destiny Trust, we recognize that educational support must be coupled with comprehensive healthcare services.</p>
+      
+      <p>Our healthcare initiatives include:</p>
+      <ul>
+        <li>Regular health screenings and check-ups</li>
+        <li>Vaccination programs</li>
+        <li>Nutritional support and feeding programs</li>
+        <li>Mental health and counseling services</li>
+        <li>Health education for families</li>
+      </ul>
+      
+      <p>By addressing health barriers, we ensure that children can fully participate in educational programs and reach their maximum potential.</p>
+      
+      <p>The integration of healthcare and education services has resulted in improved school attendance, better academic performance, and overall enhanced quality of life for the children we serve.</p>
+    `,
     imgSrc: Latest,
   },
 ]
