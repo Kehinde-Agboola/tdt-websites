@@ -7,6 +7,7 @@ import { VolunteerFormData } from "./types/modalTypes";
 import { validateVolunteerForm } from "./modalUtils";
 import { useFormModal } from "./useModal";
 
+
 const initialFormData: VolunteerFormData = {
   fullName: "",
   email: "",
@@ -21,15 +22,19 @@ const VolunteerForm: React.FC = () => {
     errors,
     submitMessage,
     handleInputChange,
-    submitForm: handleSubmit,
+    submitForm,
     isFormValid,
   } = useFormModal(
     initialFormData,
     validateVolunteerForm,
-    async () => {
-      // Simulate API call - replace with actual API endpoint
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      return { success: true, message: "Thank you for your interest in volunteering!" };
+    // Simulate successful submit for now; replace with real implementation later
+    async (_data: VolunteerFormData) => {
+      try {
+        await new Promise((res) => setTimeout(res, 800));
+        return { success: true, message: "Thank you for signing up as a volunteer!" };
+      } catch (err) {
+        return { success: false, message: "Submission failed. Please try again." };
+      }
     }
   );
 
@@ -52,9 +57,7 @@ const VolunteerForm: React.FC = () => {
           <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
             <FiUser className="w-8 h-8 text-green-600" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">
-            Thank You!
-          </h3>
+          <h3 className="text-xl font-semibold text-gray-800 mb-2">Thank You!</h3>
           <p className="text-gray-600 mb-6">{submitMessage}</p>
           <div className="w-full bg-gray-200 rounded-full h-2 mb-4 max-w-xs mx-auto">
             <motion.div
@@ -69,7 +72,7 @@ const VolunteerForm: React.FC = () => {
 
       {/* Form */}
       {modalState !== "submitted" && (
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={submitForm} className="space-y-6" noValidate>
           {/* Full Name */}
           <div className="space-y-2">
             <div className="relative">
@@ -83,9 +86,7 @@ const VolunteerForm: React.FC = () => {
                 required
               />
             </div>
-            {errors.fullName && (
-              <p className="text-sm text-red-600 ml-2">{errors.fullName}</p>
-            )}
+            {errors.fullName && <p className="text-sm text-red-600 ml-2">{errors.fullName}</p>}
           </div>
 
           {/* Email */}
@@ -101,9 +102,7 @@ const VolunteerForm: React.FC = () => {
                 required
               />
             </div>
-            {errors.email && (
-              <p className="text-sm text-red-600 ml-2">{errors.email}</p>
-            )}
+            {errors.email && <p className="text-sm text-red-600 ml-2">{errors.email}</p>}
           </div>
 
           {/* Phone */}
@@ -118,9 +117,7 @@ const VolunteerForm: React.FC = () => {
                 className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-700 placeholder-gray-400 bg-gray-50"
               />
             </div>
-            {errors.phone && (
-              <p className="text-sm text-red-600 ml-2">{errors.phone}</p>
-            )}
+            {errors.phone && <p className="text-sm text-red-600 ml-2">{errors.phone}</p>}
           </div>
 
           {/* Message */}
@@ -135,9 +132,7 @@ const VolunteerForm: React.FC = () => {
                 className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-gray-700 placeholder-gray-400 bg-gray-50 resize-none"
               />
             </div>
-            {errors.message && (
-              <p className="text-sm text-red-600 ml-2">{errors.message}</p>
-            )}
+            {errors.message && <p className="text-sm text-red-600 ml-2">{errors.message}</p>}
           </div>
 
           {/* Submit Button */}
