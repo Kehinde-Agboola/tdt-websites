@@ -21,9 +21,7 @@ function findArticleBySlug(slug: string) {
 }
 
 interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
