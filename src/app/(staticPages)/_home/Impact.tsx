@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Line from "../../../../public/assets/home/line.png";
 import { Button } from '@/app/_component/atom/button';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const reports = {
   2024: "/../../../../../files/The Destiny Trust Mid-year Report 2024_.pdf",
@@ -23,21 +24,57 @@ const openAndDownloadFile = (fileUrl: string, fileName: string) => {
 
 const Impact = () => {
   return (
-    <section className="bg-payment bg-[#FFB400]">
+    <motion.section
+      className="bg-payment bg-[#FFB400] overflow-x-hidden"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: false, amount: 0.2 }}
+    >
       <Container>
         <div className="flex flex-col-reverse md:flex-row justify-between items-center pt-[5rem] md:pt-[0]">
-          <Image src={Boy} alt="Schoolboy" width={618} />
-          <div className="md:w-[45%]">
+          <motion.div
+            initial={{ x: -30, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            <Image src={Boy} alt="Schoolboy" width={618} />
+          </motion.div>
+          <motion.div
+            className="md:w-[45%]"
+            initial={{ x: 30, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            viewport={{ once: false, amount: 0.3 }}
+          >
             <Image src={Line} alt="line" className="pb-3 hidden md:block" />
-            <p className="text-[40px] text-center md:text-left md:text-[40px] pb-3">
+            <motion.p
+              className="text-[40px] text-center md:text-left md:text-[40px] pb-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: false, amount: 0.4 }}
+            >
               Our Impact Reports
-            </p>
-            <p className="pb-3 text-center md:text-left">
+            </motion.p>
+            <motion.p
+              className="pb-3 text-center md:text-left"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: false, amount: 0.4 }}
+            >
               We celebrate the impact we make together and highlight
               opportunities to transform more lives.
-            </p>
-            <div className="flex flex-col items-center md:flex-row gap-5 py-4">
-              {/* 2022 Button */}
+            </motion.p>
+            <motion.div
+              className="flex flex-col items-center md:flex-row gap-5 py-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: false, amount: 0.4 }}
+            >
               <Button
                 className="border-2 border-black w-[200px] py-2"
                 onClick={() =>
@@ -49,15 +86,14 @@ const Impact = () => {
               >
                 2024 Impact Reports
               </Button>
-              {/* 2023 Button */}
               <Link href="/impact-report-financial">
                 <Button>View more</Button>
               </Link>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 };
 

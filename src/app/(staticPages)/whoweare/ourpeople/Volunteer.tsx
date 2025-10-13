@@ -1,7 +1,11 @@
+"use client";
 
 import React from "react";
 import Container from "@/app/_component/shared";
+
 const Volunteer = () => {
+  
+
   return (
     <section className="bg-yellow bg-payment">
       <Container>
@@ -10,17 +14,22 @@ const Volunteer = () => {
             Join Our Volunteers
           </h2>
           <div className="w-full md:w-[40rem] text-center md:text-right">
-            <p className="text-sm  mb-6">
+            <p className="text-sm mb-6">
               Become a part of our dynamic and innovative family. We are looking
-              for passionate individuals who want to make an impact in people’s
+              for passionate individuals who want to make an impact in people&#39;s
               lives. Together, we can achieve greatness.
             </p>
-            <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800">
+            <button
+              className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition-colors"
+              
+            >
               Become a Volunteer
             </button>
           </div>
         </div>
       </Container>
+
+      {/* Volunteer Modal */}
     </section>
   );
 };

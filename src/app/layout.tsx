@@ -24,7 +24,11 @@ export default function RootLayout({
 
       <body  suppressHydrationWarning={true}>
         <LoadingProvider>
-          <ClientOnlyProgressBar showLabel={true} />
+          <ClientOnlyProgressBar 
+            height={4}
+            color="#FFB400"
+            className="shadow-lg"
+          />
           {/* <Navbar /> */}
           {children}
           {/* <Footer /> */}

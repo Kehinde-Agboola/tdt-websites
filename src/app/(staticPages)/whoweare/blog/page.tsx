@@ -36,12 +36,12 @@ const BlogPage = () => {
     }
   };
 
-// function slugify(title: string): string {
-//   return title
-//     .toLowerCase()
-//     .replace(/[^a-z0-9]+/g, "-")
-//     .replace(/^-+|-+$/g, "");
-// }
+function slugify(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 
 
@@ -105,8 +105,8 @@ const BlogPage = () => {
                   />
                   {/* Post Content */}
                   <div className="ml-4">
-                    <Link href={`/blogs/${post.title}`}>
-                      <h3 className="text-lg font-[500] text-[18px] text-[#232323] hover:underline">
+                    <Link href={`/whoweare/blog/${slugify(post.title)}`}>
+                      <h3 className="text-lg font-[500] text-[18px] text-[#232323] hover:underline cursor-pointer">
                         {post.title}
                       </h3>
                     </Link>
@@ -141,34 +141,34 @@ const BlogPage = () => {
                 {paginatedArticles.map((article, index) => (
                   <motion.div
                     key={index}
-                    className="overflow-hidden"
+                    className="overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer"
                     variants={{
                       hidden: { opacity: 0, y: 20 },
                       visible: { opacity: 1, y: 0 },
                     }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
-                    <Image
-                      src={article.imgSrc}
-                      alt={article.title}
-                      className="object-cover w-full h-60"
-                    />
-                    <div className="pt-4">
-                      <h3 className="text-lg font-[500] text-[18px] text-[#232323]">
-                        {article.title}
-                      </h3>
-                      <p className="text-sm text-[#333333] mb-2 py-4">
-                        {article.author} • {article.date}
-                      </p>
-                      <p className="text-sm text-[#333333] mb-4">
-                        {article.description}
-                      </p>
-                      <Link href={`#/`}>
-                        <button className="bg-[#FFB400] text-black py-2 px-4">
+                    <Link href={`/whoweare/blog/${slugify(article.title)}`} className="block">
+                      <Image
+                        src={article.imgSrc}
+                        alt={article.title}
+                        className="object-cover w-full h-60 hover:opacity-90 transition-opacity duration-300"
+                      />
+                      <div className="pt-4 px-4 pb-4">
+                        <h3 className="text-lg font-[500] text-[18px] text-[#232323] hover:text-[#FFB400] transition-colors duration-300">
+                          {article.title}
+                        </h3>
+                        <p className="text-sm text-[#333333] mb-2 py-4">
+                          {article.author} • {article.date}
+                        </p>
+                        <p className="text-sm text-[#333333] mb-4 line-clamp-3">
+                          {article.description}
+                        </p>
+                        <button className="bg-[#FFB400] text-black py-2 px-4 hover:bg-[#e6a200] transition-colors duration-300">
                           Read More
                         </button>
-                      </Link>
-                    </div>
+                      </div>
+                    </Link>
                   </motion.div>
                 ))}
               </motion.div>

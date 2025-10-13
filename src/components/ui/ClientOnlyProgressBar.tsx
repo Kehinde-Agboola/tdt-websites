@@ -6,7 +6,6 @@ import SimpleProgressBar from "./SimpleProgressBar";
 interface ClientOnlyProgressBarProps {
   color?: string;
   height?: number;
-  showLabel?: boolean;
   className?: string;
 }
 

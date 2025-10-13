@@ -1,9 +1,6 @@
 'use client'
 import React from "react";
 import Container from "@/app/_component/shared";
-// import { Button } from "@/app/_component/atom/button";
-// import Sponsor from "../../../../public/assets/home/sponsor.jpg";
-// import Image from "next/image";
 import ActionButtons from "./Button";
 import { motion } from "framer-motion";
 

@@ -27,7 +27,7 @@ const OurPeoplePage = () => {
     
   return (
     <main className="bg-[#F4F4F4]">
-      <section className="relative h-[400px] md:h-[500px] w-full">
+      <section className="relative h-[400px] md:h-[550px] w-full">
         {/* Background Image with Framer Motion for slight movement */}
         <motion.div
           className="absolute inset-0"

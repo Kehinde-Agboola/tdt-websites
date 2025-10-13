@@ -2,7 +2,8 @@
 import Committed from "../../../public/assets/home/commited.png";
 import { IconType } from "react-icons";
 import { StaticImageData } from "next/image";
-import Abimbola from "../../../public/assets/team/Abimbola Ojenike.jpg";
+import Abimbola from "../../../public/assets/team/Abimbola.jpg";
+import oyinda from "../../../public/assets/team/oyinda.jpg"
 import Ododo from "../../../public/assets/team/Ododo Owodeha-Ashaka.jpg";
 import Olabenjo from "../../../public/assets/team/Tofunmi Olabenjo.jpg";
 import Teju from "../../../public/assets/team/Tejumade Adeyinka.jpg"
@@ -280,35 +281,102 @@ export const recentPosts = [
 
 export const articles = [
   {
+    id: 1,
     title: "1,000 children benefit as NGO embarks on back-to-school outreach",
     author: "Samuel Adeshina",
     date: "September 12, 2024",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      "The Destiny Trust NGO has successfully reached over 1,000 children in their latest back-to-school outreach program, providing essential educational materials and support to vulnerable communities.",
+    content: `
+      <p>The Destiny Trust NGO has made a significant impact in the lives of over 1,000 children through their comprehensive back-to-school outreach program launched in September 2024.</p>
+      
+      <p>This initiative focused on providing essential educational materials including school bags, notebooks, writing materials, and uniforms to children from underserved communities across Lagos State.</p>
+      
+      <p>"Education is the foundation for breaking the cycle of poverty," said the program coordinator. "By removing barriers to education, we're investing in the future of these children and their communities."</p>
+      
+      <p>The outreach program also included:</p>
+      <ul>
+        <li>Health screenings and basic medical care</li>
+        <li>Nutritional support programs</li>
+        <li>Mentorship and counseling services</li>
+        <li>Parent and guardian education workshops</li>
+      </ul>
+      
+      <p>The success of this program demonstrates the power of community partnership and the commitment of The Destiny Trust to creating lasting change in the lives of vulnerable children.</p>
+    `,
     imgSrc: Latest,
   },
   {
-    title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-    author: "Samuel Adeshina",
-    date: "September 12, 2024",
+    id: 2,
+    title: "Empowering Communities Through Educational Support Programs",
+    author: "Sarah Johnson",
+    date: "August 28, 2024",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      "Our latest educational support programs have reached new heights, providing comprehensive learning opportunities and resources to children in need across multiple communities.",
+    content: `
+      <p>The Destiny Trust continues to expand its educational support programs, reaching children who would otherwise be left behind by traditional educational systems.</p>
+      
+      <p>Our comprehensive approach includes not just academic support, but also life skills training, vocational education opportunities, and emotional wellness programs.</p>
+      
+      <p>Key achievements include:</p>
+      <ul>
+        <li>Establishment of 5 new learning centers</li>
+        <li>Training of 50+ volunteer educators</li>
+        <li>Implementation of digital literacy programs</li>
+        <li>Creation of scholarship opportunities for outstanding students</li>
+      </ul>
+      
+      <p>These programs are designed to create sustainable change, empowering not just individual children but entire communities.</p>
+    `,
     imgSrc: Latest,
   },
   {
-    title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-    author: "Samuel Adeshina",
-    date: "September 12, 2024",
+    id: 3,
+    title: "Building Sustainable Futures Through Community Partnership",
+    author: "Michael Chen",
+    date: "August 15, 2024",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      "Discover how community partnerships are creating lasting change and building sustainable futures for vulnerable children and their families.",
+    content: `
+      <p>Community partnership lies at the heart of everything we do at The Destiny Trust. We believe that sustainable change can only happen when communities are actively involved in the solution.</p>
+      
+      <p>Our partnership model involves:</p>
+      <ul>
+        <li>Local community leaders as program ambassadors</li>
+        <li>Parent and guardian involvement in decision-making</li>
+        <li>Youth-led initiatives and peer mentoring</li>
+        <li>Collaboration with local businesses and organizations</li>
+      </ul>
+      
+      <p>Through these partnerships, we've been able to create programs that are not only effective but also culturally relevant and sustainable long-term.</p>
+      
+      <p>The impact of this approach is evident in the success stories of children who have gone on to become community leaders themselves, creating a positive cycle of change.</p>
+    `,
     imgSrc: Latest,
   },
   {
-    title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-    author: "Samuel Adeshina",
-    date: "September 12, 2024",
+    id: 4,
+    title: "Healthcare Access: A Critical Component of Child Development",
+    author: "Dr. Amara Okafor",
+    date: "July 30, 2024",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
+      "Exploring the vital role of healthcare access in child development and how The Destiny Trust is addressing healthcare gaps in underserved communities.",
+    content: `
+      <p>Access to quality healthcare is fundamental to a child's ability to learn, grow, and thrive. At The Destiny Trust, we recognize that educational support must be coupled with comprehensive healthcare services.</p>
+      
+      <p>Our healthcare initiatives include:</p>
+      <ul>
+        <li>Regular health screenings and check-ups</li>
+        <li>Vaccination programs</li>
+        <li>Nutritional support and feeding programs</li>
+        <li>Mental health and counseling services</li>
+        <li>Health education for families</li>
+      </ul>
+      
+      <p>By addressing health barriers, we ensure that children can fully participate in educational programs and reach their maximum potential.</p>
+      
+      <p>The integration of healthcare and education services has resulted in improved school attendance, better academic performance, and overall enhanced quality of life for the children we serve.</p>
+    `,
     imgSrc: Latest,
   },
 ]
@@ -378,7 +446,6 @@ export const articles = [
 
 
   export const managementTeam = [
-
     // {
     //   name: "Sandra Okwundu",
     //   role: "Technology and Skills Development",
@@ -414,19 +481,20 @@ export const articles = [
         "Temitope is a creative professional with diverse experience in directing, producing, and acting within the entertainment industry. She is a member of the Director's Guild of Canada, Ontario District, and has served as Assistant Director on notable productions including the Canadian Screen Award-winning sitcom Children Ruin Everything (Season 4), Netflix's mini-series The Madness, and the Canadian crime comedy-drama Pretty Hard Cases (Season 3). Temitope is also the writer, producer, and director of the award-winning short film Ego, which explores conflict resolution, self-reflection, and relationship building. At The Destiny Trust, Temi is Co-lead, overseeing care services and residential programmes.",
       image: Terinwa,
     },
-    // {
-    //   name: "Oyindamola Fatusin",
-    //   role: "Finance",
-    //   description:
-    //     "Oyindamola Fatusin is a Chartered Accountant with experience in audit and accounting across diverse industries, including shipping, financial services, and technology. She works at Chapel Hill Denham and brings her expertise in financial management to her role overseeing financial control at The Destiny Trust. Oyindamola is committed to ensuring transparent and efficient stewardship of resources in support of the Trust's mission.",
-    //   image: "/assets/team/placeholder-female.jpg",
-    // },
+
     {
       name: "Jesutofunmi Olabenjo",
       role: "Legal Advisory",
       description:
         "Jesutofunmi is a Senior Associate Attorney at DGILaw (Farrell LLP, allied with Deloitte) with expertise in business immigration, oil and gas law, employment law, and corporate advisory. She holds an LLM in Corporate Law, Finance, and Governance from Harvard Law School and an LLB from Lagos State University, and is licensed to practice in Nigeria, New York, and Ontario. Passionate about mentoring young lawyers and supporting youth-focused causes, Jesutofunmi combines her legal career with active community service.",
       image: Olabenjo,
+    },
+    {
+      name: "Oyindamola Fatusin",
+      role: "Finance",
+      description:
+        "Oyindamola Fatusin is a Chartered Accountant with experience in audit and accounting across diverse industries, including shipping, financial services, and technology. She works at Chapel Hill Denham and brings her expertise in financial management to her role overseeing financial control at The Destiny Trust. Oyindamola is committed to ensuring transparent and efficient stewardship of resources in support of the Trust's mission.",
+      image: oyinda,
     },
     // {
     //   name: "Athina Jeje",

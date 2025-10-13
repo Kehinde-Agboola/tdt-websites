@@ -5,10 +5,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image, { StaticImageData } from "next/image";
-import Latest from "../../../../public/assets/home/latest.png";
 import Container from "../../_component/shared";
 import Link from "next/link";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import the arrow icons
+import { articles as blogArticles } from "../../constant"; // Import articles from constants
+
+// Slugify function to create URL-friendly slugs
+function slugify(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 type BoxProps = {
   imgSrc: string | StaticImageData;
@@ -19,33 +27,41 @@ type BoxProps = {
   buttonText: string;
 };
 
-const Card = ({ title, author, date, description, imgSrc }: BoxProps) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }} // Animation on load
-    whileInView={{ opacity: 1, y: 0 }} // Animation when in viewport
-    viewport={{ once: true }} // Trigger animation only once
-    transition={{ duration: 0.5, delay: 0.1 }} // Smooth transition
-    className="overflow-hidden"
-  >
+const Card = ({ title, author, date, description, imgSrc }: BoxProps) => {
+  const blogSlug = slugify(title);
+  
+  return (
     <motion.div
-      className="relative w-full h-60 overflow-hidden"
-      whileHover={{ scale: 1.1 }} // Zoom in on hover
-      transition={{ duration: 0.8, ease: "easeInOut" }} // Slow zoom-in and zoom-out
+      initial={{ opacity: 0, y: 20 }} // Animation on load
+      whileInView={{ opacity: 1, y: 0 }} // Animation when in viewport
+      viewport={{ once: true }} // Trigger animation only once
+      transition={{ duration: 0.5, delay: 0.1 }} // Smooth transition
+      className="overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
     >
-      <Image src={imgSrc} alt={title} layout="fill" objectFit="cover" />
-    </motion.div>
-    <div className="pt-4">
-      <h3 className="text-lg font-[500] text-[18px] text-[#232323]">{title}</h3>
-      <p className="text-sm text-[#333333] mb-2 py-4">
-        {author} • {date}
-      </p>
-      <p className="text-sm text-[#333333] mb-4">{description}</p>
-      <Link href={"/whoweare/blog"}>
-        <button className="bg-[#FFB400] text-black py-2 px-4">Read More</button>
+      <Link href={`/whoweare/blog/${blogSlug}`} className="block">
+        <motion.div
+          className="relative w-full h-60 overflow-hidden"
+          whileHover={{ scale: 1.05 }} // Reduced scale for better UX
+          transition={{ duration: 0.3, ease: "easeInOut" }} // Faster, smoother transition
+        >
+          <Image src={imgSrc} alt={title} layout="fill" objectFit="cover" />
+        </motion.div>
+        <div className="pt-4 px-4 pb-6">
+          <h3 className="text-lg font-[500] text-[18px] text-[#232323] hover:text-[#FFB400] transition-colors duration-300 line-clamp-2">
+            {title}
+          </h3>
+          <p className="text-sm text-[#333333] mb-2 py-2">
+            {author} • {date}
+          </p>
+          <p className="text-sm text-[#333333] mb-4 line-clamp-3">{description}</p>
+          <button className="bg-[#FFB400] text-black py-2 px-4 rounded hover:bg-[#e6a200] transition-colors duration-300">
+            Read More
+          </button>
+        </div>
       </Link>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const NavigationButtons = () => {
   const swiper = useSwiper();
@@ -69,56 +85,8 @@ const NavigationButtons = () => {
 };
 
 const Blog = () => {
-  const articles = [
-    {
-      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-      author: "Samuel Adeshina",
-      date: "September 12, 2024",
-      description:
-        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
-      imgSrc: Latest,
-    },
-    {
-      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-      author: "Samuel Adeshina",
-      date: "September 12, 2024",
-      description:
-        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
-      imgSrc: Latest,
-    },
-    {
-      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-      author: "Samuel Adeshina",
-      date: "September 12, 2024",
-      description:
-        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
-      imgSrc: Latest,
-    },
-    {
-      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-      author: "Samuel Adeshina",
-      date: "September 12, 2024",
-      description:
-        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
-      imgSrc: Latest,
-    },
-    {
-      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-      author: "Samuel Adeshina",
-      date: "September 12, 2024",
-      description:
-        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
-      imgSrc: Latest,
-    },
-    {
-      title: "1,000 children benefit as NGO embarks on back-to-school outreach",
-      author: "Samuel Adeshina",
-      date: "September 12, 2024",
-      description:
-        "Creating a beautiful indoor garden is a rewarding way to bring nature into your home, enhancing both your living space and your well-being.",
-      imgSrc: Latest,
-    },
-  ];
+  // Use the first 6 articles from constants for the carousel
+  const displayArticles = blogArticles.slice(0, 6);
 
   return (
     <div className="py-10 bg-[#F4F4F4]">
@@ -138,8 +106,8 @@ const Blog = () => {
             1024: { slidesPerView: 3 },
           }}
         >
-          {articles.map((article, index) => (
-            <SwiperSlide key={index}>
+          {displayArticles.map((article, index) => (
+            <SwiperSlide key={article.id || index}>
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}

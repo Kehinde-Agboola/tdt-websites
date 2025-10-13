@@ -29,11 +29,8 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-10 px-2">
       <Container>
-        {/* Footer Main Section */}
-        {/* Footer Main Section */}
-        {/* Footer Main Section */}
         <motion.section
-          className="mt-[10rem] flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-16"
+          className="mt-[1rem] flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-16"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -41,13 +38,13 @@ const Footer = () => {
         >
           {/* Left Section: Logo and Description */}
           <motion.div
-            className="w-full lg:flex-[2] space-y-4 text-center lg:text-left  "
+            className="w-full lg:flex-[2] space-y-4  lg:text-left  "
             variants={fadeIn}
           >
             <Image
               src={Logo}
               alt="The Destiny Trust"
-              className="w-[70%] mx-auto lg:mx-0"
+              className="w-[70%] md:mx-auto lg:mx-0"
             />
             <motion.div variants={fadeIn}>
               <p className="text-sm underline mb-2">
@@ -63,17 +60,17 @@ const Footer = () => {
 
           {/* Right Section: Links and Contact */}
           <motion.div
-            className="w-full lg:flex-1 text-center lg:text-left"
+            className="w-full lg:flex-1 lg:text-left"
             variants={staggerContainer}
           >
-            <motion.div className="w-[60%] mx-auto" variants={fadeIn}>
+            <motion.div className="w-[60%] md:mx-auto" variants={fadeIn}>
               <h4 className="text-yellow font-semibold mb-4">Explore</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="/whoweare">who we aew</a>
+                  <a href="/whoweare">Who Are We</a>
                 </li>
                 <li>
-                  <a href="/whatwedo">what we do</a>
+                  <a href="/whatwedo">What We Do</a>
                 </li>
                 <li>
                   <a href="/OurProject">Projects</a>
@@ -130,7 +127,7 @@ const Footer = () => {
               target="_blank"
               className="underline"
             >
-              Kid&apos;s Innovation Africa
+              Kids Innovation Africa
             </a>
           </p>
         </motion.div>
