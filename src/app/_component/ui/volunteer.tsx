@@ -27,12 +27,12 @@ const VolunteerForm: React.FC = () => {
   } = useFormModal(
     initialFormData,
     validateVolunteerForm,
-    // Simulate successful submit for now; replace with real implementation later
-    async (_data: VolunteerFormData) => {
+    async () => {
       try {
         await new Promise((res) => setTimeout(res, 800));
         return { success: true, message: "Thank you for signing up as a volunteer!" };
-      } catch (err) {
+      } catch (error) {
+        console.error(error);
         return { success: false, message: "Submission failed. Please try again." };
       }
     }
