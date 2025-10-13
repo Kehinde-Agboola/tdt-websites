@@ -26,7 +26,7 @@ interface BlogPostPageProps {
   };
 }
 
-const BlogPostPage = ({ params }: BlogPostPageProps) => {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = params;
   const article = findArticleBySlug(slug);
 
@@ -227,5 +227,3 @@ const BlogPostPage = ({ params }: BlogPostPageProps) => {
     </main>
   );
 };
-
-export default BlogPostPage;
