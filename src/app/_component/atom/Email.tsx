@@ -1,7 +1,11 @@
-import React from "react";
-import { motion } from "framer-motion"; 
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { db } from "../../../lib/firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const Email = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: (delay = 0) => ({
@@ -11,6 +15,26 @@ const Email = () => {
     }),
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, "newsletter-subscriptions"), {
+        email: email,
+        submittedAt: serverTimestamp(),
+      });
+      console.log("Subscribed to newsletter");
+      alert("Thank you for subscribing!");
+      setEmail("");
+    } catch (error) {
+      console.error("Error subscribing: ", error);
+      alert("There was an error subscribing. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+
   return (
     <motion.section
       variants={fadeIn}
@@ -18,7 +42,7 @@ const Email = () => {
       initial="hidden"
       animate="visible"
     >
-      <form className="pt-4">
+      <form className="pt-4" onSubmit={handleSubmit}>
         <div className="relative">
           <label htmlFor="email" className="sr-only">
             Email address
@@ -28,13 +52,17 @@ const Email = () => {
             type="email"
             placeholder="Enter your email"
             className="focus:outline-none text-[#777777] px-6 py-3 w-full pr-28 border border-black"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <button
             type="submit"
             aria-label="Subscribe to newsletter"
             className="bg-[#FFB400] absolute right-2 top-1/2 transform -translate-y-1/2 px-6 text-black py-2 "
+            disabled={isSubmitting}
           >
-            Subscribe
+            {isSubmitting ? "Subscribing..." : "Subscribe"}
           </button>
         </div>
       </form>

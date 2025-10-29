@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { Button } from "@/app/_component/atom/button";
 import { Send } from "lucide-react";
+import { db } from "../../../lib/firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 interface SponsorChildFormProps {
   onClose: () => void;
@@ -50,14 +52,11 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
     setIsSubmitting(true);
 
     try {
-      // Add your form submission logic here
-      console.log("Form submitted:", formData);
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Show success message
-      alert("Thank you for your interest! We will contact you shortly.");
+      await addDoc(collection(db, "sponsorship-submissions"), {
+        ...formData,
+        submittedAt: serverTimestamp(),
+      });
+      console.log("Form submitted to Firebase");
       onClose();
     } catch (error) {
       console.error("Error submitting form:", error);
