@@ -5,8 +5,8 @@ import Image from "next/image";
 import Communiti from "../../../../public/assets/home/communities.png"
 import CommunityMobile from "../../../../public/assets/home/community-mobile.png"
 import Container from "@/app/_component/shared";
-import { Button } from "@/app/_component/atom/button";
-
+// import { Button } from "@/app/_component/atom/button";
+import VolunteerButton from "@/app/_component/ui/VolunteerButton";
 
 const Community = () => {
 
@@ -70,19 +70,18 @@ const Community = () => {
                 community donating to give hope to children.
               </motion.p>
               <motion.div variants={itemVariants}>
-                <Button 
+                {/* <Button 
                   className="mt-4 bg-[#FFB400] text-black w-[224px] mx-auto py-2"
                  
                 >
                   Become a Volunteer
-                </Button>
+                </Button> */}
+                <VolunteerButton className="mt-4 bg-[#FFB400] text-black w-[224px] mx-auto py-2"></VolunteerButton>
               </motion.div>
             </motion.div>
           </Container>
         </section>
       </section>
-
-
     </main>
   );
 };

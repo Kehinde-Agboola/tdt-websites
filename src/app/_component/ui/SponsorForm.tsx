@@ -50,7 +50,6 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
     setIsSubmitting(true);
 
     try {
-      // Add your form submission logic here
       console.log("Form submitted:", formData);
 
       // Simulate API call
