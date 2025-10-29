@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { db } from "../../../lib/firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const ModalForm = ({
   isOpen,
@@ -8,6 +10,13 @@ const ModalForm = ({
   onClose: () => void;
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [researchInterests, setResearchInterests] = useState<string[]>([]);
+  const [researchDescription, setResearchDescription] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (isOpen && modalRef.current) {
@@ -17,9 +26,35 @@ const ModalForm = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleCheckboxChange = (option: string) => {
+    setResearchInterests((prev) =>
+      prev.includes(option)
+        ? prev.filter((item) => item !== option)
+        : [...prev, option]
+    );
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Form submitted");
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, "research-submissions"), {
+        firstName,
+        lastName,
+        phone,
+        email,
+        researchInterests,
+        researchDescription,
+        submittedAt: serverTimestamp(),
+      });
+      console.log("Form submitted to Firebase");
+      onClose(); // Close modal on success
+    } catch (error) {
+      console.error("Error submitting form: ", error);
+      // Handle error (e.g., show an error message)
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const researchOptions = [
@@ -68,6 +103,8 @@ const ModalForm = ({
                 type="text"
                 placeholder="Joe"
                 className="w-full mt-1 p-1.5 border rounded-md focus:outline-none focus:ring focus:ring-yellow"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 required
               />
             </div>
@@ -79,6 +116,8 @@ const ModalForm = ({
                 type="text"
                 placeholder="Ducan"
                 className="w-full mt-1 p-1.5 border rounded-md focus:outline-none focus:ring focus:ring-yellow"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 required
               />
             </div>
@@ -93,6 +132,8 @@ const ModalForm = ({
                 type="tel"
                 placeholder="Input"
                 className="w-full mt-1 p-1.5 border rounded-md focus:outline-none focus:ring focus:ring-yellow"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
               />
             </div>
@@ -104,6 +145,8 @@ const ModalForm = ({
                 type="email"
                 placeholder="example@example.com"
                 className="w-full mt-1 p-1.5 border rounded-md focus:outline-none focus:ring focus:ring-yellow"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -121,6 +164,7 @@ const ModalForm = ({
                     color="white"
                     id={`option-${index}`}
                     className="mr-2"
+                    onChange={() => handleCheckboxChange(option)}
                   />
                   <label htmlFor={`option-${index}`} className="text-sm">
                     {option}
@@ -138,6 +182,8 @@ const ModalForm = ({
               placeholder="Input"
               rows={3}
               className="w-full mt-1 p-1.5 border rounded-md focus:outline-none focus:ring focus:ring-yellow text-[#333333]"
+              value={researchDescription}
+              onChange={(e) => setResearchDescription(e.target.value)}
               required
             ></textarea>
           </div>
@@ -145,8 +191,9 @@ const ModalForm = ({
           <button
             type="submit"
             className="mt-4 w-full bg-yellow text-black py-2 px-4 rounded focus:outline-none focus:ring focus:ring-yellow-500"
+            disabled={isSubmitting}
           >
-            Submit
+            {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>
