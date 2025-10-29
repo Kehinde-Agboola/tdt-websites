@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { db } from "../../../lib/firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { supabase } from "../../../lib/supabase";
 
 const Email = () => {
   const [email, setEmail] = useState("");
@@ -19,10 +18,12 @@ const Email = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await addDoc(collection(db, "newsletter-subscriptions"), {
-        email: email,
-        submittedAt: serverTimestamp(),
-      });
+      const { error } = await supabase
+        .from("newsletter_subscriptions")
+        .insert([{ email: email }]);
+
+      if (error) throw error;
+
       console.log("Subscribed to newsletter");
       alert("Thank you for subscribing!");
       setEmail("");

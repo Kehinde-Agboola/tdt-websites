@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import { getAuth } from "firebase/auth";
-import { app } from "@/lib/firebase";
+import { supabase } from "@/lib/supabase";
 
 const SubmissionsTable = ({ data, onViewDetails, refreshData }: { data: any[], onViewDetails: (item: any) => void, refreshData: () => void }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -15,14 +14,12 @@ const SubmissionsTable = ({ data, onViewDetails, refreshData }: { data: any[], o
 
     const handleProcessed = async (collection: string, id: string) => {
         try {
-            const auth = getAuth(app);
-            const user = auth.currentUser;
-            if (user) {
-                const token = await user.getIdToken();
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
                 await fetch(`/api/admin/submissions/${collection}/${id}/processed`, {
                     method: 'POST',
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${session.access_token}`,
                     },
                 });
                 refreshData();
@@ -34,14 +31,12 @@ const SubmissionsTable = ({ data, onViewDetails, refreshData }: { data: any[], o
 
     const handleDelete = async (collection: string, id: string) => {
         try {
-            const auth = getAuth(app);
-            const user = auth.currentUser;
-            if (user) {
-                const token = await user.getIdToken();
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
                 await fetch(`/api/admin/submissions/${collection}/${id}`, {
                     method: 'DELETE',
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${session.access_token}`,
                     },
                 });
                 refreshData();
@@ -53,13 +48,11 @@ const SubmissionsTable = ({ data, onViewDetails, refreshData }: { data: any[], o
 
     const handleExport = async (collection: string) => {
         try {
-            const auth = getAuth(app);
-            const user = auth.currentUser;
-            if (user) {
-                const token = await user.getIdToken();
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
                 const response = await fetch(`/api/admin/submissions/${collection}/export`, {
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${session.access_token}`,
                     },
                 });
                 const blob = await response.blob();
@@ -90,7 +83,7 @@ const SubmissionsTable = ({ data, onViewDetails, refreshData }: { data: any[], o
                 <tbody>
                     {currentItems.map((item) => (
                         <tr key={item.id}>
-                            <td className="border px-4 py-2">{new Date(item.submittedAt.seconds * 1000).toLocaleString()}</td>
+                            <td className="border px-4 py-2">{new Date(item.created_at).toLocaleString()}</td>
                             <td className="border px-4 py-2">{item.email}</td>
                             <td className="border px-4 py-2">
                                 <button onClick={() => onViewDetails(item)} className="mr-2 px-2 py-1 bg-blue-500 text-white rounded">View</button>
