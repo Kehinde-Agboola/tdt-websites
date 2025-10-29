@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { app } from "../../lib/firebase";
+import { app } from "@/lib/firebase";
 import Head from "next/head";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {

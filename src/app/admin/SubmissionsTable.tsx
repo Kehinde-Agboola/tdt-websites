@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import { getAuth } from "firebase/auth";
-import { app } from "../../../lib/firebase";
+import { app } from "@/lib/firebase";
 
-const SubmissionsTable = ({ data, onViewDetails }: { data: any[], onViewDetails: (item: any) => void }) => {
+const SubmissionsTable = ({ data, onViewDetails, refreshData }: { data: any[], onViewDetails: (item: any) => void, refreshData: () => void }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
 
@@ -25,8 +25,7 @@ const SubmissionsTable = ({ data, onViewDetails }: { data: any[], onViewDetails:
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                // I will add a proper state management solution later to refresh the data
-                alert("Marked as processed");
+                refreshData();
             }
         } catch (error) {
             console.error("Error marking as processed:", error);
@@ -45,8 +44,7 @@ const SubmissionsTable = ({ data, onViewDetails }: { data: any[], onViewDetails:
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                // I will add a proper state management solution later to refresh the data
-                alert("Deleted successfully");
+                refreshData();
             }
         } catch (error) {
             console.error("Error deleting submission:", error);
