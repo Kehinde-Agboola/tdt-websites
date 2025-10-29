@@ -17,32 +17,33 @@ const AdminPage = () => {
     const [activeTab, setActiveTab] = useState("research");
     const [selectedItem, setSelectedItem] = useState<any | null>(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const auth = getAuth(app);
-                const user = auth.currentUser;
-                if (user) {
-                    const token = await user.getIdToken();
-                    const response = await fetch("/api/admin/submissions", {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    });
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch data");
-                    }
-                    const data = await response.json();
-                    setSubmissions(data);
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+            const auth = getAuth(app);
+            const user = auth.currentUser;
+            if (user) {
+                const token = await user.getIdToken();
+                const response = await fetch("/api/admin/submissions", {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (!response.ok) {
+                    throw new Error("Failed to fetch data");
                 }
-            } catch (err) {
-                setError("Failed to load submissions.");
-                console.error(err);
-            } finally {
-                setLoading(false);
+                const data = await response.json();
+                setSubmissions(data);
             }
-        };
+        } catch (err) {
+            setError("Failed to load submissions.");
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
+    useEffect(() => {
         fetchData();
     }, []);
 
@@ -86,7 +87,7 @@ const AdminPage = () => {
                 {selectedItem ? (
                     <SubmissionDetail item={selectedItem} onClose={handleCloseDetails} />
                 ) : (
-                    <SubmissionsTable data={tabs.find(tab => tab.id === activeTab)?.data || []} onViewDetails={handleViewDetails} />
+                    <SubmissionsTable data={tabs.find(tab => tab.id === activeTab)?.data || []} onViewDetails={handleViewDetails} refreshData={fetchData} />
                 )}
             </div>
         </div>
