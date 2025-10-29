@@ -1,24 +1,20 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /research-submissions/{submissionId} {
-      allow read: if request.auth != null && request.auth.token.admin == true;
-      allow write: if true;
+    // Helper function to check for admin custom claim
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
     }
 
-    match /sponsorship-submissions/{submissionId} {
-      allow read: if request.auth != null && request.auth.token.admin == true;
-      allow write: if true;
-    }
+    // Rules for all submission collections
+    match /{collection}/{submissionId}
+      where collection in ['research-submissions', 'sponsorship-submissions', 'project-adoption-submissions', 'newsletter-subscriptions'] {
 
-    match /project-adoption-submissions/{submissionId} {
-      allow read: if request.auth != null && request.auth.token.admin == true;
-      allow write: if true;
-    }
+      // Admins can read, write, and delete any document
+      allow read, write, delete: if isAdmin();
 
-    match /newsletter-subscriptions/{subscriptionId} {
-      allow read: if request.auth != null && request.auth.token.admin == true;
-      allow create: if true;
+      // Any authenticated user can create a new submission
+      allow create: if request.auth != null;
     }
   }
 }
