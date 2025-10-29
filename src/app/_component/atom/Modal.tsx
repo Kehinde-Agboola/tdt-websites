@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { db } from "../../../lib/firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { supabase } from "../../../lib/supabase";
 
 const ModalForm = ({
   isOpen,
@@ -38,16 +37,20 @@ const ModalForm = ({
     event.preventDefault();
     setIsSubmitting(true);
     try {
-      await addDoc(collection(db, "research-submissions"), {
-        firstName,
-        lastName,
-        phone,
-        email,
-        researchInterests,
-        researchDescription,
-        submittedAt: serverTimestamp(),
-      });
-      console.log("Form submitted to Firebase");
+      const { error } = await supabase.from("research_submissions").insert([
+        {
+          first_name: firstName,
+          last_name: lastName,
+          phone,
+          email,
+          research_interests: researchInterests,
+          research_description: researchDescription,
+        },
+      ]);
+
+      if (error) throw error;
+
+      console.log("Form submitted to Supabase");
       onClose(); // Close modal on success
     } catch (error) {
       console.error("Error submitting form: ", error);

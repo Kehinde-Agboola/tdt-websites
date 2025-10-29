@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getAuth } from "firebase/auth";
-import { app } from "../../../lib/firebase";
 import SubmissionsTable from "./SubmissionsTable";
 import SubmissionDetail from "./SubmissionDetail";
+import { supabase } from "@/lib/supabase";
 
 const AdminPage = () => {
     const [submissions, setSubmissions] = useState<any>({
@@ -20,20 +19,19 @@ const AdminPage = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const auth = getAuth(app);
-            const user = auth.currentUser;
-            if (user) {
-                const token = await user.getIdToken();
+            const { data, error } = await supabase.auth.getSession()
+            if (error) throw error;
+            if (data.session) {
                 const response = await fetch("/api/admin/submissions", {
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${data.session.access_token}`,
                     },
                 });
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");
                 }
-                const data = await response.json();
-                setSubmissions(data);
+                const submissionsData = await response.json();
+                setSubmissions(submissionsData);
             }
         } catch (err) {
             setError("Failed to load submissions.");

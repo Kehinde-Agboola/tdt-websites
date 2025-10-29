@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { Button } from "@/app/_component/atom/button";
 import { Send } from "lucide-react";
-import { db } from "../../../lib/firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 interface AdoptProjectFormProps {
   onClose: () => void;
@@ -61,16 +59,30 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
     }
   };
 
+import { supabase } from "../../../lib/supabase";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await addDoc(collection(db, "project-adoption-submissions"), {
-        ...formData,
-        submittedAt: serverTimestamp(),
-      });
-      console.log("Form submitted to Firebase");
+      const { error } = await supabase.from("project_adoption_submissions").insert([
+        {
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          project_types: formData.projectTypes,
+          other_project: formData.otherProject,
+          project_name: formData.projectName,
+          preferred_location: formData.preferredLocation,
+          support_type: formData.supportType,
+          additional_info: formData.additionalInfo,
+        },
+      ]);
+
+      if (error) throw error;
+
+      console.log("Form submitted to Supabase");
       onClose();
     } catch (error) {
       console.error("Error submitting form:", error);

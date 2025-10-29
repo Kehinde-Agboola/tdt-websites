@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { Button } from "@/app/_component/atom/button";
 import { Send } from "lucide-react";
-import { db } from "../../../lib/firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 interface SponsorChildFormProps {
   onClose: () => void;
@@ -47,16 +45,31 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
     }
   };
 
+import { supabase } from "../../../lib/supabase";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await addDoc(collection(db, "sponsorship-submissions"), {
-        ...formData,
-        submittedAt: serverTimestamp(),
-      });
-      console.log("Form submitted to Firebase");
+      const { error } = await supabase.from("sponsorship_submissions").insert([
+        {
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          number_of_children: formData.numberOfChildren,
+          preferred_gender: formData.preferredGender,
+          duration: formData.duration,
+          named_scholarship: formData.namedScholarship,
+          scholarship_name: formData.scholarshipName,
+          additional_info: formData.additionalInfo,
+          custom_discussion: formData.customDiscussion,
+        },
+      ]);
+
+      if (error) throw error;
+
+      console.log("Form submitted to Supabase");
       onClose();
     } catch (error) {
       console.error("Error submitting form:", error);

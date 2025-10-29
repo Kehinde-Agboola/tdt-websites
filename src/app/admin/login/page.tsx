@@ -1,20 +1,22 @@
 "use client";
 import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import { app } from "@/lib/firebase";
 
 const AdminLoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
-    const auth = getAuth(app);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            const { error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+            if (error) throw error;
             router.push("/admin");
         } catch (error) {
             setError("Failed to log in");
