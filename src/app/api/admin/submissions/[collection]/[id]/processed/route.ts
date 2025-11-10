@@ -1,21 +1,27 @@
 import { NextResponse } from "next/server";
-import { admin, firestore } from "../../../../../lib/firebaseAdmin";
-import { headers } from 'next/headers'
+import { supabaseAdmin } from "../../../../../../../lib/supabaseAdmin";
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
 export async function POST(request: Request, { params }: { params: { collection: string, id: string } }) {
   try {
-    const authorization = headers().get('authorization')
-    if (!authorization) {
+    const supabase = createRouteHandlerClient({ cookies })
+    const { data: { session }} = await supabase.auth.getSession()
+
+    if (!session) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
-    const token = authorization.split("Bearer ")[1];
-    const decodedToken = await admin.auth().verifyIdToken(token);
-    if (!decodedToken.admin) {
-        return new NextResponse("Forbidden", { status: 403 });
+
+    const { data: isAdmin, error: rpcError } = await supabase.rpc('is_admin');
+    if (rpcError || !isAdmin) {
+      return new NextResponse("Forbidden", { status: 403 });
     }
 
     const { collection, id } = params;
-    await firestore.collection(collection).doc(id).update({ processed: true });
+    const { error } = await supabaseAdmin.from(collection).update({ processed: true }).match({ id });
+
+    if (error) throw error;
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Error marking as processed: ", error);

@@ -1,23 +1,26 @@
 import { NextResponse } from "next/server";
-import { admin, firestore } from "../../../../lib/firebaseAdmin";
-import { headers } from 'next/headers'
+import { supabaseAdmin } from "../../../../../../lib/supabaseAdmin";
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import { Parser } from 'json2csv';
 
 export async function GET(request: Request, { params }: { params: { collection: string } }) {
   try {
-    const authorization = headers().get('authorization')
-    if (!authorization) {
+    const supabase = createRouteHandlerClient({ cookies })
+    const { data: { session }} = await supabase.auth.getSession()
+
+    if (!session) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
-    const token = authorization.split("Bearer ")[1];
-    const decodedToken = await admin.auth().verifyIdToken(token);
-    if (!decodedToken.admin) {
-        return new NextResponse("Forbidden", { status: 403 });
+
+    const { data: isAdmin, error: rpcError } = await supabase.rpc('is_admin');
+    if (rpcError || !isAdmin) {
+      return new NextResponse("Forbidden", { status: 403 });
     }
 
     const { collection } = params;
-    const snapshot = await firestore.collection(collection).get();
-    const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const { data, error } = await supabaseAdmin.from(collection).select('*');
+    if (error) throw error;
 
     const parser = new Parser();
     const csv = parser.parse(data);

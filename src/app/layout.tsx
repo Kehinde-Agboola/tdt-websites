@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Head from "next/head";
 import { LoadingProvider } from "@/contexts/LoadingContext";
 import ClientOnlyProgressBar from "@/components/ui/ClientOnlyProgressBar";
-// import "./../globals.css";
-// import Navbar from "@/app/_component/Navbar";
-// import Footer from "./_component/Footer";
+import "./global.css"; // ← THIS LINE MUST BE PRESENT
 
 
 export const metadata: Metadata = {
@@ -22,16 +20,14 @@ export default function RootLayout({
       <Head>The Destiny Trust Foundation</Head>
       <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
 
-      <body  suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true}>
         <LoadingProvider>
           <ClientOnlyProgressBar 
             height={4}
             color="#FFB400"
             className="shadow-lg"
           />
-          {/* <Navbar /> */}
           {children}
-          {/* <Footer /> */}
         </LoadingProvider>
       </body>
     </html>

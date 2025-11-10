@@ -48,15 +48,15 @@ const ScholarshipModal: React.FC<ScholarshipModalProps> = ({ scholarship }) => {
 
         {/* Eligibility Criteria */}
         {scholarship.eligibility && (
-          <div className="border border-blue-200 bg-blue-50 p-4 rounded-lg">
+          <div className="border border-yellow-200 bg-yellow-50 p-4 rounded-lg">
             <div className="flex items-center gap-2 mb-3">
-              <Users className="w-5 h-5 text-blue-600" />
-              <h4 className="font-semibold text-blue-900">Eligibility Criteria</h4>
+              <Users className="w-5 h-5 text-yellow" />
+              <h4 className="font-semibold text-yellow">Eligibility Criteria</h4>
             </div>
             <ul className="space-y-2">
               {scholarship.eligibility.map((criteria, index) => (
-                <li key={index} className="text-sm text-blue-800 flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
+                <li key={index} className="text-sm text-yellow-800 flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 bg-yellow rounded-full mt-2 flex-shrink-0" />
                   {criteria}
                 </li>
               ))}

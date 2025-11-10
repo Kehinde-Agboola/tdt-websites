@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Head from "next/head";
-import "./globals.css";
 import Navbar from "@/app/_component/Navbar";
 import Footer from "@/app/_component/Footer";
-
 
 export const metadata: Metadata = {
   title: "The Destiny Trust Foundation",
