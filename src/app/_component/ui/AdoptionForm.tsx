@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { supabase } from "../../../lib/supabase";
 import { Button } from "@/app/_component/atom/button";
 import { Send } from "lucide-react";
 
@@ -59,8 +60,7 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
     }
   };
 
-import { supabase } from "../../../lib/supabase";
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);

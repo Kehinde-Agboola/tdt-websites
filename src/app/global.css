@@ -2,6 +2,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   font-family: "Montserrat", sans-serif;
   /* background-color: black; */
@@ -119,6 +139,34 @@ input[type="checkbox"] {
   animation: shimmer 1.5s infinite;
 }
 
+/* Custom animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+/* 
 @layer base {
   * {
     @apply border-border;
@@ -126,7 +174,7 @@ input[type="checkbox"] {
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
 
 
 /* Add this to your globals.css file */

@@ -113,7 +113,8 @@ export default function Navbar() {
                 aria-haspopup={!!item.dropdownItems}
                 aria-expanded={openDropdownIndex === index}
                 tabIndex={0}
-                onClick={() => !item.dropdownItems && handleNavigation(item.path, `Loading ${item.title}...`)}
+                // Always navigate when a path exists (even if it has a dropdown)
+                onClick={() => handleNavigation(item.path, `Loading ${item.title}...`)}
               >
                 <span className="cursor-pointer">
                   {item.title}
@@ -144,7 +145,8 @@ export default function Navbar() {
                       onMouseLeave={() => setOpenSubMenuIndex(null)}
                     >
                       <button
-                        onClick={() => !child.subItems && handleNavigation(child.path, `Loading ${child.title}...`)}
+                        // Allow navigation even when there are subItems (hover still shows submenu)
+                        onClick={() => handleNavigation(child.path, `Loading ${child.title}...`)}
                         className={clsx(
                           "flex items-center justify-between px-4 py-2 text-white hover:text-[#FFB400] w-full text-left",
                           child.subItems && "pr-8"

@@ -1,5 +1,6 @@
 "use client";
 
+import { supabase } from "../../../lib/supabase";
 import React, { useState } from "react";
 import { Button } from "@/app/_component/atom/button";
 import { Send } from "lucide-react";
@@ -45,7 +46,6 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
     }
   };
 
-import { supabase } from "../../../lib/supabase";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

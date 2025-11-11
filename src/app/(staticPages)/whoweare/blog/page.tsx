@@ -1,222 +1,313 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Container from "@/app/_component/shared";
+import { featuredPost } from "@/app/constant";
 import { articles } from "@/app/constant";
 import { recentPosts } from "@/app/constant";
 import Image from "next/image";
-import Children from "../../../../../public/assets/blog/children.png";
+// import Children from "../../../../../public/assets/blog/ourschool.png";
 import Link from "next/link";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Email from "@/app/_component/atom/Email";
 
 const BlogPage = () => {
-  
-
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 9;
 
-  // Calculate total pages
   const totalPages = Math.ceil(articles.length / itemsPerPage);
 
-  // Get paginated articles
   const paginatedArticles = articles.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Handle page change
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
-function slugify(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-
+  // featuredPost may be exported as an object or an array (compatibility with older code)
+  // Ensure we always have a single featured object to read from
+  const featured = Array.isArray(featuredPost) ? featuredPost[0] : featuredPost;
 
   return (
-    <main className="bg-[#F4F4F4] py-10">
-      <Container>
-        <section className="mb-10 text-center">
-          <div className="mb-10">
-            <h1 className="text-2xl md:text-3xl text-gray-800 mb-4">
-              Inside Transformation: Stories and Interviews
-            </h1>
-            <p className="text-[#333333]">
-              Enter your email to stay up to date on how we make a difference
-              together
-            </p>
+    <main className="bg-white">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-16 md:py-24">
+        <Container>
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                Inside Transformation
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 mb-8">
+                Stories, insights, and interviews on how we make a difference
+                together
+              </p>
+              <div className="max-w-md mx-auto">
+                <Email />
+              </div>
+            </motion.div>
           </div>
-          <Email />
-        </section>
-        <section className="mb-10 mt-[5rem]">
-          <h2 className="text-[24px] text-[#000] mb-6">Recent Blog Post</h2>
-          {/* Main Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {/* Featured Post */}
-            <div className=" overflow-hidden">
+        </Container>
+      </section>
+
+      {/* Featured Post Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <Container>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Featured Story
+            </h2>
+            <div className="h-px bg-gradient-to-r from-[#FFB400] to-transparent flex-grow ml-6"></div>
+          </div>
+
+            <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            >
+            <div className="relative group overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src={Children}
+                src={featured.Image}
                 width={574}
                 height={392}
-                alt="school children"
-                className="object-cover mb-4"
+                alt={featured.title || "featured image"}
+                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
               />
-              <p className="text-sm text-[#333333] mb-2">
-                Samuel Adeshina • September 12, 2024
-              </p>
-              <a className="text-lg font-medium text-[#232323] mb-2">
-                A Thousand Smiles: How Our NGO’s Back-to-School Outreach
-                Transformed the Lives of 1,000 Children
-              </a>
-              <p className="text-sm text-[#333333]">
-                As the sun rose on a crisp August morning, excitement buzzed in
-                the air. For months, our team at The Destiny Trust had been
-                planning and preparing for this day, and finally, it had
-                arrived.
-              </p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
 
-            {/* Recent Posts (List of Posts) */}
-            <div className="space-y-6">
-              {recentPosts.map((post, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col md:flex-row overflow-hidden"
-                >
-                  {/* Post Image */}
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    className=" object-cover"
-                    width={314}
-                    height={202}
-                  />
-                  {/* Post Content */}
-                  <div className="ml-4">
-                    <Link href={`/whoweare/blog/${slugify(post.title)}`}>
-                      <h3 className="text-lg font-[500] text-[18px] text-[#232323] hover:underline cursor-pointer">
-                        {post.title}
-                      </h3>
-                    </Link>
-                    <p className="text-sm text-[#333333] my-2">{post.author}</p>
-                    <p className="text-sm text-[#333333]">{post.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* All Blog Post Section */}
-        <section>
-          <div className="py-10 bg-[#F4F4F4]">
-            <Container>
-              <h2 className="text-2xl font-bold mb-6">All Blog Posts</h2>
-
-              {/* Desktop Cards */}
-              <motion.div
-                className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.2 },
-                  },
-                }}
+            <div className="space-y-4">
+              <span className="inline-block px-4 py-1 bg-[#FFB400] text-sm font-medium rounded-full">
+              Featured
+              </span>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
+                {featured.title}
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                {featured.description}
+              </p>
+              <Link
+                href={`/whoweare/blog/${featured.slug}`}
+              className="inline-flex items-center text-[#FFB400] font-semibold hover:text-[#e6a200] transition-colors group"
               >
-                {paginatedArticles.map((article, index) => (
-                  <motion.div
-                    key={index}
-                    className="overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer"
-                    variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: { opacity: 1, y: 0 },
-                    }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                  >
-                    <Link href={`/whoweare/blog/${slugify(article.title)}`} className="block">
-                      <Image
-                        src={article.imgSrc}
-                        alt={article.title}
-                        className="object-cover w-full h-60 hover:opacity-90 transition-opacity duration-300"
-                      />
-                      <div className="pt-4 px-4 pb-4">
-                        <h3 className="text-lg font-[500] text-[18px] text-[#232323] hover:text-[#FFB400] transition-colors duration-300">
-                          {article.title}
-                        </h3>
-                        <p className="text-sm text-[#333333] mb-2 py-4">
-                          {article.author} • {article.date}
-                        </p>
-                        <p className="text-sm text-[#333333] mb-4 line-clamp-3">
-                          {article.description}
-                        </p>
-                        <button className="bg-[#FFB400] text-black py-2 px-4 hover:bg-[#e6a200] transition-colors duration-300">
-                          Read More
-                        </button>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </motion.div>
+              Read the full story
+              <svg
+                className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+              </Link>
+            </div>
+            </motion.div>
+        </Container>
+      </section>
 
-              {/* Pagination */}
-              <div className="flex justify-center mt-8">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className={`px-4 py-2 ${
-                    currentPage === 1
-                      ? "bg-gray-300 text-gray-500"
-                      : "bg-black text-white"
-                  } rounded-md mx-1`}
-                >
-                  Previous
-                </button>
-
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => handlePageChange(i + 1)}
-                    className={`px-4 py-2 text-black border border-gray-500 rounded-md mx-1 ${
-                      currentPage === i + 1
-                        ? "bg-yellow text-white"
-                        : "hover:bg-yellow"
-                    }`}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
-
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  className={`px-4 py-2 ${
-                    currentPage === totalPages
-                      ? "bg-gray-300 text-gray-500"
-                      : "bg-black text-white"
-                  } rounded-md mx-1`}
-                >
-                  Next
-                </button>
-              </div>
-            </Container>
+      {/* Recent Posts Grid */}
+      <section className="py-16 bg-gray-50">
+        <Container>
+          <div className="flex items-center justify-between mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Recent Posts
+            </h2>
+            <div className="h-px bg-gradient-to-r from-[#FFB400] to-transparent flex-grow ml-6"></div>
           </div>
-        </section>
-      </Container>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recentPosts.map((post, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+                <Link
+                  href={`/whoweare/blog/${post.slug}`}
+                  className="block focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:ring-offset-2 rounded-xl"
+                  aria-label={`Read article: ${post.title}`}
+                >
+                  <div className="relative overflow-hidden h-48">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                      width={314}
+                      height={202}
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#FFB400] transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed">
+                      {post.description}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* All Blog Posts Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <Container>
+          <div className="flex items-center justify-between mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              All Stories
+            </h2>
+            <div className="h-px bg-gradient-to-r from-[#FFB400] to-transparent flex-grow ml-6"></div>
+          </div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 },
+              },
+            }}
+          >
+            {paginatedArticles.map((article, index) => (
+              <motion.div
+                key={index}
+                className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-[#FFB400] hover:shadow-xl transition-all duration-300"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <Link href={`/whoweare/blog/${article.slug}`}>
+                  <div className="relative overflow-hidden h-56">
+                    <Image
+                      src={article.imgSrc}
+                      alt={article.title}
+                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700">
+                      Article
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#FFB400] transition-colors line-clamp-2 leading-tight">
+                      {article.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                      {article.description}
+                    </p>
+                    <div className="flex items-center text-[#FFB400] font-medium text-sm group-hover:translate-x-2 transition-transform">
+                      Read more
+                      <svg
+                        className="w-4 h-4 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Enhanced Pagination */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-12">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                currentPage === 1
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-gray-900 text-white hover:bg-gray-800"
+              }`}
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => handlePageChange(i + 1)}
+                className={`w-10 h-10 rounded-lg font-medium transition-all ${
+                  currentPage === i + 1
+                    ? "bg-[#FFB400] text-white shadow-lg scale-110"
+                    : "bg-white text-gray-700 border border-gray-300 hover:border-[#FFB400] hover:text-[#FFB400]"
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                currentPage === totalPages
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-gray-900 text-white hover:bg-gray-800"
+              }`}
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </Container>
+      </section>
     </main>
   );
 };

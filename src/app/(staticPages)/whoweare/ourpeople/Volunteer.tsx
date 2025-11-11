@@ -1,5 +1,5 @@
 "use client";
-
+import VolunteerButton from "@/app/_component/ui/VolunteerButton";
 import React from "react";
 import Container from "@/app/_component/shared";
 
@@ -19,12 +19,15 @@ const Volunteer = () => {
               for passionate individuals who want to make an impact in people&#39;s
               lives. Together, we can achieve greatness.
             </p>
-            <button
+            {/* <button
               className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition-colors"
               
             >
-              Become a Volunteer
-            </button>
+            Become a Volunteer
+            </button> */}
+            <VolunteerButton>
+
+            </VolunteerButton>
           </div>
         </div>
       </Container>
