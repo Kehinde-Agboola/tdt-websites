@@ -21,8 +21,8 @@ function slugify(title: string): string {
 type BoxProps = {
   imgSrc: string | StaticImageData;
   title: string;
-  author: string;
-  date: string;
+  author?: string;
+  date?: string;
   description: string;
   buttonText: string;
 };
@@ -44,15 +44,17 @@ const Card = ({ title, author, date, description, imgSrc }: BoxProps) => {
           whileHover={{ scale: 1.05 }} // Reduced scale for better UX
           transition={{ duration: 0.3, ease: "easeInOut" }} // Faster, smoother transition
         >
-          <Image src={imgSrc} alt={title} layout="fill" objectFit="cover" />
+          <Image src={imgSrc} alt={title} fill className="object-cover" />
         </motion.div>
         <div className="pt-4 px-4 pb-6">
           <h3 className="text-lg font-[500] text-[18px] text-[#232323] hover:text-[#FFB400] transition-colors duration-300 line-clamp-2">
             {title}
           </h3>
-          <p className="text-sm text-[#333333] mb-2 py-2">
-            {author} • {date}
-          </p>
+          {(author || date) && (
+            <p className="text-sm text-[#333333] mb-2 py-2">
+              {author}{author && date ? ` • ${date}` : date}
+            </p>
+          )}
           <p className="text-sm text-[#333333] mb-4 line-clamp-3">{description}</p>
           <button className="bg-[#FFB400] text-black py-2 px-4 rounded hover:bg-[#e6a200] transition-colors duration-300">
             Read More
