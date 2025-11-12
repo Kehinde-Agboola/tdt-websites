@@ -50,8 +50,13 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
+      if (!supabase) {
+        alert("Service unavailable. Please try again later.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error } = await supabase.from("sponsorship_submissions").insert([
         {
           full_name: formData.fullName,

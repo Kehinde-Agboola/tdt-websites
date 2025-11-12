@@ -37,6 +37,12 @@ const ModalForm = ({
     event.preventDefault();
     setIsSubmitting(true);
     try {
+      if (!supabase) {
+        console.warn("Supabase client not configured. Skipping submission.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error } = await supabase.from("research_submissions").insert([
         {
           first_name: firstName,

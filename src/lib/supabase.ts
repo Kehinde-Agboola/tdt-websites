@@ -15,5 +15,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Only create the client when both env vars are present. Otherwise export null
+// so imports don't throw during build/prerender. Call sites must guard for null.
+export const supabase =
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
+
 export default supabase;

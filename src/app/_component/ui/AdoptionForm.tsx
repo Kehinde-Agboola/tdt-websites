@@ -66,6 +66,12 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
     setIsSubmitting(true);
 
     try {
+      if (!supabase) {
+        alert("Service unavailable. Please try again later.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error } = await supabase.from("project_adoption_submissions").insert([
         {
           full_name: formData.fullName,
