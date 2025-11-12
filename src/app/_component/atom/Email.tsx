@@ -18,6 +18,13 @@ const Email = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      if (!supabase) {
+        // Supabase not configured (missing env vars). Fail gracefully.
+        alert("Service unavailable. Please try again later.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error } = await supabase
         .from("newsletter_subscriptions")
         .insert([{ email: email }]);
