@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Container from "@/app/_component/shared";
 import Education from "../../../../public/assets/home/education.png";
 import Shelter from "../../../../public/assets/home/shelter.png";
@@ -10,8 +10,9 @@ import { Button } from "../../_component/atom/button";
 import Image, { StaticImageData } from "next/image";
 import { GoArrowRight } from "react-icons/go";
 import { motion, useAnimation, useInView, useReducedMotion } from "framer-motion";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Navigation, Pagination, Keyboard } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from "swiper";
+import { Navigation, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -58,7 +59,7 @@ const Box: React.FC<BoxProps> = ({ iconSrc, title, text, buttonText }) => {
     >
       <div
         className="
-          group h-full w-full rounded-lg border bg-white
+          group h-full w-full  bg-white
           p-6 text-center text-[14px] text-[#333]
           shadow-sm transition-all duration-200
           hover:bg-[#fff7e5] hover:-translate-y-[2px] hover:scale-[1.01]
@@ -86,7 +87,7 @@ const Box: React.FC<BoxProps> = ({ iconSrc, title, text, buttonText }) => {
           <div className="flex justify-center">
             <Button
               className="
-                w-44  border-2 border-[#e5e5e5] bg-white py-2.5 text-[#333]
+                w-44  border border-[#e5e5e5] bg-white py-2.5 text-[#333]
                 transition-colors duration-200
                 group-hover:border-black group-hover:bg-black group-hover:text-white
               "
@@ -103,29 +104,13 @@ const Box: React.FC<BoxProps> = ({ iconSrc, title, text, buttonText }) => {
 };
 
 
-const NavigationButtons: React.FC = () => {
-  const swiper = useSwiper();
-  return (
-    <>
-      <button
-        onClick={() => swiper.slidePrev()}
-        className="absolute left-[-2.2rem] md:left-[-2.8rem] top-1/2 -translate-y-1/2 z-10  bg-[#ffb400] p-2 text-black shadow-md transition-colors hover:bg-[#e6a200]"
-        aria-label="Previous slide"
-      >
-        <FaArrowLeft size={18} />
-      </button>
-      <button
-        onClick={() => swiper.slideNext()}
-        className="absolute right-[-2.2rem] md:right-[-2.8rem] top-1/2 -translate-y-1/2 z-10  bg-[#ffb400] p-2 text-black shadow-md transition-colors hover:bg-[#e6a200]"
-        aria-label="Next slide"
-      >
-        <FaArrowRight size={18} />
-      </button>
-    </>
-  );
-};
+// Navigation buttons are rendered below the swiper (centered) instead of
+// using absolute side buttons.
 
 const Initiative: React.FC = () => {
+  const [swiperInstance, setSwiperInstance] = useState<SwiperClass | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   const support = [
     {
       imgSrc: Education,
@@ -165,18 +150,23 @@ const Initiative: React.FC = () => {
         </div>
 
         <div className="relative mt-10 px-2 md:px-12">
+          {/* capture swiper instance so we can control it from custom controls */}
           <Swiper
-            modules={[Navigation, Pagination, Keyboard]}
+            modules={[Navigation, Keyboard]}
             spaceBetween={20}
             slidesPerView={1}
             breakpoints={{
               640: { slidesPerView: 2, spaceBetween: 20 },
               1024: { slidesPerView: 3, spaceBetween: 24 },
             }}
-            pagination={{ clickable: true }}
             keyboard={{ enabled: true }}
             grabCursor
             className="pb-12"
+            onSwiper={(s) => {
+              setSwiperInstance(s);
+              setCurrentIndex(s.activeIndex ?? 0);
+            }}
+            onSlideChange={(s) => setCurrentIndex(s.activeIndex)}
           >
             {support.map((box) => (
               <SwiperSlide key={box.heading}>
@@ -188,8 +178,33 @@ const Initiative: React.FC = () => {
                 />
               </SwiperSlide>
             ))}
-            <NavigationButtons />
           </Swiper>
+
+          {/* Centered navigation controls below the cards */}
+          <div className="flex justify-center items-center gap-4 mt-6">
+            <button
+              onClick={() => swiperInstance?.slidePrev()}
+              disabled={!swiperInstance || currentIndex <= 0}
+              className="w-10 h-10 bg-[#FFB400] text-black rounded-full hover:bg-[#e0a800] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              aria-label="Previous"
+            >
+              <FaArrowLeft size={16} />
+            </button>
+
+            <button
+              onClick={() => swiperInstance?.slideNext()}
+              disabled={!swiperInstance || (swiperInstance ? (() => {
+                const slidesLen = swiperInstance.slides?.length ?? 0;
+                const perView = typeof swiperInstance.params.slidesPerView === 'number' ? swiperInstance.params.slidesPerView : 1;
+                const maxIndex = Math.max(0, slidesLen - perView);
+                return currentIndex >= maxIndex;
+              })() : true)}
+              className="w-10 h-10 bg-[#FFB400] text-black rounded-full hover:bg-[#e0a800] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              aria-label="Next"
+            >
+              <FaArrowRight size={16} />
+            </button>
+          </div>
         </div>
 
         <style jsx global>{`
@@ -204,6 +219,8 @@ const Initiative: React.FC = () => {
           }
         `}</style>
       </section>
+
+      
     </Container>
   );
 };

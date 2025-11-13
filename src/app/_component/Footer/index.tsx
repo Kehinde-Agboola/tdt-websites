@@ -85,9 +85,9 @@ const Footer = () => {
             </motion.div>
           </motion.div>
 
-          {/* Subscription Section (Larger) */}
+          {/* Subscription Section (Larger) - show first on mobile */}
           <motion.div
-            className="flex flex-col items-center w-full lg:flex-[2] "
+            className="flex flex-col items-center w-full lg:flex-[2] order-first lg:order-none"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

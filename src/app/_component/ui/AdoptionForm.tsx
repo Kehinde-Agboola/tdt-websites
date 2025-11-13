@@ -66,25 +66,25 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
     setIsSubmitting(true);
 
     try {
-      if (!supabase) {
-        alert("Service unavailable. Please try again later.");
-        setIsSubmitting(false);
-        return;
-      }
+    if (!supabase) {
+      alert("Service unavailable. Please try again later.");
+      setIsSubmitting(false);
+      return;
+    }
 
-      const { error } = await supabase.from("project_adoption_submissions").insert([
-        {
-          full_name: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          project_types: formData.projectTypes,
-          other_project: formData.otherProject,
-          project_name: formData.projectName,
-          preferred_location: formData.preferredLocation,
-          support_type: formData.supportType,
-          additional_info: formData.additionalInfo,
-        },
-      ]);
+    const { error } = await supabase.from("project_adoption_submissions").insert([
+      {
+        full_name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        project_types: formData.projectTypes,
+        other_project: formData.otherProject,
+        project_name: formData.projectName,
+        preferred_location: formData.preferredLocation,
+        support_type: formData.supportType,
+        additional_info: formData.additionalInfo,
+      },
+    ]);
 
       if (error) throw error;
 
@@ -99,15 +99,16 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="max-h-[70vh] overflow-y-auto">
-      <div className="mb-6">
-        <p className="text-gray-600">
-          Support a residential home, learning centre, or strategic project that
-          transforms lives. Please tell us how you&apos;d like to partner with us.
-        </p>
-      </div>
+    <div>
+      <div className="max-w-2xl mx-auto space-y-6 p-6 bg-white rounded-lg shadow-md">
+        <div className="mb-6">
+          <p className="text-gray-600">
+            Support a residential home, learning centre, or strategic project that
+            transforms lives. Please tell us how you&apos;d like to partner with us.
+          </p>
+        </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
         {/* Your Details */}
         <div>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
@@ -184,7 +185,7 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
                   onChange={handleInputChange}
                   className="h-4 w-4 text-[#FFB400] focus:ring-[#FFB400] border-gray-300 rounded"
                 />
-                <span className="ml-2 text-sm text-gray-700">{option}</span>
+                <span className="ml-2 text-sm text-gray-700">{option.replace("'","’")}</span>
               </label>
             ))}
           </div>
@@ -204,7 +205,7 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
                 value={formData.otherProject}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
-                placeholder="Describe the project you'd like to support"
+                placeholder={"Describe the project you’d like to support"}
               />
             </div>
           )}
@@ -226,7 +227,7 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
               value={formData.projectName}
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
-              placeholder="e.g., Hope Children's Home, Lagos"
+              placeholder={"e.g., Hope Children’s Home, Lagos"}
             />
           </div>
           <div>
@@ -263,7 +264,7 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
               "One-time donation",
               "Monthly commitment",
               "Annual commitment",
-              "I'd like to discuss available options",
+              "I’d like to discuss available options",
             ].map((type) => (
               <label key={type} className="flex items-center">
                 <input
@@ -300,25 +301,14 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
-          <Button
-            type="button"
-            onClick={onClose}
-            className="px-6 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
-          >
-            Cancel
-          </Button>
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-[#FFB400] hover:bg-[#e0a800] text-black px-6 py-2 transition-colors disabled:opacity-50"
-            btnFlex={true}
-            icon={<Send size={16} />}
-          >
+        <div className="space-y-3">
+          <button type="button" onClick={onClose} className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">Cancel</button>
+          <Button type="submit" disabled={isSubmitting} className="w-full bg-[#FFB400] hover:bg-[#e0a800] text-black font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50" btnFlex={true} icon={<Send size={16} />}>
             {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </div>
       </form>
+      </div>
     </div>
   );
 };

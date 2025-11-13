@@ -118,7 +118,8 @@ const Head = () => {
               {/* Contact Us (outlined) */}
               <Link
                 href="/contact"
-                className="border w-[250px] md:w-[160px] h-[50px] border-[#FFBC00] px-6 py-2 text-white text-center transition hover:bg-[#FFBC00]"
+                aria-label="Contact us"
+                className="border w-[250px] md:w-[160px] h-[50px] border-[#FFBC00] px-6 py-2 text-white text-center flex items-center justify-center transition-colors duration-200 hover:bg-[#FFBC00] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#FFBC00]"
               >
                 Contact Us
               </Link>
@@ -126,7 +127,8 @@ const Head = () => {
               {/* Get Involved (filled) */}
               <Link
                 href="/get-involve"
-                className="bg-[#FFBC00] w-[250px] md:w-[160px] h-[50px] px-6 py-2 text-black text-center transition hover:bg-[#e0a80"
+                aria-label="Get involved"
+                className="bg-[#FFBC00] w-[250px] md:w-[160px] h-[50px] px-6 py-2 text-black text-center flex items-center justify-center  transition-colors duration-200 hover:bg-[#e0a800] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#FFBC00]"
               >
                 Get Involved
               </Link>

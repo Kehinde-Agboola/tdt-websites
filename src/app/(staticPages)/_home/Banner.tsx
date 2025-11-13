@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion} from "framer-motion";
 import Container from "@/app/_component/shared";
 import Bag from "../../../../public/assets/ecommerce/bags.png";
@@ -95,9 +96,12 @@ const Banner = () => {
               }}
               className="mt-5 flex justify-center md:justify-start"
             >
-              <button className="py-2.5 px-6  bg-white/90 hover:bg-black hover:text-white transition-colors duration-200">
+              <Link
+                href="/ShopForGood"
+                className="py-2.5 px-6 bg-white/90 hover:bg-black hover:text-white transition-colors duration-200 inline-block text-center"
+              >
                 Start Shopping
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

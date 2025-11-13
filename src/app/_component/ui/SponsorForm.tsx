@@ -5,12 +5,25 @@ import React, { useState } from "react";
 import { Button } from "@/app/_component/atom/button";
 import { Send } from "lucide-react";
 
+interface SponsorFormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  numberOfChildren: number;
+  preferredGender: string;
+  duration: string;
+  namedScholarship: string;
+  scholarshipName: string;
+  additionalInfo: string;
+  customDiscussion: string;
+}
+
 interface SponsorChildFormProps {
   onClose: () => void;
 }
 
 const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<SponsorFormData>({
     fullName: "",
     email: "",
     phone: "",
@@ -20,36 +33,30 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
     namedScholarship: "",
     scholarshipName: "",
     additionalInfo: "",
-    customDiscussion: "", // Added property
+    customDiscussion: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value, type } = e.target;
-
+    const { name, value, type } = e.target as HTMLInputElement;
     if (type === "checkbox") {
       const target = e.target as HTMLInputElement;
-      setFormData((prev) => ({
-        ...prev,
-        [name]: target.checked ? value : "",
-      }));
+      setFormData((prev) => ({ ...prev, [name]: target.checked ? value : "" }));
+    } else if (type === "number") {
+      setFormData((prev) => ({ ...prev, [name]: Number(value) }));
     } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus("idle");
     try {
       if (!supabase) {
         alert("Service unavailable. Please try again later.");
@@ -74,269 +81,168 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
 
       if (error) throw error;
 
-      console.log("Form submitted to Supabase");
+      setSubmitStatus("success");
+      // keep behavior: close modal after successful submission
       onClose();
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error submitting the form. Please try again.");
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="max-h-[70vh] overflow-y-auto">
-      <div className="mb-6">
-        <p className="text-gray-600">
-          Join us in transforming lives through education and care. Please fill
-          out the form below to indicate your interest.
-        </p>
+    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6 p-6 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-gray-900">Sponsor a Child</h2>
+
+      {submitStatus === "success" && (
+        <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded">
+          Thank you! Your sponsorship request has been submitted.
+        </div>
+      )}
+
+      {submitStatus === "error" && (
+        <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded">
+          Something went wrong. Please try again.
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+          <input
+            id="fullName"
+            name="fullName"
+            required
+            value={formData.fullName}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            value={formData.email}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
+          />
+        </div>
+
+        <div className="md:col-span-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+          <input
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
+          />
+        </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 px-4">
-        {/* Your Details Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Your Details
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label
-                htmlFor="fullName"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Full Name *
-              </label>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                required
-                value={formData.fullName}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Email Address *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
-              />
-            </div>
-            <div className="md:col-span-2">
-              <label
-                htmlFor="phone"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Phone Number *
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                required
-                value={formData.phone}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
-              />
-            </div>
-          </div>
+          <label htmlFor="numberOfChildren" className="block text-sm font-medium text-gray-700 mb-1">Number of Children</label>
+          <input
+            id="numberOfChildren"
+            name="numberOfChildren"
+            type="number"
+            min={1}
+            value={formData.numberOfChildren}
+            onChange={handleInputChange}
+            className="w-full md:w-48 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
+          />
         </div>
 
-        {/* Sponsorship Details */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Sponsorship Details
-          </h3>
+          <label htmlFor="preferredGender" className="block text-sm font-medium text-gray-700 mb-1">Preferred Gender</label>
+          <select
+            id="preferredGender"
+            name="preferredGender"
+            value={formData.preferredGender}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
+          >
+            <option value="">No preference</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+      </div>
 
-          {/* Number of Children */}
-          <div className="mb-4">
-            <label
-              htmlFor="numberOfChildren"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Number of Children You Want to Sponsor
-            </label>
-            <input
-              type="number"
-              id="numberOfChildren"
-              name="numberOfChildren"
-              min="1"
-              max="100"
-              value={formData.numberOfChildren}
-              onChange={handleInputChange}
-              className="w-full md:w-32 px-3 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
-            />
-          </div>
-
-          {/* Custom Sponsorship Discussion */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Alternative Sponsorship Options
-            </label>
-            <div className="bg-gray-50 p-4 rounded-md">
-              <label className="flex items-start">
-                <input
-                  type="checkbox"
-                  name="customDiscussion"
-                  value="yes"
-                  checked={formData.customDiscussion === "yes"}
-                  onChange={handleInputChange}
-                  className="h-4 w-4 text-[#FFB400] focus:ring-[#FFB400] border-gray-300 mt-0.5"
-                />
-                <div className="ml-3">
-                  <span className="text-sm font-medium text-gray-900">
-                    I&apos;d prefer to discuss a sponsorship arrangements
-                  </span>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          {/* Preferred Gender */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Preferred Gender of Child(ren)
-            </label>
-            <div className="space-y-2">
-              {["Male", "Female", "No Preference"].map((gender) => (
-                <label key={gender} className="flex items-center">
-                  <input
-                    type="radio"
-                    name="preferredGender"
-                    value={gender}
-                    checked={formData.preferredGender === gender}
-                    onChange={handleInputChange}
-                    className="h-4 w-4 text-[#FFB400] focus:ring-[#FFB400] border-gray-300"
-                  />
-                  <span className="ml-2 text-sm text-gray-700">{gender}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Duration */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Duration of Sponsorship
-            </label>
-            <div className="space-y-2">
-              {[
-                "One year",
-                "Until completion of university education",
-                "I'd like to discuss this",
-              ].map((duration) => (
-                <label key={duration} className="flex items-center">
-                  <input
-                    type="radio"
-                    name="duration"
-                    value={duration}
-                    checked={formData.duration === duration}
-                    onChange={handleInputChange}
-                    className="h-4 w-4 text-[#FFB400] focus:ring-[#FFB400] border-gray-300"
-                  />
-                  <span className="ml-2 text-sm text-gray-700">{duration}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Named Scholarship */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Would you like to endow a named scholarship (e.g., in memory or
-              honour of someone)?
-            </label>
-            <div className="space-y-2">
-              {["Yes", "No", "I'd like more information"].map((option) => (
-                <label key={option} className="flex items-center">
-                  <input
-                    type="radio"
-                    name="namedScholarship"
-                    value={option}
-                    checked={formData.namedScholarship === option}
-                    onChange={handleInputChange}
-                    className="h-4 w-4 text-[#FFB400] focus:ring-[#FFB400] border-gray-300"
-                  />
-                  <span className="ml-2 text-sm text-gray-700">{option}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Scholarship Name */}
-          {formData.namedScholarship === "Yes" && (
-            <div className="mb-4">
-              <label
-                htmlFor="scholarshipName"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                What would you like the scholarship to be called?
-              </label>
-              <input
-                type="text"
-                id="scholarshipName"
-                name="scholarshipName"
-                value={formData.scholarshipName}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
-                placeholder="e.g., The John Smith Memorial Scholarship"
-              />
-            </div>
-          )}
-
-          {/* Additional Information */}
-          <div className="mb-6">
-            <label
-              htmlFor="additionalInfo"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Additional Information / Message (Optional)
-            </label>
-            <textarea
-              id="additionalInfo"
-              name="additionalInfo"
-              rows={4}
-              value={formData.additionalInfo}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
-              placeholder="Tell us more about your sponsorship goals or any specific requests..."
-            />
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-1">Duration</label>
+          <select
+            id="duration"
+            name="duration"
+            value={formData.duration}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
+          >
+            <option value="">Select duration</option>
+            <option value="One year">One year</option>
+            <option value="Until completion of university education">Until completion of university education</option>
+            <option value="Discuss">I&apos;d like to discuss</option>
+          </select>
         </div>
 
-        {/* Submit Button */}
-        <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
-          <Button
-            type="button"
-            onClick={onClose}
-            className="px-6 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+        <div>
+          <label htmlFor="namedScholarship" className="block text-sm font-medium text-gray-700 mb-1">Named Scholarship?</label>
+          <select
+            id="namedScholarship"
+            name="namedScholarship"
+            value={formData.namedScholarship}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
           >
-            Cancel
-          </Button>
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-[#FFB400] hover:bg-[#e0a800] text-black px-6 py-2 transition-colors disabled:opacity-50"
-            btnFlex={true}
-            icon={<Send size={16} />}
-          >
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </Button>
+            <option value="">No</option>
+            <option value="Yes">Yes</option>
+            <option value="More info">I&apos;d like more information</option>
+          </select>
         </div>
-      </form>
-    </div>
+      </div>
+
+      {formData.namedScholarship === "Yes" && (
+        <div>
+          <label htmlFor="scholarshipName" className="block text-sm font-medium text-gray-700 mb-1">Scholarship Name</label>
+          <input
+            id="scholarshipName"
+            name="scholarshipName"
+            value={formData.scholarshipName}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
+            placeholder="e.g., The John Smith Memorial Scholarship"
+          />
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700 mb-1">Additional Information (optional)</label>
+        <textarea
+          id="additionalInfo"
+          name="additionalInfo"
+          rows={4}
+          value={formData.additionalInfo}
+          onChange={handleInputChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
+          placeholder="Tell us more about your sponsorship goals or any specific requests..."
+        />
+      </div>
+
+      <div className="space-y-3">
+        <button type="button" onClick={onClose} className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">Cancel</button>
+        <Button type="submit" disabled={isSubmitting} className="w-full bg-[#FFB400] hover:bg-[#e0a800] text-black font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50" btnFlex={true} icon={<Send size={16} />}>
+          {isSubmitting ? "Submitting..." : "Submit Sponsorship"}
+        </Button>
+      </div>
+    </form>
   );
 };
 

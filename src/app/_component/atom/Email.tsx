@@ -19,7 +19,6 @@ const Email = () => {
     setIsSubmitting(true);
     try {
       if (!supabase) {
-        // Supabase not configured (missing env vars). Fail gracefully.
         alert("Service unavailable. Please try again later.");
         setIsSubmitting(false);
         return;

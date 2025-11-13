@@ -34,18 +34,26 @@ const Impact = () => {
       <Container>
         <div className="flex flex-col-reverse md:flex-row justify-between items-center pt-[5rem] md:pt-[0]">
           <motion.div
+            className="overflow-hidden max-h-[350px] md:max-h-[1600px] relative"
             initial={{ x: -30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <Image src={Boy} alt="Schoolboy" width={618} />
+            <Image
+              src={Boy}
+              alt="Schoolboy"
+              width={618}
+              className="object-cover object-top"
+              style={{ objectPosition: "center top" }}
+            />
           </motion.div>
+
           <motion.div
             className="md:w-[45%]"
             initial={{ x: 30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: false, amount: 0.3 }}
           >
             <Image src={Line} alt="line" className="pb-3 hidden md:block" />

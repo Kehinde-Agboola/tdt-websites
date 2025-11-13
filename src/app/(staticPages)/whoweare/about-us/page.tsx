@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 // Hero image - using existing team hero image, you can replace this with a specific about us image
-const HeroImage = "/assets/care/carem.png";
+const HeroImage = "/cares.png";
 
 export default function AboutPage() {
   return (
@@ -13,7 +13,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full overflow-hidden">
         {/* Background Image */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -27,7 +27,7 @@ export default function AboutPage() {
             priority
           />
           {/* Overlay */}
-          <motion.div 
+          <motion.div
             className="absolute inset-0 bg-black bg-opacity-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -56,14 +56,14 @@ export default function AboutPage() {
       <Container>
         <div className="max-w-4xl mx-auto py-8 md:py-12 px-4 md:px-6">
           {/* Commitment Section */}
-          <motion.section 
+          <motion.section
             className="mb-8 md:mb-12 text-justify"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6 text-[#FFB400] text-justify"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -72,7 +72,7 @@ export default function AboutPage() {
             >
               A Commitment to Children
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="mb-4 md:mb-6 text-gray-800 text-sm md:text-base leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +87,7 @@ export default function AboutPage() {
               families, addressing barriers like homelessness, poverty, neglect,
               abuse, and exposure to crime.
             </motion.p>
-            <motion.p 
+            <motion.p
               className="mb-4 md:mb-6 text-gray-800 text-sm md:text-base leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -100,17 +100,70 @@ export default function AboutPage() {
               forward toward a future of even greater impact.
             </motion.p>
           </motion.section>
+          {/* Why We Invest Section */}
+          <motion.section
+            className="mb-8 md:mb-12 text-justify"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            <motion.h2
+              className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6 text-[#FFB400]"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              Why We Invest in Children
+            </motion.h2>
+            <motion.p
+              className="mb-4 md:mb-6 text-gray-800 text-sm md:text-base leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              We believe children hold endless possibilities to recreate a
+              better future for our society. Our future can only be as great as
+              what we make of the children today.
+            </motion.p>
+            <motion.p
+              className="mb-4 md:mb-6 text-gray-800 text-sm md:text-base leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              This is why we are big on their wellbeing, education and
+              empowerment. With this, we are breaking the span of
+              transgenerational poverty, rescuing children that would be left
+              behind and building them into valuable human capital that Africa
+              would need to thrive in the future.
+            </motion.p>
+            <motion.p
+              className="text-gray-800 text-sm md:text-base leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: false, amount: 0.5 }}
+            >
+              Together, we can touch more lives; we can be the hope of that one
+              child that could become a menace to the society without a timely
+              intervention providing care, education and empowerment.
+            </motion.p>
+          </motion.section>
 
           {/* Our Impact Story Section */}
-          <motion.section 
+          <motion.section
             className="mb-8 md:mb-12  bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg md:rounded-xl p-4 md:p-6 lg:p-8 border border-yellow-100"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false, amount: 0.2 }}
           >
-            <motion.h2 
-              className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 text-[#FFB400] text-center"
+            <motion.h2
+              className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 text-[#FFB400] text-left space-y-6"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -120,7 +173,7 @@ export default function AboutPage() {
             </motion.h2>
 
             <div className="space-y-4 md:space-y-6 text-gray-700 leading-relaxed text-justify">
-              <motion.p 
+              <motion.p
                 className="text-sm md:text-base"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -134,7 +187,7 @@ export default function AboutPage() {
                 stark metaphor for destitution beside wealth.
               </motion.p>
 
-              <motion.p 
+              <motion.p
                 className="text-sm md:text-base"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -148,7 +201,7 @@ export default function AboutPage() {
                 come.
               </motion.p>
 
-              <motion.p 
+              <motion.p
                 className="text-sm md:text-base"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -164,8 +217,8 @@ export default function AboutPage() {
                 stories.
               </motion.p>
 
-              <motion.div 
-                className="bg-white rounded-lg p-4 md:p-6 shadow-sm border-l-4 border-[#FFB400]"
+              <motion.div
+                className="bg-white p-4 md:p-6 shadow-sm border-l-4 border-[#FFB400]"
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
@@ -185,7 +238,7 @@ export default function AboutPage() {
                 </p>
               </motion.div>
 
-              <motion.p 
+              <motion.p
                 className="text-sm md:text-base"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -201,7 +254,7 @@ export default function AboutPage() {
                 society.
               </motion.p>
 
-              <motion.p 
+              <motion.p
                 className="text-sm md:text-base"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -219,30 +272,43 @@ export default function AboutPage() {
                 lives of children.
               </motion.p>
 
-              <motion.div 
-                className="text-center bg-[#FFB400] text-black rounded-lg p-4 md:p-6 font-semibold text-sm md:text-base lg:text-lg"
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              <motion.div
+                className="w-full"
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: false, amount: 0.5 }}
               >
-                We are more convinced than ever: changing the life of one child
-                creates ripples that change the world. That truth is our
-                greatest inspiration and our call to an even greater future of
-                impact.
+                <h3 className="text-center text-lg md:text-xl lg:text-2xl font-semibold mb-4 text-[#FFB400]">
+                  A Story of Change
+                </h3>
+
+                {/* Responsive 16:9 YouTube embed - replace VIDEO_ID with the actual video id */}
+                <div className="relative pb-[56.25%] h-0 rounded-lg overflow-hidden shadow-sm">
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube-nocookie.com/embed/twGwloF3Zag"
+                    title="A Story of Change"
+                    frameBorder="0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
               </motion.div>
             </div>
           </motion.section>
 
           {/* Vision Section */}
-          <motion.section 
+          <motion.section
             className="mb-8 md:mb-12 text-justify"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6 text-[#FFB400]"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -251,7 +317,7 @@ export default function AboutPage() {
             >
               Our Vision
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-gray-800 text-sm md:text-base leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -267,14 +333,14 @@ export default function AboutPage() {
           </motion.section>
 
           {/* Mission Section */}
-          <motion.section 
+          <motion.section
             className="mb-8 md:mb-12 text-justify"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6 text-[#FFB400]"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -283,7 +349,7 @@ export default function AboutPage() {
             >
               Our Mission
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-gray-800 text-sm md:text-base leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -296,60 +362,6 @@ export default function AboutPage() {
               empowerment. We are breaking the cycle of poverty, unlocking every
               child&apos;s full potential, and meeting them where they need us
               most, with education as the foundation for lasting change.
-            </motion.p>
-          </motion.section>
-
-          {/* Why We Invest Section */}
-          <motion.section 
-            className="mb-8 md:mb-12 text-justify"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false, amount: 0.3 }}
-          >
-            <motion.h2 
-              className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6 text-[#FFB400]"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: false, amount: 0.5 }}
-            >
-              Why We Invest in Children
-            </motion.h2>
-            <motion.p 
-              className="mb-4 md:mb-6 text-gray-800 text-sm md:text-base leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: false, amount: 0.5 }}
-            >
-              We believe children hold endless possibilities to recreate a
-              better future for our society. Our future can only be as great as
-              what we make of the children today.
-            </motion.p>
-            <motion.p 
-              className="mb-4 md:mb-6 text-gray-800 text-sm md:text-base leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: false, amount: 0.5 }}
-            >
-              This is why we are big on their wellbeing, education and
-              empowerment. With this, we are breaking the span of
-              transgenerational poverty, rescuing children that would be left
-              behind and building them into valuable human capital that Africa
-              would need to thrive in the future.
-            </motion.p>
-            <motion.p 
-              className="text-gray-800 text-sm md:text-base leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              viewport={{ once: false, amount: 0.5 }}
-            >
-              Together, we can touch more lives; we can be the hope of that one
-              child that could become a menace to the society without a timely
-              intervention providing care, education and empowerment.
             </motion.p>
           </motion.section>
         </div>
