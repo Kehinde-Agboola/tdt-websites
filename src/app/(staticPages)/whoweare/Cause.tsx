@@ -22,16 +22,15 @@ const Cause = () => {
     <main>
       <section className="bg-[#F4F4F4] py-[4rem]">
         <Container>
-          <section className="relative flex flex-col xl:flex-row items-center ">
-            <div className="w-full ">
+          <section className="flex flex-col xl:flex-row items-center justify-center md:gap-0 gap-6">
+            <div className="w-full md:w-[45%] h-[35%] overflow-hidden">
               <Image
                 src={Boy}
-                className=""
-                objectFit="cover"
+                className="object-cover w-full h-full"
                 alt="young boy with smile at the breach learning center "
               />
             </div>
-            <div className="w-full xl:w-[38rem] absolute xl:right-0 top-80 xl:top-20 bg-black text-white p-6 lg:p-12">
+            <div className="w-full md:w-[45%] h-[30%] bg-black text-white p-4 -ml-2">
               <p className="text-yellow md:text-[64px] text-[34px]">
                 Our Cause
               </p>
@@ -55,7 +54,7 @@ const Cause = () => {
         </Container>
       </section>
       <Container>
-        <section className="mt-[40rem] xl:mt-[5rem]">
+        <section className="mt-[2rem">
           <p className="xl:text-[35px] text-[18px] text-[#555555] w-full md:max-w-[70rem]">
             <span className="text-yellow">
               Education is the centerpiece of our mission to uplift

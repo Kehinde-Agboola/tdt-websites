@@ -13,8 +13,9 @@ const Invest = () => {
                "This is why we are big on their wellbeing, education and empowerment. With this, we are breaking the span of transgenerational poverty, rescuing children that would be left behind and building them into valuable human capital that Africa would need to thrive in the future.",
              text3:
                "Together, we can touch more lives; we can be the hope of that one child that could become a menace to the society without a timely intervention providing care, education and empowerment.",
-             buttonText: "Button",
+
              imageSrc: Girl,
+             buttonText: "",
            },
          ];
 
@@ -23,7 +24,7 @@ const Invest = () => {
       <FlexComponent
         data={data}
         columnReversed={true}
-        buttonClassName="bg-[#FFB400] text-black w-[160px] py-2"
+        buttonClassName=""
       />
     </section>
   );

@@ -56,11 +56,13 @@ export const FlexComponent = ({
             >
               <div>
                 {el?.imageSrc1 && (
-                  <Image
-                    src={el?.imageSrc1}
-                    alt={el?.spanText || "Image"}
-                    className="object-cover pb-3"
-                  />
+                  <div className="w-full h-48 md:h-64 lg:h-80 overflow-hidden pb-3">
+                    <Image
+                      src={el?.imageSrc1}
+                      alt={el?.spanText || "Image"}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
                 )}
                 <span className="text-[#ffb400] text-[16px] md:text-[32px]">
                   {el.spanText}
@@ -94,11 +96,13 @@ export const FlexComponent = ({
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
               {el?.imageSrc && (
-                <Image
-                  src={el?.imageSrc}
-                  alt={el?.heading || "Image"}
-                  className="object-cover"
-                />
+                <div className="w-full h-48 md:h-64 lg:h-80 overflow-hidden">
+                  <Image
+                    src={el?.imageSrc}
+                    alt={el?.heading || "Image"}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
               )}
             </motion.div>
           </motion.div>

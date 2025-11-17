@@ -36,9 +36,9 @@ const Card = ({ title, author, date, description, imgSrc }: BoxProps) => {
       whileInView={{ opacity: 1, y: 0 }} // Animation when in viewport
       viewport={{ once: true }} // Trigger animation only once
       transition={{ duration: 0.5, delay: 0.1 }} // Smooth transition
-      className="overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+      className="overflow-hidden bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 h-full flex flex-col"
     >
-      <Link href={`/whoweare/blog/${blogSlug}`} className="block">
+      <Link href={`/whoweare/blog/${blogSlug}`} className="block h-full">
         <motion.div
           className="relative w-full h-60 overflow-hidden"
           whileHover={{ scale: 1.05 }} // Reduced scale for better UX
@@ -46,7 +46,7 @@ const Card = ({ title, author, date, description, imgSrc }: BoxProps) => {
         >
           <Image src={imgSrc} alt={title} fill className="object-cover" />
         </motion.div>
-        <div className="pt-4 px-4 pb-6">
+        <div className="pt-4 px-4 pb-6 flex flex-col h-full">
           <h3 className="text-lg font-[500] text-[18px] text-[#232323] hover:text-[#FFB400] transition-colors duration-300 line-clamp-2">
             {title}
           </h3>
@@ -55,10 +55,10 @@ const Card = ({ title, author, date, description, imgSrc }: BoxProps) => {
               {author}{author && date ? ` • ${date}` : date}
             </p>
           )}
-          <p className="text-sm text-[#333333] mb-4 line-clamp-3">{description}</p>
-          <button className="bg-[#FFB400] text-black py-2 px-4 rounded hover:bg-[#e6a200] transition-colors duration-300">
+          <p className="text-sm text-[#333333] mb-4 line-clamp-3 flex-1">{description}</p>
+          <span className="mt-4 inline-flex items-center justify-center bg-[#FFB400] text-black py-2 px-4 rounded hover:bg-[#e6a200] transition-colors duration-300">
             Read More
-          </button>
+          </span>
         </div>
       </Link>
     </motion.div>
@@ -115,6 +115,7 @@ const Blog = () => {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
+                className="h-full"
               >
                 <Card buttonText={""} {...article} />
               </motion.div>

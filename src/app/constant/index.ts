@@ -348,11 +348,18 @@ Thank you for standing with us, especially now, when compassion is needed most. 
   },
   {
     image: Rescue,
-    author: "Samuel Adeshina • September 12, 2024 ",
+    author: "Samuel Adeshina • September 12, 2025 ",
     title: "1,000 children benefit as NGO embarks on back-to-school outreach",
     slug: "1000-children-benefit-back-to-school-outreach",
     description:
-      "Creating a beautiful indoor garden is a rewarding way to bring nature into your home.",
+      "When classrooms reopened this season, 1,000 children returned ready to learn because of a community-driven back-to-school outreach led by The Destiny Trust. What began as a targeted distribution of school supplies became a wider movement: health checks, community mobilisation and family support that together removed barriers keeping children out of class.",
+    content: `
+    <p>Across the outreach, teams worked directly in vulnerable neighbourhoods to deliver uniforms, textbooks, stationery and hygiene kits to children who otherwise would have started the school year empty-handed. Volunteers partnered with local schools, community leaders and health professionals to ensure each child received not only materials but also a brief health screening and referral where needed. The combined approach — material support plus wellbeing checks — meant more children could stay in class and focus on learning.</p>
+    <p>Behind the numbers are families and children whose futures have been changed by this single intervention. For one family, receiving school uniforms and books removed a daily, painful choice between feeding the household and sending a child to school. For another child, the health check discovered a treatable condition that threatened attendance; a simple referral kept that child in class. These individual stories add up: when communities come together, small practical actions multiply into real, measurable change.</p>
+    <p>Impact and approach</p>
+    <p>
+The outreach shows the power of combining immediate relief with systems thinking: distributing supplies addresses urgent needs, while partnerships with schools and health providers ensure continuity and follow-up. By mobilising volunteers, corporate partners and local leaders, The Destiny Trust reached 1,000 children quickly and cost-effectively — a model that can be scaled and repeated across other communities.</p>
+    `,
   },
 ];
 
@@ -360,6 +367,7 @@ export const articles = [
   {
     id: 1,
     title: "From Our Founders",
+    author: "Michael Chen • August 15, 2025 ",
     slug: "from-our-founders",
     description:
       "The Destiny Trust NGO has successfully reached over 1,000 children in their latest back-to-school outreach program, providing essential educational materials and support to vulnerable communities.",
@@ -398,9 +406,9 @@ Thank you for standing with us, especially now, when compassion is needed most. 
       
       <p>These are just a few of the many stories that show why this work matters. Thanks to your support, we continue to rescue children and restore hope. Together, we are giving them the one thing every child deserves - a chance to live and thrive.</p>
       `,
-      imgSrc: Rescue,
-    },
-    // <p>These programs are designed to create sustainable change, empowering not just individual children but entire communities.</p>
+    imgSrc: Rescue,
+  },
+  // <p>These programs are designed to create sustainable change, empowering not just individual children but entire communities.</p>
   //  <ul>
   //     <li>Establishment of 5 new learning centers</li>
   //     <li>Training of 50+ volunteer educators</li>
