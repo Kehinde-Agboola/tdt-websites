@@ -1,8 +1,7 @@
 import React from 'react'
-// import HeroSection from '@/app/_component/atom/HeroSection'
-// import EmpowerHero from "../../../../../public/assets/empower/empowerhero.png";
+import Edu3 from "../../../../../public/assets/empower/edu3.png"
 import { FlexComponent } from '@/app/_component/atom/flex';
-import BoyWithTap from "../../../../../public/assets/edu/BoywithTap.png"
+import BoyWithTap from "../../../../../public/assets/empower/family.png"
 import Line from "../../../../../public/assets/edu/Lineyellow.png";
 import Head from "./Head"
 const page = () => {
@@ -11,15 +10,13 @@ const page = () => {
              imageSrc1: Line,
              heading: "STEAM Empowerment ",
              spanText: "KIDS INNOVATION PROJECT",
-             //  heading3:
-             //    "Our School is a free digital school. This is one basic school for all to learn with or without internet using any device. ",
              text1:
                "The flagship of our empowerment work with children is the Kids Innovation Project, which focuses on equipping children with technology and arts skills. Through this initiative, we provide free learning in coding, design, robotics, and digital arts to Africa’s next generation of inventors and creators.",
              text2:
                "Learning is delivered through multiple channels: online, in-school, after-school, and through intensive bootcamps making it accessible to underserved children wherever they are.",
              text3:
                "Through Kids Innovation Africa, we are bridging the digital divide and opening doors for underrepresented children to participate meaningfully in the growing digital economy.",
-             imageSrc: BoyWithTap,
+             imageSrc: Edu3,
              buttonText: "",
            },
          ];

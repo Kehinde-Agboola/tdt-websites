@@ -111,11 +111,11 @@ export const Nav: NavItem[] = [
   },
   {
     title: "Our Projects",
-    path: "#",
+    path: "/#",
     dropdownItems: [
-      { title: "School Enrolment", path: "#" },
-      { title: "Residential Care", path: "#" },
-      { title: "Bridge Learning", path: "#" },
+      { title: "School Enrolment", path: "/whatwedo/education" },
+      { title: "Residential Care", path: "/whatwedo/care" },
+      { title: "Bridge Learning", path: "/projects/bridgelearning" },
       {
         title: "OurSchool Africa Edtech",
         path: "https://www.ourschool.africa/",

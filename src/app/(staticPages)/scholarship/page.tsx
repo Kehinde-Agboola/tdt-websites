@@ -14,8 +14,9 @@ import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Modal from '../../_component/ui/Modal';
 import ScholarshipModal from '../../_component/ui/ScholarshipModal';
-import ActionButtons from '@/app/_component/ui/Button';
+import { SponsorScholarshipButton, SponsorChildButton } from '@/app/_component/ui/Button';
 import Empower from '@/app/_component/ui/Empower';
+
 type ScholarshipData = {
   imgSrc: string | StaticImageData;
   heading: string;
@@ -193,7 +194,7 @@ const page = () => {
       text2:
         "Whether you are looking to establish personal, family, or ​corporate philanthropy, or seeking to honor the memory of ​a loved one, we are here to partner with you to achieve ​your goals. We relieve our partners of administrative ​burdens and implement transparent and efficient ​processes to help you transform lives and change society.",
       imageSrc: WritingGirl,
-      buttonText: "Talk to Us",
+      buttonText: "",
     },
   ];
 
@@ -313,8 +314,9 @@ const page = () => {
                 ​university.
               </p>
             </div>
-            <div className="flex flex-col md:flex-row gap-4">
-              <ActionButtons />
+            <div className="flex flex-col md:flex-row gap-4 w-[40%]">
+              <SponsorScholarshipButton className='border border-white' />
+              <SponsorChildButton className='bg-yellow hover:bg-yellow' />
             </div>
           </div>
         </Container>
@@ -331,13 +333,13 @@ const page = () => {
         <FlexComponent
           data={data}
           columnReversed={true}
-          buttonClassName="border-yellow border-2 px-6 py-2"
+          buttonClassName=""
         />
       </section>
       <section>
         <Scholars />
       </section>
-      <section className=''>
+      <section className="">
         <Empower />
       </section>
     </main>

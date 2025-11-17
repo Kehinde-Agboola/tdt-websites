@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Button } from "./button";
 import Image, { StaticImageData } from "next/image";
 import Container from "../shared/index";
@@ -56,13 +56,11 @@ export const FlexComponent = ({
             >
               <div>
                 {el?.imageSrc1 && (
-                  <div className="w-full h-48 md:h-64 lg:h-80 overflow-hidden pb-3">
-                    <Image
-                      src={el?.imageSrc1}
-                      alt={el?.spanText || "Image"}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
+                  <Image
+                    src={el?.imageSrc1}
+                    alt={el?.spanText || "Image"}
+                    className="object-cover pb-3"
+                  />
                 )}
                 <span className="text-[#ffb400] text-[16px] md:text-[32px]">
                   {el.spanText}
@@ -96,13 +94,11 @@ export const FlexComponent = ({
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
               {el?.imageSrc && (
-                <div className="w-full h-48 md:h-64 lg:h-80 overflow-hidden">
-                  <Image
-                    src={el?.imageSrc}
-                    alt={el?.heading || "Image"}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
+                <Image
+                  src={el?.imageSrc}
+                  alt={el?.heading || "Image"}
+                  className="object-cover"
+                />
               )}
             </motion.div>
           </motion.div>

@@ -22,29 +22,6 @@ const Empower = () => {
 
   return (
     <section className="max-w-7xl mx-auto">
-      {/* <Image
-        src={Sponsor}
-        alt="smiling children"
-        className="w-full h-[90vh]"
-      /> */}
-
-      {/* <div className="grid grid-cols-2 sm:grid-cols-4 w-full">
-        {[Pic1, Pic2, Pic3, Pic4].map((pic, index) => (
-          <motion.div
-            key={index}
-            variants={imageVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <Image
-              src={pic}
-              alt={`school children ${index + 1}`}
-              objectFit="cover"
-            />
-          </motion.div>
-        ))}
-      </div> */}
       <section className="bg-payment bg-cover bg-no-repeat bg-yellow py-[4rem]">
         <Container>
           <motion.section
@@ -65,12 +42,6 @@ const Empower = () => {
               variants={textItemVariants}
             >
               <ActionButtons/>
-              {/* <Button className="border-2 border-black w-full md:w-[238px] mx-auto md:py-2 py-4">
-                Sponsor a Scholarship
-              </Button>
-              <Button className="bg-black text-white w-full md:w-[187px] mx-auto md:py-2 py-4">
-                Sponsor a Child
-              </Button> */}
             </motion.div>
           </motion.section>
         </Container>

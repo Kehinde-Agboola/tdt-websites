@@ -1,6 +1,7 @@
 import React from 'react'
 // import School from "../../../../../public/assets/edu/school.png";
 import Image from 'next/image';
+import Link from 'next/link';
 // import Line from "../../../../../../public/assets/edu/Lineyellow.png";
 import Line from "../../../../../public/assets/edu/Lineyellow.png"
 import TeacherStudent from "../../../../../public/assets/edu/teacherstudent.png";
@@ -70,11 +71,13 @@ const Enrolment = () => {
         />
       </section>
       <section className="mt-[4rem] bg-black py-[4rem] text-white">
-        <FlexComponent
-          data={data3}
-          columnReversed={false}
-          buttonClassName="bg-yellow py-2 px-4"
-        />
+        <Link href="/scholarship">
+          <FlexComponent
+            data={data3}
+            columnReversed={false}
+            buttonClassName="bg-yellow py-2 px-4"
+          />
+        </Link>
       </section>
       {/* <section className="mt-[4rem]">
         <FlexComponent
