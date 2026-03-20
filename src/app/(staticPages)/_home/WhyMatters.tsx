@@ -1,0 +1,41 @@
+"use client";
+
+import React from "react";
+import Container from "@/app/_component/shared";
+import { motion } from "framer-motion";
+
+const WhyMatters = () => {
+  return (
+    <section className="bg-[#0a0a0a] text-white py-16 md:py-24">
+      <Container>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-3xl mx-auto text-center md:text-left"
+        >
+          <h2 className="text-3xl md:text-5xl font-semibold text-[#FFBC00] mb-8">
+            Why This Matters
+          </h2>
+          <p className="text-base md:text-lg text-white/90 leading-relaxed mb-6">
+            Across Nigeria, millions of children remain out of school—not simply
+            because classrooms are unavailable, but because the conditions
+            required for learning do not exist.
+          </p>
+          <p className="text-base md:text-lg text-white/90 leading-relaxed mb-6">
+            For many children, daily survival is uncertain, defined by
+            homelessness, hunger, abuse, displacement, family poverty, and
+            disrupted access to education. In these conditions, access to school
+            alone cannot solve the problem.
+          </p>
+          <p className="text-xl md:text-2xl font-medium text-white leading-snug border-l-4 border-[#FFBC00] pl-5 md:pl-6 mt-10">
+            A child cannot learn where survival is uncertain.
+          </p>
+        </motion.div>
+      </Container>
+    </section>
+  );
+};
+
+export default WhyMatters;

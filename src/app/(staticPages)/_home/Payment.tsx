@@ -5,7 +5,6 @@ import { TbCurrencyNaira } from "react-icons/tb";
 import { Button } from "../../_component/atom/button";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-// Animation variants
 const variants = {
   container: {
     hidden: { opacity: 0, y: 30 },
@@ -62,15 +61,15 @@ const Payment: React.FC = () => {
   const controls = useAnimation();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
-    once: false, // Replay animations on scroll
-    margin: "0px 0px -100px 0px", // Trigger slightly before fully in view
+    once: false,
+    margin: "0px 0px -100px 0px",
   });
 
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
     } else {
-      controls.start("hidden"); // Reset animations when out of view
+      controls.start("hidden");
     }
   }, [controls, isInView]);
 
@@ -82,41 +81,40 @@ const Payment: React.FC = () => {
   };
 
   return (
-    <main className="mx-6 md:mx-0">
+    <section
+      id="donate"
+      className="relative z-20 mx-4 sm:mx-6 md:mx-8 scroll-mt-28 -mt-12 sm:-mt-16 md:-mt-24 lg:-mt-28 mb-10 md:mb-14"
+    >
       <motion.section
         ref={ref}
         initial="hidden"
         animate={controls}
-        variants={variants.container} 
-        className="relative max-w-6xl mx-auto bg-[#FFB400] text-center p-6 md:p-8 xl:pt-10 overflow-hidden md:bottom-[5rem] bottom-0 "
+        variants={variants.container}
+        className="relative max-w-6xl mx-auto bg-[#FFB400] text-center p-6 md:p-8 xl:pt-10 overflow-hidden rounded-lg shadow-xl ring-1 ring-black/10"
       >
-        {/* Background Zoom Animation */}
         <motion.div
           variants={variants.background}
           className="absolute inset-0 bg-payment bg-cover bg-no-repeat"
           style={{ zIndex: -1 }}
         />
 
-        {/* Headline */}
-        <motion.h1
+        <motion.h2
           variants={variants.heading}
           className="text-2xl md:text-3xl xl:text-4xl font-bold"
         >
-          Your Giving, Their Hope,{" "}
-          <span className="font-normal">Our Collective Future.</span>
-        </motion.h1>
+          Your Giving. Their Hope.{" "}
+          <span className="font-normal">Our Shared Future.</span>
+        </motion.h2>
 
-        {/* Paragraph */}
         <motion.p
           variants={variants.paragraph}
-          className="max-w-2xl mx-auto py-4 text-sm md:text-base"
+          className="max-w-2xl mx-auto py-4 text-sm md:text-base leading-relaxed"
         >
-          We can collectively ignite hope. By extending a helping hand to
-          disadvantaged children, we build a brighter, more inclusive, and safer
-          future. Start giving—it’s safe and easy.
+          Together, we can ignite hope. By supporting vulnerable children, we
+          help build a brighter, more inclusive, and safer future for all. Start
+          giving—it&apos;s simple, secure, and impactful.
         </motion.p>
 
-        {/* Form */}
         <motion.form
           variants={variants.form}
           className="flex flex-col md:flex-row justify-center items-center pt-6 gap-4 md:gap-6"
@@ -152,7 +150,7 @@ const Payment: React.FC = () => {
           </motion.a>
         </motion.form>
       </motion.section>
-    </main>
+    </section>
   );
 };
 

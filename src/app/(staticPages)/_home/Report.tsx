@@ -19,7 +19,7 @@ const Report = () => {
   };
 
   return (
-    <section className="relative bg-white pb-[5rem] pt-[2rem] md:-mt-[20rem] -mt-[10rem] hidden md:block">
+    <section className="relative bg-white pb-[5rem] pt-10 md:pt-[2rem] md:-mt-[20rem]">
       <Container>
         {/* Heading Animation */}
         <motion.h1
@@ -29,7 +29,7 @@ const Report = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          Reporting Progress
+          Reporting progress
         </motion.h1>
 
         {/* Content Animation */}
@@ -46,10 +46,9 @@ const Report = () => {
             variants={childVariants}
           >
             <p>
-              Beyond numbers, we aim at making a qualitative impact in the lives
-              of children. This requires sustained long-term investment in their
-              education and well-being and meeting their most critical needs for
-              total development
+              Beyond numbers, we aim for qualitative impact in children&apos;s
+              lives—sustained investment in education, wellbeing, and the
+              stability each child needs to thrive.
             </p>
           </motion.div>
 
@@ -58,10 +57,9 @@ const Report = () => {
             className="lg:basis-[50%] flex-basis-[50%] text-justify"
             variants={childVariants}
           >
-            <p className="italic font-[400] text-[24px] border-l-0 md:border-l-4 border-yellow pt-3 md:pt-0 md:px-3 border-t-4 md:border-t-0">
-              “We are convinced that a change in the life of one child makes far
-              bigger change for the society. this is our inspiration for a
-              future of greater impact before us”
+            <p className="italic font-[400] text-xl md:text-2xl border-l-0 md:border-l-4 border-yellow pt-3 md:pt-0 md:px-3 border-t-4 md:border-t-0">
+              &ldquo;Investing in children is investing in the future we all
+              share.&rdquo;
             </p>
           </motion.div>
         </motion.div>

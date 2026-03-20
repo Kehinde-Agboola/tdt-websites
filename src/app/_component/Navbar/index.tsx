@@ -279,7 +279,6 @@ function MobileNav({
               transition={{ delay: 0.3 + idx * 0.1, duration: 0.4 }}
               className="w-full"
             >
-              {/* Main nav item */}
               {!item.dropdownItems ? (
                 <button
                   onClick={() => {
@@ -291,17 +290,26 @@ function MobileNav({
                   <span>{item.title}</span>
                 </button>
               ) : (
-                <div
-                  className="flex text-white cursor-pointer gap-2 items-center justify-between py-2 hover:text-[#FFB400] transition-colors"
-                  onClick={() => handleMobileToggle(idx)}
-                >
-                  <span>{item.title}</span>
-                  <IoIosArrowDown
-                    className={`text-xs transition-transform duration-300 ${
-                      mobileOpenMenus[idx] ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
+                <>
+                  <div
+                    className="flex text-white cursor-pointer gap-2 items-center justify-between py-2 hover:text-[#FFB400] transition-colors"
+                    onClick={() => {
+                      handleNavigation(item.path, `Loading ${item.title}...`);
+                      closeSideMenu();
+                    }}
+                  >
+                    <span>{item.title}</span>
+                    <IoIosArrowDown
+                      className={`text-xs transition-transform duration-300 ${
+                        mobileOpenMenus[idx] ? "rotate-180" : ""
+                      }`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleMobileToggle(idx);
+                      }}
+                    />
+                  </div>
+                </>
               )}
               
               {/* First-level submenu */}

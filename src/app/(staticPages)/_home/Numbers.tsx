@@ -109,10 +109,23 @@ const Numbers = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
+          className="max-w-4xl mx-auto text-center md:text-left pb-10 md:pb-14"
         >
-          <p className="text-[#333333] md:text-[40px] text-[24px] text-center pb-[2rem]">
-            Over 20,000 children have relied on us for education, well-being and
-            empowerment since 2012
+          <h2 className="text-[#FFB400] text-2xl md:text-4xl font-semibold mb-6">
+            Our Impact
+          </h2>
+          <p className="text-[#333333] text-base md:text-lg leading-relaxed mb-4">
+            What began as a single act of conviction has grown into a sustained
+            movement of transformation.
+          </p>
+          <p className="text-[#333333] text-base md:text-lg leading-relaxed mb-4">
+            Over 30,000 children have been reached. Thousands have been
+            reintegrated into education. Lives have been restored from the
+            streets, slums, and displacement.
+          </p>
+          <p className="text-[#333333] text-base md:text-lg leading-relaxed font-medium">
+            But beyond the numbers is something deeper: children once written
+            off are now learning, leading, and building futures.
           </p>
         </motion.div>
         <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-10 justify-center">

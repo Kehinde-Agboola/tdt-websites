@@ -57,27 +57,27 @@ const Impact = () => {
             viewport={{ once: false, amount: 0.3 }}
           >
             <Image src={Line} alt="line" className="pb-3 hidden md:block" />
-            <motion.p
-              className="text-[40px] text-center md:text-left md:text-[40px] pb-3"
+            <motion.h2
+              className="text-[32px] text-center md:text-left md:text-[40px] font-semibold pb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: false, amount: 0.4 }}
             >
-              Our Impact Reports
-            </motion.p>
+              Impact reports
+            </motion.h2>
             <motion.p
-              className="pb-3 text-center md:text-left"
+              className="pb-3 text-center md:text-left text-base md:text-lg text-black/90 max-w-xl"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: false, amount: 0.4 }}
             >
-              We celebrate the impact we make together and highlight
-              opportunities to transform more lives.
+              Explore how we report progress, celebrate wins together, and
+              highlight opportunities to transform more lives.
             </motion.p>
             <motion.div
-              className="flex flex-col items-center md:flex-row gap-5 py-4"
+              className="flex flex-col items-center md:flex-row md:flex-wrap gap-4 md:gap-5 py-4"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -95,8 +95,9 @@ const Impact = () => {
                 2024 Impact Reports
               </Button>
               <Link href="/impact-report-financial">
-                <Button>View more</Button>
+                <Button className="w-[200px] py-2">View more</Button>
               </Link>
+              
             </motion.div>
           </motion.div>
         </div>

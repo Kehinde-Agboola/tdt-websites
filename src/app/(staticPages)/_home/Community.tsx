@@ -56,18 +56,26 @@ const Community = () => {
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
             >
-              <motion.p
-                className="text-center text-[30px]  md:text-[64px] font-[400]"
+              <motion.h2
+                className="text-center text-[28px] md:text-[56px] font-semibold leading-tight"
                 variants={itemVariants}
               >
-                Join Our <span className="text-yellow">Community</span>
+                Join <span className="text-yellow">Us</span>
+              </motion.h2>
+              <motion.p
+                className="w-full md:max-w-2xl text-center text-base md:text-lg text-white/95 leading-relaxed mt-4"
+                variants={itemVariants}
+              >
+                Nigeria&apos;s education crisis is vast and complex but the
+                opportunity to change it is within reach. Join us in building a
+                future where every child has the chance to learn, grow, and
+                thrive.
               </motion.p>
               <motion.p
-                className="w-full md:w-[45%] text-center"
+                className="w-full md:max-w-xl text-center text-lg md:text-xl font-medium text-[#FFBC00] mt-6 italic"
                 variants={itemVariants}
               >
-                It takes a community to raise a child. Be part of the caring
-                community donating to give hope to children.
+                &ldquo;Every child reached is a future restored.&rdquo;
               </motion.p>
               <motion.div variants={itemVariants}>
                 {/* <Button 

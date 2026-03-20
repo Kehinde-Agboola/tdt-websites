@@ -4,7 +4,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-// Text fade-up variants
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 20 },
   visible: (delay: number) => ({
@@ -14,7 +13,6 @@ const fadeUpVariant = {
   }),
 };
 
-// Zoom effect for background
 const zoomVariant = {
   initial: { scale: 1 },
   animate: {
@@ -25,9 +23,8 @@ const zoomVariant = {
 
 const Head = () => {
   return (
-    <main>
-      <div className="relative h-screen w-full bg-black overflow-hidden">
-        {/* Desktop Background */}
+    <section aria-label="Homepage hero">
+      <div className="relative min-h-screen min-h-[100dvh] w-full bg-black overflow-hidden">
         <motion.div
           className="absolute inset-0 hidden md:block"
           variants={zoomVariant}
@@ -36,14 +33,13 @@ const Head = () => {
         >
           <Image
             src="/assets/care/carem.png"
-            alt="Background desktop"
+            alt="Children in a learning environment"
             fill
             priority
             className="object-cover object-center"
           />
         </motion.div>
 
-        {/* Mobile Background */}
         <motion.div
           className="absolute inset-0 block md:hidden"
           variants={zoomVariant}
@@ -52,83 +48,74 @@ const Head = () => {
         >
           <Image
             src="/assets/mobilebg.png"
-            alt="Background mobile"
+            alt="Children in a learning environment"
             fill
             priority
             className="object-cover object-center"
           />
         </motion.div>
 
-        {/* Overlay Content */}
-        <div className="absolute inset-0 flex flex-col justify-end md:justify-center items-center text-center md:text-left md:items-start md:pl-[4rem] bottom-[40px] md:bottom-0 z-10 px-6">
-          <section className="text-white flex flex-col items-center md:items-start">
-            {/* CARE */}
-            <motion.h1
-              className="text-4xl md:text-6xl leading-tight"
+        <div
+          className="absolute inset-0 bg-black/45 z-[1]"
+          aria-hidden
+        />
+
+        <div className="absolute inset-0 flex flex-col justify-end md:justify-center items-center text-center md:text-left md:items-start md:pl-[4rem] bottom-[40px] md:bottom-0 z-10 px-6 pb-8 md:pb-0">
+          <section
+            className="text-white flex flex-col items-center md:items-start max-w-3xl"
+            aria-label="Hero"
+          >
+            <motion.p
+              className="text-lg md:text-xl tracking-wide text-white/90"
               variants={fadeUpVariant}
               custom={0}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
-              CARE.
-            </motion.h1>
-
-            {/* EDUCATION */}
-            <motion.h1
-              className="text-4xl md:text-6xl text-[#FFBC00] font-semibold"
-              variants={fadeUpVariant}
-              custom={0.3}
-              initial="hidden"
-              whileInView="visible"
-            >
-              EDUCATION.
-            </motion.h1>
-
-            {/* EMPOWERMENT */}
-            <motion.h1
-              className="text-4xl md:text-6xl leading-tight mb-2"
-              variants={fadeUpVariant}
-              custom={0.6}
-              initial="hidden"
-              whileInView="visible"
-            >
-              EMPOWERMENT.
-            </motion.h1>
-
-            {/* Paragraph */}
-            <motion.p
-              className="text-sm md:text-[16px] leading-snug tracking-tight max-w-[70%] md:max-w-[480px] mx-auto md:mx-0"
-              variants={fadeUpVariant}
-              custom={0.9}
-              initial="hidden"
-              whileInView="visible"
-            >
-              Empowering children to be their best, recreating our future.
+              Education. Wellbeing. Skills.
             </motion.p>
 
-            {/* Buttons */}
-            <motion.div
-              className="flex flex-col items-center gap-4 md:flex-row md:gap-6 mt-6"
+            <motion.h1
+              className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight mt-2 text-[#FFBC00]"
               variants={fadeUpVariant}
-              custom={1.2}
+              custom={0.15}
               initial="hidden"
               whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
             >
-              {/* Contact Us (outlined) */}
-              <Link
-                href="/contact"
-                aria-label="Contact us"
-                className="border w-[250px] md:w-[160px] h-[50px] border-[#FFBC00] px-6 py-2 text-white text-center flex items-center justify-center transition-colors duration-200 hover:bg-[#FFBC00] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#FFBC00]"
-              >
-                Contact Us
-              </Link>
+              For Every Child.
+            </motion.h1>
 
-              {/* Get Involved (filled) */}
+            <motion.p
+              className="text-sm md:text-lg leading-relaxed max-w-xl mt-4 text-white/95 mx-auto md:mx-0"
+              variants={fadeUpVariant}
+              custom={0.35}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              Empowering children to reach their full potential, shaping a better
+              future through education.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col items-stretch sm:items-center gap-4 sm:flex-row sm:gap-6 mt-8 w-full sm:w-auto"
+              variants={fadeUpVariant}
+              custom={0.55}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <a
+                href="#donate"
+                className="border w-full sm:w-[180px] h-[50px] border-[#FFBC00] px-6 py-2 text-white text-center flex items-center justify-center transition-colors duration-200 hover:bg-[#FFBC00] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50"
+              >
+                Give
+              </a>
               <Link
                 href="/get-involve"
-                aria-label="Get involved"
-                className="bg-[#FFBC00] w-[250px] md:w-[160px] h-[50px] px-6 py-2 text-black text-center flex items-center justify-center  transition-colors duration-200 hover:bg-[#e0a800] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#FFBC00]"
+                className="bg-[#FFBC00] w-full sm:w-[180px] h-[50px] px-6 py-2 text-black text-center flex items-center justify-center transition-colors duration-200 hover:bg-[#e0a800] focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50"
               >
                 Get Involved
               </Link>
@@ -136,10 +123,8 @@ const Head = () => {
           </section>
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 
 export default Head;
-
-
