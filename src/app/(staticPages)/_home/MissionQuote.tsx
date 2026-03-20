@@ -73,7 +73,7 @@ const MissionQuote = () => {
             children to succeed and build sustainable futures.
           </p>
           <Link href="/get-involve">
-                <Button className="w-[200px] border-2 border-black bg-black text-white py-6 mt-4 hover:bg-black/90">
+                <Button className="w-[200px] rounded-none border-2 border-black bg-black text-white py-6 mt-4 hover:bg-black/90">
                   Get Involved
                 </Button>
               </Link>

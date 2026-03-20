@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Container from '../../_component/shared';
-import InvolveHero from "../../../../public/assets/home/home-hero.png";
 import { Button } from '@/app/_component/atom/button';
 import { 
   Heart, 
@@ -78,9 +77,10 @@ const GetInvolvedPage = () => {
       {/* Hero Section */}
       <section className="relative h-[90vh] w-full">
         <Image
-          src={InvolveHero}
+          src="/assets/home/home-hero.png"
           alt="Get Involved"
           fill
+          priority
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/50" />
