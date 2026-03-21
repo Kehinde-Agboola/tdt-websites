@@ -160,13 +160,13 @@ const Head = () => {
             >
               <a
                 href="#donate"
-                className="flex h-[50px] w-full items-center justify-center border border-[#FFBC00] px-6 py-2 text-center text-white transition-colors duration-200 hover:bg-[#FFBC00] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50 sm:w-[180px]"
+                className="flex h-[50px] w-full items-center justify-center border border-[#FFBC00] px-6 py-2 text-center text-white transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#FFBC00] hover:text-black active:translate-y-0 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50 sm:w-[180px]"
               >
                 Give
               </a>
               <Link
                 href="/get-involve"
-                className="flex h-[50px] w-full items-center justify-center bg-[#FFBC00] px-6 py-2 text-center text-black transition-colors duration-200 hover:bg-[#e0a800] focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50 sm:w-[180px]"
+                className="flex h-[50px] w-full items-center justify-center bg-[#FFBC00] px-6 py-2 text-center text-black transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#e0a800] active:translate-y-0 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50 sm:w-[180px]"
               >
                 Get Involved
               </Link>

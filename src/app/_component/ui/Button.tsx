@@ -8,6 +8,8 @@ import AdoptProjectForm from "./AdoptionForm";
 
 interface ActionButtonsProps {
   className?: string;
+  /** Full-width stacked buttons for narrow cards (e.g. get-involve grid) */
+  layout?: "default" | "stacked";
 }
 
 // Export individual button components for flexible usage
@@ -57,15 +59,35 @@ export const SponsorChildButton: React.FC<{ className?: string }> = ({ className
   );
 };
 
+const stackedChildPrimary =
+  "!w-full !max-w-none !min-h-[48px] rounded-md border-0 !bg-[#FFB400] !py-3 !text-black px-4 font-medium shadow-sm transition-colors hover:!bg-[#e0a800] hover:!text-black";
+
+const stackedScholarshipSecondary =
+  "!w-full !max-w-none !min-h-[48px] rounded-md !border-2 !border-gray-200 !bg-white !py-3 !text-gray-900 px-4 font-medium shadow-sm transition-colors hover:!bg-gray-50";
+
 // Combined component for convenience
-const ActionButtons: React.FC<ActionButtonsProps> = ({ className = "" }) => {
-  return (
-    <>
-      <div className={`flex flex-col md:flex-row gap-4 justify-center ${className}`}>
-        <SponsorScholarshipButton />
-        <SponsorChildButton />
+const ActionButtons: React.FC<ActionButtonsProps> = ({
+  className = "",
+  layout = "default",
+}) => {
+  if (layout === "stacked") {
+    return (
+      <div
+        className={`flex w-full flex-col gap-3 ${className}`}
+      >
+        <SponsorChildButton className={stackedChildPrimary} />
+        <SponsorScholarshipButton className={stackedScholarshipSecondary} />
       </div>
-    </>
+    );
+  }
+
+  return (
+    <div
+      className={`flex flex-col gap-4 justify-center md:flex-row ${className}`}
+    >
+      <SponsorScholarshipButton />
+      <SponsorChildButton />
+    </div>
   );
 };
 

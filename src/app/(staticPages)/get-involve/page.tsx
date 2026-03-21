@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import ActionButtons from '../../_component/ui/Button';
+import { AnimatedSection } from '@/components/AnimatedSection';
 
 const GetInvolvedPage = () => {
   const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
@@ -75,6 +76,7 @@ const GetInvolvedPage = () => {
   return (
     <main>
       {/* Hero Section */}
+      <AnimatedSection animateOnMount>
       <section className="relative h-[90vh] w-full">
         <Image
           src="/assets/home/home-hero.png"
@@ -101,8 +103,10 @@ const GetInvolvedPage = () => {
           </div>
         </Container>
       </section>
+      </AnimatedSection>
 
       {/* Ways to Get Involved */}
+      <AnimatedSection>
       <section className="py-16 bg-gray-50">
         <Container>
           <div className="text-center mb-12">
@@ -162,7 +166,7 @@ const GetInvolvedPage = () => {
                 href="https://paystack.com/pay/1000Hands"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full bg-[#FFB400] hover:bg-[#e0a800] text-black py-2 px-4 rounded transition-colors flex items-center justify-center gap-2"
+                className="flex w-full items-center justify-center gap-2 rounded bg-[#FFB400] px-4 py-2 text-black transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#e0a800] active:scale-[0.97]"
               >
                 <CreditCard className="w-4 h-4" />
                 Pay Online
@@ -181,9 +185,7 @@ const GetInvolvedPage = () => {
                 Be a child&apos;s hero! Make a one-off or recurring donation to
                 support a child through school.
               </p>
-              <div className="flex justify-center">
-                <ActionButtons />
-              </div>
+              <ActionButtons layout="stacked" className="w-full" />
             </div>
 
             {/* Be our Partner */}
@@ -238,8 +240,10 @@ const GetInvolvedPage = () => {
           </div>
         </Container>
       </section>
+      </AnimatedSection>
 
       {/* Contact Section */}
+      <AnimatedSection delay={0.08}>
       <section className="py-16 bg-white">
         <Container>
           <div className="text-center mb-12">
@@ -362,6 +366,7 @@ const GetInvolvedPage = () => {
           </div>
         </Container>
       </section>
+      </AnimatedSection>
     </main>
   );
 };

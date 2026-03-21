@@ -12,24 +12,55 @@ import HomeTeasers from "@/app/(staticPages)/_home/HomeTeasers";
 import Blog from "@/app/(staticPages)/_home/Blog";
 import Features from "@/app/(staticPages)/_home/Features";
 import Banner from "@/app/(staticPages)/_home/Banner";
+import { AnimatedSection } from "@/components/AnimatedSection";
+
+const stagger = (i: number) => i * 0.06;
 
 const page = () => {
   return (
     <div>
-      <Head />
-      <Payment />
-      <MissionQuote />
-      <SustainableEducationCTA />
-      <WhyMatters />
-      <HowWeWorkSection />
-      <Numbers />
-      <Impact />
-      <Report />
-      <Community />
-      <HomeTeasers />
-      <Banner />
-      <Blog />
-      <Features />
+      <AnimatedSection animateOnMount>
+        <Head />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(0)}>
+        <Payment />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(1)}>
+        <MissionQuote />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(2)}>
+        <SustainableEducationCTA />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(3)}>
+        <WhyMatters />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(4)}>
+        <HowWeWorkSection />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(5)}>
+        <Numbers />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(6)}>
+        <Impact />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(7)}>
+        <Report />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(8)}>
+        <Community />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(9)}>
+        <HomeTeasers />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(10)}>
+        <Banner />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(11)}>
+        <Blog />
+      </AnimatedSection>
+      <AnimatedSection delay={stagger(12)}>
+        <Features />
+      </AnimatedSection>
     </div>
   );
 };
