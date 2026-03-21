@@ -1,8 +1,21 @@
 "use client";
-import React from "react";
+
+import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+
+/**
+ * Default: Pexels royalty-free stock video (classroom / learning).
+ * License: https://www.pexels.com/license/ · Page: https://www.pexels.com/video/students-studying-together-in-classroom-9198424/
+ *
+ * Override with NEXT_PUBLIC_HERO_VIDEO_SRC (e.g. `/videos/hero.mp4` to self-host).
+ */
+const PEXELS_DEFAULT_HERO_VIDEO =
+  "https://videos.pexels.com/video-files/9198424/9198424-hd_1920_1080_25fps.mp4";
+
+const HERO_VIDEO_SRC =
+  process.env.NEXT_PUBLIC_HERO_VIDEO_SRC?.trim() || PEXELS_DEFAULT_HERO_VIDEO;
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 20 },
@@ -21,52 +34,90 @@ const zoomVariant = {
   },
 };
 
+type VideoMode = "pending" | "on" | "off";
+
 const Head = () => {
+  const [videoMode, setVideoMode] = useState<VideoMode>("pending");
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setVideoMode(mq.matches ? "off" : "on");
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const onVideoError = useCallback(() => setVideoFailed(true), []);
+
+  const showVideo = videoMode === "on" && !videoFailed;
+  const showImageFallback =
+    videoMode === "pending" || videoMode === "off" || videoFailed;
+
   return (
     <section aria-label="Homepage hero">
-      <div className="relative min-h-screen min-h-[100dvh] w-full bg-black overflow-hidden">
-        <motion.div
-          className="absolute inset-0 hidden md:block"
-          variants={zoomVariant}
-          initial="initial"
-          animate="animate"
-        >
-          <Image
-            src="/assets/care/carem.png"
-            alt="Children in a learning environment"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-        </motion.div>
+      <div className="relative min-h-screen min-h-[100dvh] w-full overflow-hidden bg-black">
+        {showVideo && (
+          <div className="absolute inset-0">
+            <video
+              className="absolute inset-0 h-full w-full object-cover object-center"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/assets/care/carem.png"
+              aria-hidden
+              onError={onVideoError}
+            >
+              <source src={HERO_VIDEO_SRC} type="video/mp4" />
+            </video>
+          </div>
+        )}
 
-        <motion.div
-          className="absolute inset-0 block md:hidden"
-          variants={zoomVariant}
-          initial="initial"
-          animate="animate"
-        >
-          <Image
-            src="/assets/mobilebg.png"
-            alt="Children in a learning environment"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-        </motion.div>
+        {showImageFallback && (
+          <>
+            <motion.div
+              className="absolute inset-0 hidden md:block"
+              variants={zoomVariant}
+              initial="initial"
+              animate="animate"
+            >
+              <Image
+                src="/assets/care/carem.png"
+                alt="Children in a learning environment"
+                fill
+                priority
+                className="object-cover object-center"
+              />
+            </motion.div>
 
-        <div
-          className="absolute inset-0 bg-black/45 z-[1]"
-          aria-hidden
-        />
+            <motion.div
+              className="absolute inset-0 block md:hidden"
+              variants={zoomVariant}
+              initial="initial"
+              animate="animate"
+            >
+              <Image
+                src="/assets/mobilebg.png"
+                alt="Children in a learning environment"
+                fill
+                priority
+                className="object-cover object-center"
+              />
+            </motion.div>
+          </>
+        )}
 
-        <div className="absolute inset-0 flex flex-col justify-end md:justify-center items-center text-center md:text-left md:items-start md:pl-[4rem] bottom-[40px] md:bottom-0 z-10 px-6 pb-8 md:pb-0">
+        <div className="absolute inset-0 z-[1] bg-black/45" aria-hidden />
+
+        <div className="absolute inset-0 bottom-[40px] z-10 flex flex-col items-center justify-end px-6 pb-8 text-center md:bottom-0 md:items-start md:justify-center md:pb-0 md:pl-[4rem] md:text-left">
           <section
-            className="text-white flex flex-col items-center md:items-start max-w-3xl"
+            className="flex max-w-3xl flex-col items-center text-white md:items-start"
             aria-label="Hero"
           >
             <motion.p
-              className="text-lg md:text-xl tracking-wide text-white/90"
+              className="text-lg tracking-wide text-white/90 md:text-xl"
               variants={fadeUpVariant}
               custom={0}
               initial="hidden"
@@ -77,7 +128,7 @@ const Head = () => {
             </motion.p>
 
             <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight mt-2 text-[#FFBC00]"
+              className="mt-2 text-4xl font-semibold leading-tight text-[#FFBC00] md:text-6xl lg:text-7xl"
               variants={fadeUpVariant}
               custom={0.15}
               initial="hidden"
@@ -88,7 +139,7 @@ const Head = () => {
             </motion.h1>
 
             <motion.p
-              className="text-sm md:text-lg leading-relaxed max-w-xl mt-4 text-white/95 mx-auto md:mx-0"
+              className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/95 md:mx-0 md:text-lg"
               variants={fadeUpVariant}
               custom={0.35}
               initial="hidden"
@@ -100,7 +151,7 @@ const Head = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-col items-stretch sm:items-center gap-4 sm:flex-row sm:gap-6 mt-8 w-full sm:w-auto"
+              className="mt-8 flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center sm:gap-6"
               variants={fadeUpVariant}
               custom={0.55}
               initial="hidden"
@@ -109,13 +160,13 @@ const Head = () => {
             >
               <a
                 href="#donate"
-                className="border w-full sm:w-[180px] h-[50px] border-[#FFBC00] px-6 py-2 text-white text-center flex items-center justify-center transition-colors duration-200 hover:bg-[#FFBC00] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50"
+                className="flex h-[50px] w-full items-center justify-center border border-[#FFBC00] px-6 py-2 text-center text-white transition-colors duration-200 hover:bg-[#FFBC00] hover:text-black focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50 sm:w-[180px]"
               >
                 Give
               </a>
               <Link
                 href="/get-involve"
-                className="bg-[#FFBC00] w-full sm:w-[180px] h-[50px] px-6 py-2 text-black text-center flex items-center justify-center transition-colors duration-200 hover:bg-[#e0a800] focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50"
+                className="flex h-[50px] w-full items-center justify-center bg-[#FFBC00] px-6 py-2 text-center text-black transition-colors duration-200 hover:bg-[#e0a800] focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50 sm:w-[180px]"
               >
                 Get Involved
               </Link>
