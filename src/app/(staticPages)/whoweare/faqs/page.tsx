@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import YellowLine from '../../../../../public/assets/edu/Lineyellow.png';
 import Image from 'next/image';
 import Container from '@/app/_component/shared';
+import PageHero from '@/app/_component/PageHero';
 import Hero from '../../../../../public/assets/faq/headhero.png';
 
 const page = () => {
@@ -22,29 +23,22 @@ const page = () => {
 
   return (
     <main className="min-w-0">
-      {/* Hero Section */}
-      <section className="relative min-h-[280px] h-[42vh] w-full sm:min-h-[320px] sm:h-[50vh]">
-        <Image
-          src={Hero}
-          alt="Frequently asked questions"
-          fill
-          sizes="100vw"
-          className="object-cover object-center bg-no-repeat"
-        />
-        <div className="absolute inset-0 bg-black/35" />
-
-        {/* Text Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
-          <h1 className="font-heading max-w-full text-3xl leading-tight sm:text-4xl md:max-w-2xl md:text-5xl">
-            Frequently <span className="text-yellow">Asked Questions</span>
-          </h1>
-          <p className="mt-4 max-w-2xl text-base md:text-lg">
-            These are the most commonly asked questions about The Destiny
-            Trust. Can’t find what you are looking for?{' '}
-            <span className="underline">Chat to our friendly team!</span>
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image={Hero}
+        alt="Frequently asked questions"
+        layout="center"
+        imageClassName="object-cover object-center"
+        priority
+      >
+        <h1 className="font-heading max-w-full text-3xl leading-tight sm:text-4xl md:max-w-2xl md:text-5xl">
+          Frequently <span className="text-yellow">Asked Questions</span>
+        </h1>
+        <p className="mt-4 max-w-2xl text-base md:text-lg">
+          These are the most commonly asked questions about The Destiny Trust.
+          Can’t find what you are looking for?{' '}
+          <span className="underline">Chat to our friendly team!</span>
+        </p>
+      </PageHero>
 
       {/* FAQ Section */}
       <Container>

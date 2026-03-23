@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/app/_component/shared";
-import Image from "next/image";
+import PageHero from "@/app/_component/PageHero";
 import { motion } from "framer-motion";
 
 const HeroImage = "/cares.png";
@@ -13,52 +13,24 @@ function SectionRule() {
 export default function AboutPage() {
   return (
     <main>
-      <section className="relative h-[min(52vh,440px)] min-h-[360px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full overflow-hidden">
-        <motion.div
-          className="absolute inset-0"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+      <PageHero
+        image={HeroImage}
+        alt="About The Destiny Trust"
+        layout="center"
+        imageClassName="object-cover object-right md:object-center"
+        priority
+      >
+        <motion.blockquote
+          className="w-full max-w-6xl px-2 text-sm sm:text-base md:max-w-[75%] md:text-xl lg:max-w-[65%] lg:text-2xl leading-relaxed text-white border-l-4 border-[#FFB400] pl-4 md:pl-6 italic text-left"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
         >
-          <Image
-            src={HeroImage}
-            alt="About Us Hero"
-            fill
-            sizes="100vw"
-            className="object-cover object-right"
-            priority
-          />
-          <motion.div
-            className="absolute inset-0 bg-black bg-opacity-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          />
-        </motion.div>
-
-        <div className="relative z-10 flex items-center h-full px-4 md:px-8">
-          <div className="w-full text-white max-w-6xl mx-auto md:pl-8 lg:pl-16">
-            {/* <motion.h1
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 md:mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-            >
-              About Us
-            </motion.h1> */}
-            <motion.blockquote
-              className="w-full md:max-w-[75%] lg:max-w-[65%] text-sm sm:text-base md:text-xl lg:text-2xl leading-relaxed border-l-4 border-[#FFB400] pl-4 md:pl-6 italic"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
-              We are a people who say no to the barriers that hold children
-              back—homelessness, hunger, illiteracy, poverty, abuse, and
-              neglect—and yes to possibility, dignity, and opportunity.
-            </motion.blockquote>
-          </div>
-        </div>
-      </section>
+          We are a people who say no to the barriers that hold children
+          back—homelessness, hunger, illiteracy, poverty, abuse, and
+          neglect—and yes to possibility, dignity, and opportunity.
+        </motion.blockquote>
+      </PageHero>
 
       <Container>
         <div className="max-w-4xl mx-auto py-8 md:py-12 px-4 md:px-6">

@@ -13,7 +13,7 @@ const page = () => {
   return (
     <main className="min-w-0">
       <section className="relative mb-12 sm:mb-20 md:mb-24">
-        <div className="relative min-h-[min(100dvh,760px)] w-full overflow-hidden">
+        <div className="relative min-h-screen min-h-[100dvh] w-full overflow-hidden">
           <Image
             src={BackgroundPciture}
             alt="Scholarship background"

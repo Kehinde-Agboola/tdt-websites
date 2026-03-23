@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
+import PageHero from '@/app/_component/PageHero';
 import Container from '../../_component/shared';
 import { Button } from '@/app/_component/atom/button';
 import { 
@@ -77,30 +77,25 @@ const GetInvolvedPage = () => {
     <main>
       {/* Hero Section */}
       <AnimatedSection animateOnMount>
-      <section className="relative min-h-[min(100dvh,880px)] w-full overflow-hidden">
-        <Image
-          src="/assets/home/home-hero.png"
-          alt="Get Involved"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-right sm:object-center"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 flex min-h-[min(100dvh,880px)] flex-col justify-center px-4 py-16 sm:px-6 md:px-12 lg:px-16">
-          <div className="mx-auto w-full max-w-6xl text-white">
-            <h1 className="font-heading max-w-full text-3xl leading-tight sm:text-4xl md:max-w-[42rem] md:text-5xl xl:text-6xl mb-6">
-              Join us to Create a{" "}
-              <span className="text-[#FFB400]">Better Future</span>
-            </h1>
-            <p className="max-w-full text-base leading-relaxed sm:text-lg md:max-w-[46rem] md:text-xl mb-8">
-              Partner with us to give every child the chance to learn, grow,
-              and thrive—through education, shelter, care, and empowerment.
-              Your support makes lasting impact possible.
-            </p>
-          </div>
+      <PageHero
+        image="/assets/home/home-hero.png"
+        alt="Get involved with The Destiny Trust"
+        layout="home"
+        imageClassName="object-cover object-right md:object-center"
+        priority
+      >
+        <div className="mx-auto w-full max-w-6xl text-white">
+          <h1 className="font-heading max-w-full text-3xl leading-tight sm:text-4xl md:max-w-[42rem] md:text-5xl xl:text-6xl mb-6">
+            Join us to Create a{" "}
+            <span className="text-[#FFB400]">Better Future</span>
+          </h1>
+          <p className="max-w-full text-base leading-relaxed sm:text-lg md:max-w-[46rem] md:text-xl mb-8">
+            Partner with us to give every child the chance to learn, grow,
+            and thrive—through education, shelter, care, and empowerment.
+            Your support makes lasting impact possible.
+          </p>
         </div>
-      </section>
+      </PageHero>
       </AnimatedSection>
 
       {/* Ways to Get Involved */}

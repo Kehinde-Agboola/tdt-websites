@@ -1,12 +1,18 @@
-
 import React from "react";
 import Container from "@/app/_component/shared";
 import Link from "next/link";
 import { Button } from "@/app/_component/atom/button";
+import PageHero from "@/app/_component/PageHero";
 
 const Head = () => {
   return (
-    <section className="relative flex min-h-dvh flex-col justify-center bg-whero bg-black bg-cover bg-center bg-no-repeat px-0">
+    <PageHero
+      image="/assets/who/whero.png"
+      alt="Who we are — we care, we educate, we empower"
+      layout="left"
+      imageClassName="object-cover object-center"
+      priority
+    >
       <Container>
         <div className="text-white py-16 sm:py-20 xl:pt-28 xl:pb-24">
           <div>
@@ -34,7 +40,7 @@ const Head = () => {
           </div>
         </div>
       </Container>
-    </section>
+    </PageHero>
   );
 };
 
