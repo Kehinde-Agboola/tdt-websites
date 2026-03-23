@@ -119,10 +119,10 @@ const Payment: React.FC = () => {
           variants={variants.form}
           className="flex flex-col md:flex-row justify-center items-center pt-6 gap-4 md:gap-6"
         >
-          <div className="relative w-40">
+          <div className="relative w-full min-w-[200px] max-w-[200px]">
             <input
               type="text"
-              className="w-full bg-[#FFB400] outline-none py-2.5 px-8 text-center border-2 border-black text-sm text-black"
+              className="w-full min-h-[48px] bg-[#FFB400] outline-none px-8 pl-10 text-center border-2 border-black text-sm text-black"
               placeholder="Enter Amount"
               value={amount}
               onChange={handleInputChange}
@@ -143,7 +143,7 @@ const Payment: React.FC = () => {
           >
             <Button
               type="button"
-              className="bg-black text-white w-40 py-2.5 border-2 border-black text-sm transition-colors duration-300"
+              className="btn-landing bg-black text-white border-2 border-black transition-colors duration-300"
             >
               Donate
             </Button>

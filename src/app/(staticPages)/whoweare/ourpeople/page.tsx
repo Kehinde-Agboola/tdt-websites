@@ -26,8 +26,8 @@ const OurPeoplePage = () => {
   }));
     
   return (
-    <main className="bg-[#F4F4F4]">
-      <section className="relative h-[400px] md:h-[550px] w-full">
+    <main className="min-w-0 bg-[#F4F4F4]">
+      <section className="relative min-h-[260px] h-[38vh] max-h-[480px] sm:h-[400px] md:h-[550px] w-full overflow-hidden">
         {/* Background Image with Framer Motion for slight movement */}
         <motion.div
           className="absolute inset-0"
@@ -39,14 +39,18 @@ const OurPeoplePage = () => {
             src={Ourteam}
             alt="Our Team"
             fill
-            className="object-cover object-center bg-no-repeat"
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_25%] sm:object-center bg-no-repeat"
           />
         </motion.div>
 
+        <div className="absolute inset-0 bg-black/35 md:bg-black/25" aria-hidden />
+
         {/* Text Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 text-white">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 text-white">
           <motion.h1
-            className="text-4xl md:text-5xl font-bold"
+            className="text-3xl leading-tight sm:text-5xl md:text-6xl font-bold max-w-[18ch] sm:max-w-none"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -55,7 +59,7 @@ const OurPeoplePage = () => {
           </motion.h1>
 
           <motion.p
-            className="mt-4 text-base md:text-lg max-w-4xl"
+            className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-4xl leading-relaxed text-white/95 px-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}
@@ -66,7 +70,7 @@ const OurPeoplePage = () => {
       </section>
       <Container>
         {/* Board Members Section */}
-        <section className="py-8">
+        <section className="py-4 sm:py-8 text-left">
           <TeamSection 
             title="Board" 
             members={boardMembersData} 
@@ -78,14 +82,14 @@ const OurPeoplePage = () => {
       
       <Container>
         {/* Management Team Section */}
-        <section className="py-8">
+        <section className="py-4 sm:py-8 text-left">
           <TeamSection
             title=""
             paragraph="Our Management Team members bring experience from diverse professional backgrounds. We take pride in the commitment of a volunteer-driven management team supported by a full-time workforce. Management Team members give their time and expertise at no cost to us."
             members={managementTeamData}
           />
         </section>
-        <hr className="my-8" />
+        <hr className="my-4 sm:my-8 border-gray-300" />
       </Container>
     </main>
   );

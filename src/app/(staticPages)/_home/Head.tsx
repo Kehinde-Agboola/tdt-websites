@@ -113,41 +113,46 @@ const Head = () => {
 
         <div className="absolute inset-0 bottom-[40px] z-10 flex flex-col items-center justify-end px-6 pb-8 text-center md:bottom-0 md:items-start md:justify-center md:pb-0 md:pl-[4rem] md:text-left">
           <section
-            className="flex max-w-3xl flex-col items-center text-white md:items-start"
+            className="font-heading flex max-w-3xl flex-col items-center text-white md:items-start"
             aria-label="Hero"
           >
             <motion.p
-              className="text-lg tracking-wide text-white/90 md:text-xl"
+              // className="text-lg tracking-wide text-white/90 md:text-xl"
+              className="mt-2 text-4xl font-semibold leading-tight text-[#FFBC00] md:text-6xl lg:text-5xl"
               variants={fadeUpVariant}
               custom={0}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              Education. Wellbeing. Skills.
+              Education.{" "}
+              <span className="tracking-wide text-white/90">
+                Wellbeing. Skills.
+              </span>
             </motion.p>
 
             <motion.h1
-              className="mt-2 text-4xl font-semibold leading-tight text-[#FFBC00] md:text-6xl lg:text-7xl"
-              variants={fadeUpVariant}
-              custom={0.15}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              For Every Child.
-            </motion.h1>
+                className="mt-2 text-4xl font-semibold leading-tight text-[#FFBC00] md:text-6xl lg:text-5xl"
+                // className="text-lg tracking-wide text-white/90 md:text-xl"
+                variants={fadeUpVariant}
+                custom={0.15}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                For Every Child.
+              </motion.h1>
 
             <motion.p
-              className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/95 md:mx-0 md:text-lg"
+              className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/95 md:mx-0 md:text-lg"
               variants={fadeUpVariant}
               custom={0.35}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              Empowering children to reach their full potential, shaping a better
-              future through education.
+              Empowering children to reach their full potential, shaping a
+              better future through education.
             </motion.p>
 
             <motion.div
@@ -159,14 +164,16 @@ const Head = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               <a
-                href="#donate"
-                className="flex h-[50px] w-full items-center justify-center border border-[#FFBC00] px-6 py-2 text-center text-white transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#FFBC00] hover:text-black active:translate-y-0 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50 sm:w-[180px]"
+                href="https://paystack.shop/pay/1000Hands"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-landing border border-[#FFBC00] text-center text-white transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#FFBC00] hover:text-black active:translate-y-0 active:scale-[0.97]"
               >
-                Give
+                Donate
               </a>
               <Link
                 href="/get-involve"
-                className="flex h-[50px] w-full items-center justify-center bg-[#FFBC00] px-6 py-2 text-center text-black transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#e0a800] active:translate-y-0 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-[#FFBC00] focus:ring-offset-2 focus:ring-offset-black/50 sm:w-[180px]"
+                className="btn-landing bg-[#FFBC00] text-center text-black transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#e0a800] active:translate-y-0 active:scale-[0.97]"
               >
                 Get Involved
               </Link>

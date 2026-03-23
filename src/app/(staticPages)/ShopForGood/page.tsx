@@ -42,28 +42,28 @@ export default function ShopForGoodPage() {
         {animationStarted && (
           <>
             {/* Badge 1 - Continuous Float */}
-            <div className="absolute top-16 left-16 md:left-32 animate-continuous-float-1">
+            <div className="absolute top-8 left-4 sm:top-16 sm:left-16 md:left-32 animate-continuous-float-1">
               <div className="bg-white border-2 border-yellow-400 rounded-full px-3 py-1 text-xs md:text-sm font-medium shadow-lg hover:shadow-xl transition-shadow animate-pulse-glow">
                 coming soon
               </div>
             </div>
 
             {/* Badge 2 - Diagonal Movement */}
-            <div className="absolute top-20 right-32 md:right-48 animate-diagonal-float">
+            <div className="absolute top-16 right-4 sm:top-20 sm:right-32 md:right-48 animate-diagonal-float">
               <div className="bg-black text-white rounded-full px-3 py-1 text-xs md:text-sm font-medium shadow-lg animate-rotate-slow">
                 coming soon
               </div>
             </div>
 
             {/* Badge 3 - Circular Motion */}
-            <div className="absolute top-32 md:top-40 left-32 md:left-48 animate-circular-motion">
+            <div className="absolute top-24 left-8 sm:top-32 md:top-40 sm:left-32 md:left-48 animate-circular-motion">
               <div className="bg-white border-2 border-yellow-400 rounded-full px-3 py-1 text-xs md:text-sm font-medium shadow-lg animate-bounce-soft">
                 coming soon
               </div>
             </div>
 
             {/* Badge 4 - Wave Motion */}
-            <div className="absolute top-28 md:top-32 right-16 md:right-32 animate-wave-motion">
+            <div className="absolute top-20 right-4 sm:top-28 md:top-32 sm:right-16 md:right-32 animate-wave-motion">
               <div className="bg-black text-white rounded-full px-3 py-1 text-xs md:text-sm font-medium shadow-lg animate-scale-pulse">
                 coming soon
               </div>
@@ -77,14 +77,14 @@ export default function ShopForGoodPage() {
             </div>
 
             {/* Badge 6 - Spiral Motion */}
-            <div className="absolute top-44 left-20 animate-spiral-motion">
+            <div className="absolute top-36 left-4 sm:top-44 sm:left-20 animate-spiral-motion">
               <div className="bg-black text-white rounded-full px-3 py-1 text-xs md:text-sm font-medium shadow-lg animate-wobble">
                 coming soon
               </div>
             </div>
 
             {/* Badge 7 - Figure 8 Motion */}
-            <div className="absolute bottom-32 right-24 animate-figure-eight">
+            <div className="absolute bottom-24 right-6 sm:bottom-32 sm:right-24 animate-figure-eight">
               <div className="bg-yellow-400 border-2 border-black rounded-full px-3 py-1 text-xs md:text-sm font-medium shadow-lg animate-spin-slow">
                 coming soon
               </div>
@@ -98,7 +98,7 @@ export default function ShopForGoodPage() {
           {/* Left Content with Text Animations */}
           <div className="space-y-6 relative animate-slide-in-left">
             <div className="relative">
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold relative">
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold relative">
                 <span className="text-yellow animate-text-glow-yellow inline-block animate-bounce-gentle">
                   Shop
                 </span>{" "}
@@ -128,9 +128,9 @@ export default function ShopForGoodPage() {
           <div className="relative flex items-center justify-center animate-slide-in-right">
             <Image
               src={SlidePicture}
-              alt="purchase-picture"
+              alt="Shop for Good illustration"
               priority
-              objectFit="cover"
+              className="h-auto w-full max-w-full object-contain"
               width={1900}
               height={1900}
             /> 

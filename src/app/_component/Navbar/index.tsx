@@ -39,6 +39,31 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, [pathname, stopLoading]);
 
+  // Lock body scroll while mobile menu is open (avoids background scroll behind drawer)
+  useEffect(() => {
+    if (!isSideMenuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isSideMenuOpen]);
+
+  // Close mobile menu on Escape (matches user expectation for overlays)
+  useEffect(() => {
+    if (!isSideMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSideMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isSideMenuOpen]);
+
+  // Close drawer when the route changes (back/forward or in-app navigation)
+  useEffect(() => {
+    setSideMenuOpen(false);
+  }, [pathname]);
+
   // Mobile state
   const [mobileOpenMenus, setMobileOpenMenus] = useState<{
     [k: number]: boolean;
@@ -89,8 +114,9 @@ export default function Navbar() {
   const amount = 1000;
 
   return (
-    <section className="bg-black  sticky top-0 z-50">
-      <nav className="flex justify-between text-[12px] w-full max-w-6xl md:px-0 mx-auto px-4 py-5">
+    <section className="sticky top-0 z-[60] border-b border-white/10 bg-black">
+      {/* z-[70] keeps the bar above the mobile drawer (z-50) so menu/close stays clickable */}
+      <nav className="relative z-[70] mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 text-[12px] sm:px-5 md:px-0">
         {/* Logo */}
         <div ref={animationParent} className="flex gap-10 items-center">
           <button onClick={() => handleNavigation("/", "Loading home page...")}>
@@ -99,7 +125,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Nav */}
-        <div className="gap-4 hidden items-center transition-all xl:flex">  
+        <div className="gap-4 hidden items-center transition-all xl:flex">
           {Nav.map((item, index) => (
             <div
               key={index}
@@ -114,11 +140,11 @@ export default function Navbar() {
                 aria-expanded={openDropdownIndex === index}
                 tabIndex={0}
                 // Always navigate when a path exists (even if it has a dropdown)
-                onClick={() => handleNavigation(item.path, `Loading ${item.title}...`)}
+                onClick={() =>
+                  handleNavigation(item.path, `Loading ${item.title}...`)
+                }
               >
-                <span className="cursor-pointer">
-                  {item.title}
-                </span>
+                <span className="cursor-pointer">{item.title}</span>
                 {item.dropdownItems && (
                   <IoIosArrowDown
                     className={`transition-transform duration-300 ${
@@ -135,7 +161,7 @@ export default function Navbar() {
                   onMouseEnter={() => setOpenDropdownIndex(index)}
                   onMouseLeave={handleMouseLeave}
                   role="menu"
-                  style={{ backdropFilter: "blur(12px)" }} 
+                  style={{ backdropFilter: "blur(12px)" }}
                 >
                   {item.dropdownItems.map((child, i) => (
                     <div
@@ -146,10 +172,15 @@ export default function Navbar() {
                     >
                       <button
                         // Allow navigation even when there are subItems (hover still shows submenu)
-                        onClick={() => handleNavigation(child.path, `Loading ${child.title}...`)}
+                        onClick={() =>
+                          handleNavigation(
+                            child.path,
+                            `Loading ${child.title}...`,
+                          )
+                        }
                         className={clsx(
                           "flex items-center justify-between px-4 py-2 text-white hover:text-[#FFB400] w-full text-left",
-                          child.subItems && "pr-8"
+                          child.subItems && "pr-8",
                         )}
                         tabIndex={0}
                         role="menuitem"
@@ -169,7 +200,12 @@ export default function Navbar() {
                           {child.subItems.map((sub, j) => (
                             <button
                               key={j}
-                              onClick={() => handleNavigation(sub.path, `Loading ${sub.title}...`)}
+                              onClick={() =>
+                                handleNavigation(
+                                  sub.path,
+                                  `Loading ${sub.title}...`,
+                                )
+                              }
                               className="block px-4 py-2 text-white hover:text-[#FFB400] w-full text-left"
                               tabIndex={0}
                               role="menuitem"
@@ -188,29 +224,45 @@ export default function Navbar() {
         </div>
 
         {/* Donate Button */}
-        <div className="hidden items-center xl:flex">
+        <div className="hidden shrink-0 items-center xl:flex">
           <a
             href={`https://paystack.com/pay/ie-pg23h4p?amount=${amount}`}
             target="_blank"
             rel="noopener noreferrer"
+            className="inline-flex min-w-[158px] items-center justify-center"
           >
-            <button className="bg-[#FFB400] h-fit text-black hover:border-black px-4 py-2 transition-all">
-              Donate Now
+            <button
+              type="button"
+              className="min-h-[30px] w-full max-w-[200px] bg-[#FFB400] px-10 py-3 text-base font-semibold text-black transition-all duration-200 hover:bg-[#e6a200] active:scale-[0.98]"
+            >
+              Donate
             </button>
           </a>
         </div>
 
-        {/* Mobile Menu Icon */}
-        <FiMenu
-          onClick={() => setSideMenuOpen(true)}
-          className="text-4xl text-white cursor-pointer xl:hidden"
-        />
+        {/* Mobile menu trigger — must stay in tab order and expose state to assistive tech */}
+        <button
+          type="button"
+          id="mobile-nav-trigger"
+          aria-expanded={isSideMenuOpen}
+          aria-controls="mobile-nav-panel"
+          aria-label={isSideMenuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setSideMenuOpen((o) => !o)}
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFB400] xl:hidden"
+        >
+          {isSideMenuOpen ? (
+            <AiOutlineClose className="text-3xl" aria-hidden />
+          ) : (
+            <FiMenu className="text-3xl" aria-hidden />
+          )}
+        </button>
       </nav>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav — xl:hidden matches desktop nav breakpoint (was md:hidden, which broke tablet) */}
       <AnimatePresence>
         {isSideMenuOpen && (
           <MobileNav
+            key="mobile-drawer"
             closeSideMenu={() => setSideMenuOpen(false)}
             mobileOpenMenus={mobileOpenMenus}
             handleMobileToggle={handleMobileToggle}
@@ -240,181 +292,212 @@ function MobileNav({
   handleNavigation: (href: string, label?: string) => void;
 }) {
   return (
-    <motion.section
+    <motion.div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mobile-nav-title"
+      id="mobile-nav-panel"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="flex bg-black/40 backdrop-blur-sm h-full justify-end w-full fixed left-0 md:hidden min-h-screen top-0 z-50"
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-50 xl:hidden"
     >
-      <motion.div
+      {/* Dimmed area below sticky header — tap to close */}
+      <motion.button
+        type="button"
+        aria-label="Close menu"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="absolute left-0 right-0 top-[4.75rem] bottom-0 bg-black/55 backdrop-blur-[2px]"
+        onClick={closeSideMenu}
+      />
+
+      {/* Slide-in panel — aligned with xl breakpoint used for desktop nav */}
+      <motion.aside
         initial={{ x: "100%" }}
         animate={{ x: 0 }}
         exit={{ x: "100%" }}
-        transition={{ type: "spring", damping: 25, stiffness: 200 }}
-        className="bg-black/95 backdrop-blur-md h-full w-[100%] px-4 py-4 self-end overflow-y-auto"
+        transition={{ type: "spring", damping: 28, stiffness: 280 }}
+        className="absolute bottom-0 right-0 top-[4.75rem] flex w-full max-w-[min(100vw,20rem)] flex-col border-l border-white/10 bg-[#0a0a0a] shadow-[-8px_0_32px_rgba(0,0,0,0.45)]"
       >
-        <div className="flex h-1/6 text-white">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <AiOutlineClose
-              onClick={closeSideMenu}
-              className="text-4xl cursor-pointer"
-            />
-          </motion.div>
-        </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex flex-col gap-3 items-center transition-all"
+        <span id="mobile-nav-title" className="sr-only">
+          Main navigation
+        </span>
+
+        <nav
+          className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-4"
+          aria-label="Primary"
         >
-          {Nav.map((item, idx) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 + idx * 0.1, duration: 0.4 }}
-              className="w-full"
-            >
-              {!item.dropdownItems ? (
-                <button
-                  onClick={() => {
-                    handleNavigation(item.path, `Loading ${item.title}...`);
-                    closeSideMenu();
-                  }}
-                  className="flex text-white cursor-pointer gap-2 items-center justify-between py-2 hover:text-[#FFB400] transition-colors w-full text-left"
-                >
-                  <span>{item.title}</span>
-                </button>
-              ) : (
-                <>
-                  <div
-                    className="flex text-white cursor-pointer gap-2 items-center justify-between py-2 hover:text-[#FFB400] transition-colors"
+          <ul className="flex flex-col gap-0.5">
+            {Nav.map((item, idx) => (
+              <li key={item.title} className="border-b border-white/5 py-1">
+                {!item.dropdownItems ? (
+                  <button
+                    type="button"
                     onClick={() => {
                       handleNavigation(item.path, `Loading ${item.title}...`);
                       closeSideMenu();
                     }}
+                    className="flex min-h-11 w-full items-center rounded-md px-2 py-2 text-left text-base text-white transition-colors hover:bg-white/5 hover:text-[#FFB400]"
                   >
-                    <span>{item.title}</span>
-                    <IoIosArrowDown
-                      className={`text-xs transition-transform duration-300 ${
-                        mobileOpenMenus[idx] ? "rotate-180" : ""
-                      }`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleMobileToggle(idx);
-                      }}
-                    />
-                  </div>
-                </>
-              )}
-              
-              {/* First-level submenu */}
-              <AnimatePresence>
-                {item.dropdownItems && mobileOpenMenus[idx] && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex flex-col justify-center pl-4 pt-2 overflow-hidden"
-                  >
-                    {item.dropdownItems.map((child, dIdx) => (
-                      <motion.div
-                        key={child.title}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: dIdx * 0.1, duration: 0.3 }}
-                        className="mb-2"
+                    {item.title}
+                  </button>
+                ) : (
+                  <>
+                    <div className="flex min-h-11 items-stretch gap-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleNavigation(item.path, `Loading ${item.title}...`);
+                          closeSideMenu();
+                        }}
+                        className="min-h-11 flex-1 rounded-md px-2 py-2 text-left text-base text-white transition-colors hover:bg-white/5 hover:text-[#FFB400]"
                       >
-                        {!child.subItems ? (
-                          <button
-                            onClick={() => {
-                              handleNavigation(child.path, `Loading ${child.title}...`);
-                              closeSideMenu();
-                            }}
-                            className="block text-[#FFB400] hover:text-white py-2 transition-colors w-full text-left"
-                          >
-                            {child.title}
-                          </button>
-                        ) : (
-                          <>
-                            <div
-                              className="flex items-center justify-between text-[#FFB400] py-2 cursor-pointer hover:text-white transition-colors"
-                              onClick={() => handleMobileSubToggle(idx, dIdx)}
-                            >
-                              <span>{child.title}</span>
-                              <IoIosArrowDown
-                                className={`ml-2 text-[#FFB400] transition-transform duration-300 ${
-                                  mobileOpenSubMenus[`${idx}-${dIdx}`]
-                                    ? "rotate-180"
-                                    : ""
-                                }`}
-                              />
-                            </div>
-                            {/* Second-level submenu */}
-                            <AnimatePresence>
-                              {mobileOpenSubMenus[`${idx}-${dIdx}`] && (
-                                <motion.div
-                                  initial={{ opacity: 0, height: 0 }}
-                                  animate={{ opacity: 1, height: "auto" }}
-                                  exit={{ opacity: 0, height: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="pl-4 overflow-hidden"
+                        {item.title}
+                      </button>
+                      <button
+                        type="button"
+                        aria-expanded={!!mobileOpenMenus[idx]}
+                        aria-label={
+                          mobileOpenMenus[idx]
+                            ? `Collapse ${item.title} submenu`
+                            : `Expand ${item.title} submenu`
+                        }
+                        onClick={() => handleMobileToggle(idx)}
+                        className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md text-[#FFB400] transition-colors hover:bg-white/10"
+                      >
+                        <IoIosArrowDown
+                          className={`text-lg transition-transform duration-200 ${
+                            mobileOpenMenus[idx] ? "rotate-180" : ""
+                          }`}
+                          aria-hidden
+                        />
+                      </button>
+                    </div>
+
+                    <AnimatePresence>
+                      {item.dropdownItems && mobileOpenMenus[idx] && (
+                        <motion.ul
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden pl-2"
+                        >
+                          {item.dropdownItems.map((child, dIdx) => (
+                            <li key={child.title} className="py-0.5">
+                              {!child.subItems ? (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    handleNavigation(
+                                      child.path,
+                                      `Loading ${child.title}...`,
+                                    );
+                                    closeSideMenu();
+                                  }}
+                                  className="flex min-h-10 w-full rounded-md px-2 py-2 text-left text-sm text-[#FFB400]/95 transition-colors hover:bg-white/5 hover:text-[#FFB400]"
                                 >
-                                  {child.subItems.map((sub, j) => (
-                                    <motion.div
-                                      key={j}
-                                      initial={{ opacity: 0, x: -10 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      transition={{ delay: j * 0.05, duration: 0.2 }}
+                                  {child.title}
+                                </button>
+                              ) : (
+                                <>
+                                  <div className="flex min-h-10 items-stretch gap-1">
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        handleNavigation(
+                                          child.path,
+                                          `Loading ${child.title}...`,
+                                        );
+                                        closeSideMenu();
+                                      }}
+                                      className="min-h-10 flex-1 rounded-md px-2 py-2 text-left text-sm text-[#FFB400]/95 transition-colors hover:bg-white/5"
                                     >
-                                      <button
-                                        onClick={() => {
-                                          handleNavigation(sub.path, `Loading ${sub.title}...`);
-                                          closeSideMenu();
-                                        }}
-                                        className="block text-white hover:text-[#FFB400] py-1 transition-colors w-full text-left"
+                                      {child.title}
+                                    </button>
+                                    <button
+                                      type="button"
+                                      aria-expanded={
+                                        !!mobileOpenSubMenus[`${idx}-${dIdx}`]
+                                      }
+                                      aria-label={
+                                        mobileOpenSubMenus[`${idx}-${dIdx}`]
+                                          ? `Collapse ${child.title} links`
+                                          : `Expand ${child.title} links`
+                                      }
+                                      onClick={() =>
+                                        handleMobileSubToggle(idx, dIdx)
+                                      }
+                                      className="inline-flex min-h-10 min-w-10 shrink-0 items-center justify-center rounded-md text-[#FFB400] hover:bg-white/10"
+                                    >
+                                      <IoIosArrowDown
+                                        className={`text-sm transition-transform duration-200 ${
+                                          mobileOpenSubMenus[`${idx}-${dIdx}`]
+                                            ? "rotate-180"
+                                            : ""
+                                        }`}
+                                        aria-hidden
+                                      />
+                                    </button>
+                                  </div>
+                                  <AnimatePresence>
+                                    {mobileOpenSubMenus[`${idx}-${dIdx}`] && (
+                                      <motion.ul
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: "auto" }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="overflow-hidden border-l border-white/10 pl-3"
                                       >
-                                        {sub.title}
-                                      </button>
-                                    </motion.div>
-                                  ))}
-                                </motion.div>
+                                        {child.subItems.map((sub) => (
+                                          <li key={sub.title}>
+                                            <button
+                                              type="button"
+                                              onClick={() => {
+                                                handleNavigation(
+                                                  sub.path,
+                                                  `Loading ${sub.title}...`,
+                                                );
+                                                closeSideMenu();
+                                              }}
+                                              className="flex min-h-10 w-full rounded-md py-2 pl-1 text-left text-sm text-white/90 transition-colors hover:text-[#FFB400]"
+                                            >
+                                              {sub.title}
+                                            </button>
+                                          </li>
+                                        ))}
+                                      </motion.ul>
+                                    )}
+                                  </AnimatePresence>
+                                </>
                               )}
-                            </AnimatePresence>
-                          </>
-                        )}
-                      </motion.div>
-                    ))}
-                  </motion.div>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  </>
                 )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </motion.div>
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.4 }}
-          className="flex flex-col gap-12 items-center mt-8"
-        >
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={`https://paystack.com/pay/ie-pg23h4p?amount=1000`}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="shrink-0 border-t border-white/10 p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          <a
+            href="https://paystack.com/pay/ie-pg23h4p?amount=1000"
             target="_blank"
             rel="noopener noreferrer"
+            className="flex min-h-11 w-full items-center justify-center rounded-md bg-[#FFB400] px-4 py-3 text-base font-semibold text-black transition-colors hover:bg-[#e6a200] active:scale-[0.99]"
           >
-            <button className="bg-[#FFB400] h-fit text-black hover:border-black px-6 py-3 transition-all rounded">
-              Donate Now
-            </button>
-          </motion.a>
-        </motion.section>
-      </motion.div>
-    </motion.section>
+            Donate
+            <span className="sr-only"> (opens in new tab)</span>
+          </a>
+        </div>
+      </motion.aside>
+    </motion.div>
   );
 }

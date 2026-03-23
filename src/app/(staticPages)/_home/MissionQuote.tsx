@@ -6,7 +6,7 @@ import Container from "@/app/_component/shared";
 import { motion, useAnimation, useInView } from "framer-motion";
 import Committed from "../../../../public/assets/home/commited.png";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/_component/atom/button";
 
 const variants = {
   container: {
@@ -49,7 +49,7 @@ const MissionQuote = () => {
         initial="hidden"
         animate={controls}
         variants={variants.container}
-        className="flex flex-col-reverse lg:flex-row justify-center items-start gap-10 lg:gap-14 py-16 md:py-20 px-2 md:px-0"
+        className="flex flex-col-reverse lg:flex-row justify-center items-center gap-10 lg:gap-14 py-16 md:py-20 px-2 md:px-0"
       >
         <motion.div
           variants={variants.text}
@@ -63,17 +63,13 @@ const MissionQuote = () => {
           </p>
           <p className="text-base md:text-lg leading-relaxed text-justify md:text-left">
             We bring children back into school and position education as a
-            pathway to tangible empowerment. This is not temporary relief—it is
-            a sustained commitment to each child, supporting their learning
-            journey and enabling them to rise beyond the conditions that limit
-            their potential.
-          </p>
-          <p className="text-base md:text-lg leading-relaxed text-justify md:text-left">
-            By integrating education with care and skills development, we enable
+            pathway to tangible empowerment. By integrating education with care and skills development, we enable
             children to succeed and build sustainable futures.
           </p>
+          <p className="text-base md:text-lg leading-relaxed text-justify md:text-left">
+          </p>
           <Link href="/get-involve">
-                <Button className="w-[200px] rounded-none border-2 border-black bg-black text-white py-6 mt-4 hover:bg-black/90">
+                <Button className="btn-landing mt-4 rounded-none border-2 border-black bg-black text-white hover:bg-black/90">
                   Get Involved
                 </Button>
               </Link>

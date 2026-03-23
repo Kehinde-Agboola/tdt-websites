@@ -9,9 +9,9 @@ import Report from "@/app/(staticPages)/_home/Report";
 import Numbers from "@/app/(staticPages)/_home/Numbers";
 import Community from "@/app/(staticPages)/_home/Community";
 import HomeTeasers from "@/app/(staticPages)/_home/HomeTeasers";
-import Blog from "@/app/(staticPages)/_home/Blog";
-import Features from "@/app/(staticPages)/_home/Features";
-import Banner from "@/app/(staticPages)/_home/Banner";
+// import Blog from "@/app/(staticPages)/_home/Blog";
+// import Features from "@/app/(staticPages)/_home/Features";
+// import Banner from "@/app/(staticPages)/_home/Banner";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const stagger = (i: number) => i * 0.06;
@@ -28,15 +28,16 @@ const page = () => {
       <AnimatedSection delay={stagger(1)}>
         <MissionQuote />
       </AnimatedSection>
-      <AnimatedSection delay={stagger(2)}>
-        <SustainableEducationCTA />
-      </AnimatedSection>
       <AnimatedSection delay={stagger(3)}>
         <WhyMatters />
       </AnimatedSection>
       <AnimatedSection delay={stagger(4)}>
         <HowWeWorkSection />
       </AnimatedSection>
+      <AnimatedSection delay={stagger(2)}>
+        <SustainableEducationCTA />
+      </AnimatedSection>
+
       <AnimatedSection delay={stagger(5)}>
         <Numbers />
       </AnimatedSection>
@@ -52,7 +53,7 @@ const page = () => {
       <AnimatedSection delay={stagger(9)}>
         <HomeTeasers />
       </AnimatedSection>
-      <AnimatedSection delay={stagger(10)}>
+      {/* <AnimatedSection delay={stagger(10)}>
         <Banner />
       </AnimatedSection>
       <AnimatedSection delay={stagger(11)}>
@@ -60,7 +61,7 @@ const page = () => {
       </AnimatedSection>
       <AnimatedSection delay={stagger(12)}>
         <Features />
-      </AnimatedSection>
+      </AnimatedSection> */}
     </div>
   );
 };

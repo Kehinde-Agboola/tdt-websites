@@ -51,7 +51,7 @@ export const Nav: NavItem[] = [
       { title: "Our People", path: "/whoweare/ourpeople" },
       { title: "Impact Report & Financials", path: "/impact-report-financial" },
       { title: "FAQS", path: "/whoweare/faqs" },
-      { title: "Blog", path: "/whoweare/blog" },
+      // { title: "Blog", path: "/whoweare/blog" },
     ],
   },
   {
@@ -83,20 +83,20 @@ export const Nav: NavItem[] = [
         ],
       },
       {
-        title: "Care",
-        path: "/whatwedo/care",
+        title: "Wellbeing",
+        path: "/whatwedo/wellbeing",
         subItems: [
           {
             title: "Rehabilitation and Care",
-            path: "/whatwedo/care",
+            path: "/whatwedo/wellbeing",
           },
-          { title: "Shelter and Wellbeing", path: "/whatwedo/care" },
+          { title: "Shelter and Wellbeing", path: "/whatwedo/wellbeing" },
           {
             title: "Supported Independent Living",
-            path: "/whatwedo/care",
+            path: "/whatwedo/wellbeing",
           },
-          { title: "Child Healthcare", path: "/whatwedo/care" },
-          { title: "Hunger Relief", path: "/whatwedo/care" },
+          { title: "Child Healthcare", path: "/whatwedo/wellbeing" },
+          { title: "Hunger Relief", path: "/whatwedo/wellbeing" },
         ],
       },
       {
@@ -114,8 +114,8 @@ export const Nav: NavItem[] = [
     path: "/#",
     dropdownItems: [
       { title: "School Enrolment", path: "/whatwedo/education" },
-      { title: "Residential Care", path: "/whatwedo/care" },
-      { title: "Bridge Learning", path: "/projects/bridgelearning" },
+          { title: "Residential Care", path: "/whatwedo/wellbeing" },
+      { title: "Accelerated Learning", path: "/projects/bridgelearning" },
       {
         title: "OurSchool Africa Edtech",
         path: "https://www.ourschool.africa/",
@@ -514,20 +514,7 @@ Thank you for standing with us, especially now, when compassion is needed most. 
       image: Ododo,
     },
 
-    {
-      name: "Oluwatosin Olaseinde",
-      role: "Growth and Partnerships",
-      description:
-        "Oluwatosin is a professional accountant with over 10 years of experience spanning across accounting, audit, financial management, and taxation. She is the Founder/CEO of MoneyAfrica, an ed-tech platform that enhances financial literacy and investments by leveraging on technology. Oluwatosin is a World Economic Forum Young Global Leader, Washington Mandela Fellow, LinkedIn Top Voice in Finance & Economy (2020), and featured on TEDx, BBC UK, Al Jazeera, and CNN and ranked amongst Top 50 African Business Heroes. She leads growth and partnerships at The Destiny Trust.",
-      image: Tosin,
-    },
-    {
-      name: "Tejumade Adeyinka",
-      role: "Technology and Skills Development",
-      description:
-        "Teju Adeyinka is a Product Manager with experience building and managing digital infrastructure and technology products. She is the founder of scouthappy.com, a platform connecting African talent to meaningful work in global markets. Teju previously led the Developer Platform at 0x Labs, a leading blockchain infrastructure provider, and was the first Product Manager at Helicarrier, where she helped build and scale transformative blockchain products in Africa's tech ecosystem. Passionate about driving economic mobility, she champions initiatives that harness industry and commerce to create opportunities for Africans.",
-      image: Teju,
-    },
+  
   ];
   
 
@@ -547,6 +534,20 @@ Thank you for standing with us, especially now, when compassion is needed most. 
     //     "Ifeyinwa is a lawyer with expertise in corporate and commercial law, serving as in-house counsel in the financial services sector. She has experience advising on regulatory compliance, transactions, and governance. At The Destiny Trust, Ifeyinwa leads communication and strategy, shaping the organisation's message and long-term direction to drive its mission of empowering underserved children. She is passionate about leveraging her legal and strategic skills to create lasting social impact and amplify the voices of vulnerable communities.",
     //   image: "/assets/team/placeholder-female.jpg",
     // },
+    {
+      name: "Oluwatosin Olaseinde",
+      role: "Growth and Partnerships",
+      description:
+        "Oluwatosin is a professional accountant with over 10 years of experience spanning across accounting, audit, financial management, and taxation. She is the Founder/CEO of MoneyAfrica, an ed-tech platform that enhances financial literacy and investments by leveraging on technology. Oluwatosin is a World Economic Forum Young Global Leader, Washington Mandela Fellow, LinkedIn Top Voice in Finance & Economy (2020), and featured on TEDx, BBC UK, Al Jazeera, and CNN and ranked amongst Top 50 African Business Heroes. She leads growth and partnerships at The Destiny Trust.",
+      image: Tosin,
+    },
+    {
+      name: "Tejumade Adeyinka",
+      role: "Technology and Skills Development",
+      description:
+        "Teju Adeyinka is a Product Manager with experience building and managing digital infrastructure and technology products. She is the founder of scouthappy.com, a platform connecting African talent to meaningful work in global markets. Teju previously led the Developer Platform at 0x Labs, a leading blockchain infrastructure provider, and was the first Product Manager at Helicarrier, where she helped build and scale transformative blockchain products in Africa's tech ecosystem. Passionate about driving economic mobility, she champions initiatives that harness industry and commerce to create opportunities for Africans.",
+      image: Teju,
+    },
     {
       name: "Jumoke Muftau",
       role: "Care Programmes",

@@ -72,33 +72,33 @@ const Numbers = () => {
 
   const gridData = [
     {
-      title: 9500,
+      title: 31350,
       paragraph:
-        "9.5k+ children enrolled in school for the first time or supported to go back to school.",
+        "children enrolled in school for the first time or supported to go back to school.",
     },
     {
       title: 1_160_000,
       paragraph:
-        "1.16M+ meals served in our shelters, resettlement homes, school feeding and community-based feeding programmes.",
+        "meals served in our shelters, resettlement homes, school feeding and community-based feeding programmes.",
     },
     {
       title: 3_700,
       paragraph:
-        "3.7K+ children in underserved public schools taught literacy by our teachers.",
+        "children in underserved public schools taught literacy by our teachers.",
     },
     {
-      title: 167,
+      title: 206,
       paragraph:
-        "167+ children under scholarship or admitted into our tuition-free school.",
+        "children under scholarship or admitted into our tuition-free school.",
     },
     {
       title: 2151,
       paragraph:
-        "2151+ students trained on coding, design, and digital skills under our STEAM projects.",
+        "students trained on coding, design, and digital skills under our STEAM projects.",
     },
     {
       title: 165,
-      paragraph: "165+ children provided shelter and alternative care.",
+      paragraph: "children provided shelter and alternative care.",
     },
   ];
 
@@ -111,7 +111,7 @@ const Numbers = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="max-w-4xl mx-auto text-center md:text-left pb-10 md:pb-14"
         >
-          <h2 className="text-[#FFB400] text-2xl md:text-4xl font-semibold mb-6">
+          <h2 className="text-[#FFB400]  text-3xl md:text-5xl font-semibold mb-6">
             Our Impact
           </h2>
           <p className="text-[#333333] text-base md:text-lg leading-relaxed mb-4">
@@ -119,13 +119,13 @@ const Numbers = () => {
             movement of transformation.
           </p>
           <p className="text-[#333333] text-base md:text-lg leading-relaxed mb-4">
-            Over 30,000 children have been reached. Thousands have been
-            reintegrated into education. Lives have been restored from the
-            streets, slums, and displacement.
+            Thousands of children have been reintegrated into education. Lives
+            have been restored from the streets, slums, and displacement.
           </p>
           <p className="text-[#333333] text-base md:text-lg leading-relaxed font-medium">
-            But beyond the numbers is something deeper: children once written
-            off are now learning, leading, and building futures.
+            But beyond the numbers is something deeper - children once written
+            off are now learning, leading, and building a better future for
+            themselves and their communities.
           </p>
         </motion.div>
         <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-10 justify-center">
@@ -137,8 +137,8 @@ const Numbers = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.1000,
-                delay: index * 0.6000,
+                duration: 0.1,
+                delay: index * 0.6,
                 ease: "easeOut",
               }}
             >

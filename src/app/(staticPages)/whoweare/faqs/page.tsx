@@ -21,22 +21,24 @@ const page = () => {
   };
 
   return (
-    <main>
+    <main className="min-w-0">
       {/* Hero Section */}
-      <section className="relative h-[50vh] w-full">
+      <section className="relative min-h-[280px] h-[42vh] w-full sm:min-h-[320px] sm:h-[50vh]">
         <Image
           src={Hero}
-          alt="Our Team"
+          alt="Frequently asked questions"
           fill
+          sizes="100vw"
           className="object-cover object-center bg-no-repeat"
         />
+        <div className="absolute inset-0 bg-black/35" />
 
         {/* Text Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 text-white">
-          <h1 className="text-4xl md:text-5xl w-[19rem] md:w-[26rem] leading-10">
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
+          <h1 className="font-heading max-w-full text-3xl leading-tight sm:text-4xl md:max-w-2xl md:text-5xl">
             Frequently <span className="text-yellow">Asked Questions</span>
           </h1>
-          <p className="mt-4 text-base md:text-lg max-w-2xl">
+          <p className="mt-4 max-w-2xl text-base md:text-lg">
             These are the most commonly asked questions about The Destiny
             Trust. Can’t find what you are looking for?{' '}
             <span className="underline">Chat to our friendly team!</span>
@@ -46,9 +48,9 @@ const page = () => {
 
       {/* FAQ Section */}
       <Container>
-        <main className="flex flex-col md:flex-row justify-between">
+        <div className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-12">
           {/* Left Section */}
-          <section className="md:w-[28rem] w-[20rem] mx-auto mt-16 text-center md:text-left">
+          <section className="mx-auto mt-12 w-full max-w-md text-center md:mx-0 md:mt-16 md:w-[min(100%,28rem)] md:flex-shrink-0 md:text-left">
             <Image
               src={YellowLine}
               className="block mx-auto md:mx-0"
@@ -65,7 +67,7 @@ const page = () => {
           </section>
 
           {/* Right Section */}
-          <section className="md:w-[40rem] my-16">
+          <section className="my-8 w-full min-w-0 flex-1 md:my-16">
             {FAQuestions?.map((d, i) => (
               <motion.div
                 key={i}
@@ -112,7 +114,7 @@ const page = () => {
               </motion.div>
             ))}
           </section>
-        </main>
+        </div>
       </Container>
     </main>
   );

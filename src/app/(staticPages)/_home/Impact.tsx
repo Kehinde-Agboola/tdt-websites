@@ -2,10 +2,11 @@
 import React from 'react';
 import Container from '../../_component/shared';
 import Boy from "../../../../public/assets/home/boybag.png";
+// import WritingGirl from "../../../../public/assets/scholarship/girlwriting.png";
 import Image from 'next/image';
 import Line from "../../../../public/assets/home/line.png";
 import { Button } from '@/app/_component/atom/button';
-import Link from 'next/link';
+import Link from 'next/link'; 
 import { motion } from 'framer-motion';
 
 const reports = {
@@ -32,7 +33,7 @@ const Impact = () => {
       viewport={{ once: false, amount: 0.2 }}
     >
       <Container>
-        <div className="flex flex-col-reverse md:flex-row justify-between items-center pt-[5rem] md:pt-[0]">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-center pt-[5rem] md:pt-[0]">
           <motion.div
             className="overflow-hidden max-h-[350px] md:max-h-[1600px] relative"
             initial={{ x: -30, opacity: 0 }}
@@ -50,7 +51,7 @@ const Impact = () => {
           </motion.div>
 
           <motion.div
-            className="md:w-[45%]"
+            className="md:w-[45%] -mt-80"
             initial={{ x: 30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -64,7 +65,7 @@ const Impact = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: false, amount: 0.4 }}
             >
-              Impact reports
+              Reporting Progress
             </motion.h2>
             <motion.p
               className="pb-3 text-center md:text-left text-base md:text-lg text-black/90 max-w-xl"
@@ -73,9 +74,8 @@ const Impact = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: false, amount: 0.4 }}
             >
-              Explore how we report progress, celebrate wins together, and
-              highlight opportunities to transform more lives.
-            </motion.p>
+              Beyond numbers, we aim for qualitative impact in the lives of children - making sustained investment in education, wellbeing and the stability they need to thrive. Explore our Impact Reports.
+            </motion.p>   
             <motion.div
               className="flex flex-col items-center md:flex-row md:flex-wrap gap-4 md:gap-5 py-4"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -84,7 +84,7 @@ const Impact = () => {
               viewport={{ once: false, amount: 0.4 }}
             >
               <Button
-                className="border-2 border-black w-[200px] py-2"
+                className="btn-landing btn-landing--outline bg-transparent"
                 onClick={() =>
                   openAndDownloadFile(
                     reports[2024],
@@ -92,10 +92,12 @@ const Impact = () => {
                   )
                 }
               >
-                2024 Impact Reports
+                2025 Impact Reports
               </Button>
               <Link href="/impact-report-financial">
-                <Button className="w-[200px] py-2">View more</Button>
+                <Button className="btn-landing btn-landing--outline bg-transparent">
+                  View more
+                </Button>
               </Link>
               
             </motion.div>

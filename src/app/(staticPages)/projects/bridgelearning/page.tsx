@@ -38,7 +38,7 @@ const Page = () => {
   return (
     <main>
       {/* Hero Section with Background and Text */}
-      <section className="relative h-[90vh] w-full">
+      <section className="relative min-h-[min(100dvh,880px)] w-full overflow-hidden">
         <motion.div
           className="absolute inset-0"
           initial={{ opacity: 0 }}
@@ -47,24 +47,27 @@ const Page = () => {
         >
           <Image
             src={BlcHero}
-            alt="Blc hero section"
+            alt="Bridge Learning Centre hero"
             fill
-            className="object-cover object-center bg-no-repeat bg-center"
+            sizes="100vw"
+            priority
+            className="object-cover object-right sm:object-center"
           />
         </motion.div>
+        <div className="absolute inset-0 bg-black/45" />
 
-        <Container>
-          <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 text-white">
-            <div className="md:text-left">
+        <div className="relative z-10 flex min-h-[min(100dvh,880px)] flex-col justify-center px-4 py-16 sm:px-6 md:px-12 lg:px-16">
+          <div className="mx-auto w-full max-w-6xl text-white md:text-left">
+            <div className="text-center md:text-left">
               <Image
                 src={BlcLogo}
-                alt="Blc logo"
-                className="pb-8"
-               
-                
+                alt="Bridge Learning Centre logo"
+                width={200}
+                height={80}
+                className="mx-auto pb-6 h-auto w-[min(200px,70vw)] md:mx-0 md:pb-8"
               />
               <motion.h1
-                className="text-4xl md:text-5xl xl:text-[64px] leading-10 text-yellow"
+                className="font-heading text-3xl leading-tight text-yellow sm:text-4xl md:text-5xl xl:text-[64px]"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
@@ -72,7 +75,7 @@ const Page = () => {
                 Welcome to
               </motion.h1>
               <motion.h1
-                className="text-4xl md:text-5xl xl:text-[64px] leading-10"
+                className="font-heading mt-1 text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-[64px]"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2 }}
@@ -80,7 +83,7 @@ const Page = () => {
                 Bridge Learning Centre
               </motion.h1>
               <motion.p
-                className="mt-4 text-base md:text-left w-full md:w-[48rem] pt-4 pb-8"
+                className="mt-4 max-w-full pt-2 pb-6 text-base leading-relaxed sm:text-lg md:max-w-[48rem] md:pt-4 md:pb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.4 }}
@@ -92,7 +95,8 @@ const Page = () => {
               </motion.p>
             </div>
             <motion.button
-              className="bg-yellow text-black w-1/2 md:w-[10rem] mt-4 md:mt-0 px-4 py-2"
+              type="button"
+              className="mt-2 w-full max-w-xs rounded bg-yellow px-4 py-3 text-center text-sm font-medium text-black sm:w-auto md:mt-0 md:max-w-none md:px-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
@@ -100,7 +104,7 @@ const Page = () => {
               Work With Us
             </motion.button>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* First Content Section */}

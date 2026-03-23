@@ -23,15 +23,22 @@ const WhyMatters = () => {
             because classrooms are unavailable, but because the conditions
             required for learning do not exist.
           </p>
+
           <p className="text-base md:text-lg text-white/90 leading-relaxed mb-6">
             For many children, daily survival is uncertain, defined by
-            homelessness, hunger, abuse, displacement, family poverty, and
-            disrupted access to education. In these conditions, access to school
-            alone cannot solve the problem.
+            homelessness, hunger, abuse, displacement, and extreme poverty. In
+            these conditions, access to school alone is not enough. Together, we
+            can confront the problems that keep children out of school,
+            providing the stability and support needed for learning to begin and
+            be sustained; and delivering sustainable solutions to reach that one
+            child left out of school.
           </p>
-          <p className="text-xl md:text-2xl font-medium text-white leading-snug border-l-4 border-[#FFBC00] pl-5 md:pl-6 mt-10">
-            A child cannot learn where survival is uncertain.
-          </p>
+        <p className="text-xl md:text-2xl font-medium text-white leading-snug border-l-4 border-[#FFBC00] pl-5 md:pl-6 mt-10">
+          Together, we can confront the problems that keep children out of
+          school, providing the stability and support needed for learning to
+          begin and be sustained; and delivering sustainable solutions to reach
+          that one child left out of school.
+        </p>
         </motion.div>
       </Container>
     </section>

@@ -16,8 +16,8 @@ const Volunteer = () => {
           <div className="w-full md:w-[40rem] text-center md:text-right">
             <p className="text-sm mb-6">
               Become a part of our dynamic and innovative family. We are looking
-              for passionate individuals who want to make an impact in people&#39;s
-              lives. Together, we can achieve greatness.
+              for passionate individuals who want to make an impact in
+              people&#39;s lives. Together, we can achieve greatness.
             </p>
             {/* <button
               className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition-colors"
@@ -25,9 +25,9 @@ const Volunteer = () => {
             >
             Become a Volunteer
             </button> */}
-            <VolunteerButton>
-
-            </VolunteerButton>
+            <div className="flex w-full justify-center md:justify-end tex-">
+              <VolunteerButton />
+            </div>
           </div>
         </div>
       </Container>

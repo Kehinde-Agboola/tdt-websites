@@ -10,6 +10,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-raleway)", "Arial", "Helvetica", "sans-serif"],
+        heading: [
+          "var(--font-open-sans)",
+          "Arial",
+          "Helvetica",
+          "sans-serif",
+        ],
+      },
       colors: {
         yellow: "#FFB400",
         // Keep only essential colors

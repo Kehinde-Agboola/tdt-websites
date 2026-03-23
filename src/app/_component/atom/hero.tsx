@@ -25,25 +25,25 @@ export const HeroComponent = ({
   subtext,
 }: HeroPropsType) => {
   return (
-    <div className="bg-black h-[100vh] w-full relative">
+    <div className="relative min-h-[min(100dvh,900px)] w-full bg-black">
       {/* Background Image */}
       <Image
         src={image}
         alt="Background Image"
         fill
-        style={{ objectFit: "cover", objectPosition: "center", backgroundRepeat: "no-repeat" }}
+        sizes="100vw"
         priority
-        className="z-0"
+        className="z-0 object-cover object-center"
       />
 
-      <div className="flex text-center text-white absolute inset-0 items-center md:pl-[4rem] md:px-0 md:text-left pl-0 z-10">
-        <section className="-leading-16">
+      <div className="absolute inset-0 z-10 flex items-center px-4 py-16 text-center text-white sm:px-6 md:px-12 md:text-left lg:pl-16">
+        <section className="-leading-16 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
-            <h1 className="text-4xl leading-8 mb-4 md:text-6xl">
+            <h1 className="font-heading text-3xl leading-tight sm:text-4xl md:text-6xl mb-4">
               {heading}{" "}
               {spanText2 && (
                 <motion.span
@@ -68,7 +68,7 @@ export const HeroComponent = ({
                 </motion.span>
               )}
             </p>
-            <h1 className="text-4xl mb-4 md:text-6xl">{heading2}</h1>
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-6xl mb-4">{heading2}</h1>
           </motion.div>
           {subtext && (
             <motion.p

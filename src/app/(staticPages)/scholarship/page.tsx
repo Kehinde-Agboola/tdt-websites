@@ -290,36 +290,40 @@ const page = () => {
 
   return (
     <main>
-      <section className="relative h-[86vh] w-full">
+      <section className="relative min-h-[360px] h-[52vh] max-h-[640px] w-full overflow-hidden sm:min-h-[420px] sm:h-[68vh] md:max-h-none md:h-[86vh]">
         <Image
           src={ScholarshipHero}
-          alt="Our Team"
+          alt="Scholarship — invest in children&apos;s education"
           fill
-          className="object-cover object-center bg-no-repeat"
+          priority
+          sizes="100vw"
+          className="object-cover object-right sm:object-center bg-no-repeat"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/25 md:from-black/50 md:via-black/30 md:to-transparent"
+          aria-hidden
         />
 
-        {/* Text Content */}
-        <Container>
-          <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 text-white">
-            <div className="">
-              <h1 className="md:text-left text-4xl md:text-5xl xl:text-[64px] md:w-[40rem] leading-10">
+        <div className="absolute inset-0 flex flex-col justify-end pb-6 pt-16 sm:justify-center sm:pb-0 sm:pt-0">
+          <div className="mx-auto flex w-full max-w-6xl flex-col px-3 sm:px-6 md:px-10 lg:px-16">
+            <div className="text-left text-white">
+              <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl xl:text-[3.5rem] xl:leading-[1.1] md:max-w-[40rem]">
                 Let&apos;s Invest In Our{" "}
-                <span className="text-yellow">​Future</span>
-                Together
+                <span className="text-yellow">Future</span> Together
               </h1>
-              <p className="mt-4 text-base md:text-lg md:text-left w-full md:w-[37rem] pt-4 pb-8">
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/95 sm:mt-4 sm:text-base md:text-lg md:max-w-[37rem]">
                 We partner with compassionate individuals and organisations to
-                ​administer scholarship programmes that meet our shared goal of
-                ​empowering children with education from primary school to the
-                ​university.
+                administer scholarship programmes that meet our shared goal of
+                empowering children with education from primary school to the
+                university.
               </p>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 w-[40%]">
-              <SponsorScholarshipButton className='border border-white' />
-              <SponsorChildButton className='bg-yellow hover:bg-yellow' />
+            <div className="mt-5 flex w-full max-w-md flex-col gap-3 sm:mt-6 sm:max-w-2xl sm:flex-row sm:flex-wrap sm:items-stretch sm:gap-4 md:max-w-none">
+              <SponsorScholarshipButton className="!mx-0 border border-white !text-white hover:!bg-white hover:!text-black md:!w-[238px]" />
+              <SponsorChildButton className="!mx-0 bg-yellow !text-black hover:!bg-[#e6a200] md:!w-[187px]" />
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Scholarship Cards Slider */}

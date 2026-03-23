@@ -120,13 +120,13 @@ const FinancialReports = () => {
   };
   return (
     <Container>
-    <section className="my-[4rem]">
+    <section className="my-10 px-0 sm:my-14 md:my-16">
                  {/* Heading */}
       <motion.h2
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="text-3xl font-bold text-center text-gray-800 mb-8"
+        className="font-heading text-2xl font-bold text-center text-gray-800 mb-6 sm:text-3xl sm:mb-8"
       >
         Financial & Impact Reports
       </motion.h2>

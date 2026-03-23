@@ -29,14 +29,16 @@ const SustainableEducationCTA = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 md:mt-12">
             <a
-              href="#donate"
-              className="inline-flex w-full sm:w-auto min-w-[200px] items-center justify-center bg-[#ffb400] hover:bg-[#e6a200] text-black min-h-[48px] px-8 text-sm font-medium transition-colors duration-200"
+              href="https://paystack.shop/pay/1000Hands"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-landing btn-landing--primary"
             >
-              Donate Now
+              Donate
             </a>
             <Link
               href="/get-involve"
-              className="inline-flex w-full sm:w-auto min-w-[200px] items-center justify-center border-2 border-black text-black min-h-[48px] px-8 text-sm font-medium hover:bg-black hover:text-white transition-colors duration-200"
+              className="btn-landing btn-landing--outline"
             >
               Partner With Us
             </Link>

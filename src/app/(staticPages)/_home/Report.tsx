@@ -1,5 +1,7 @@
-'use client'
+"use client";
+
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../../_component/shared";
 
@@ -22,7 +24,7 @@ const Report = () => {
     <section className="relative bg-white pb-[5rem] pt-10 md:pt-[2rem] md:-mt-[20rem]">
       <Container>
         {/* Heading Animation */}
-        <motion.h1
+        {/* <motion.h1
           className="text-yellow text-[32px] text-center md:text-left md:text-[40px] font-[500] my-8"
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -30,37 +32,49 @@ const Report = () => {
           viewport={{ once: false, amount: 0.3 }}
         >
           Reporting progress
-        </motion.h1>
+        </motion.h1> */}
 
-        {/* Content Animation */}
+        {/* Impact quote + CTAs */}
         <motion.div
-          className="flex flex-col xl:flex-row items-center justify-between gap-[3rem]"
           initial="hidden"
           whileInView="visible"
           variants={containerVariants}
           viewport={{ once: false, amount: 0.3 }}
         >
-          {/* Left Paragraph */}
           <motion.div
-            className="lg:basis-[40%] flex-basis-[50%] text-justify"
             variants={childVariants}
+            className="relative bg-white p-8 md:p-10 lg:p-12"
           >
-            <p>
-              Beyond numbers, we aim for qualitative impact in children&apos;s
-              lives—sustained investment in education, wellbeing, and the
-              stability each child needs to thrive.
-            </p>
-          </motion.div>
+            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+              <div className="min-w-0 flex-1 text-left">
+               
+                <blockquote
+                  id="report-impact-quote"
+                  className="border-l-4 border-[#FFB400] pl-4 text-xl font-medium leading-snug text-[#1a1a1a] md:text-2xl md:leading-relaxed"
+                >
+                  &ldquo;Investing in children is investing in the future we all
+                  share.&rdquo;
+                </blockquote>
+              </div>
 
-          {/* Right Paragraph */}
-          <motion.div
-            className="lg:basis-[50%] flex-basis-[50%] text-justify"
-            variants={childVariants}
-          >
-            <p className="italic font-[400] text-xl md:text-2xl border-l-0 md:border-l-4 border-yellow pt-3 md:pt-0 md:px-3 border-t-4 md:border-t-0">
-              &ldquo;Investing in children is investing in the future we all
-              share.&rdquo;
-            </p>
+              {/* Button order + styles aligned with SustainableEducationCTA */}
+              <div className="flex w-full shrink-0 flex-col gap-4 sm:flex-row sm:justify-end lg:w-auto lg:gap-4">
+                <a
+                  href="https://paystack.shop/pay/1000Hands"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-landing btn-landing--primary"
+                >
+                  Donate
+                </a>
+                <Link
+                  href="/get-involve"
+                  className="btn-landing btn-landing--outline"
+                >
+                  Partner With Us
+                </Link>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </Container>

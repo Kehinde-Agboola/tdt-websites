@@ -1,45 +1,32 @@
-import React from "react";
 import Image from "next/image";
-import Hero from "../../../../../public/assets/heos.png";
-// /assets/ehos.png;
-const Head = () => {
+import Edu from "../../../../../public/assets/edu/hero.png";
+
+export default function Head() {
   return (
-    <main className="h-full">
-      <div className="bg-black h-[100vh] w-full relative">
-        {/* Background Image */}
-        <Image
-          src={Hero}
-          alt="Background Image"
-          fill
-          style={{
-            objectFit: "cover",
-            objectPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-          priority
-          className="z-0"
-        />
-
-        <div className="flex text-center text-white absolute inset-0 items-center md:pl-[4rem] md:px-0 md:text-left pl-0 z-10">
-          <section className="-leading-10">
-            <div className="md:max-w-[50%]">
-              <h1 className="text-4xl leading-8 mb-4 md:text-6xl">
-                Transforming Lives With
-                <span className="text-[#FFBC00]"> EDUCATION</span>
-              </h1>
-
-              <p className="text-[16px] mb-6">
-                We believe that education is the most powerful tool for breaking
-                the cycle of poverty and building a better future. We remove
-                barriers to learning and provide alternative education pathways
-                for disadvantaged children.
-              </p>
-            </div>
-          </section>
+    <section className="relative w-full min-h-[min(100dvh,900px)] overflow-hidden bg-black">
+      <Image
+        src={Edu}
+        alt="Education hero — children learning"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-right sm:object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent sm:from-black/70 sm:via-black/35" />
+      <div className="relative z-10 flex min-h-[min(100dvh,900px)] items-center px-4 py-16 sm:px-6 md:px-12 lg:pl-16">
+        <div className="max-w-2xl text-left text-white">
+          <h1 className="font-heading text-3xl font-bold leading-tight sm:text-5xl md:text-6xl">
+            Education
+          </h1>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/95 sm:text-lg">
+            Education is the foundation of our work. We believe that every child
+            deserves a chance to learn, grow, and thrive, regardless of their
+            circumstances. Through our programmes, we provide access to
+            quality education, support for out-of-school children, and
+            digital learning opportunities for those who need them most.
+          </p>
         </div>
       </div>
-    </main>
+    </section>
   );
-};
-
-export default Head;
+}

@@ -102,7 +102,7 @@ const Enable: React.FC = () => {
             className="flex flex-col lg:flex-row gap-4 pt-4"
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <Button className="bg-[#ffb400] hover:bg-[#e6a200] text-black w-full sm:w-36 py-2.5 px-4 text-sm transition-colors duration-200">
+              <Button className="btn-landing btn-landing--primary text-black w-full sm:w-auto">
                 Join Us
               </Button>
             </motion.div>
@@ -112,7 +112,7 @@ const Enable: React.FC = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-black hover:bg-gray-800 text-white w-full sm:w-36 py-2.5 px-4 border-2 border-black hover:border-gray-800 text-sm transition-colors duration-200 flex items-center justify-center"
+              className="btn-landing bg-black text-white border-2 border-black hover:bg-gray-800 hover:border-gray-800 transition-colors duration-200"
             >
               Donate
             </motion.a>

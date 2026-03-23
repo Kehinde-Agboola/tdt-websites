@@ -27,7 +27,7 @@ const Community = () => {
 
   return (
     <main>
-      <section className="h-screen w-full relative">
+      <section className="relative min-h-[100dvh] w-full">
         {/* Responsive Background Image */}
         <div className="absolute inset-0">
           {/* Desktop Image */}
@@ -47,10 +47,10 @@ const Community = () => {
             priority
           />
         </div>
-        <section className="absolute inset-0 text-white">
+        <section className="absolute inset-0 flex items-center justify-center px-4 text-white">
           <Container>
             <motion.div
-              className="flex flex-col justify-center items-center  pt-[1.5rem]"
+              className="flex w-full flex-col items-center justify-center text-center"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -72,10 +72,10 @@ const Community = () => {
                 thrive.
               </motion.p>
               <motion.p
-                className="w-full md:max-w-xl text-center text-lg md:text-xl font-medium text-[#FFBC00] mt-6 italic"
+                className="w-full md:max-w-xl text-center text-lg md:text-xl font-medium text-[#FFBC00] mt-6 "
                 variants={itemVariants}
               >
-                &ldquo;Every child reached is a future restored.&rdquo;
+                Every child reached is a future restored.
               </motion.p>
               <motion.div variants={itemVariants}>
                 {/* <Button 
@@ -84,7 +84,7 @@ const Community = () => {
                 >
                   Become a Volunteer
                 </Button> */}
-                <VolunteerButton className="mt-4 bg-[#FFB400] text-black w-[224px] mx-auto py-2"></VolunteerButton>
+                <VolunteerButton className="btn-landing btn-landing--primary text-black mx-auto mt-4"></VolunteerButton>
               </motion.div>
             </motion.div>
           </Container>
