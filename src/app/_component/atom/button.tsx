@@ -1,11 +1,11 @@
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 
 export interface ButtonInterface
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
-  children: ReactElement | string;
+  children: ReactNode;
   icon?: ReactElement;
   btnFlex?: boolean; 
 }

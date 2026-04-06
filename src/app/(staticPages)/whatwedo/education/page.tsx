@@ -6,8 +6,8 @@ import Edu1 from  "../../../../../public/assets/edu/edu1.jpg";
 import Edu5 from  "../../../../../public/assets/edu/edu5.png";
 import Edu2 from  "../../../../../public/assets/edu/edu2.jpg";
 import Line from "../../../../../public/assets/edu/Lineyellow.png"
-import Cards from "./Cards";
-import Enrolment from "./Enrolment";
+import BlcStudents from "../../../../../public/assets/blc/students.png";
+import Scholar from "../../../../../public/assets/edu/scholar.png";
 import Empower from "@/app/_component/ui/Empower";
 const Home: React.FC = () => {
      const data = [
@@ -16,35 +16,43 @@ const Home: React.FC = () => {
          heading3: "School Enrolment and Back-to-School",
          spanText3: "Education Access",
          text1:
-           "We take children off the streets and slums and get them back in school. Through our Education Access programme, thousands of out-of-school children across Nigeria are enrolled or reintegrated into school every year.",
-         text2: "Children in informal settlements and homeless communities often face multiple barriers to education: frequent displacement, lack of documentation, and the absence of a stable home. These challenges make it difficult to benefit from even free education where it is available.",
-         text3:"We walk with them, every step of the way providing school supplies, and covering hidden costs of schooling. We ensure that nothing stands in the way of a child’s right to education.",
+           "We take children off the streets, out of slums, and from vulnerable environments and bring them back into school—but our work does not stop at enrolment.",
+         text2:
+           "Many children face challenges such as displacement and unstable living conditions, which make it difficult to remain in school or learn effectively. We address these barriers and provide continuous support to ensure children stay in school and make meaningful progress.",
+         text3:
+           "We focus on strengthening school retention and improving learning outcomes-helping children build foundational skills and succeed academically.",
+         text4:
+           "No child should be excluded from education—and every child in school should be supported to learn and thrive.",
          imageSrc: Teacher,
          buttonText: "",
        },
-  ];
-      const data4 = [
-         {
-           imageSrc1: Line,
-           spanText: "Education Technology",
-           heading1: "OurSchool Africa",
-           text1:
-             "We embrace technology to democratise learning and reach even the most remote and underserved communities. Our digital learning initiative, OurSchool.africa, delivers quality learning resources to children who are out of school.",
-           text2:
-             "OurSchool.Africa is one digital school for out-of-school children, created to bring learning to children wherever they are. With pre recorded video lessons, animation, games, offline access, and AI support for personalised learning, we’re reaching children who are often forgotten those in slums, remote villages, and displacement camps.",
-           text3:
-             "We’re helping them learn in their own way, at their own pace, and in a language they understand. OurSchool is more than just a platform—it’s a chance for every child to catch up, keep up, and dream again.",
-           imageSrc: Edu2,
-           buttonText: "",
-         },
-       ];
+     ];
+     const educationTechnology = [
+       {
+         imageSrc1: Line,
+         heading3: "Education Technology — OurSchool.Africa",
+         text1:
+           "We use technology to take learning to children—wherever they are. OurSchool.Africa delivers accessible, engaging, and personalised learning through offline-first digital solutions, including video lessons, animation, and interactive content.",
+         text2:
+           "From slums to remote communities to displacement camps, we are expanding access to quality education at scale and enabling children to learn at their own pace.",
+         text4:
+           "Learning, anywhere. For every child.",
+         imageSrc: Edu2,
+         buttonText: "Learn More",
+         buttonHref: "/whatwedo/education#ourschool-africa",
+         buttonText2: "Explore OurSchool Africa",
+         buttonHref2: "https://ourschool.africa",
+       },
+     ];
      const support = [
        {
          imageSrc1: Line,
          heading3: "School Support",
          text1:
-           "To ensure that the children we enrol in school have a rewarding learning experience, we also support under-resourced schools that serve poor communities. We work with these schools to improve the learning environment through improvising school infrastructure, Supply of books and teaching aids, access to clean water and personnel support. ",
-
+           "We strengthen under-resourced schools to improve the quality of education for children in underserved communities.",
+         text2:
+           "By improving infrastructure, supporting teacher capacity where gaps exist, providing learning materials, and expanding access to essential resources, we create environments where children can learn effectively and teachers can deliver better outcomes.",
+         text4: "Stronger schools lead to stronger learning outcomes.",
          imageSrc: Edu1,
          buttonText: "",
        },
@@ -52,44 +60,123 @@ const Home: React.FC = () => {
      const literacy = [
        {
          imageSrc1: Line,
-         heading3: "Literacy Campaign – Back2Basics",
+         heading3: "Back2Basics — Literacy Catch-Up",
          text1:
-           "Back2Basics is our flagship literacy campaign to help children learn to read and write in a fun and simple way. Many children in underserved communities lack basic literacy even in upper primary classes. Without the ability to read, learning becomes nearly impossible.",
+           "Approximately 75% of children aged 7 to 14 in Nigeria cannot read with understanding, reflecting a deep learning crisis where only one in four children has basic foundational literacy.",
          text2:
-           "Our literacy programme uses inclusive, play-based learning methods to make reading enjoyable. We also provide teacher training, incentives, and resources to improve literacy outcomes in schools.",
+           "Through our Back2Basics programme, we support children in upper primary classes to catch up on reading and writing using inclusive, play-based methods, while equipping teachers with the training and resources to improve classroom instruction.",
+         text4:
+           "Reading is the foundation of all learning—we are rebuilding that foundation.",
          imageSrc: Edu5,
          buttonText: "",
+       },
+     ];
+     const acceleratedEducation = [
+       {
+         imageSrc1: Line,
+         heading3: "Accelerated Education",
+         text1:
+           "Millions of children aged 10–17 are unable to return to conventional schooling. They make up the largest group of children we encounter on the streets and in informal settlements.",
+         text2:
+           "Our Bridge Learning Centre provides accelerated education that helps them catch up on foundational literacy and numeracy, reintegrate into formal school at the appropriate level, or transition into skills-based pathways.",
+         text3:
+           "Through this model, we deliver up to 9 years of basic education in 3 years, enabling over-aged children to recover lost learning and move forward with confidence.",
+         text4:
+           "We are redefining education for children who have been left behind.",
+         imageSrc: BlcStudents,
+         buttonText: "Learn More",
+         buttonHref: "/projects/bridgelearning",
+         buttonText2: "Explore Bridge Learning Centre",
+         buttonHref2: "/projects/bridgelearning",
+       },
+     ];
+     const scholarships = [
+       {
+         imageSrc1: Line,
+         heading3: "Scholarships",
+         text1:
+           "We provide scholarships from primary to university level for children from disadvantaged backgrounds—ensuring that poverty does not stand in their way.",
+         text2:
+           "Many of our beneficiaries are the first in their families to attend university. Through education, they become catalysts for change within their households and communities.",
+         text3:
+           "Our scholarship programme is central to breaking transgenerational poverty—empowering the next generation with the knowledge and skills to participate fully in social and economic life.",
+         imageSrc: Scholar,
+         buttonText: "Learn More",
+         buttonHref: "/scholarship",
+         buttonText2: "Sponsor a Scholarship",
+         buttonHref2: "/scholarship#scholarship-sponsor",
        },
      ];
   return (
     <main>
       <Head />
-      <Container>
-        <section className="mt-[5rem]">
-          <p className="xl:text-[25px] text-[18px] text-[#333333] w-full md:max-w-[60rem] text-justify">
+      {/* <Container> */}
+        {/* <section className="mt-[5rem]">
+          <p className="xl:text-[35px] text-[18px] text-[#333333] w-full md:max-w-[60rem] mx-auto text-center">
             <span className="text-yellow">
-              Educating homeless and out-of-school children 
+              Educating homeless and out-of-school children {""}
             </span>
             through tailored education initiatives, driven by technology.
+            
           </p>
-        </section>
-      </Container>
-      <section className="my-[4rem]">
+        </section> */}
+        {/* <section className="my-[5rem]">
+          <p className="xl:text-[35px] text-[18px] text-[#333333] w-full md:max-w-[60rem] mx-auto text-center">
+            No child should be excluded {""}
+            <span className="text-yellow">from education</span>
+            —and every child in school should be supported to learn and thrive.
+          </p>
+        </section> */}
+      {/* </Container> */}
+
+      <section className="my-[5rem]">
         <FlexComponent data={data} columnReversed={true} buttonClassName="" />
       </section>
-      <section className="my-[4rem]">
-        <FlexComponent data={data4} columnReversed={false} buttonClassName="" />
+
+      <section className="my-[5rem]" id="ourschool-africa">
+        <FlexComponent
+          data={educationTechnology}
+          columnReversed={false}
+          buttonClassName=""
+        />
       </section>
-      <Empower/>
-      <Enrolment />
-      <div className="mt-[2rem]">
+      <Empower />
+      {/* <Enrolment /> */}
+      <section
+        className="my-[5rem] w-full bg-black text-white bg-scholar bg-cover bg-center bg-no-repeat py-12 md:py-16"
+        id="scholarships"
+      >
+        <FlexComponent
+          data={scholarships}
+          columnReversed={false}
+          buttonClassName="!bg-yellow !text-black  focus-visible:ring-white focus-visible:ring-offset-black"
+          buttonClassName2="!border-2 !border-yellow !bg-transparent !text-white focus-visible:ring-white focus-visible:ring-offset-black"
+        />
+      </section>
+      {/* <div className="mt-[2rem]">
         <Cards />
-      </div>
-      <section className="my-[4rem]">
-        <FlexComponent data={support} columnReversed={false} buttonClassName="" />
+      </div> */}
+      <section className="my-[5rem]">
+        <FlexComponent
+          data={support}
+          columnReversed={true}
+          buttonClassName=""
+        />
+      </section>
+
+      <section className="my-[5rem]">
+        <FlexComponent
+          data={acceleratedEducation}
+          columnReversed={false}
+          buttonClassName=""
+        />
       </section>
       <section className="my-[4rem]">
-        <FlexComponent data={literacy} columnReversed={true} buttonClassName="" />
+        <FlexComponent
+          data={literacy}
+          columnReversed={true}
+          buttonClassName=""
+        />
       </section>
     </main>
   );

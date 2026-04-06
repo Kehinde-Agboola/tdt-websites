@@ -1,101 +1,114 @@
-import React from 'react'
-import Head from './Head'
-// import HeroSection from '@/app/_component/atom/HeroSection'
-import { FlexComponent } from '@/app/_component/atom/eduFlex'
-import { AltComponent } from '@/app/_component/atom/altFlex'
-// import CareHero from "../../../../../public/assets/care/carehero.png"
+import React from "react";
+import Head from "./Head";
+import { FlexComponent } from "@/app/_component/atom/eduFlex";
+import { AltComponent } from "@/app/_component/atom/altFlex";
 import Line from "../../../../../public/assets/edu/Lineyellow.png";
 import Rehab from "../../../../../public/assets/care/rehab.jpg";
 import Nothing from "../../../../../public/assets/care/nothing.png";
 import ChildHealth from "../../../../../public/assets/care/eyecheck.png";
 import Wellbeing from "../../../../../public/assets/care/wellbeing.jpg";
 import HungerRelief from "../../../../../public/assets/care/hunger.jpg";
+
 const page = () => {
-      const data = [
-        {
-          imageSrc1: Line,
-          spanText: "Rehabilitation and Care",
-          heading1:
-            "More Children Rescued and New Hopes for Children on Transition from Residential Care. ",
-          text1:
-            "We provide urgent rescue and safe spaces for children facing homelessness, abuse, or neglect. But rescue is only the beginning. Through trauma-informed care, counselling, and a structured support system, we help children heal from emotional wounds and regain a sense of safety and self-worth. Our goal is to restore hope, renew confidence, and help every child regain their dignity.",
-          imageSrc: Rehab,
-          buttonText: "",
-        },
-      ];
-      const data2 = [
-        {
-          imageSrc1: Line,
-          spanText: "Supported Independent Living",
-          heading1:
-            "Supported Independent Living Programme: Providing Stability for Youths in Transition",
-          text1:
-            "For teenagers transiting from residential care, we provide transitional support through our Supported Independent Living programme. This initiative equips young people with essential life skills, mentorship, and stable housing while they continue their education. We walk alongside them as they navigate adulthood—supporting their journey to self-reliance, responsible decision making, and long-term stability.",
-          imageSrc: Nothing,
-          buttonText: "",
-        },
-      ];
-      const data3 = [
-        {
-          imageSrc1: Line,
-          spanText: "Child Healthcare",
-          text1:
-            "Health is central to a child’s development. That’s why we prioritise timely access to medical care for all children under our care and in the communities we serve. Our child healthcare programme covers routine check-ups, emergency medical treatment, immunisations, mental health support, and access to clean water and hygiene essentials.",
-          text2:
-            "The flagship of our healthcare initiative is Hands of Care—a medical outreach that brings essential healthcare services to children living in slums, underserved communities, and institutional facilities. By taking care of their health, we give children the strength they need to grow and learn.",
-          imageSrc: ChildHealth,
-          buttonText: "",
-        },
-      ];
-    const data4 = [
-      {
-        imageSrc1: Line,
-        spanText: "Hunger Relief",
-        text1:
-          "No child should have to live or learn on an empty stomach. Our hunger relief efforts provide daily nutritious meals for children in our residential homes, education centres, and vulnerable communities. We also extend emergency food aid to families in crisis and under-resourced communities where hunger puts children’s education and health at risk.",
-        text2:
-          "To further support the education objective, we provide school feeding to ensure children in our learning centres and programme schools are nourished and better able to focus on their learning. This basic provision opens the door to learning, stability, and a chance at a better life.",
-        imageSrc: HungerRelief,
-        buttonText: "",
-      },
-    ];
-    const data5 = [
-      {
-        imageSrc1: Line,
-        spanText: "Shelter and Wellbeing",
-        text1:
-          "A stable home is the foundation of every child’s growth. We offer children rescued from the streets, under bridges, or in slums a loving home they can call their own. Our homes are designed as places where children live, learn and play – a nurturing environment where they feel safe, cared for, and free to dream. This ensures a stable and secure environment, enabling them to pursue education without disruption.",
-        text2:
-          "Our residential homes provide round-the-clock care, nutritious meals, and routines that support physical, emotional, and educational wellbeing. For children who cannot return to family, our homes become the home where they are loved and guided toward a better future ahead of a reintegration.",
-       
-        imageSrc: Wellbeing,
-        buttonText: "",
-      },
-    ];
+  const data = [
+    {
+      imageSrc1: Line,
+      spanText: "Rescue, Rehabilitation & Care",
+      text1:
+        "We intervene in situations of abuse, neglect, and homelessness—giving children from the streets and other vulnerable environments a second chance.",
+      text2:
+        "Our goal is simple: to rescue, restore, and rebuild. We provide immediate rescue and a clear pathway to recovery, creating the conditions for learning to begin.",
+      text3:
+        "Through trauma-informed care, counselling, and psychosocial support, we help children heal, regain a sense of safety and dignity, and begin again.",
+      text4:
+        "Every child deserves a second chance—and a safe place to begin again.",
+      imageSrc: Rehab,
+      buttonText: "",
+    },
+  ];
+  const data5 = [
+    {
+      imageSrc1: Line,
+      spanText: "Shelter & Wellbeing",
+      text1:
+        "For many children, education begins with having a stable home.",
+      text2:
+        "Our residential learning centres provide safe, nurturing environments where children can live, learn, and grow without disruption. We support their physical, emotional, and educational wellbeing—giving them the stability they need to go through school and focus on learning.",
+      text4:
+        "Every child deserves a safe and stable home to learn and thrive.",
+      imageSrc: Wellbeing,
+      buttonText: "",
+    },
+  ];
+  const data2 = [
+    {
+      imageSrc1: Line,
+      spanText: "Supported Independent Living",
+      text1:
+        "As children grow, we support their transition into adulthood.",
+      text2:
+        "Our Supported Independent Living spaces provide safe, structured environments for older teenagers transitioning from residential care or in need of stable accommodation. Through mentorship, life skills development, and continued support, we help young people move from care into independence.",
+      text3:
+        "We equip them to make responsible decisions and build sustainable, self-reliant lives.",
+      text4:
+        "From care to independence—helping young people thrive.",
+      imageSrc: Nothing,
+      buttonText: "",
+    },
+  ];
+  const data3 = [
+    {
+      imageSrc1: Line,
+      spanText: "Child Healthcare — Hands of Care",
+      text1:
+        "A child's wellbeing is essential for development and the ability to learn.",
+      text2:
+        "We provide access to essential healthcare services, including routine care, emergency treatment, and mental health support. Through our Hands of Care outreach, we extend these services to underserved communities—ensuring the children we support are healthy, stable, and able to learn.",
+      text4:
+        "Every child deserves to be healthy to learn and grow.",
+      imageSrc: ChildHealth,
+      buttonText: "",
+    },
+  ];
+  const data4 = [
+    {
+      imageSrc1: Line,
+      spanText: "School Feeding & Hunger Relief",
+      text1: "No child should have to learn on an empty stomach.",
+      text2:
+        "We provide consistent nutrition through meals in our homes, learning centres, and partner public schools, while also supporting vulnerable families. This ensures children are physically ready to learn, able to stay focused, and supported to remain in school.",
+      text3:
+        "For children enrolled in public schools, a daily meal is critical—it reduces hunger, improves attendance, and helps prevent dropouts or the need to work for survival.",
+      text4:
+        "Nutrition creates the foundation for learning and stability.",
+      imageSrc: HungerRelief,
+      buttonText: "",
+    },
+  ];
   return (
     <main>
-      <Head/>
-      <section className="py-[4rem] bg-[#F9F9F9]">
+      <Head />
+      <section className="bg-[#F9F9F9] py-[4rem]">
         <FlexComponent
           data={data}
           columnReversed={true}
-          buttonClassName="bg-yellow py-2 px-4"
+          buttonClassName=""
         />
       </section>
-      <section className=" my-[4rem]">
+      <section className="my-[4rem]">
         <FlexComponent data={data5} columnReversed={false} buttonClassName="" />
       </section>
-      <section className=" my-[4rem]">
+      <section className="my-[4rem]">
         <FlexComponent data={data2} columnReversed={false} buttonClassName="" />
       </section>
-      <section className=" mt-[4rem]">
+      <section className="mt-[4rem]">
         <AltComponent data={data3} columnReversed={true} buttonClassName="" />
       </section>
-      <section className="py-[4rem] bg-[#F9F9F9]">
+      <section className="bg-[#F9F9F9] py-[4rem]">
         <FlexComponent data={data4} columnReversed={false} buttonClassName="" />
       </section>
     </main>
   );
-}
+};
 
-export default page
+export default page;

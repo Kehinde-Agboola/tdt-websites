@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Container from '../../_component/shared';
-import Boy from "../../../../public/assets/home/boybag.png";
+import Teacher from "../../../../public/assets/edu/teacher.png";
 // import WritingGirl from "../../../../public/assets/scholarship/girlwriting.png";
 import Image from 'next/image';
 import Line from "../../../../public/assets/home/line.png";
@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const reports = {
-  2024: "/../../../../../files/The Destiny Trust Mid-year Report 2024_.pdf",
+  2025: "/../../../../../files/The Destiny Trust Mid-year Report 2024_.pdf",
 };
 
 // Function to open and download a file
@@ -33,25 +33,27 @@ const Impact = () => {
       viewport={{ once: false, amount: 0.2 }}
     >
       <Container>
-        <div className="flex flex-col-reverse md:flex-row items-center justify-center pt-[5rem] md:pt-[0]">
+        <div className="flex flex-col-reverse items-center justify-between gap-10 pt-10 pb-12 md:flex-row md:items-center md:gap-12 md:pt-12 md:pb-16 lg:gap-14">
           <motion.div
-            className="overflow-hidden max-h-[350px] md:max-h-[1600px] relative"
+            className="relative w-full max-w-md shrink-0 md:max-w-[min(100%,480px)] md:flex-1 lg:max-w-[520px]"
             initial={{ x: -30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <Image
-              src={Boy}
-              alt="Schoolboy"
-              width={618}
-              className="object-cover object-top"
-              style={{ objectPosition: "center top" }}
-            />
+            <div className="relative h-[500px] w-full overflow-hidden  shadow-lg ring-1 ring-black/10">
+              <Image
+                src={Teacher}
+                alt="Teacher with children in a classroom"
+                fill
+               
+                className="object-cover object-center"
+              />
+            </div>
           </motion.div>
 
           <motion.div
-            className="md:w-[45%] -mt-80"
+            className="w-full min-w-0 md:max-w-xl md:flex-1 md:text-left"
             initial={{ x: 30, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -87,7 +89,7 @@ const Impact = () => {
                 className="btn-landing btn-landing--outline bg-transparent"
                 onClick={() =>
                   openAndDownloadFile(
-                    reports[2024],
+                    reports[2025],
                     "2024-TDT-Impact-Report.pdf"
                   )
                 }

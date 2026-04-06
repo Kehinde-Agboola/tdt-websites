@@ -21,7 +21,7 @@ const Report = () => {
   };
 
   return (
-    <section className="relative bg-white pb-[5rem] pt-10 md:pt-[2rem] md:-mt-[20rem]">
+    <section className="relative bg-white pb-[5rem] pt-12 md:pt-16">
       <Container>
         {/* Heading Animation */}
         {/* <motion.h1
@@ -59,19 +59,19 @@ const Report = () => {
 
               {/* Button order + styles aligned with SustainableEducationCTA */}
               <div className="flex w-full shrink-0 flex-col gap-4 sm:flex-row sm:justify-end lg:w-auto lg:gap-4">
-                <a
-                  href="https://paystack.shop/pay/1000Hands"
+                <Link
+                  href="/get-involve"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-landing btn-landing--primary"
                 >
-                  Donate
-                </a>
+                Take Action With Us
+                </Link>
                 <Link
-                  href="/get-involve"
+                  href="https://paystack.shop/pay/1000Hands"
                   className="btn-landing btn-landing--outline"
                 >
-                  Partner With Us
+                  Donate
                 </Link>
               </div>
             </div>

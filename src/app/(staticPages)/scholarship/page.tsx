@@ -311,7 +311,10 @@ const page = () => {
               university.
             </p>
           </div>
-          <div className="mt-5 flex w-full max-w-md flex-col gap-3 sm:mt-6 sm:max-w-2xl sm:flex-row sm:flex-wrap sm:items-stretch sm:gap-4 md:max-w-none">
+          <div
+            id="scholarship-sponsor"
+            className="mt-5 flex w-full max-w-md flex-col gap-3 sm:mt-6 sm:max-w-2xl sm:flex-row sm:flex-wrap sm:items-stretch sm:gap-4 md:max-w-none"
+          >
             <SponsorScholarshipButton className="!mx-0 border border-white !text-white hover:!bg-white hover:!text-black md:!w-[238px]" />
             <SponsorChildButton className="!mx-0 bg-yellow !text-black hover:!bg-[#e6a200] md:!w-[187px]" />
           </div>

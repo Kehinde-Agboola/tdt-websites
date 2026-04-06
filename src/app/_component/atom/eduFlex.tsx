@@ -13,6 +13,7 @@ type FlexComponentProps = {
     imageSrc?: string | StaticImageData;
     imageSrc1?: string | StaticImageData;
     text3?: string;
+    text4?: string;
     text1?: string;
     text2?: string;
     spanText?: string;
@@ -49,7 +50,7 @@ export const FlexComponent = ({
             }}
           >
             <motion.div
-              className="lg:basis-[65%] w-full"
+              className="w-full min-w-0 lg:basis-[65%]"
               initial={{ x: columnReversed ? 50 : -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -62,33 +63,46 @@ export const FlexComponent = ({
                     className="object-cover pb-3"
                   />
                 )}
-                <span className="text-[#ffb400] text-[16px] md:text-[32px]">
-                  {el.spanText}
-                </span>
-                <p className="text-[16px] md:text-[24px] text-[#333333]">
-                  {el.heading1}
-                </p>
-                <span className="text-[#ffb400] text-[16px] md:text-[32px]">
-                  {el.spanText2}
-                </span>
-                <p className="text-[16px] md:text-[16px] text-[#fff]">
-                  {el.heading}
-                </p>
+                {el.spanText ? (
+                  <span className="text-[#ffb400] text-[16px] md:text-[32px]">
+                    {el.spanText}
+                  </span>
+                ) : null}
+                {el.heading1 ? (
+                  <p className="text-[16px] md:text-[24px] text-[#333333]">
+                    {el.heading1}
+                  </p>
+                ) : null}
+                {el.spanText2 ? (
+                  <span className="text-[#ffb400] text-[16px] md:text-[32px]">
+                    {el.spanText2}
+                  </span>
+                ) : null}
+                {el.heading ? (
+                  <p className="text-[16px] md:text-[16px] text-[#fff]">
+                    {el.heading}
+                  </p>
+                ) : null}
               </div>
 
               <div className="xl:max-w-[100%] lg:text-justify">
-                <p className="pt-4">{el.text1}</p>
-                <p className="py-4">{el.text2}</p>
-                <p className="">{el.text3}</p>
+                {el.text1 ? <p className="pt-4">{el.text1}</p> : null}
+                {el.text2 ? <p className="py-4">{el.text2}</p> : null}
+                {el.text3 ? <p className="">{el.text3}</p> : null}
+                {el.text4 ? (
+                  <p className="pb-2 font-bold">{el.text4}</p>
+                ) : null}
               </div>
-              <div>
-                <Button
-                  className={buttonClassName}
-                >{`${el?.buttonText}`}</Button>
-              </div>
+              {el?.buttonText ? (
+                <div>
+                  <Button className={buttonClassName}>
+                    {`${el?.buttonText}`}
+                  </Button>
+                </div>
+              ) : null}
             </motion.div>
             <motion.div
-              className="lg:basis-[50%] flex-basis-[50%]"
+              className="relative h-[min(280px,42vh)] w-full min-w-0 shrink-0 overflow-hidden rounded-sm sm:h-[min(320px,45vh)] md:h-[min(360px,50vh)] lg:max-h-[400px] lg:basis-[50%]"
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -96,8 +110,10 @@ export const FlexComponent = ({
               {el?.imageSrc && (
                 <Image
                   src={el?.imageSrc}
-                  alt={el?.heading || "Image"}
-                  className="object-cover"
+                  alt={el?.spanText || el?.heading || "Section image"}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover object-center"
                 />
               )}
             </motion.div>

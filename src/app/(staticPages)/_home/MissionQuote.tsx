@@ -56,7 +56,7 @@ const MissionQuote = () => {
           className="w-full lg:w-1/2 space-y-5 text-[#222]"
         >
           <p className="text-base md:text-lg leading-relaxed text-justify md:text-left">
-            The Destiny Trust secures access to quality education for
+            We secure access to quality education for
             Nigeria&apos;s most vulnerable children—those who are homeless,
             displaced, migrant, or living in informal and low-resource
             communities, often excluded from opportunity.
@@ -68,11 +68,11 @@ const MissionQuote = () => {
           </p>
           <p className="text-base md:text-lg leading-relaxed text-justify md:text-left">
           </p>
-          <Link href="/get-involve">
-                <Button className="btn-landing mt-4 rounded-none border-2 border-black bg-black text-white hover:bg-black/90">
+          {/* <Link href="/get-involve">
+                <Button className="btn-landing mt-4 rounded-none border-2 border-yellow bg-yellow text-white hover:bg-black/90 hover:border-black">
                   Get Involved
                 </Button>
-              </Link>
+              </Link> */}
         </motion.div>
 
         <motion.div

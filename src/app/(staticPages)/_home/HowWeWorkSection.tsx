@@ -177,12 +177,12 @@ const HowWeWorkSection = () => {
           className="max-w-3xl mx-auto text-center  mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-semibold text-black mb-6">
-            How We Work
+            What We Do
           </h2>
           <p className="text-base md:text-lg text-[#333] leading-relaxed mb-5">
-            We build integrated systems around each child—creating the stability
-            required for learning to begin and be sustained because when the
-            system works for the child, education works.
+            We educate children and build integrated systems of wellbeing and stability they
+            require for learning to begin and be sustained - shelter, nutrition, care and protection. Education works for the most vulnerable children when the socio-economic conditions are stable.
+             
           </p>
           <p className="text-base md:text-lg text-[#333] leading-relaxed mb-5">
             Our model goes beyond access to school. We ensure children have the

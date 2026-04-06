@@ -11,14 +11,15 @@ export default function Head() {
       priority
     >
       <div className="max-w-2xl text-white">
+        {/* <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#FFB400] sm:text-sm">
+          EMPOWERMENT SECTION
+        </p> */}
         <h1 className="font-heading text-3xl font-bold leading-tight sm:text-5xl md:text-6xl">
-          Empowerment
+          <span className="text-yellow">Empowering</span> Children and Families to Thrive
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-white/95 sm:text-lg">
-          We believe every child deserves the opportunity to build a sustainable
-          future. We empower young people through skills development, vocational
-          training, and entrepreneurial support that prepares them for
-          independence and self-reliance.
+          We equip children and families with the skills and support needed to
+          move beyond survival and build sustainable futures.
         </p>
       </div>
     </PageHero>

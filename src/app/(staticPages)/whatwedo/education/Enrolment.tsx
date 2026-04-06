@@ -55,21 +55,6 @@ const Enrolment = () => {
  
   return (
     <main className="py-[4rem] bg-[#F9F9F9]">
-      <section className="my-[4rem] ">
-        <Image src={EnrolmentImage} alt="children back-to-school" />
-        {/* <FlexComponent
-          data={data}
-          columnReversed={true}
-          buttonClassName="bg-yellow py-2 px-4"
-        /> */}
-      </section>
-      <section className="my-[8rem]">
-        <AltComponent
-          data={data2}
-          columnReversed={false}
-          buttonClassName=""
-        />
-      </section>
       <section className="mt-[4rem] bg-black py-[4rem] text-white">
         <Link href="/scholarship">
           <FlexComponent
@@ -79,14 +64,7 @@ const Enrolment = () => {
           />
         </Link>
       </section>
-      {/* <section className="mt-[4rem]">
-        <FlexComponent
-          data={data4}
-          columnReversed={true}
-          buttonClassName=""
-        />
-      </section> */}
-      <Leverage />
+
     </main>
   );
 }

@@ -49,6 +49,8 @@ const config: Config = {
           "linear-gradient(90deg, rgba(53,53,53,1) 0%, rgba(127,127,127,1) 35%, rgba(255,255,255,1) 100%)",
         mobile:
           "linear-gradient(to right, rgba(53,53,53,1) 17%, rgba(127,127,127,1) 60%, rgba(255,255,255,1) 76%)",
+        /** Same asset as `.scholar` in global.css — scholars band */
+        scholar: "url('/assets/.scholarship/scholarsbg.png')",
       },
       borderRadius: {
         lg: "0.5rem",

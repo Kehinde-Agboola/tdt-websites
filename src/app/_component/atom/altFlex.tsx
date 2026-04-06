@@ -2,6 +2,7 @@
 import { Button } from "./button";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
+import Container from "../shared/index";
 
 type FlexComponentProps = {
   buttonClassName?: string;
@@ -12,6 +13,7 @@ type FlexComponentProps = {
     imageSrc?: string | StaticImageData;
     imageSrc1?: string | StaticImageData;
     text3?: string;
+    text4?: string;
     text1?: string;
     text2?: string;
     spanText?: string;
@@ -27,7 +29,7 @@ export const AltComponent = ({
   data,
 }: FlexComponentProps) => {
   return (
-    <main>
+    <Container>
       {data?.map((el, index) => {
         return (
           <motion.div
@@ -47,7 +49,7 @@ export const AltComponent = ({
             }}
           >
             <motion.div
-              className="lg:basis-[75%] w-full md:px-14 px-4"
+              className="w-full min-w-0 lg:basis-[65%]"
               initial={{ opacity: 0, x: columnReversed ? 50 : -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -64,25 +66,32 @@ export const AltComponent = ({
                 <span className="text-[#ffb400] text-[16px] md:text-[24px]">
                   {el.spanText}
                 </span>
-                <p className="text-[16px] md:text-[24px] text-[#333333]">
-                  {el.heading1}
-                </p>
+                {el.heading1 ? (
+                  <p className="text-[16px] md:text-[24px] text-[#333333]">
+                    {el.heading1}
+                  </p>
+                ) : null}
                 {el.heading}
               </div>
               <div className="xl:max-w-[100%] lg:text-justify">
-                <p className="pt-4">{el.text1}</p>
-                <p className="">{el.text2}</p>
-                <p className="pb-4">{el.text3}</p>
+                {el.text1 ? <p className="pt-4">{el.text1}</p> : null}
+                {el.text2 ? <p className="">{el.text2}</p> : null}
+                {el.text3 ? <p className="pb-4">{el.text3}</p> : null}
+                {el.text4 ? (
+                  <p className="pb-4 font-bold">{el.text4}</p>
+                ) : null}
               </div>
-              <div>
-                <Button className={buttonClassName}>
-                  {`${el?.buttonText}`}
-                </Button>
-              </div>
+              {el?.buttonText ? (
+                <div>
+                  <Button className={buttonClassName}>
+                    {`${el?.buttonText}`}
+                  </Button>
+                </div>
+              ) : null}
             </motion.div>
 
             <motion.div
-              className="lg:basis-[70%] flex-basis-[50%]"
+              className="relative h-[min(280px,42vh)] w-full min-w-0 shrink-0 overflow-hidden rounded-sm sm:h-[min(320px,45vh)] md:h-[min(360px,50vh)] lg:max-h-[400px] lg:basis-[50%]"
               initial={{ opacity: 0, x: columnReversed ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -91,14 +100,16 @@ export const AltComponent = ({
               {el?.imageSrc && (
                 <Image
                   src={el?.imageSrc}
-                  alt={el?.heading || "Image"}
-                  className="object-cover pl-6 md:pl-0"
+                  alt={el?.spanText || el?.heading || "Section image"}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover object-center"
                 />
               )}
             </motion.div>
           </motion.div>
         );
       })}
-    </main>
+    </Container>
   );
 };

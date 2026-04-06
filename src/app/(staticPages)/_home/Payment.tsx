@@ -90,7 +90,7 @@ const Payment: React.FC = () => {
         initial="hidden"
         animate={controls}
         variants={variants.container}
-        className="relative max-w-6xl mx-auto bg-[#FFB400] text-center p-6 md:p-8 xl:pt-10 overflow-hidden rounded-lg shadow-xl ring-1 ring-black/10"
+        className="relative max-w-6xl mx-auto bg-[#FFB400] text-center p-6 md:p-8 xl:pt-10 overflow-hidden   shadow-xl  ring-1 ring-black/10"
       >
         <motion.div
           variants={variants.background}

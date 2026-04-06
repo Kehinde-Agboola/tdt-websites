@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const WhyMatters = () => {
   return (
-    <section className="bg-[#0a0a0a] text-white py-16 md:py-24">
+    <section className="bg-[#0a0a0a] text-white py-16 md:py-24 mt-20">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 24 }}

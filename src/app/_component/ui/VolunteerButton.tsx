@@ -10,9 +10,14 @@ type VolunteerFormProps = { onClose: () => void };
 const VolunteerFormComponent = VolunteerForm as unknown as React.ComponentType<VolunteerFormProps>;
 
 interface VolunteerButtonProps {
-  className?: string
+  className?: string;
+  /** Button label; defaults to “Become a Volunteer”. */
+  children?: React.ReactNode;
 }
-const VolunteerButton: React.FC<VolunteerButtonProps> = ({ className = "" }) => {
+const VolunteerButton: React.FC<VolunteerButtonProps> = ({
+  className = "",
+  children,
+}) => {
     const [isChildModalOpen, setIsChildModalOpen] = useState(false);
     
     const handleVolunteer = () => {
@@ -21,7 +26,7 @@ const VolunteerButton: React.FC<VolunteerButtonProps> = ({ className = "" }) => 
     return (
       <>
         <Button onClick={handleVolunteer} className={className}>
-          Become a Volunteer
+          {children ?? "Become a Volunteer"}
         </Button>
         <Modal
           title="Volunteer Form"
