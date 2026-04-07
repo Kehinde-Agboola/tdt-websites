@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Container from '@/app/_component/shared';
 import PageHero from '@/app/_component/PageHero';
 import Hero from '../../../../../public/assets/faq/headhero.png';
+import { AnimatedSection } from '@/components/AnimatedSection';
 
 const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -23,24 +24,27 @@ const page = () => {
 
   return (
     <main className="min-w-0">
-      <PageHero
-        image={Hero}
-        alt="Frequently asked questions"
-        layout="center"
-        imageClassName="object-cover object-center"
-        priority
-      >
-        <h1 className="font-heading max-w-full text-3xl leading-tight sm:text-4xl md:max-w-2xl md:text-5xl">
-          Frequently <span className="text-yellow">Asked Questions</span>
-        </h1>
-        <p className="mt-4 max-w-2xl text-base md:text-lg">
-          These are the most commonly asked questions about The Destiny Trust.
-          Can’t find what you are looking for?{' '}
-          <span className="underline">Chat to our friendly team!</span>
-        </p>
-      </PageHero>
+      <AnimatedSection animateOnMount>
+        <PageHero
+          image={Hero}
+          alt="Frequently asked questions"
+          layout="center"
+          imageClassName="object-cover object-center"
+          priority
+        >
+          <h1 className="font-heading max-w-full text-3xl leading-tight sm:text-4xl md:max-w-2xl md:text-5xl">
+            Frequently <span className="text-yellow">Asked Questions</span>
+          </h1>
+          <p className="mt-4 max-w-2xl text-base md:text-lg">
+            These are the most commonly asked questions about The Destiny Trust.
+            Can’t find what you are looking for?{' '}
+            <span className="underline">Chat to our friendly team!</span>
+          </p>
+        </PageHero>
+      </AnimatedSection>
 
       {/* FAQ Section */}
+      <AnimatedSection>
       <Container>
         <div className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-12">
           {/* Left Section */}
@@ -110,6 +114,7 @@ const page = () => {
           </section>
         </div>
       </Container>
+      </AnimatedSection>
     </main>
   );
 };

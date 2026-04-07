@@ -11,6 +11,8 @@ import Hope from "../../../../../public/assets/blc/ajoke.jpg";
 import { FlexComponent } from "@/app/_component/atom/flex";
 import Cards from "./Cards";
 import Banner from "./Banner";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { staggerDelay } from "@/lib/motion";
 
 const Page = () => {
   const data2 = [
@@ -38,6 +40,7 @@ const Page = () => {
 
   return (
     <main>
+      <AnimatedSection animateOnMount>
       <PageHero
         image={BlcHero}
         alt="Bridge Learning Centre"
@@ -93,70 +96,85 @@ const Page = () => {
           </motion.button>
         </div>
       </PageHero>
+      </AnimatedSection>
 
       {/* First Content Section */}
-      <section className="py-4 md:py-[4rem] mt-[4rem] bg-scholar">
+      <AnimatedSection
+        as="section"
+        className="py-4 md:py-[4rem] mt-[4rem] bg-scholar"
+        delay={staggerDelay(0)}
+      >
         <FlexComponent data={data} columnReversed={false} buttonClassName="" />
-      </section>
+      </AnimatedSection>
 
       {/* Empower their Dreams Section */}
       <Container>
-        <section className="bg-black bg-payment mb-[5rem]">
-          <div className="py-8 px-8 flex flex-col md:flex-row justify-between items-center">
+        <AnimatedSection
+          as="section"
+          className="mb-[5rem] bg-black bg-payment"
+          delay={staggerDelay(1)}
+        >
+          <div className="flex flex-col items-center justify-between px-8 py-8 md:flex-row">
             <motion.h2
-              className="text-center text-2xl md:text-[40px] mb-4 text-white"
+              className="mb-4 text-center text-2xl text-white md:text-[40px]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
               Empower their Dreams
             </motion.h2>
-            <div className="text-center md:text-right flex flex-col md:flex-row gap-4">
-              <button className="border-2 border-yellow text-white w-full md:w-[15rem] py-2 px-4">
+            <div className="flex flex-col gap-4 text-center md:flex-row md:text-right">
+              <button className="w-full border-2 border-yellow py-2 px-4 text-white md:w-[15rem]">
                 Sponsor a Scholarship
               </button>
-              <button className="bg-yellow text-white w-full md:w-[15rem] mt-4 md:mt-0 px-4 py-2 md:px-0 md:py-0">
+              <button className="mt-4 w-full bg-yellow py-2 px-4 text-white md:mt-0 md:w-[15rem] md:px-0 md:py-0">
                 Sponsor a Child
               </button>
             </div>
           </div>
-        </section>
+        </AnimatedSection>
 
-        {/* Cards Section */}
-        <section>
+        <AnimatedSection as="section" delay={staggerDelay(2)}>
           <Cards />
-        </section>
+        </AnimatedSection>
       </Container>
 
-      {/* Banner Section */}
-      <Banner />
+      <AnimatedSection delay={staggerDelay(3)}>
+        <Banner />
+      </AnimatedSection>
 
-      {/* Second Content Section */}
-      <section className="py-4 md:py-[4rem] mt-[4rem] bg-scholar">
+      <AnimatedSection
+        as="section"
+        className="mt-[4rem] bg-scholar py-4 md:py-[4rem]"
+        delay={staggerDelay(4)}
+      >
         <FlexComponent data={data2} columnReversed={true} buttonClassName="" />
-      </section>
+      </AnimatedSection>
 
-      {/* Empower their Dreams Section (Second) */}
-      <section className="bg-yellow bg-payment mb-[8rem]">
-        <div className="py-8 px-8 flex flex-col md:flex-row justify-between items-center">
+      <AnimatedSection
+        as="section"
+        className="mb-[8rem] bg-yellow bg-payment"
+        delay={staggerDelay(5)}
+      >
+        <div className="flex flex-col items-center justify-between px-8 py-8 md:flex-row">
           <motion.h2
-            className="text-center text-2xl md:text-[40px] mb-4 text-white"
+            className="mb-4 text-center text-2xl text-white md:text-[40px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
             Empower their Dreams
           </motion.h2>
-          <div className="text-center md:text-right flex flex-col md:flex-row gap-4">
-            <button className="border-2 border-black text-white w-full md:w-[15rem] py-2 px-4">
+          <div className="flex flex-col gap-4 text-center md:flex-row md:text-right">
+            <button className="w-full border-2 border-black py-2 px-4 text-white md:w-[15rem]">
               Sponsor a Scholarship
             </button>
-            <button className="bg-black text-white w-full md:w-[15rem] mt-4 md:mt-0 px-4 py-2 md:px-0 md:py-0">
+            <button className="mt-4 w-full bg-black py-2 px-4 text-white md:mt-0 md:w-[15rem] md:px-0 md:py-0">
               Sponsor a Child
             </button>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </main>
   );
 };

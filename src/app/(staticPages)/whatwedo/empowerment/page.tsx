@@ -4,12 +4,14 @@ import { FlexComponent } from "@/app/_component/atom/flex";
 import BoyWithTap from "../../../../../public/assets/empower/family.png";
 import Line from "../../../../../public/assets/edu/Lineyellow.png";
 import Head from "./Head";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { staggerDelay } from "@/lib/motion";
 
 const page = () => {
   const data = [
     {
       imageSrc1: Line,
-      heading3: "STEAM Empowerment — Kids Innovation Africa",
+      spanText: "STEAM Empowerment — Kids Innovation Africa",
       text1:
         "We prepare children for the future through technology and creative learning.",
       text2:
@@ -26,7 +28,7 @@ const page = () => {
   const data1 = [
     {
       imageSrc1: Line,
-      heading3: "Family Empowerment — The Enable Approach",
+      spanText: "Family Empowerment — The Enable Approach",
       text1:
         "A child's education and long-term success is closely linked to the stability of their home.",
       text2:
@@ -40,21 +42,33 @@ const page = () => {
   ];
   return (
     <main>
-      <Head />
-      <section className="my-[4rem]" id="steam-empowerment">
+      <AnimatedSection animateOnMount>
+        <Head />
+      </AnimatedSection>
+      <AnimatedSection
+        as="section"
+        id="steam-empowerment"
+        className="scroll-mt-28 my-[4rem]"
+        delay={staggerDelay(0)}
+      >
         <FlexComponent
           data={data}
           columnReversed={true}
           buttonClassName=""
         />
-      </section>
-      <section className="my-[4rem]" id="family-empowerment">
+      </AnimatedSection>
+      <AnimatedSection
+        as="section"
+        id="family-empowerment"
+        className="scroll-mt-28 my-[4rem]"
+        delay={staggerDelay(1)}
+      >
         <FlexComponent
           data={data1}
           columnReversed={false}
           buttonClassName=""
         />
-      </section>
+      </AnimatedSection>
     </main>
   );
 };

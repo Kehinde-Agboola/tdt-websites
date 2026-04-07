@@ -39,14 +39,14 @@ export const FlexComponent = ({
               columnReversed
                 ? "flex-col-reverse lg:flex-row-reverse"
                 : "flex-col-reverse lg:flex-row"
-            } justify-center items-center gap-10 lg:gap-10 lg:justify-between`}
+            } justify-center items-center gap-12 lg:gap-14 lg:justify-between`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{
               duration: 0.6,
               ease: "easeInOut",
-              delay: index * 0.2, // Stagger animation for each component
+              delay: index * 0.2, 
             }}
           >
             <motion.div
@@ -55,16 +55,16 @@ export const FlexComponent = ({
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
-              <div>
+              <div className="space-y-3 md:space-y-4">
                 {el?.imageSrc1 && (
                   <Image
                     src={el?.imageSrc1}
                     alt={el?.spanText || "Image"}
-                    className="object-cover pb-3"
+                    className="object-cover pb-1 md:pb-2"
                   />
                 )}
                 {el.spanText ? (
-                  <span className="text-[#ffb400] text-[16px] md:text-[32px]">
+                  <span className="text-[#ffb400] text-[25px] md:text-[32px]">
                     {el.spanText}
                   </span>
                 ) : null}
@@ -85,16 +85,18 @@ export const FlexComponent = ({
                 ) : null}
               </div>
 
-              <div className="xl:max-w-[100%] lg:text-justify">
-                {el.text1 ? <p className="pt-4">{el.text1}</p> : null}
-                {el.text2 ? <p className="py-4">{el.text2}</p> : null}
-                {el.text3 ? <p className="">{el.text3}</p> : null}
+              <div className="space-y-4 xl:max-w-[100%] lg:text-justify">
+                {el.text1 ? <p>{el.text1}</p> : null}
+                {el.text2 ? <p>{el.text2}</p> : null}
+                {el.text3 ? <p>{el.text3}</p> : null}
                 {el.text4 ? (
-                  <p className="pb-2 font-bold">{el.text4}</p>
+                  <p className="border-l-4 border-[#FFBC00] pl-5 text-xl font-medium leading-snug text-[#1a1a1a] md:pl-6 md:text-2xl">
+                    {el.text4}
+                  </p>
                 ) : null}
               </div>
               {el?.buttonText ? (
-                <div>
+                <div className={el.text4 ? "mt-8 md:mt-10" : "mt-6 md:mt-8"}>
                   <Button className={buttonClassName}>
                     {`${el?.buttonText}`}
                   </Button>
@@ -102,7 +104,7 @@ export const FlexComponent = ({
               ) : null}
             </motion.div>
             <motion.div
-              className="relative h-[min(280px,42vh)] w-full min-w-0 shrink-0 overflow-hidden rounded-sm sm:h-[min(320px,45vh)] md:h-[min(360px,50vh)] lg:max-h-[400px] lg:basis-[50%]"
+              className="relative h-[min(380px,62vh)] w-full min-w-0 shrink-0 overflow-hidden rounded-sm sm:h-[min(540px,68vh)] md:h-[min(640px,74vh)] lg:h-[min(720px,78vh)] lg:max-h-none lg:basis-[50%]"
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}

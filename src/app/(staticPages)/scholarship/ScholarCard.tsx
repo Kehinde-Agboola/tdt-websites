@@ -32,7 +32,8 @@ const Scholars = () => {
               <div className="snap-center flex-shrink-0">
                 <ScholarCard
                   name="Ademola Deborah"
-                  description="Deborah favorite subject at school is Mathematics and her goal is to pursue a degree in engineering upon her completion of high school."
+                  course="Medicine and Surgery"
+                  school="University of Lagos"
                   imageSrc={GraduateGirl}
                   buttonText=""
                 />
@@ -40,7 +41,9 @@ const Scholars = () => {
               <div className="snap-center flex-shrink-0">
                 <ScholarCard
                   name="Ademola Deborah"
-                  description="Deborah favorite subject at school is Mathematics and her goal is to pursue a degree in engineering upon her completion of high school."
+                  course="Computer Science"
+                  school="University of Lagos"
+                 
                   imageSrc={GraduateGirl}
                   buttonText=""
                 />
@@ -48,7 +51,8 @@ const Scholars = () => {
               <div className="snap-center flex-shrink-0">
                 <ScholarCard
                   name="Ademola Deborah"
-                  description="Deborah favorite subject at school is Mathematics and her goal is to pursue a degree in engineering upon her completion of high school."
+                  course="Computer Science"
+                  school="University of Lagos"
                   imageSrc={GraduateGirl}
                   buttonText=""
                 />

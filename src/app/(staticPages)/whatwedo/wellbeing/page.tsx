@@ -8,6 +8,8 @@ import Nothing from "../../../../../public/assets/care/nothing.png";
 import ChildHealth from "../../../../../public/assets/care/eyecheck.png";
 import Wellbeing from "../../../../../public/assets/care/wellbeing.jpg";
 import HungerRelief from "../../../../../public/assets/care/hunger.jpg";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { staggerDelay } from "@/lib/motion";
 
 const page = () => {
   const data = [
@@ -88,25 +90,50 @@ const page = () => {
   return (
     <main>
       <Head />
-      <section className="bg-[#F9F9F9] py-[4rem]">
+      <AnimatedSection
+        as="section"
+        id="rehabilitation-care"
+        className="scroll-mt-28 bg-[#F9F9F9] py-[4rem]"
+        delay={staggerDelay(0)}
+      >
         <FlexComponent
           data={data}
           columnReversed={true}
           buttonClassName=""
         />
-      </section>
-      <section className="my-[4rem]">
+      </AnimatedSection>
+      <AnimatedSection
+        as="section"
+        id="shelter-wellbeing"
+        className="scroll-mt-28 py-[4rem]"
+        delay={staggerDelay(1)}
+      >
         <FlexComponent data={data5} columnReversed={false} buttonClassName="" />
-      </section>
-      <section className="my-[4rem]">
+      </AnimatedSection>
+      <AnimatedSection
+        as="section"
+        id="supported-independent-living"
+        className="scroll-mt-28 py-[4rem]"
+        delay={staggerDelay(2)}
+      >
         <FlexComponent data={data2} columnReversed={false} buttonClassName="" />
-      </section>
-      <section className="mt-[4rem]">
+      </AnimatedSection>
+      <AnimatedSection
+        as="section"
+        id="child-healthcare"
+        className="scroll-mt-28 py-[4rem]"
+        delay={staggerDelay(3)}
+      >
         <AltComponent data={data3} columnReversed={true} buttonClassName="" />
-      </section>
-      <section className="bg-[#F9F9F9] py-[4rem]">
+      </AnimatedSection>
+      <AnimatedSection
+        as="section"
+        id="hunger-relief"
+        className="scroll-mt-28 bg-[#F9F9F9] py-[4rem]"
+        delay={staggerDelay(4)}
+      >
         <FlexComponent data={data4} columnReversed={false} buttonClassName="" />
-      </section>
+      </AnimatedSection>
     </main>
   );
 };

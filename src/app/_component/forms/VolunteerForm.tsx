@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/app/_component/atom/button';
+import { ModalSelect } from '@/app/_component/ui/ModalSelect';
 
 interface VolunteerFormData {
   fullName: string;
@@ -145,19 +146,18 @@ export default function VolunteerForm() {
         <label htmlFor="availability" className="block text-sm font-medium text-gray-700 mb-1">
           Availability
         </label>
-        <select
+        <ModalSelect
           id="availability"
           name="availability"
           value={formData.availability}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
         >
           <option value="">Select availability</option>
           <option value="weekdays">Weekdays</option>
           <option value="weekends">Weekends</option>
           <option value="both">Both</option>
           <option value="flexible">Flexible</option>
-        </select>
+        </ModalSelect>
       </div>
 
       <div>

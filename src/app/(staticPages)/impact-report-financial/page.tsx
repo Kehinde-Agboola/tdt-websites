@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Container from "@/app/_component/shared";
 import PDFBookViewer from "@/app/_component/ui/PDFBookViewer";
 import { Eye, Download } from "lucide-react";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 // Reports Data
 const reports = [
@@ -120,7 +121,7 @@ const FinancialReports = () => {
   };
   return (
     <Container>
-    <section className="my-10 px-0 sm:my-14 md:my-16">
+    <AnimatedSection as="section" className="my-10 px-0 sm:my-14 md:my-16">
                  {/* Heading */}
       <motion.h2
         initial={{ y: -20, opacity: 0 }}
@@ -188,7 +189,7 @@ const FinancialReports = () => {
           title={selectedReport.title}
         />
       )}
-</section>
+</AnimatedSection>
     </Container>
   );
 };

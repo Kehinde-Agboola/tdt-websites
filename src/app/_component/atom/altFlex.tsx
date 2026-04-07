@@ -38,7 +38,7 @@ export const AltComponent = ({
               columnReversed
                 ? "flex-col-reverse lg:flex-row-reverse"
                 : "flex-col-reverse lg:flex-row"
-            } justify-center items-center gap-10 lg:gap-10 lg:justify-between`}
+            } justify-center items-center gap-12 lg:gap-14 lg:justify-between`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -55,15 +55,15 @@ export const AltComponent = ({
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
-              <div className="">
+              <div className="space-y-3 md:space-y-4">
                 {el?.imageSrc1 && (
                   <Image
                     src={el?.imageSrc1}
                     alt={el?.heading || "Image"}
-                    className="object-cover pb-3"
+                    className="object-cover pb-1 md:pb-2"
                   />
                 )}
-                <span className="text-[#ffb400] text-[16px] md:text-[24px]">
+                <span className="text-[#ffb400] text-[25px] md:text-[32px]">
                   {el.spanText}
                 </span>
                 {el.heading1 ? (
@@ -73,16 +73,18 @@ export const AltComponent = ({
                 ) : null}
                 {el.heading}
               </div>
-              <div className="xl:max-w-[100%] lg:text-justify">
-                {el.text1 ? <p className="pt-4">{el.text1}</p> : null}
-                {el.text2 ? <p className="">{el.text2}</p> : null}
-                {el.text3 ? <p className="pb-4">{el.text3}</p> : null}
+              <div className="mt-8 space-y-5 md:mt-10 md:space-y-6 xl:max-w-[100%] lg:text-justify">
+                {el.text1 ? <p>{el.text1}</p> : null}
+                {el.text2 ? <p>{el.text2}</p> : null}
+                {el.text3 ? <p>{el.text3}</p> : null}
                 {el.text4 ? (
-                  <p className="pb-4 font-bold">{el.text4}</p>
+                  <p className="border-l-4 border-[#FFBC00] pl-5 text-xl font-medium leading-snug text-[#1a1a1a] md:pl-6 md:text-2xl">
+                    {el.text4}
+                  </p>
                 ) : null}
               </div>
               {el?.buttonText ? (
-                <div>
+                <div className={el.text4 ? "mt-8 md:mt-10" : "mt-6 md:mt-8"}>
                   <Button className={buttonClassName}>
                     {`${el?.buttonText}`}
                   </Button>
@@ -91,7 +93,7 @@ export const AltComponent = ({
             </motion.div>
 
             <motion.div
-              className="relative h-[min(280px,42vh)] w-full min-w-0 shrink-0 overflow-hidden rounded-sm sm:h-[min(320px,45vh)] md:h-[min(360px,50vh)] lg:max-h-[400px] lg:basis-[50%]"
+              className="relative h-[min(480px,62vh)] w-full min-w-0 shrink-0 overflow-hidden rounded-sm sm:h-[min(540px,68vh)] md:h-[min(640px,74vh)] lg:h-[min(420px,78vh)] lg:basis-[50%]"
               initial={{ opacity: 0, x: columnReversed ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}

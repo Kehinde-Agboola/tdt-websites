@@ -8,11 +8,13 @@ import Hero1 from "../../../../../public/assets/scholarship/hero2.png";
 import EligibilityCriteria from "./Eligibility";
 import Empowes from "./Empowes";
 import About from "./About";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { staggerDelay } from "@/lib/motion";
 
 const page = () => {
   return (
     <main className="min-w-0">
-      <section className="relative mb-12 sm:mb-20 md:mb-24">
+      <AnimatedSection animateOnMount as="section" className="relative mb-12 sm:mb-20 md:mb-24">
         <div className="relative min-h-screen min-h-[100dvh] w-full overflow-hidden">
           <Image
             src={BackgroundPciture}
@@ -74,10 +76,16 @@ const page = () => {
             </Container>
           </div>
         </div>
-      </section>
-      <EligibilityCriteria />
-      <About />
-      <Empowes />
+      </AnimatedSection>
+      <AnimatedSection delay={staggerDelay(0)}>
+        <EligibilityCriteria />
+      </AnimatedSection>
+      <AnimatedSection delay={staggerDelay(1)}>
+        <About />
+      </AnimatedSection>
+      <AnimatedSection delay={staggerDelay(2)}>
+        <Empowes />
+      </AnimatedSection>
     </main>
   );
 };

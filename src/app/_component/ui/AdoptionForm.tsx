@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { supabase } from "../../../lib/supabase";
 import { Button } from "@/app/_component/atom/button";
 import { Send } from "lucide-react";
+import { ModalSelect } from "./ModalSelect";
 
 interface AdoptProjectFormProps {
   onClose: () => void;
@@ -237,12 +238,11 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
             >
               Preferred Location (if any)
             </label>
-            <select
+            <ModalSelect
               id="preferredLocation"
               name="preferredLocation"
               value={formData.preferredLocation}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
             >
               <option value="">Select a location</option>
               <option value="Lagos">Lagos</option>
@@ -250,7 +250,7 @@ const AdoptProjectForm: React.FC<AdoptProjectFormProps> = ({ onClose }) => {
               <option value="Oyo">Oyo</option>
               <option value="Other">Other</option>
               <option value="No Preference">No Preference</option>
-            </select>
+            </ModalSelect>
           </div>
         </div>
 

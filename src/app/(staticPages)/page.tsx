@@ -14,8 +14,9 @@ import HomeTeasers from "@/app/(staticPages)/_home/HomeTeasers";
 // import Features from "@/app/(staticPages)/_home/Features";
 // import Banner from "@/app/(staticPages)/_home/Banner";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { staggerDelay } from "@/lib/motion";
 
-const stagger = (i: number) => i * 0.06;
+const stagger = staggerDelay;
 
 const page = () => {
   return (

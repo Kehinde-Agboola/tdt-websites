@@ -7,6 +7,8 @@ import TeamSection from './TeamSection';
 import Container from '@/app/_component/shared';
 import { boardMembers, managementTeam } from "../../../constant";
 import Volunteer from './Volunteer';
+import { AnimatedSection } from '@/components/AnimatedSection';
+import { staggerDelay } from '@/lib/motion';
 // import { Button } from '@/app/_component/atom/button';
 const OurPeoplePage = () => {
   // Destructure board members data
@@ -53,26 +55,34 @@ const OurPeoplePage = () => {
         </motion.p>
       </PageHero>
       <Container>
-        {/* Board Members Section */}
-        <section className="py-4 sm:py-8 text-left">
-          <TeamSection 
-            title="Board" 
-            members={boardMembersData} 
+        <AnimatedSection
+          as="section"
+          className="py-4 sm:py-8 text-left"
+          delay={staggerDelay(0)}
+        >
+          <TeamSection
+            title="Board"
+            members={boardMembersData}
           />
-        </section>
+        </AnimatedSection>
       </Container>
-      
-      <Volunteer />
-      
+
+      <AnimatedSection delay={staggerDelay(1)}>
+        <Volunteer />
+      </AnimatedSection>
+
       <Container>
-        {/* Management Team Section */}
-        <section className="py-4 sm:py-8 text-left">
+        <AnimatedSection
+          as="section"
+          className="py-4 sm:py-8 text-left"
+          delay={staggerDelay(2)}
+        >
           <TeamSection
             title=""
             paragraph="Our Management Team members bring experience from diverse professional backgrounds. We take pride in the commitment of a volunteer-driven management team supported by a full-time workforce. Management Team members give their time and expertise at no cost to us."
             members={managementTeamData}
           />
-        </section>
+        </AnimatedSection>
         <hr className="my-4 sm:my-8 border-gray-300" />
       </Container>
     </main>

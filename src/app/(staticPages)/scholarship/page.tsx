@@ -17,6 +17,8 @@ import Modal from '../../_component/ui/Modal';
 import ScholarshipModal from '../../_component/ui/ScholarshipModal';
 import { SponsorScholarshipButton, SponsorChildButton } from '@/app/_component/ui/Button';
 import Empower from '@/app/_component/ui/Empower';
+import { AnimatedSection } from '@/components/AnimatedSection';
+import { staggerDelay } from '@/lib/motion';
 
 type ScholarshipData = {
   imgSrc: string | StaticImageData;
@@ -86,15 +88,31 @@ const ScholarshipSlider = ({ support }: { support: ScholarshipData[] }) => {
     return () => window.removeEventListener('resize', updateSlidesToShow);
   }, []);
 
+  // Autoplay: advance on a timer, loop to start; pause while modal is open
+  React.useEffect(() => {
+    if (isModalOpen || support.length <= slidesToShow) return;
+
+    const intervalMs = 4000;
+    const id = window.setInterval(() => {
+      setCurrentSlide((prev) => {
+        const max = Math.max(0, support.length - slidesToShow);
+        if (max <= 0) return 0;
+        return prev >= max ? 0 : prev + 1;
+      });
+    }, intervalMs);
+
+    return () => window.clearInterval(id);
+  }, [isModalOpen, slidesToShow, support.length]);
+
   const maxSlide = Math.max(0, support.length - slidesToShow);
 
-  const nextSlide = () => {
-    setCurrentSlide(prev => Math.min(prev + 1, maxSlide));
-  };
+  // const nextSlide = () => {
+  //   setCurrentSlide(prev => Math.min(prev + 1, maxSlide));
+  // };
 
-  const prevSlide = () => {
-    setCurrentSlide(prev => Math.max(prev - 1, 0));
-  };
+  // const prevSlide = () => {
+  //   setCurrentSlide(prev => Math.max(prev - 1, 0));
+  // };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(Math.min(index, maxSlide));
@@ -138,13 +156,13 @@ const ScholarshipSlider = ({ support }: { support: ScholarshipData[] }) => {
         
         {/* Navigation */}
         <div className="flex justify-center items-center gap-4 mt-8">
-          <button 
+          {/* <button 
             onClick={prevSlide}
             disabled={currentSlide === 0}
             className="w-10 h-10 bg-[#FFB400] text-black rounded-full hover:bg-[#e0a800] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
           >
             <ChevronLeft size={20} />
-          </button>
+          </button> */}
           
           {/* Pagination Dots */}
           <div className="flex gap-2">
@@ -159,13 +177,13 @@ const ScholarshipSlider = ({ support }: { support: ScholarshipData[] }) => {
             ))}
           </div>
           
-          <button 
+          {/* <button 
             onClick={nextSlide}
             disabled={currentSlide === maxSlide}
             className="w-10 h-10 bg-[#FFB400] text-black rounded-full hover:bg-[#e0a800] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
           >
             <ChevronRight size={20} />
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -187,7 +205,7 @@ const ScholarshipSlider = ({ support }: { support: ScholarshipData[] }) => {
 const page = () => {
   const data = [
     {
-      spanText2: "Let's work together!",
+      spanText: "Let's work together!",
       heading1:
         "Do you want to live a ​legacy or honor the ​memory of a loved one? ​",
       text1:
@@ -291,20 +309,21 @@ const page = () => {
 
   return (
     <main>
+      <AnimatedSection animateOnMount>
       <PageHero
         image={ScholarshipHero}
         alt="Scholarship — invest in children&apos;s education"
         layout="home"
-        imageClassName="object-cover object-right md:object-center"
+        imageClassName="object-cover object-center"
         priority
       >
         <div className="mx-auto w-full max-w-6xl text-white">
-          <div className="text-left">
-            <h1 className="font-heading text-3xl font-bold leading-tight sm:text-4xl md:text-5xl xl:text-[3.5rem] xl:leading-[1.1] md:max-w-[40rem]">
+          <div className="text-center md:text-left">
+            <h1 className="mx-auto font-heading text-3xl font-bold leading-tight sm:text-4xl md:mx-0 md:text-5xl xl:text-[3.5rem] xl:leading-[1.1] md:max-w-[40rem]">
               Let&apos;s Invest In Our{" "}
               <span className="text-yellow">Future</span> Together
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/95 sm:mt-4 sm:text-base md:text-lg md:max-w-[37rem]">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/95 sm:mt-4 sm:text-base md:mx-0 md:text-lg md:max-w-[37rem]">
               We partner with compassionate individuals and organisations to
               administer scholarship programmes that meet our shared goal of
               empowering children with education from primary school to the
@@ -313,34 +332,39 @@ const page = () => {
           </div>
           <div
             id="scholarship-sponsor"
-            className="mt-5 flex w-full max-w-md flex-col gap-3 sm:mt-6 sm:max-w-2xl sm:flex-row sm:flex-wrap sm:items-stretch sm:gap-4 md:max-w-none"
+            className="mx-auto mt-10 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:mt-10 sm:max-w-2xl sm:flex-row sm:flex-wrap sm:items-stretch sm:justify-start sm:gap-4 md:mx-0 md:max-w-none"
           >
-            <SponsorScholarshipButton className="!mx-0 border border-white !text-white hover:!bg-white hover:!text-black md:!w-[238px]" />
+            <SponsorScholarshipButton className="!mx-0 border border-yellow !text-white hover:!bg-yellow hover:!text-black md:!w-[238px]" />
             <SponsorChildButton className="!mx-0 bg-yellow !text-black hover:!bg-[#e6a200] md:!w-[187px]" />
           </div>
         </div>
       </PageHero>
+      </AnimatedSection>
 
       {/* Scholarship Cards Slider */}
-      <section className="py-10">
+      <AnimatedSection as="section" className="py-10" delay={staggerDelay(0)}>
         <Container>
           <ScholarshipSlider support={support} />
         </Container>
-      </section>
+      </AnimatedSection>
 
-      <section className="py-[4rem] mt-[4rem] bg-scholar">
+      <AnimatedSection
+        as="section"
+        className="py-[4rem] bg-scholar"
+        delay={staggerDelay(1)}
+      >
         <FlexComponent
           data={data}
           columnReversed={true}
           buttonClassName=""
         />
-      </section>
-      <section>
+      </AnimatedSection>
+      <AnimatedSection as="section" delay={staggerDelay(2)}>
         <Scholars />
-      </section>
-      <section className="">
+      </AnimatedSection>
+      <AnimatedSection as="section" delay={staggerDelay(3)}>
         <Empower />
-      </section>
+      </AnimatedSection>
     </main>
   );
 }

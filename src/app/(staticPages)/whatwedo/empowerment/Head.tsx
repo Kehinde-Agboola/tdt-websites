@@ -10,7 +10,7 @@ export default function Head() {
       imageClassName="object-cover object-right md:object-center"
       priority
     >
-      <div className="max-w-2xl text-white">
+      <div className="w-full max-w-2xl text-center text-white md:text-left">
         {/* <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#FFB400] sm:text-sm">
           EMPOWERMENT SECTION
         </p> */}

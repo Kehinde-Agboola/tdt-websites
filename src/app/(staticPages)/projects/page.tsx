@@ -1,11 +1,15 @@
 import React from "react";
 import Link from "next/link";
 import Container from "@/app/_component/shared";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const page = () => {
   return (
     <main className="min-w-0 bg-white">
-      <section className="border-b border-gray-100 bg-gradient-to-b from-gray-50 to-white px-4 py-16 sm:py-20">
+      <AnimatedSection
+        as="section"
+        className="border-b border-gray-100 bg-gradient-to-b from-gray-50 to-white px-4 py-16 sm:py-20"
+      >
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="font-heading text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -23,7 +27,7 @@ const page = () => {
             </p>
           </div>
         </Container>
-      </section>
+      </AnimatedSection>
     </main>
   );
 };

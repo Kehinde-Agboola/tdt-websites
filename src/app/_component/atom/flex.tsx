@@ -65,7 +65,7 @@ export const FlexComponent = ({
             transition={{
               duration: 0.6,
               ease: "easeInOut",
-              delay: index * 0.2, // Stagger animations for sequential appearance
+              delay: index * 0.2,
             }}
           >
             <motion.div
@@ -79,7 +79,7 @@ export const FlexComponent = ({
                   <Image
                     src={el?.imageSrc1}
                     alt={el?.heading || "Image"}
-                    className="object-cover"
+                    className="object-cover mb-2"
                   />
                 )}
                 {el.spanText3 ? (
@@ -113,7 +113,7 @@ export const FlexComponent = ({
                   </h1>
                 ) : null}
               </div>
-              <p className={`pb-3 font-extralight ${descClassName}`}>
+              <p className={` font-extralight ${descClassName}`}>
                 {el?.description}
               </p>
               <div className="xl:max-w-[100%]">
@@ -121,11 +121,15 @@ export const FlexComponent = ({
                 {el.text2 ? <p className="pb-4">{el.text2}</p> : null}
                 {el.text3 ? <p className="pb-4">{el.text3}</p> : null}
                 {el.text4 ? (
-                  <p className="pb-4 font-bold">{el.text4}</p>
+                  <p className="mt-3 border-l-4 border-[#FFBC00] pl-5 text-xl font-medium leading-snug text-inherit md:mt-4 md:pl-6 md:text-2xl mb-8 md:mb-10">
+                    {el.text4}
+                  </p>
                 ) : null}
               </div>
               {(el?.buttonText || el?.buttonText2) && (
-                <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                <div
+                  className={`flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center ${el.text4 ? "mt-0" : "mt-2"}`}
+                >
                   {el?.buttonText &&
                     (el.buttonHref ? (
                       isExternalHref(el.buttonHref) ? (

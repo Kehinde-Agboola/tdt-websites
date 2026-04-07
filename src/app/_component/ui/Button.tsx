@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import { Button } from "@/app/_component/atom/button";
 import Modal from "./Modal";
 import SponsorChildForm from "./SponsorForm";
-import AdoptProjectForm from "./AdoptionForm";
+
+/** Shared by both sponsor CTAs */
+const SPONSOR_MODAL_TITLE = "Sponsor a Child or Endow a Scholarship";
 
 interface ActionButtonsProps {
   className?: string;
@@ -27,10 +29,10 @@ export const SponsorScholarshipButton: React.FC<{ className?: string }> = ({ cla
       <Modal
         isOpen={isProjectModalOpen}
         onClose={() => setIsProjectModalOpen(false)}
-        title="Adopt a Home or Project"
+        title={SPONSOR_MODAL_TITLE}
         maxWidth="2xl"
       >
-        <AdoptProjectForm onClose={() => setIsProjectModalOpen(false)} />
+        <SponsorChildForm onClose={() => setIsProjectModalOpen(false)} />
       </Modal>
     </>
   );
@@ -50,7 +52,7 @@ export const SponsorChildButton: React.FC<{ className?: string }> = ({ className
       <Modal
         isOpen={isChildModalOpen}
         onClose={() => setIsChildModalOpen(false)}
-        title="Sponsor a Child or Endow a Scholarship"
+        title={SPONSOR_MODAL_TITLE}
         maxWidth="2xl"
       >
         <SponsorChildForm onClose={() => setIsChildModalOpen(false)} />

@@ -62,23 +62,29 @@ export const Nav: NavItem[] = [
         title: "Education",
         path: "/whatwedo/education",
         subItems: [
-          { title: "Education Access", path: "/whatwedo/education" },
+          {
+            title: "Education Access",
+            path: "/whatwedo/education#education-access",
+          },
           {
             title: "Bridge Learning",
-            path: "/whatwedo/education",
+            path: "/whatwedo/education#bridge-learning",
           },
           {
             title: "Education Technology",
-            path: "/whatwedo/education",
+            path: "/whatwedo/education#ourschool-africa",
           },
-          { title: "Scholarships", path: "/whatwedo/education" },
+          {
+            title: "Scholarships",
+            path: "/whatwedo/education#scholarships",
+          },
           {
             title: "School Support",
-            path: "/whatwedo/education",
+            path: "/whatwedo/education#school-support",
           },
           {
             title: "Literacy Campaign",
-            path: "/whatwedo/education",
+            path: "/whatwedo/education#literacy-campaign",
           },
         ],
       },
@@ -88,23 +94,38 @@ export const Nav: NavItem[] = [
         subItems: [
           {
             title: "Rehabilitation and Care",
-            path: "/whatwedo/wellbeing",
+            path: "/whatwedo/wellbeing#rehabilitation-care",
           },
-          { title: "Shelter and Wellbeing", path: "/whatwedo/wellbeing" },
+          {
+            title: "Shelter and Wellbeing",
+            path: "/whatwedo/wellbeing#shelter-wellbeing",
+          },
           {
             title: "Supported Independent Living",
-            path: "/whatwedo/wellbeing",
+            path: "/whatwedo/wellbeing#supported-independent-living",
           },
-          { title: "Child Healthcare", path: "/whatwedo/wellbeing" },
-          { title: "Hunger Relief", path: "/whatwedo/wellbeing" },
+          {
+            title: "Child Healthcare",
+            path: "/whatwedo/wellbeing#child-healthcare",
+          },
+          {
+            title: "Hunger Relief",
+            path: "/whatwedo/wellbeing#hunger-relief",
+          },
         ],
       },
       {
         title: "Empowerment",
         path: "/whatwedo/empowerment",
         subItems: [
-          { title: "STEAM Empowerment", path: "/whatwedo/empowerment" },
-          { title: "Family Empowerment", path: "/whatwedo/empowerment" },
+          {
+            title: "STEAM Empowerment",
+            path: "/whatwedo/empowerment#steam-empowerment",
+          },
+          {
+            title: "Family Empowerment",
+            path: "/whatwedo/empowerment#family-empowerment",
+          },
         ],
       },
     ],

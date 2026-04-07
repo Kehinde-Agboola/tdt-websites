@@ -4,6 +4,7 @@ import { supabase } from "../../../lib/supabase";
 import React, { useState } from "react";
 import { Button } from "@/app/_component/atom/button";
 import { Send } from "lucide-react";
+import { ModalSelect } from "./ModalSelect";
 
 interface SponsorFormData {
   fullName: string;
@@ -11,6 +12,7 @@ interface SponsorFormData {
   phone: string;
   numberOfChildren: number;
   preferredGender: string;
+  preferredCareerDiscipline: string;
   duration: string;
   namedScholarship: string;
   scholarshipName: string;
@@ -29,6 +31,7 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
     phone: "",
     numberOfChildren: 1,
     preferredGender: "",
+    preferredCareerDiscipline: "",
     duration: "",
     namedScholarship: "",
     scholarshipName: "",
@@ -71,6 +74,7 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
           phone: formData.phone,
           number_of_children: formData.numberOfChildren,
           preferred_gender: formData.preferredGender,
+          preferred_career_discipline: formData.preferredCareerDiscipline || null,
           duration: formData.duration,
           named_scholarship: formData.namedScholarship,
           scholarship_name: formData.scholarshipName,
@@ -162,50 +166,79 @@ const SponsorChildForm: React.FC<SponsorChildFormProps> = ({ onClose }) => {
 
         <div>
           <label htmlFor="preferredGender" className="block text-sm font-medium text-gray-700 mb-1">Preferred Gender</label>
-          <select
+          <ModalSelect
             id="preferredGender"
             name="preferredGender"
             value={formData.preferredGender}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
           >
             <option value="">No preference</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-          </select>
+          </ModalSelect>
+        </div>
+
+        <div className="md:col-span-2">
+          <label
+            htmlFor="preferredCareerDiscipline"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Preferred career discipline
+          </label>
+          <ModalSelect
+            id="preferredCareerDiscipline"
+            name="preferredCareerDiscipline"
+            value={formData.preferredCareerDiscipline}
+            onChange={handleInputChange}
+          >
+            <option value="">No preference</option>
+            <option value="STEM">STEM (science, technology, engineering, math)</option>
+            <option value="Medicine / health sciences">Medicine / health sciences</option>
+            <option value="Arts & creative">Arts &amp; creative</option>
+            <option value="Business / finance / entrepreneurship">
+              Business / finance / entrepreneurship
+            </option>
+            <option value="Education / teaching">Education / teaching</option>
+            <option value="Law / public policy">Law / public policy</option>
+            <option value="Agriculture / environment">Agriculture / environment</option>
+            <option value="Vocational / technical / trades">
+              Vocational / technical / trades
+            </option>
+            <option value="Sports / athletics">Sports / athletics</option>
+            <option value="Undecided / open">Undecided / open to exploration</option>
+            <option value="Other">Other (describe below)</option>
+          </ModalSelect>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-1">Duration</label>
-          <select
+          <ModalSelect
             id="duration"
             name="duration"
             value={formData.duration}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
           >
             <option value="">Select duration</option>
             <option value="One year">One year</option>
             <option value="Until completion of university education">Until completion of university education</option>
             <option value="Discuss">I&apos;d like to discuss</option>
-          </select>
+          </ModalSelect>
         </div>
 
         <div>
           <label htmlFor="namedScholarship" className="block text-sm font-medium text-gray-700 mb-1">Named Scholarship?</label>
-          <select
+          <ModalSelect
             id="namedScholarship"
             name="namedScholarship"
             value={formData.namedScholarship}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB400] focus:border-transparent"
           >
             <option value="">No</option>
             <option value="Yes">Yes</option>
             <option value="More info">I&apos;d like more information</option>
-          </select>
+          </ModalSelect>
         </div>
       </div>
 

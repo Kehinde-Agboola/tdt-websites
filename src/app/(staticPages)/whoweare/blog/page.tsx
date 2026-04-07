@@ -12,6 +12,8 @@ import Image from "next/image";
 // import Children from "../../../../../public/assets/blog/ourschool.png";
 import Link from "next/link";
 import Email from "@/app/_component/atom/Email";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { staggerDelay } from "@/lib/motion";
 
 const BlogPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +40,11 @@ const BlogPage = () => {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-16 md:py-24">
+      <AnimatedSection
+        animateOnMount
+        as="section"
+        className="bg-gradient-to-br from-gray-50 to-gray-100 py-16 md:py-24"
+      >
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -59,10 +65,14 @@ const BlogPage = () => {
             </motion.div>
           </div>
         </Container>
-      </section>
+      </AnimatedSection>
 
       {/* Featured Post Section */}
-      <section className="py-16 md:py-20 bg-white">
+      <AnimatedSection
+        as="section"
+        className="bg-white py-16 md:py-20"
+        delay={staggerDelay(0)}
+      >
         <Container>
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
@@ -120,10 +130,14 @@ const BlogPage = () => {
             </div>
             </motion.div>
         </Container>
-      </section>
+      </AnimatedSection>
 
       {/* Recent Posts Grid */}
-      <section className="py-16 bg-gray-50">
+      <AnimatedSection
+        as="section"
+        className="bg-gray-50 py-16"
+        delay={staggerDelay(1)}
+      >
         <Container>
           <div className="flex items-center justify-between mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
@@ -168,10 +182,14 @@ const BlogPage = () => {
             ))}
           </div>
         </Container>
-      </section>
+      </AnimatedSection>
 
       {/* All Blog Posts Section */}
-      <section className="py-16 md:py-20 bg-white">
+      <AnimatedSection
+        as="section"
+        className="bg-white py-16 md:py-20"
+        delay={staggerDelay(2)}
+      >
         <Container>
           <div className="flex items-center justify-between mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
@@ -307,7 +325,7 @@ const BlogPage = () => {
             </button>
           </div>
         </Container>
-      </section>
+      </AnimatedSection>
     </main>
   );
 };

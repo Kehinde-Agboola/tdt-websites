@@ -39,6 +39,18 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, [pathname, stopLoading]);
 
+  /** After client navigation, scroll to #hash if present (App Router does not always do this). */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash?.slice(1);
+    if (!hash) return;
+    const t = window.setTimeout(() => {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
+    return () => window.clearTimeout(t);
+  }, [pathname]);
+
   // Lock body scroll while mobile menu is open (avoids background scroll behind drawer)
   useEffect(() => {
     if (!isSideMenuOpen) return;
@@ -72,13 +84,38 @@ export default function Navbar() {
     [k: string]: boolean;
   }>({});
 
-  // Navigation handler with loading
+  const normalizePath = (p: string) => {
+    if (!p || p === "/") return "/";
+    return p.endsWith("/") && p.length > 1 ? p.slice(0, -1) : p;
+  };
+
+  // Navigation handler with loading — supports hashes for in-page sections
   const handleNavigation = (href: string, label?: string) => {
-    if (href === window.location.pathname) return; // Don't load if same page
-    
+    if (!href || href === "#" || href === "/#") return;
+
+    if (/^https?:\/\//i.test(href)) {
+      window.location.assign(href);
+      return;
+    }
+
+    const hashIdx = href.indexOf("#");
+    const pathPart = hashIdx >= 0 ? href.slice(0, hashIdx) : href;
+    const hash = hashIdx >= 0 ? href.slice(hashIdx + 1) : "";
+
+    const targetPath = normalizePath(pathPart || "/");
+    const currentPath = normalizePath(pathname || "/");
+
+    if (hash && targetPath === currentPath) {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      return;
+    }
+
+    if (!hash && targetPath === currentPath) return;
+
     startLoading(label || "Loading page...");
-    
-    // Small delay to show loading started, then navigate
     setTimeout(() => {
       router.push(href);
     }, 100);
