@@ -82,9 +82,9 @@ const Home: React.FC = () => {
          text2:
            "Our Bridge Learning Centre provides accelerated education that helps them catch up on foundational literacy and numeracy, reintegrate into formal school at the appropriate level, or transition into skills-based pathways.",
          text3:
-           "Through this model, we deliver up to 9 years of basic education in 3 years, enabling over-aged children to recover lost learning and move forward with confidence.",
+           "We deliver up to 9 years of basic education in 3 years, enabling over-aged children to recover lost learning and move forward with confidence.",
          text4:
-           "We are redefining education for children who have been left behind.",
+           "We deliver up to 9 years of basic education in 3 years, enabling over-aged children to recover lost learning and move forward with confidence..",
          imageSrc: BlcStudents,
          buttonText: "Learn More",
          buttonHref: "/projects/bridgelearning",
