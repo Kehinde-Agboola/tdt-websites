@@ -1,5 +1,4 @@
 import PageHero from "@/app/_component/PageHero";
-import Edu from "../../../../../public/assets/edu/hero.png";
 import Hero from "../../../../../public/assets/heos.png";
 export default function Head() {
   return (
@@ -7,7 +6,7 @@ export default function Head() {
       image={Hero}
       alt="Education — children learning"
       layout="left"
-      imageClassName="object-cover object-right md:object-center"
+      imageClassName="object-cover object-right opacity-80 md:object-center md:opacity-85"
       priority
     >
       <div className="max-w-2xl text-white">
