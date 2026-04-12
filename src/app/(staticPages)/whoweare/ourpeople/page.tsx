@@ -37,7 +37,7 @@ const OurPeoplePage = () => {
         priority
       >
         <motion.h1
-          className="text-3xl leading-tight sm:text-5xl md:text-6xl font-bold max-w-[18ch] sm:max-w-none font-heading"
+          className="text-3xl leading-tight text-white sm:text-5xl md:text-6xl font-bold max-w-[18ch] sm:max-w-none font-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -46,7 +46,7 @@ const OurPeoplePage = () => {
         </motion.h1>
 
         <motion.p
-          className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-4xl leading-relaxed text-white/95 px-1"
+          className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-4xl leading-relaxed text-white px-1"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.2 }}
@@ -54,7 +54,7 @@ const OurPeoplePage = () => {
           Meet the dedicated individuals who drive our mission forward
         </motion.p>
       </PageHero>
-      <Container>
+      <Container className="px-2 sm:px-4 md:px-4 xl:px-0">
         <AnimatedSection
           as="section"
           className="py-4 sm:py-8 text-left"
@@ -71,7 +71,7 @@ const OurPeoplePage = () => {
         <Volunteer />
       </AnimatedSection>
 
-      <Container>
+      <Container className="px-2 sm:px-4 md:px-4 xl:px-0">
         <AnimatedSection
           as="section"
           className="py-4 sm:py-8 text-left"

@@ -1,18 +1,15 @@
+"use client";
+
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { supabase } from "../../../lib/supabase";
 
-const Email = () => {
+type EmailProps = {
+  className?: string;
+};
+
+const Email = ({ className = "" }: EmailProps) => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (delay = 0) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, delay },
-    }),
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,12 +40,7 @@ const Email = () => {
 
 
   return (
-    <motion.section
-      variants={fadeIn}
-      custom={0.4}
-      initial="hidden"
-      animate="visible"
-    >
+    <div className={className}>
       <form className="pt-4" onSubmit={handleSubmit}>
         <div className="relative">
           <label htmlFor="email" className="sr-only">
@@ -73,7 +65,7 @@ const Email = () => {
           </button>
         </div>
       </form>
-    </motion.section>
+    </div>
   );
 };
 

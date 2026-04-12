@@ -1,7 +1,17 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Autoplay,
+  Pagination,
+  Parallax,
+  EffectCoverflow,
+} from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 
 type Member = {
   name: string;
@@ -18,6 +28,7 @@ type TeamSectionProps = {
 
 const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) => {
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+  const reduceMotion = useReducedMotion();
   
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -57,7 +68,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
             src={member.image}
             alt={member.name}
             fill
-            sizes="(max-width: 639px) 85vw, 280px"
+            sizes="(max-width: 639px) 94vw, 280px"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
@@ -87,26 +98,57 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
         </p>
       )}
       
-      {/* Mobile: horizontal snap slider */}
+      {/* Mobile: Swiper — matches home “What We Do” carousel (autoplay + coverflow) */}
       <div
-        className="mt-5 sm:hidden -mx-3"
+        className="mt-5 -mx-2 w-[calc(100%+1rem)] sm:hidden"
         role="region"
         aria-label="Team members"
       >
-        <div
-          className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-3 pb-4 pt-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        <Swiper
+          modules={[Autoplay, Pagination, Parallax, EffectCoverflow]}
+          loop={members.length > 1}
+          parallax
+          grabCursor
+          speed={250}
+          centeredSlides
+          slidesPerView={1.18}
+          spaceBetween={12}
+          pagination={{ clickable: true }}
+          autoplay={
+            reduceMotion || members.length < 2
+              ? false
+              : {
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }
+          }
+          effect="coverflow"
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 140,
+            modifier: 1.15,
+            slideShadows: false,
+          }}
+          className="our-people-team !overflow-visible !pb-11 [--swiper-pagination-bottom:0] [--swiper-pagination-bullet-inactive-color:rgba(0,0,0,0.22)] [--swiper-pagination-color:#FFB400]"
         >
           {members.map((member, index) => (
-            <MemberCard
-              key={`m-${index}`}
-              member={member}
-              className="w-[min(85vw,280px)] shrink-0 snap-center"
-            />
+            <SwiperSlide
+              key={`m-${member.name}-${index}`}
+              className="!h-auto !scale-100 py-1"
+              style={{ perspective: "1200px" }}
+            >
+              <MemberCard
+                member={member}
+                className="mx-auto w-[min(92vw, 350px)]"
+              />
+            </SwiperSlide>
           ))}
-        </div>
-        <p className="px-3 text-center text-xs text-gray-500 md:hidden">
-          Swipe sideways to see more
-        </p>
+        </Swiper>
+        {/* <p className="px-3 text-center text-xs text-gray-500">
+          Swipe or use dots — slides advance automatically
+        </p> */}
       </div>
 
       {/* sm+: grid */}

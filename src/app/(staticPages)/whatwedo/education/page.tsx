@@ -2,8 +2,8 @@ import { FlexComponent } from "@/app/_component/atom/flex";
 import Head from "./Head";
 import Teacher from "../../../../../public/assets/edu/teacher.png";
 import Edu1 from  "../../../../../public/assets/edu/edu1.jpg";
-import Edu5 from  "../../../../../public/assets/edu/edu5.png";
-import Edu2 from  "../../../../../public/assets/edu/edu2.jpg";
+import Edu5 from  "../../../../../public/assets/blc/ajoke.jpg";
+import Edu2 from  "../../../../../public/assets/who/two.jpg";
 import Line from "../../../../../public/assets/edu/Lineyellow.png"
 import BlcStudents from "../../../../../public/assets/blc/students.png";
 import Scholar from "../../../../../public/assets/edu/scholar.png";

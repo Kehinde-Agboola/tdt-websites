@@ -1,8 +1,72 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "../../../../public/assets/Logowhite.png";
 import Email from "../atom/Email";
+import { Nav } from "@/app/constant/index";
+
+type FooterNavLink = { label: string; href: string; external: boolean };
+
+type FooterNavSection = { title: string; links: FooterNavLink[] };
+
+/** Shorter than main nav — key project / partner links (no duplicate hub vs heading). */
+const FOOTER_PROJECT_LINKS: { title: string; path: string }[] = [
+  { title: "Accelerated Learning", path: "/projects/bridgelearning" },
+  {
+    title: "OurSchool Africa Edtech",
+    path: "https://www.ourschool.africa/",
+  },
+  {
+    title: "Kids Innovation Africa",
+    path: "https://www.kidsinnovation.africa/",
+  },
+];
+
+function toFooterLink(label: string, path: string): FooterNavLink | null {
+  if (!path || path === "#") return null;
+  const external = /^https?:\/\//i.test(path);
+  return { label, href: path, external };
+}
+
+/** Mirrors `Nav` from `@/app/constant/index` (excludes Shop For Good — footer only). */
+function buildFooterSectionsFromNav(): FooterNavSection[] {
+  return Nav.filter((item) => item.title !== "Shop For Good").map((item) => {
+    const links: FooterNavLink[] = [];
+
+    const push = (label: string, path: string) => {
+      const l = toFooterLink(label, path);
+      if (l) links.push(l);
+    };
+
+    // Hub URL only when there is no dropdown (avoids repeating the column title).
+    if (
+      item.path &&
+      item.path !== "/#" &&
+      item.path !== "/" &&
+      !item.dropdownItems?.length
+    ) {
+      push(item.title, item.path);
+    }
+
+    if (item.title === "Scholarship") {
+      push("Overview", "/scholarship");
+    }
+
+    if (item.title === "Our Projects") {
+      FOOTER_PROJECT_LINKS.forEach(({ title, path }) => push(title, path));
+    } else {
+      item.dropdownItems?.forEach((d) => {
+        push(d.title, d.path);
+      });
+    }
+
+    return { title: item.title, links };
+  });
+}
+
+const footerNavSections = buildFooterSectionsFromNav();
 
 function ContactBlock() {
   return (
@@ -32,6 +96,9 @@ function ContactBlock() {
 }
 
 const Footer = () => {
+  const pathname = usePathname();
+  const showNewsletterInFooter = pathname !== "/";
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: (delay = 0) => ({
@@ -51,6 +118,19 @@ const Footer = () => {
       },
     },
   };
+
+  /** Plain object variant — avoids nested stagger + dynamic `visible` fn leaving children invisible. */
+  const footerNavReveal = {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    },
+  } as const;
+
+  const footerLinkClass =
+    "text-white/90 outline-none transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-[#FFB400] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm";
 
   return (
     <footer className="shrink-0 bg-black text-white py-10 px-2 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
@@ -77,31 +157,48 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Explore — second on mobile (after logo) */}
+          {/* Site map — grouped like main nav */}
           <motion.div
-            className="w-full lg:flex-1 lg:text-left order-2 lg:order-none"
-            variants={staggerContainer}
+            className="order-2 w-full lg:order-none lg:min-w-0 lg:flex-[3] lg:text-left"
+            variants={footerNavReveal}
           >
-            <motion.div className="w-full md:max-w-[60%] md:mx-auto lg:mx-0 lg:w-[60%]" variants={fadeIn}>
-              <h4 className="text-yellow font-semibold mb-4">Explore</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="/whoweare">Who Are We</a>
-                </li>
-                <li>
-                  <a href="/whatwedo">What We Do</a>
-                </li>
-                <li>
-                  <a href="/OurProject">Projects</a>
-                </li>
-                <li>
-                  <a href="/scholarship">Scholarship</a>
-                </li>
-                <li>
-                  <a href="/ShopForGood">Shop for Good</a>
-                </li>
-              </ul>
-            </motion.div>
+            <nav
+              aria-label="Footer"
+              className="mx-auto w-full max-w-xl text-white md:max-w-4xl lg:mx-0 lg:max-w-none"
+            >
+              <h4 className="sr-only">Site navigation</h4>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-6">
+                {footerNavSections.map((section) => (
+                  <div key={section.title}>
+                    <p className="mb-3 text-sm font-semibold text-[#FFB400]">
+                      {section.title}
+                    </p>
+                    <ul className="space-y-2 text-sm text-white/90">
+                      {section.links.map((link, i) => (
+                        <li
+                          key={`${section.title}-${link.label}-${link.href}-${i}`}
+                        >
+                          {link.external ? (
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`${footerLinkClass} underline-offset-2 hover:underline`}
+                            >
+                              {link.label}
+                            </a>
+                          ) : (
+                            <Link href={link.href} className={footerLinkClass}>
+                              {link.label}
+                            </Link>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </nav>
           </motion.div>
 
           {/* Contact — third on mobile only */}
@@ -112,26 +209,6 @@ const Footer = () => {
             <ContactBlock />
           </motion.div>
 
-          {/* Newsletter */}
-          <motion.div
-            className="flex flex-col items-center w-full lg:flex-[2] order-4 lg:order-none"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div variants={fadeIn} custom={0.2}>
-              <h2 className="text-[1rem] sm:text-[1rem] font-bold mb-2">
-                Be part of a better tomorrow
-              </h2>
-              <p className="text-base sm:text-lg text-[#CACBCF] mb-2 max-w-[500px]">
-                Enter your email to stay up to date on how we make a difference
-                together.
-              </p>
-            </motion.div>
-            <div className="w-full max-w-[450px]">
-              <Email />
-            </div>
-          </motion.div>
         </motion.section>
 
         <motion.div
@@ -142,7 +219,7 @@ const Footer = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          &copy; 2025 The Destiny Trust. All Rights Reserved.
+          &copy; 2026 The Destiny Trust. All Rights Reserved.
           <p className="text-white text-center md:text-right">
             Developed by the Destiny Trust Children at
           </p>

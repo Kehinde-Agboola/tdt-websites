@@ -9,6 +9,7 @@ import Impact from "@/app/(staticPages)/_home/Impact";
 import Report from "@/app/(staticPages)/_home/Report";
 import Numbers from "@/app/(staticPages)/_home/Numbers";
 import Community from "@/app/(staticPages)/_home/Community";
+import EmailSection from "@/app/(staticPages)/_home/EmailSection";
 import HomeTeasers from "@/app/(staticPages)/_home/HomeTeasers";
 // import Blog from "@/app/(staticPages)/_home/Blog";
 // import Features from "@/app/(staticPages)/_home/Features";
@@ -57,7 +58,10 @@ const page = () => {
       <AnimatedSection delay={stagger(8)}>
         <Community />
       </AnimatedSection>
-      {/* <AnimatedSection delay={stagger(9)}>
+      <AnimatedSection delay={stagger(9)}>
+        <EmailSection />
+      </AnimatedSection>
+      {/* <AnimatedSection delay={stagger(10)}>
         <HomeTeasers />
       </AnimatedSection> */}
       {/* <AnimatedSection delay={stagger(10)}>

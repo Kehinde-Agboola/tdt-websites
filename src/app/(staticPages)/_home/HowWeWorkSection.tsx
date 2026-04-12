@@ -4,9 +4,14 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import Container from "@/app/_component/shared";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Parallax, EffectCoverflow } from "swiper/modules";
+import {
+  Autoplay,
+  Pagination,
+  Parallax,
+  EffectCoverflow,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
@@ -166,6 +171,8 @@ function PillarCard({
 }
 
 const HowWeWorkSection = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="bg-[#f7f7f5] py-16 md:py-24">
       <Container>
@@ -202,14 +209,24 @@ const HowWeWorkSection = () => {
         {/* Mobile: parallax + coverflow depth */}
         <div className="md:hidden">
           <Swiper
-            modules={[Pagination, Parallax, EffectCoverflow]}
+            modules={[Autoplay, Pagination, Parallax, EffectCoverflow]}
+            loop
             parallax
             grabCursor
-            speed={650}
+            speed={250}
             centeredSlides
             slidesPerView={1.12}
             spaceBetween={14}
             pagination={{ clickable: true }}
+            autoplay={
+              reduceMotion
+                ? false
+                : {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }
+            }
             effect="coverflow"
             coverflowEffect={{
               rotate: 0,

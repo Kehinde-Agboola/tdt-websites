@@ -144,7 +144,7 @@ const Head = () => {
               </motion.h1>
 
             <motion.p
-              className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/95 md:mx-0 md:text-lg"
+              className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-white/95 md:mx-0 md:text-lg"
               variants={fadeUpVariant}
               custom={0.35}
               initial="hidden"

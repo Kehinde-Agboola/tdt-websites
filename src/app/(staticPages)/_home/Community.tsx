@@ -57,7 +57,7 @@ const Community = () => {
               viewport={{ once: false, amount: 0.3 }}
             >
               <motion.h2
-                className="text-center text-[28px] md:text-[56px] font-semibold leading-tight"
+                className="text-center text-[38px] md:text-[56px] font-semibold leading-tight"
                 variants={itemVariants}
               >
                 Join <span className="text-yellow">Us</span>
