@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect} from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { Nav } from "@/app/constant/index";
 import logo from "../../../../public/assets/tdtlogo.png";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
@@ -15,10 +15,23 @@ import clsx from "clsx";
 import { useLoading } from "@/contexts/LoadingContext";
 import { useRouter, usePathname } from "next/navigation";
 
+/** Fallback until measured; matches previous `top-[4.75rem]` drawer offset */
+const NAV_HEIGHT_FALLBACK_PX = 76;
+/** Pixels of scroll delta before toggling hide/show */
+const SCROLL_DOWN_DELTA = 10;
+const SCROLL_UP_DELTA = 8;
+/** Always show the bar when within this distance of the top */
+const TOP_REVEAL_ZONE_PX = 16;
 
 export default function Navbar() {
   const [animationParent] = useAutoAnimate();
   const [isSideMenuOpen, setSideMenuOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [navBarHeightPx, setNavBarHeightPx] = useState(NAV_HEIGHT_FALLBACK_PX);
+  const headerShellRef = useRef<HTMLElement>(null);
+  const lastScrollY = useRef(0);
+  const scrollRaf = useRef<number>(0);
+
   const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(
     null
   );
@@ -51,14 +64,82 @@ export default function Navbar() {
     return () => window.clearTimeout(t);
   }, [pathname]);
 
-  // Lock body scroll while mobile menu is open (avoids background scroll behind drawer)
+  // Lock background scroll on mobile menu (includes iOS Safari where overflow:hidden alone is weak)
   useEffect(() => {
     if (!isSideMenuOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
+    const scrollY = window.scrollY;
+    const prev = {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+      left: document.body.style.left,
+      right: document.body.style.right,
+      touchAction: document.body.style.touchAction,
+      overscrollBehavior: document.body.style.overscrollBehavior,
     };
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.style.touchAction = "none";
+    document.body.style.overscrollBehavior = "none";
+
+    return () => {
+      document.body.style.overflow = prev.overflow;
+      document.body.style.position = prev.position;
+      document.body.style.top = prev.top;
+      document.body.style.width = prev.width;
+      document.body.style.left = prev.left;
+      document.body.style.right = prev.right;
+      document.body.style.touchAction = prev.touchAction;
+      document.body.style.overscrollBehavior = prev.overscrollBehavior;
+      window.scrollTo(0, scrollY);
+    };
+  }, [isSideMenuOpen]);
+
+  useLayoutEffect(() => {
+    const el = headerShellRef.current;
+    if (!el) return;
+    const measure = () => setNavBarHeightPx(el.offsetHeight || NAV_HEIGHT_FALLBACK_PX);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  // Hide on scroll down / show on scroll up; always visible near top or while mobile menu is open
+  useEffect(() => {
+    lastScrollY.current = typeof window !== "undefined" ? window.scrollY : 0;
+    const onScroll = () => {
+      cancelAnimationFrame(scrollRaf.current);
+      scrollRaf.current = requestAnimationFrame(() => {
+        if (isSideMenuOpen) return;
+        const y = window.scrollY;
+        const prev = lastScrollY.current;
+
+        if (y <= TOP_REVEAL_ZONE_PX) {
+          setIsHeaderVisible(true);
+        } else if (y - prev > SCROLL_DOWN_DELTA) {
+          setIsHeaderVisible(false);
+        } else if (prev - y > SCROLL_UP_DELTA) {
+          setIsHeaderVisible(true);
+        }
+        lastScrollY.current = y;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(scrollRaf.current);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [isSideMenuOpen]);
+
+  useEffect(() => {
+    if (isSideMenuOpen) setIsHeaderVisible(true);
   }, [isSideMenuOpen]);
 
   // Close mobile menu on Escape (matches user expectation for overlays)
@@ -151,7 +232,22 @@ export default function Navbar() {
   const amount = 1000;
 
   return (
-    <section className="sticky top-0 z-[60] border-b border-white/10 bg-black">
+    <>
+      {/* Reserves space so content does not jump under `fixed` header */}
+      <div
+        className="shrink-0"
+        style={{ height: navBarHeightPx }}
+        aria-hidden
+      />
+      <header
+        ref={headerShellRef}
+        className={clsx(
+          "fixed top-0 left-0 right-0 z-[60] border-b border-white/10 bg-black",
+          "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] will-change-transform motion-reduce:transition-none",
+          !isHeaderVisible && !isSideMenuOpen &&
+            "-translate-y-full pointer-events-none",
+        )}
+      >
       {/* z-[70] keeps the bar above the mobile drawer (z-50) so menu/close stays clickable */}
       <nav className="relative z-[70] mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 text-[12px] sm:px-5 md:px-0">
         {/* Logo */}
@@ -294,12 +390,14 @@ export default function Navbar() {
           )}
         </button>
       </nav>
+      </header>
 
-      {/* Mobile Nav — xl:hidden matches desktop nav breakpoint (was md:hidden, which broke tablet) */}
+      {/* Sibling of transformed header so `fixed` drawer is viewport-relative */}
       <AnimatePresence>
         {isSideMenuOpen && (
           <MobileNav
             key="mobile-drawer"
+            navTopPx={navBarHeightPx}
             closeSideMenu={() => setSideMenuOpen(false)}
             mobileOpenMenus={mobileOpenMenus}
             handleMobileToggle={handleMobileToggle}
@@ -309,11 +407,12 @@ export default function Navbar() {
           />
         )}
       </AnimatePresence>
-    </section>
+    </>
   );
 }
 
 function MobileNav({
+  navTopPx,
   closeSideMenu,
   mobileOpenMenus,
   handleMobileToggle,
@@ -321,6 +420,7 @@ function MobileNav({
   handleMobileSubToggle,
   handleNavigation,
 }: {
+  navTopPx: number;
   closeSideMenu: () => void;
   mobileOpenMenus: { [k: number]: boolean };
   handleMobileToggle: (idx: number) => void;
@@ -328,6 +428,7 @@ function MobileNav({
   handleMobileSubToggle: (parentIdx: number, subIdx: number) => void;
   handleNavigation: (href: string, label?: string) => void;
 }) {
+  const topOffset = `${navTopPx}px`;
   return (
     <motion.div
       role="dialog"
@@ -347,7 +448,8 @@ function MobileNav({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="absolute left-0 right-0 top-[4.75rem] bottom-0 bg-black/55 backdrop-blur-[2px]"
+        className="absolute inset-x-0 bottom-0 bg-black/55 backdrop-blur-[2px]"
+        style={{ top: topOffset }}
         onClick={closeSideMenu}
       />
 
@@ -357,7 +459,8 @@ function MobileNav({
         animate={{ x: 0 }}
         exit={{ x: "100%" }}
         transition={{ type: "spring", damping: 28, stiffness: 280 }}
-        className="absolute bottom-0 right-0 top-[4.75rem] flex w-full max-w-[min(100vw,20rem)] flex-col border-l border-white/10 bg-[#0a0a0a] shadow-[-8px_0_32px_rgba(0,0,0,0.45)]"
+        className="absolute bottom-0 right-0 flex w-full max-w-[min(100vw,20rem)] flex-col border-l border-white/10 bg-[#0a0a0a] shadow-[-8px_0_32px_rgba(0,0,0,0.45)]"
+        style={{ top: topOffset }}
       >
         <span id="mobile-nav-title" className="sr-only">
           Main navigation

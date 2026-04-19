@@ -45,7 +45,7 @@ export interface NavItem {
 export const Nav: NavItem[] = [
   {
     title: "Who We Are",
-    path: "/whoweare",
+    path: "/#",
     dropdownItems: [
       { title: "About Us", path: "/whoweare/about-us" },
       { title: "Our People", path: "/whoweare/ourpeople" },
@@ -75,16 +75,16 @@ export const Nav: NavItem[] = [
             path: "/whatwedo/education#ourschool-africa",
           },
           {
+            title: "Literacy Campaign",
+            path: "/whatwedo/education#literacy-campaign",
+          },
+          {
             title: "Scholarships",
             path: "/whatwedo/education#scholarships",
           },
           {
             title: "School Support",
             path: "/whatwedo/education#school-support",
-          },
-          {
-            title: "Literacy Campaign",
-            path: "/whatwedo/education#literacy-campaign",
           },
         ],
       },
@@ -134,26 +134,41 @@ export const Nav: NavItem[] = [
     title: "Our Projects",
     path: "/#",
     dropdownItems: [
-      { title: "School Enrolment", path: "/whatwedo/education" },
-          { title: "Residential Care", path: "/whatwedo/wellbeing" },
-      { title: "Accelerated Learning", path: "/projects/bridgelearning" },
+      {
+        title: "School Enrolment",
+        path: "/whatwedo/education#education-access",
+      },
+
+      {
+        title: "BackToBasics Literacy Campaign",
+        path: "/whatwedo/education#literacy-campaign",
+      },
+      {
+        title: "Accelerated Learning",
+        path: "/whatwedo/education#bridge-learning",
+      },
+
+      {
+        title: "Residential Care",
+        path: "/whatwedo/wellbeing#rehabilitation-care",
+      },
+      {
+        title: "Child HealthCare",
+        path: "/whatwedo/wellbeing#child-healthcare",
+      },
+      { title: "Hunger Relief", path: "/whatwedo/wellbeing#hunger-relief" },
+
+      {
+        title: "Project Enable - Family Empowerment",
+        path: "/whatwedo/empowerment#family-empowerment",
+      },
       {
         title: "OurSchool Africa Edtech",
-        path: "https://www.ourschool.africa/",
+        path: "/whatwedo/education#ourschool-africa",
       },
       {
         title: "Kids Innovation Africa",
-        path: "https://www.kidsinnovation.africa/",
-      },
-      { title: "Child HealthCare", path: "/projects/childhealthcare" },
-      { title: "Hunger Relief", path: "/projects/hungerrelief" },
-      {
-        title: "BackToBasics Literacy Campaign",
-        path: "/projects/backtobasics",
-      },
-      {
-        title: "Project Enable - Family Empowerment",
-        path: "/projects/projectenable",
+        path: "/whatwedo/education#ourschool-africa",
       },
     ],
   },

@@ -4,7 +4,7 @@ import { FlexComponent } from "@/app/_component/atom/eduFlex";
 import { AltComponent } from "@/app/_component/atom/altFlex";
 import Line from "../../../../../public/assets/edu/Lineyellow.png";
 import Rehab from "../../../../../public/assets/care/rehab.jpg";
-import Nothing from "../../../../../public/assets/care/nothing.png";
+import SupportedIndependentLiving from "../../../../../public/assets/care/children.png";
 import ChildHealth from "../../../../../public/assets/care/eyecheck.png";
 import Wellbeing from "../../../../../public/assets/care/wellbeing.jpg";
 import HungerRelief from "../../../../../public/assets/care/hunger.jpg";
@@ -54,7 +54,7 @@ const page = () => {
         "We equip them to make responsible decisions and build sustainable, self-reliant lives.",
       text4:
         "From care to independence—helping young people thrive.",
-      imageSrc: Nothing,
+      imageSrc: SupportedIndependentLiving,
       buttonText: "",
     },
   ];
