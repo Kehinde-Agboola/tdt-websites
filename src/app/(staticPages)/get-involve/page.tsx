@@ -56,11 +56,7 @@ const GetInvolvedPage = () => {
     setTimeout(() => setCopiedAccount(null), 2000);
   };
 
-  const phoneNumbers = [
-    "+2348034651702",
-    "+2348055163786", 
-    "+2348095825538"
-  ];
+  const phoneNumbers = ["+234 813 800 2859"];
 
   const locations = [
     {

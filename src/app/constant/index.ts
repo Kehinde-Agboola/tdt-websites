@@ -190,10 +190,6 @@ export const Nav: NavItem[] = [
       { title: "Zolala Scholarship", path: "#" },
     ],
   },
-  {
-    title: "Shop For Good",
-    path: "/ShopForGood",
-  },
 ];
 
 type EnableGlobaleData = {

@@ -32,10 +32,10 @@ const page = () => {
           imageClassName="object-cover object-center"
           priority
         >
-          <h1 className="font-heading max-w-full text-3xl leading-tight sm:text-4xl md:max-w-2xl md:text-5xl">
+          <h1 className="font-heading text-white max-w-full text-3xl leading-tight sm:text-4xl md:max-w-2xl md:text-5xl">
             Frequently <span className="text-yellow">Asked Questions</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-base md:text-lg">
+          <p className="mt-4 max-w-2xl text-base text-white md:text-lg">
             These are the most commonly asked questions about The Destiny Trust.
             Can’t find what you are looking for?{' '}
             <span className="underline">Chat to our friendly team!</span>
