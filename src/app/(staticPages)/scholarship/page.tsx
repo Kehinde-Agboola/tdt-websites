@@ -362,9 +362,11 @@ const page = () => {
       <AnimatedSection as="section" delay={staggerDelay(2)}>
         <Scholars />
       </AnimatedSection>
-      <AnimatedSection as="section" delay={staggerDelay(3)}>
+        <div className="mt-20">
+              <AnimatedSection as="section" delay={staggerDelay(3)}>
         <Empower />
       </AnimatedSection>
+        </div>
     </main>
   );
 }
