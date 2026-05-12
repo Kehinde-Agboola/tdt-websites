@@ -40,3 +40,6 @@ next-env.d.ts
 
 # ShopForGood e-commerce folder (temporarily disabled)
 # src/app/ShopForGood/
+
+# Local hero video asset is too large for GitHub
+public/video.mp4

@@ -4,15 +4,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+const Destinyvideo =
+  "https://videos.pexels.com/video-files/6985245/6985245-hd_1920_1080_25fps.mp4";
 
-/**
- * Default: Pexels royalty-free stock video (classroom / learning).
- * License: https://www.pexels.com/license/ · Page: https://www.pexels.com/video/students-studying-together-in-classroom-9198424/
- *
- * Override with NEXT_PUBLIC_HERO_VIDEO_SRC (e.g. `/videos/hero.mp4` to self-host).
- */
-const PEXELS_DEFAULT_HERO_VIDEO =
-  "https://videos.pexels.com/video-files/9198424/9198424-hd_1920_1080_25fps.mp4";
+const PEXELS_DEFAULT_HERO_VIDEO = Destinyvideo;
 
 const HERO_VIDEO_SRC =
   process.env.NEXT_PUBLIC_HERO_VIDEO_SRC?.trim() || PEXELS_DEFAULT_HERO_VIDEO;
@@ -56,7 +51,7 @@ const Head = () => {
 
   return (
     <section aria-label="Homepage hero">
-      <div className="relative min-h-screen min-h-[100dvh] w-full overflow-hidden bg-black">
+      <div className="relative min-h-[100dvh] w-full overflow-hidden bg-black">
         {showVideo && (
           <div className="absolute inset-0">
             <video
