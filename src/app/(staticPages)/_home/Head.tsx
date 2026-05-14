@@ -4,13 +4,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-const Destinyvideo =
-  "https://videos.pexels.com/video-files/6985245/6985245-hd_1920_1080_25fps.mp4";
-
-const PEXELS_DEFAULT_HERO_VIDEO = Destinyvideo;
+const DEFAULT_HERO_VIDEO = "https://storage.googleapis.com/destinytrust/video.mp4";
 
 const HERO_VIDEO_SRC =
-  process.env.NEXT_PUBLIC_HERO_VIDEO_SRC?.trim() || PEXELS_DEFAULT_HERO_VIDEO;
+  process.env.NEXT_PUBLIC_HERO_VIDEO_SRC?.trim() || DEFAULT_HERO_VIDEO;
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 20 },
@@ -51,7 +48,7 @@ const Head = () => {
 
   return (
     <section aria-label="Homepage hero">
-      <div className="relative min-h-[100dvh] w-full overflow-hidden bg-black">
+      <div className="relative min-h-[100dvh] w-full overflow-hidden bg-black animate-fadeIn mix-blend-mode: overlay;">
         {showVideo && (
           <div className="absolute inset-0">
             <video
@@ -63,6 +60,7 @@ const Head = () => {
               preload="auto"
               poster="/assets/care/carem.png"
               aria-hidden
+              crossOrigin="anonymous"
               onError={onVideoError}
             >
               <source src={HERO_VIDEO_SRC} type="video/mp4" />

@@ -7,15 +7,12 @@ import Container from "@/app/_component/shared";
 import { motion } from "framer-motion";
 import EduTechPoster from "../../../../public/assets/edu/edu2.jpg";
 
-/**
- * Default stock video (not the same file as the main hero).
- * Pexels royalty-free — https://www.pexels.com/license/
- * Page: https://www.pexels.com/video/6985245/
- */
-const PEXELS_DEFAULT_LEVERAGING =
-  "https://videos.pexels.com/video-files/6985245/6985245-hd_1920_1080_25fps.mp4";
+/** Default leveraging video (provided GCS object) */
+const DEFAULT_LEVERAGING_VIDEO =
+  "https://storage.googleapis.com/destinytrust/videos.mp4";
 
 /** Set `NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC` (e.g. `/videos/yours.mp4`) to self-host. */
+const PEXELS_DEFAULT_LEVERAGING = DEFAULT_LEVERAGING_VIDEO;
 const videoSrc =
   process.env.NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC?.trim() ||
   PEXELS_DEFAULT_LEVERAGING;
@@ -135,13 +132,7 @@ const LeveragingTechSection = () => {
                 transition={{ duration: 0.55, ease: "easeOut" }}
                 className="flex max-w-4xl flex-col items-center"
               >
-                <h2
-                  id="leveraging-tech-heading"
-                  className="font-heading text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.12]"
-                >
-                  Leveraging <span className="text-[#FFBC00]">Technology</span>{" "}
-                  for Education.
-                </h2>
+              
 
                 <button
                   type="button"

@@ -43,3 +43,8 @@ next-env.d.ts
 
 # Local hero video asset is too large for GitHub
 public/video.mp4
+public/videos.mp4
+
+# Local videos are stored outside git (use Supabase Storage URLs instead)
+public/videos/*
+!public/videos/.gitkeep
