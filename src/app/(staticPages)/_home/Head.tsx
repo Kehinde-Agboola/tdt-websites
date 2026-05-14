@@ -71,7 +71,6 @@ const Head = () => {
               preload="auto"
               poster="/assets/care/carem.png"
               aria-hidden
-              crossOrigin="anonymous"
               onError={onVideoError}
             >
               <source src={HERO_VIDEO_SRC} type="video/mp4" />
