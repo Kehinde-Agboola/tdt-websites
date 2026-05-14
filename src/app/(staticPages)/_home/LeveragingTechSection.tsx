@@ -11,11 +11,21 @@ import EduTechPoster from "../../../../public/assets/edu/edu2.jpg";
 const DEFAULT_LEVERAGING_VIDEO =
   "https://storage.googleapis.com/destinytrust/videos.mp4";
 
+const normalizeGcsVideoUrl = (value?: string) => {
+  const source = value?.trim();
+  if (!source) return DEFAULT_LEVERAGING_VIDEO;
+
+  return source.replace(
+    "https://storage.cloud.google.com/destinytrust/",
+    "https://storage.googleapis.com/destinytrust/",
+  );
+};
+
 /** Set `NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC` (e.g. `/videos/yours.mp4`) to self-host. */
 const PEXELS_DEFAULT_LEVERAGING = DEFAULT_LEVERAGING_VIDEO;
-const videoSrc =
-  process.env.NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC?.trim() ||
-  PEXELS_DEFAULT_LEVERAGING;
+const videoSrc = normalizeGcsVideoUrl(
+  process.env.NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC || PEXELS_DEFAULT_LEVERAGING,
+);
 
 type VideoMode = "pending" | "on" | "off";
 
@@ -95,11 +105,11 @@ const LeveragingTechSection = () => {
               <video
                 ref={videoRef}
                 className="absolute inset-0 h-full w-full object-cover object-center"
-                autoPlay
+                autoPlay={false}
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 poster="/assets/edu/edu2.jpg"
                 aria-hidden
                 onError={onVideoError}

@@ -2,7 +2,8 @@
   {
     "origin": [
       "http://localhost:3000",
-      "https://destinytrust.org/"
+      "https://destinytrust.org/",
+      "https://tdt-websites-git-master-kehindeagboolas-projects.vercel.app/"
     ],
     "method": ["GET", "HEAD"],
     "responseHeader": ["Content-Type"],
