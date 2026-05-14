@@ -3,7 +3,8 @@
     "origin": [
       "http://localhost:3000",
       "https://destinytrust.org",
-      "https://tdt-websites.vercel.app"
+      "https://tdt-websites.vercel.app",
+      "https://*.vercel.app"
     ],
     "method": ["GET", "HEAD"],
     "responseHeader": ["Content-Type"],
