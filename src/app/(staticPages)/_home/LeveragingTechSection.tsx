@@ -6,26 +6,26 @@ import Link from "next/link";
 import Container from "@/app/_component/shared";
 import { motion } from "framer-motion";
 import EduTechPoster from "../../../../public/assets/edu/edu2.jpg";
+const LEVERAGING_VIDEO_SRC = "/leverage_technology.mp4";
+/** Default leveraging video hosted on Google Cloud Storage. */
+// const GOOGLE_CLOUD_LEVERAGING_VIDEO =
+//   "https://storage.googleapis.com/destinytrust/videos.mp4";
 
-/** Default leveraging video (provided GCS object) */
-const DEFAULT_LEVERAGING_VIDEO =
-  "https://storage.googleapis.com/destinytrust/videos.mp4";
+// const normalizeGcsVideoUrl = (value?: string) => {
+//   const source = value?.trim();
+//   if (!source) return GOOGLE_CLOUD_LEVERAGING_VIDEO;
 
-const normalizeGcsVideoUrl = (value?: string) => {
-  const source = value?.trim();
-  if (!source) return DEFAULT_LEVERAGING_VIDEO;
+//   return source.replace(
+//     "https://storage.cloud.google.com/destinytrust/",
+//     "https://storage.googleapis.com/destinytrust/",
+//   );
+// };
 
-  return source.replace(
-    "https://storage.cloud.google.com/destinytrust/",
-    "https://storage.googleapis.com/destinytrust/",
-  );
-};
-
-/** Set `NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC` (e.g. `/videos/yours.mp4`) to self-host. */
-const PEXELS_DEFAULT_LEVERAGING = DEFAULT_LEVERAGING_VIDEO;
-const videoSrc = normalizeGcsVideoUrl(
-  process.env.NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC || PEXELS_DEFAULT_LEVERAGING,
-);
+/** Optional override: set `NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC` to another GCS URL. */
+// const videoSrc = normalizeGcsVideoUrl(
+//   process.env.NEXT_PUBLIC_LEVERAGING_TECH_VIDEO_SRC ||
+//     GOOGLE_CLOUD_LEVERAGING_VIDEO,
+// );
 
 type VideoMode = "pending" | "on" | "off";
 
@@ -114,7 +114,7 @@ const LeveragingTechSection = () => {
                 aria-hidden
                 onError={onVideoError}
               >
-                <source src={videoSrc} type="video/mp4" />
+                <source src={LEVERAGING_VIDEO_SRC} type="video/mp4" />
               </video>
             )}
 
