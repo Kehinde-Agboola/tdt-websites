@@ -72,7 +72,7 @@ const Head = () => {
               loop
               playsInline
               preload="auto"
-              poster="/assets/care/carem.png"
+              // poster="/assets/care/carem.png"
               aria-hidden
               onError={onVideoError}
             >
