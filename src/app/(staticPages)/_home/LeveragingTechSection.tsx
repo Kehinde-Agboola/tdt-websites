@@ -110,7 +110,7 @@ const LeveragingTechSection = () => {
                 loop
                 playsInline
                 preload="metadata"
-                poster="/assets/edu/edu2.jpg"
+                // poster="/assets/edu/edu2.jpg"
                 aria-hidden
                 onError={onVideoError}
               >

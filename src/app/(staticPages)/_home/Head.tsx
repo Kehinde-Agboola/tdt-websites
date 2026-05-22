@@ -4,21 +4,24 @@ import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-const DEFAULT_HERO_VIDEO = "https://storage.googleapis.com/destinytrust/video.mp4";
+const HERO_VIDEO_SRC = "/hero-section.mp4";
 
-const normalizeGcsVideoUrl = (value?: string) => {
-  const source = value?.trim();
-  if (!source) return DEFAULT_HERO_VIDEO;
-
-  return source.replace(
-    "https://storage.cloud.google.com/destinytrust/",
-    "https://storage.googleapis.com/destinytrust/",
-  );
-};
-
-const HERO_VIDEO_SRC = normalizeGcsVideoUrl(
-  process.env.NEXT_PUBLIC_HERO_VIDEO_SRC,
-);
+// Google Storage source temporarily disabled.
+// const DEFAULT_HERO_VIDEO = "https://storage.googleapis.com/destinytrust/video.mp4";
+//
+// const normalizeGcsVideoUrl = (value?: string) => {
+//   const source = value?.trim();
+//   if (!source) return DEFAULT_HERO_VIDEO;
+//
+//   return source.replace(
+//     "https://storage.cloud.google.com/destinytrust/",
+//     "https://storage.googleapis.com/destinytrust/",
+//   );
+// };
+//
+// const HERO_VIDEO_SRC = normalizeGcsVideoUrl(
+//   process.env.NEXT_PUBLIC_HERO_VIDEO_SRC,
+// );
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 20 },
