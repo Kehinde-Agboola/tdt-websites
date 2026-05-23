@@ -16,6 +16,8 @@ import {
   Twitter,
   Facebook,
   Instagram,
+  Linkedin,
+  Youtube,
   ExternalLink,
   Copy,
   CreditCard
@@ -56,7 +58,7 @@ const GetInvolvedPage = () => {
     setTimeout(() => setCopiedAccount(null), 2000);
   };
 
-  const phoneNumbers = ["+234 813 800 2859"];
+  const phoneNumbers = ["+234 813 800 2859","+234 814 343 7391"];
 
   const locations = [
     {
@@ -346,6 +348,22 @@ const GetInvolvedPage = () => {
                   className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors"
                 >
                   <Instagram className="w-6 h-6 text-white" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/the-destiny-trust/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center hover:bg-slate-800 transition-colors"
+                >
+                  <Linkedin className="w-6 h-6 text-white" />
+                </a>
+                <a
+                  href="https://www.youtube.com/@thedestinytrust"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors"
+                >
+                  <Youtube className="w-6 h-6 text-white" />
                 </a>
               </div>
               <p className="text-center text-gray-500 text-sm mt-4">
