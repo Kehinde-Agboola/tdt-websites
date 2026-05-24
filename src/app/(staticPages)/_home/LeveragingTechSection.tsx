@@ -106,7 +106,7 @@ const LeveragingTechSection = () => {
                 ref={videoRef}
                 className="absolute inset-0 h-full w-full object-cover object-center"
                 autoPlay={false}
-                muted
+                // muted
                 loop
                 playsInline
                 preload="metadata"
