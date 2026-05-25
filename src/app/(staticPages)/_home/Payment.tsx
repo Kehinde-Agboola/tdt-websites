@@ -57,7 +57,7 @@ const variants = {
 };
 
 const Payment: React.FC = () => {
-  const [amount, setAmount] = useState("1000");
+  const [amount, setAmount] = useState("");
   const controls = useAnimation();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
@@ -122,7 +122,7 @@ const Payment: React.FC = () => {
           <div className="relative w-full min-w-[200px] max-w-[200px]">
             <input
               type="text"
-              className="w-full min-h-[48px] bg-[#FFB400] outline-none px-8 pl-10 text-center border-2 border-black text-sm text-black"
+              className="w-full min-h-[48px] bg-[#FFB400] outline-none px-8 pl-10 text-center border-2 border-black text-sm text-black placeholder:text-black"
               placeholder="Enter Amount"
               value={amount}
               onChange={handleInputChange}
