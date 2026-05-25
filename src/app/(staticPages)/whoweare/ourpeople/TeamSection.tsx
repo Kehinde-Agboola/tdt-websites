@@ -151,13 +151,13 @@ const TeamSection: React.FC<TeamSectionProps> = ({ title, members, paragraph }) 
         </p> */}
       </div>
 
-      {/* sm+: grid */}
-      <div className="mt-5 sm:mt-8 hidden sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 justify-items-center">
+      {/* sm+: flex */}
+      <div className="mt-5 sm:mt-8 hidden sm:flex flex-wrap justify-center gap-3 sm:gap-10">
         {members.map((member, index) => (
           <MemberCard
             key={`d-${index}`}
             member={member}
-            className="w-full max-w-[280px]"
+            className="w-full flex-none sm:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.333%-0.75rem)] max-w-[280px]"
           />
         ))}
       </div>
