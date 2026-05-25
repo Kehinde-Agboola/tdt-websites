@@ -69,7 +69,6 @@ const Head = () => {
               className="absolute inset-0 h-full w-full object-cover object-center"
               autoPlay
               muted
-              defaultMuted
               loop
               playsInline
               preload="auto"
