@@ -13,8 +13,13 @@ import Cards from "./Cards";
 import Banner from "./Banner";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { staggerDelay } from "@/lib/motion";
+import Modal from "@/app/_component/ui/Modal";
+import SponsorChildForm from "@/app/_component/ui/SponsorForm";
+import { useState } from "react";
 
 const Page = () => {
+  const [isSponsorshipModalOpen, setIsSponsorshipModalOpen] = useState(false);
+
   const data2 = [
     {
       heading3: "Mariah - From the Sreet to School​",
@@ -37,6 +42,9 @@ const Page = () => {
       buttonText: "",
     },
   ];
+
+  const openSponsorshipModal = () => setIsSponsorshipModalOpen(true);
+  const closeSponsorshipModal = () => setIsSponsorshipModalOpen(false);
 
   return (
     <main>
@@ -87,6 +95,7 @@ const Page = () => {
           </div>
           <motion.button
             type="button"
+            onClick={openSponsorshipModal}
             className="mt-2 w-full max-w-xs rounded bg-yellow px-4 py-3 text-center text-sm font-medium text-black sm:w-auto md:mt-0 md:max-w-none md:px-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -124,10 +133,18 @@ const Page = () => {
               Empower their Dreams
             </motion.h2>
             <div className="flex flex-col gap-4 text-center md:flex-row md:text-right">
-              <button className="w-full border-2 border-yellow py-2 px-4 text-white md:w-[15rem]">
+              <button
+                type="button"
+                onClick={openSponsorshipModal}
+                className="w-full border-2 border-yellow py-2 px-4 text-white md:w-[15rem]"
+              >
                 Sponsor a Scholarship
               </button>
-              <button className="mt-4 w-full bg-yellow py-2 px-4 text-white md:mt-0 md:w-[15rem] md:px-0 md:py-0">
+              <button
+                type="button"
+                onClick={openSponsorshipModal}
+                className="mt-4 w-full bg-yellow py-2 px-4 text-white md:mt-0 md:w-[15rem] md:px-0 md:py-0"
+              >
                 Sponsor a Child
               </button>
             </div>
@@ -166,15 +183,31 @@ const Page = () => {
             Empower their Dreams
           </motion.h2>
           <div className="flex flex-col gap-4 text-center md:flex-row md:text-right">
-            <button className="w-full border-2 border-black py-2 px-4 text-white md:w-[15rem]">
+              <button
+                type="button"
+                onClick={openSponsorshipModal}
+                className="w-full border-2 border-black py-2 px-4 text-white md:w-[15rem]"
+              >
               Sponsor a Scholarship
             </button>
-            <button className="mt-4 w-full bg-black py-2 px-4 text-white md:mt-0 md:w-[15rem] md:px-0 md:py-0">
+              <button
+                type="button"
+                onClick={openSponsorshipModal}
+                className="mt-4 w-full bg-black py-2 px-4 text-white md:mt-0 md:w-[15rem] md:px-0 md:py-0"
+              >
               Sponsor a Child
             </button>
           </div>
         </div>
       </AnimatedSection>
+      <Modal
+        isOpen={isSponsorshipModalOpen}
+        onClose={closeSponsorshipModal}
+        title="Sponsor a Child or Endow a Scholarship"
+        maxWidth="2xl"
+      >
+        <SponsorChildForm onClose={closeSponsorshipModal} />
+      </Modal>
     </main>
   );
 };
