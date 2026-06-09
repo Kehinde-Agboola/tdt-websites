@@ -4,11 +4,11 @@ import Footer from "@/app/_component/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "The Destiny Trust Foundation",
-    template: "%s | The Destiny Trust Foundation",
+    default: "The Destiny Trust ",
+    template: "%s | The Destiny Trust",
   },
   description:
-    "Education, shelter, care, and empowerment for children and youth. Support The Destiny Trust Foundation.",
+    "Education, shelter, care, and empowerment for children and youth. Support The Destiny Trust",
 };
 
 export default function StaticPagesLayout({
