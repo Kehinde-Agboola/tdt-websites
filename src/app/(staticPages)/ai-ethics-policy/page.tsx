@@ -1,5 +1,5 @@
-import Container from "@/app/_component/shared";
 import Link from "next/link";
+import PolicyLayout from "@/app/_component/PolicyLayout";
 
 type Block =
   | { type: "p"; text: string }
@@ -37,7 +37,7 @@ const sections: Section[] = [
           },
           {
             id: "c",
-            text: "promote innovation while managing risks to individuals, communities, customers, partners, employees, the environment and the Organisation;",
+            text: "promote innovation while managing risks to children, communities, beneficiaries, families, donors, volunteers, partners, and the Organisation;",
           },
           {
             id: "d",
@@ -73,7 +73,7 @@ const sections: Section[] = [
           },
           {
             id: "b",
-            text: "all business units, teams, functions, subsidiaries, affiliates and controlled operations of the Organisation;",
+            text: "all teams, functions, projects, programmes, controlled operations, and implementation structures of the Organisation;",
           },
           {
             id: "c",
@@ -81,11 +81,11 @@ const sections: Section[] = [
           },
           {
             id: "d",
-            text: "all third-party AI systems, models, tools, platforms, services or application programming interfaces used in connection with the Organisation’s business; and",
+            text: "all third-party AI systems, models, tools, platforms, services or application programming interfaces used in connection with the Organisation’s work, programmes, operations, or activities; and",
           },
           {
             id: "e",
-            text: "all partnerships, pilots, collaborations, customer solutions, vendor arrangements and other engagements involving the use of AI by or for the Organisation.",
+            text: "all partnerships, pilots, collaborations, solutions, arrangements and other engagements involving the use of AI by or for the Organisation.",
           },
         ],
       },
@@ -95,7 +95,7 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "2.3 This Policy applies whether AI is used for internal productivity, analytics, automation, decision support, content generation, software development, customer interaction, operational control, monitoring, or any other business or technical purpose.",
+        text: "2.3 This Policy applies whether AI is used for internal productivity, analytics, automation, decision support, content generation, software development, beneficiary interactions, operational control, monitoring, or any other technical purpose.",
       },
       {
         type: "p",
@@ -141,11 +141,31 @@ const sections: Section[] = [
           },
           {
             term: "“Material AI Incident”",
-            def: "means any event involving an AI system that results in, or is reasonably likely to result in, unlawful conduct, harmful or misleading output, significant error, discrimination, privacy breach, security incident, operational disruption, customer harm, reputational harm or regulatory exposure.",
+            def: "means any event involving an AI system that results in, or is reasonably likely to result in, unlawful conduct, harmful or misleading output, significant error, discrimination, privacy breach, security incident, operational disruption, harm or regulatory exposure.",
+          },
+          {
+            term: "“Material AI System”",
+            def: "means any AI system whose design, deployment, outputs, operation, or failure may materially affect beneficiaries, children, families, safeguarding outcomes, educational opportunities, organisational operations, legal compliance, financial resources, reputation, or strategic objectives.",
+          },
+          {
+            term: "“Restricted AI”",
+            def: "means an AI system that presents elevated legal, ethical, safeguarding, privacy, operational, or reputational risks and may only be deployed following enhanced review, approval, and monitoring requirements.",
+          },
+          {
+            term: "“Moderate-Risk AI”",
+            def: "means an AI system that presents identifiable but manageable risks and may be deployed subject to appropriate controls, documentation, and oversight.",
+          },
+          {
+            term: "“Low-Risk AI”",
+            def: "means an AI system used for routine administrative, productivity, research, content development, or operational purposes that is unlikely to materially affect the rights, welfare, safety, opportunities, or interests of any individual.",
+          },
+          {
+            term: "“Prohibited AI Use”",
+            def: "means any AI system, capability, or deployment that is expressly prohibited under this Policy due to its unlawful, unsafe, exploitative, discriminatory, deceptive, or otherwise unacceptable nature.",
           },
           {
             term: "“Sensitive Data”",
-            def: "includes personal data, confidential business information, customer data, privileged material, trade secrets, security credentials, regulated information and any other information classified by the Organisation as confidential, restricted or sensitive.",
+            def: "includes personal data, confidential information, information relating to beneficiaries, children, families, donors, volunteers, partners, or communities served by the Organisation, safeguarding records, social investigation reports, incident reports, care plans, case notes, assessment records, complaints, medical information, financial information, privileged material, security credentials, regulated information, and any other information classified by the Organisation as confidential, restricted, or sensitive.",
           },
           {
             term: "“Third-Party AI Service”",
@@ -174,7 +194,7 @@ const sections: Section[] = [
           },
           {
             title: "Fairness",
-            text: "AI systems must be intentionally designed and validated to ensure that all types of known bias, be it based on any factor such as but not limited to race, gender, religion, socio-economic status, sexuality or political affiliation, are identified and eliminated.",
+            text: "AI systems must be intentionally designed and validated to ensure that all types of known bias, be it based on any factor such as but not limited to race, gender, religion, socio-economic status, sexuality or political affiliation, are identified, mitigated, and monitored.",
           },
           {
             title: "Reliability, Safety and Fitness for Purpose",
@@ -182,7 +202,10 @@ const sections: Section[] = [
           },
           {
             title: "Privacy, Confidentiality and Responsible Data Stewardship",
-            text: "AI shall be governed in a manner consistent with applicable data protection requirements, confidentiality obligations, data minimisation, purpose limitation, access control and responsible stewardship of information and the source of data used in AI systems shall be verified for consent from data subjects.",
+            text: "AI shall be governed in a manner consistent with applicable data protection requirements, confidentiality obligations, data minimisation, purpose limitation, access control and responsible stewardship of information.",
+          },
+          {
+            text: "The source of data used in AI systems shall be verified for legality, provenance, and compliance with applicable data protection laws. Personal data shall be processed only on a lawful basis recognised by applicable law, including consent where required.",
           },
           {
             title: "Security and Misuse Prevention",
@@ -198,7 +221,7 @@ const sections: Section[] = [
           },
           {
             title: "Lawfulness and Legitimate Purpose",
-            text: "AI shall be used only for lawful, authorised and legitimate purposes and in a manner consistent with applicable law, contractual obligations, internal policy and responsible corporate conduct.",
+            text: "AI shall be developed, procured, deployed, and used in compliance with applicable laws, including the Nigeria Data Protection Act 2023, regulations and guidance issued by the Nigeria Data Protection Commission, the Child Rights Act 2003, and any other applicable laws relating to children, privacy, safeguarding, intellectual property, and technology.",
           },
           {
             title: "Human Accountability and Oversight",
@@ -230,7 +253,7 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "5.2 The Board or designated Board committee may from time to time request for periodic reporting on:",
+        text: "5.2 The Executive Director shall provide the Board with at least an annual report on:",
       },
       {
         type: "clauses",
@@ -254,7 +277,7 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "5.4 The Team Lead of the Technology and Skill Development Team, under the oversight of the Chief Executive Officer, shall be responsible for the implementation and oversight of this Policy and shall, as appropriate:",
+        text: "5.4 The Team Lead of the Technology and Skill Development Team, under the oversight of the Executive Director, shall be responsible for the implementation and oversight of this Policy and shall, as appropriate:",
       },
       {
         type: "clauses",
@@ -267,7 +290,7 @@ const sections: Section[] = [
           { id: "c", text: "determine or confirm the risk classification of AI systems;" },
           {
             id: "d",
-            text: "approve, conditionally approve, defer or prohibit High-Risk or Restricted AI uses, subject to escalation where appropriate;",
+            text: "review and recommend approval, conditional approval, deferral, or prohibition of High-Risk or Restricted AI uses to the Executive Director or Board, as appropriate;",
           },
           {
             id: "e",
@@ -280,13 +303,17 @@ const sections: Section[] = [
           },
           {
             id: "h",
-            text: "escalate material AI matters to the Chief Executive Officer and, where appropriate, to the Board.",
+            text: "escalate material AI matters to the Executive Director and, where appropriate, to the Board.",
           },
         ],
       },
       {
         type: "p",
-        text: "5.5 No person may develop, procure, integrate, deploy, materially modify or use any AI system for Organisation except in accordance with this Policy and any applicable internal review or approval requirements.",
+        text: "5.5 High-Risk AI systems shall not be approved solely by the team responsible for their development or deployment.",
+      },
+      {
+        type: "p",
+        text: "5.6 No person may develop, procure, integrate, deploy, materially modify or use any AI system for the Organisation except in accordance with this Policy and any applicable internal review or approval requirements.",
       },
     ],
   },
@@ -354,7 +381,11 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "6.5 Risk classification shall be reviewed and, where necessary, updated whenever there is a material change in the system’s purpose, scope, data inputs, users, outputs, underlying model, deployment conditions or risk profile.",
+        text: "6.5 High-Risk AI systems shall be subject to independent review by a person or committee not directly responsible for the development or deployment of the system.",
+      },
+      {
+        type: "p",
+        text: "6.6 Risk classification shall be reviewed and, where necessary, updated whenever there is a material change in the system’s purpose, scope, data inputs, users, outputs, underlying model, deployment conditions or risk profile.",
       },
     ],
   },
@@ -397,7 +428,7 @@ const sections: Section[] = [
           },
           {
             id: "h",
-            text: "use of confidential, customer or regulated data in public or unapproved AI tools;",
+            text: "use of confidential information or regulated data in public or unapproved AI tools;",
           },
           {
             id: "i",
@@ -411,25 +442,83 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "7.3 Personnel shall use only approved AI tools and shall comply at all times with applicable Organisation rules regarding confidentiality, records, intellectual property, information security, communications, regulatory compliance and responsible use of technology. For avoidance of doubt, personnel, volunteers, Board members, consultants, contractors, and any other persons acting on behalf of the Organisation shall not, under any circumstances, input, upload, disclose, transmit, process, or otherwise provide to any Generative AI system for any purpose whatsoever, any information relating to the Organisation’s internal communication or processes or information relating to children under the programmes of the Organisation or their family including incident reports, social investigation report, assessments, care plan, complaints, medical records, personal data, confidential information, or any other personally identifiable information of any kind obtained through the Organisation's activities.",
+        text: "7.3 Personnel shall use only approved AI tools and shall comply at all times with applicable Organisation rules regarding confidentiality, records, intellectual property, information security, communications, regulatory compliance, child safeguarding, and responsible use of technology.",
       },
       {
         type: "p",
-        text: "7.4 Further to 7.4, the use of Generative AI systems in connection with any personal data or any document containing information relating to a child, the child's family, or any beneficiary of the Organisation is strictly prohibited. No such information shall be uploaded to, processed by, analysed by, or otherwise disclosed through a Generative AI system for any purpose whatsoever, including for drafting, reviewing, editing, or improving the content of any document or communication.",
+        text: "7.4 No person shall upload, disclose, transmit, process, or otherwise provide Sensitive Data, confidential information, safeguarding records, medical information, personal data relating to children or families, or any other restricted information to a public or unapproved Generative AI system.",
+      },
+      {
+        type: "p",
+        text: "7.5 Notwithstanding Clauses 7.3 and 7.4, the Organisation may use approved AI systems in connection with information relating to children, families, beneficiaries, programmes, or operations where:",
+      },
+      {
+        type: "clauses",
+        items: [
+          { id: "a", text: "the use has been approved in accordance with this Policy;" },
+          {
+            id: "b",
+            text: "appropriate contractual, technical, organisational, and safeguarding controls are in place;",
+          },
+          {
+            id: "c",
+            text: "the use complies with applicable data protection laws, child protection requirements, and the Organisation's Child Safeguarding and Protection Policy;",
+          },
+          { id: "d", text: "an AI Impact Assessment has been completed where required; and" },
+          { id: "e", text: "appropriate Human Oversight is maintained." },
+        ],
       },
     ],
   },
   {
     number: "8",
+    title: "Children and AI",
+    blocks: [
+      {
+        type: "p",
+        text: "8.1 The best interests, safety, dignity, wellbeing, and educational development of children shall be a primary consideration in the design, procurement, deployment, and use of AI systems by the Organisation.",
+      },
+      {
+        type: "p",
+        text: "8.2 No AI system shall be used as the sole basis for decisions relating to a child's educational placement, programme eligibility, safeguarding status, welfare assessment, residential placement, disciplinary action, scholarship opportunity, or access to support services.",
+      },
+      {
+        type: "p",
+        text: "8.3 All materially significant decisions affecting children shall be subject to meaningful human review and oversight.",
+      },
+      {
+        type: "p",
+        text: "8.4 The Organisation shall not use AI systems for behavioural manipulation, social scoring, exploitative profiling, targeted advertising to children, or any activity inconsistent with the best interests of the child.",
+      },
+      {
+        type: "p",
+        text: "8.5 AI systems that directly interact with children shall incorporate age-appropriate design, content-safety controls, safeguarding escalation pathways, and appropriate human supervision.",
+      },
+      {
+        type: "p",
+        text: "8.6 AI systems that interact directly with children shall provide clear mechanisms for escalation to a human teacher, caregiver, caseworker, or other responsible adult where appropriate.",
+      },
+      {
+        type: "p",
+        text: "8.7 This Policy shall be interpreted and applied consistently with the Organisation's Child Safeguarding and Protection Policy. Where a conflict arises, the Child Safeguarding and Protection Policy shall prevail.",
+      },
+    ],
+  },
+  {
+    number: "9",
     title: "AI Impact Assessment and Approval",
     blocks: [
       {
         type: "p",
-        text: "8.1 An AI Impact Assessment shall be completed before any material AI system is developed, procured, piloted, integrated or deployed.",
+        text: "9.1 An AI Impact Assessment shall be completed before any material AI system is developed, procured, piloted, integrated or deployed.",
       },
       {
         type: "p",
-        text: "8.2 AI Impact Assessments shall be reviewed and updated:",
+        text: "9.2 No High-Risk AI system shall be deployed without the approval of the Executive Director following review of the AI Impact Assessment. Material High-Risk AI deployments shall be reported to the Board at the next Board meeting.",
+      },
+      {
+        type: "p",
+        text: "9.3 AI Impact Assessments shall be reviewed and updated:",
       },
       {
         type: "clauses",
@@ -446,17 +535,17 @@ const sections: Section[] = [
     ],
   },
   {
-    number: "9",
+    number: "10",
     title:
       "Data Governance, Privacy, Confidentiality and Intellectual Property",
     blocks: [
       {
         type: "p",
-        text: "9.1 Data used in connection with AI systems must be relevant, appropriately sourced, suitably governed and used only in accordance with applicable law, contractual obligations, confidentiality duties and Organisation policy.",
+        text: "10.1 Data used in connection with AI systems must be relevant, appropriately sourced, suitably governed and used only in accordance with applicable law, contractual obligations, confidentiality duties and Organisation policy.",
       },
       {
         type: "p",
-        text: "9.2 The Organisation shall maintain appropriate controls relating to:",
+        text: "10.2 The Organisation shall maintain appropriate controls relating to:",
       },
       {
         type: "clauses",
@@ -479,29 +568,29 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "9.3 No person shall input Sensitive Data, confidential information, customer information, regulated data, trade secrets, privileged material, security credentials or proprietary source code into a public or unapproved AI tool except where expressly authorised and protected by approved contractual, technical and governance controls.",
+        text: "10.3 The Organisation shall take reasonable steps to assess and manage intellectual property, licensing and ownership risks associated with training data, prompts, outputs, model use and downstream deployment.",
       },
       {
         type: "p",
-        text: "9.4 The Organisation shall take reasonable steps to assess and manage intellectual property, licensing and ownership risks associated with training data, prompts, outputs, model use and downstream deployment.",
+        text: "10.4 AI-generated outputs shall be reviewed as appropriate for accuracy, suitability, legal risk, confidentiality risk, harmful content, bias and intellectual property risk before being relied upon for material internal or external use.",
       },
       {
         type: "p",
-        text: "9.5 AI-generated outputs shall be reviewed as appropriate for accuracy, suitability, legal risk, confidentiality risk, harmful content, bias and intellectual property risk before being relied upon for material internal or external use.",
+        text: "10.5 Where an AI system involves the transfer, storage, access, processing, or hosting of personal data outside Nigeria, the Organisation shall ensure that such transfer complies with applicable data protection laws and is subject to appropriate contractual, technical, and organisational safeguards.",
       },
     ],
   },
   {
-    number: "10",
+    number: "11",
     title: "Development, Procurement and Deployment Lifecycle Controls",
     blocks: [
       {
         type: "p",
-        text: "10.1 AI systems shall be governed throughout their lifecycle and shall not be treated as ordinary software without AI-specific control measures.",
+        text: "11.1 AI systems shall be governed throughout their lifecycle and shall not be treated as ordinary software without AI-specific control measures.",
       },
       {
         type: "p",
-        text: "10.2 The following minimum lifecycle requirements shall apply, as relevant to the system:",
+        text: "11.2 The following minimum lifecycle requirements shall apply, as relevant to the system:",
       },
       {
         type: "bullets",
@@ -547,20 +636,20 @@ const sections: Section[] = [
     ],
   },
   {
-    number: "11",
+    number: "12",
     title: "Human Oversight, Transparency and External Trust",
     blocks: [
       {
         type: "p",
-        text: "11.1 The Organisation shall maintain documentation sufficient to explain each material AI system’s purpose, approved uses, limitations, oversight model, owners, risk classification, monitoring arrangements and material dependencies.",
+        text: "12.1 The Organisation shall maintain documentation sufficient to explain each material AI system’s purpose, approved uses, limitations, oversight model, owners, risk classification, monitoring arrangements and material dependencies.",
       },
       {
         type: "p",
-        text: "11.2 Where appropriate to the context, and having regard to legal, commercial and security considerations, the Organisation shall provide clear information regarding the role of AI in relevant products, services, interactions or materially significant outputs.",
+        text: "12.2 Where appropriate to the context, and having regard to legal, commercial and security considerations, the Organisation shall provide clear information regarding the role of AI in relevant products, services, interactions or materially significant outputs.",
       },
       {
         type: "p",
-        text: "11.3 Human Oversight shall be proportionate to risk and may include:",
+        text: "12.3 Human Oversight shall be proportionate to risk and may include:",
       },
       {
         type: "clauses",
@@ -579,25 +668,25 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "11.4 AI outputs shall not be presumed to be correct solely because they were generated by an automated system. Users remain responsible for applying judgement, professional standards and Organisation controls.",
+        text: "12.4 AI outputs shall not be presumed to be correct solely because they were generated by an automated system. Users remain responsible for applying judgement, professional standards and Organisation controls.",
       },
       {
         type: "p",
-        text: "11.5 Where the Organisation uses AI-generated content externally, it shall ensure appropriate review, quality assurance, and disclosure where required or appropriate.",
+        text: "12.5 Where the Organisation uses AI-generated content externally, it shall ensure appropriate review, quality assurance, and disclosure where required or appropriate.",
       },
     ],
   },
   {
-    number: "12",
+    number: "13",
     title: "Third-Party AI Services and Vendor Governance",
     blocks: [
       {
         type: "p",
-        text: "12.1 Third-Party AI Services shall be subject to due diligence proportionate to the nature and risk of the proposed use.",
+        text: "13.1 Third-Party AI Services shall be subject to due diligence proportionate to the nature and risk of the proposed use.",
       },
       {
         type: "p",
-        text: "12.2 Due diligence shall consider, as appropriate:",
+        text: "13.2 Due diligence shall consider, as appropriate:",
       },
       {
         type: "clauses",
@@ -624,25 +713,29 @@ const sections: Section[] = [
       },
       {
         type: "p",
-        text: "12.3 Contracts involving Third-Party AI Services shall, where appropriate, address data protection, confidentiality, ownership and use of data and outputs, security obligations, restrictions on secondary use, incident reporting, compliance with applicable law, and rights of suspension or termination.",
+        text: "13.3 Contracts involving Third-Party AI Services shall, where appropriate, address data protection, confidentiality, ownership and use of data and outputs, security obligations, restrictions on secondary use, incident reporting, compliance with applicable law, and rights of suspension or termination.",
       },
       {
         type: "p",
-        text: "12.4 No third-party AI service may be connected to Organisation systems, workflows or data outside approved procurement, information security and governance processes.",
+        text: "13.4 No third-party AI service may be connected to Organisation systems, workflows or data outside approved procurement, information security and governance processes.",
+      },
+      {
+        type: "p",
+        text: "13.5 The Organisation shall not permit a Third-Party AI Service provider to use Organisation data, beneficiary data, child-related information, or other Sensitive Data for model training, model improvement, or secondary purposes except where expressly approved in writing, authorised by the Executive Director, and permitted under applicable law and Organisation policy.",
       },
     ],
   },
   {
-    number: "13",
+    number: "14",
     title: "Inventory, Records and Auditability",
     blocks: [
       {
         type: "p",
-        text: "13.1 The Organisation shall maintain and keep up to date an inventory of its material AI systems.",
+        text: "14.1 The Organisation shall maintain and keep up to date an inventory of its material AI systems.",
       },
       {
         type: "p",
-        text: "13.2 The inventory shall, at a minimum, record:",
+        text: "14.2 The inventory shall, at a minimum, record:",
       },
       {
         type: "clauses",
@@ -660,106 +753,119 @@ const sections: Section[] = [
             id: "g",
             text: "the categories of data used by or in connection with the system;",
           },
-          { id: "h", text: "the date of the last review; and" },
+          { id: "h", text: "the date of the last review;" },
           {
             id: "i",
-            text: "any material restrictions, incidents, decommissioning or retirement status.",
+            text: "any material restrictions, incidents, decommissioning or retirement status;",
+          },
+          { id: "j", text: "whether the system interacts directly with children;" },
+          {
+            id: "k",
+            text: "whether the system is classified as High-Risk or Restricted AI; and",
+          },
+          {
+            id: "l",
+            text: "whether an AI Impact Assessment has been completed.",
           },
         ],
       },
       {
         type: "p",
-        text: "13.3 Records of AI Impact Assessments, approvals, testing, incidents, monitoring, changes and retirement shall be retained in accordance with applicable law and the Organisation’s records management framework.",
+        text: "14.3 Records of AI Impact Assessments, approvals, testing, incidents, monitoring, changes, and retirement shall be retained in accordance with applicable law, including the Nigeria Data Protection Act 2023, regulations and guidance issued by the Nigeria Data Protection Commission, and the Organisation’s records management framework.",
       },
       {
         type: "p",
-        text: "13.4 AI governance records shall be accessible on a controlled basis to authorised management, legal, compliance, privacy, information security, risk and audit personnel.",
-      },
-    ],
-  },
-  {
-    number: "14",
-    title: "Incident Reporting, Escalation and Remediation",
-    blocks: [
-      {
-        type: "p",
-        text: "14.1 All personnel must promptly report actual or suspected AI-related incidents, harmful outputs, anomalies, misuse, security concerns, privacy concerns, system failures or breaches of this Policy.",
-      },
-      {
-        type: "p",
-        text: "14.2 The Organisation shall maintain procedures for the identification, triage, investigation, escalation, remediation and documentation of AI-related incidents.",
-      },
-      {
-        type: "p",
-        text: "14.3 Where necessary to prevent or limit harm, the Organisation may suspend, restrict, disable or withdraw an AI system pending review or remediation.",
-      },
-      {
-        type: "p",
-        text: "14.4 Material AI Incidents shall be escalated promptly to the relevant accountable owner, the executive owner for AI governance, and such governance, legal, compliance, privacy, security, risk or management stakeholders as may be appropriate.",
-      },
-      {
-        type: "p",
-        text: "14.5 Following a Material AI Incident, the Organisation shall conduct an appropriate post-incident review, including root-cause analysis, corrective action, control enhancement, record updates and any required regulatory, contractual or stakeholder notifications.",
+        text: "14.4 AI governance records shall be accessible on a controlled basis to authorised management, governance, legal, privacy, information security, safeguarding, compliance, risk, or audit personnel.",
       },
     ],
   },
   {
     number: "15",
-    title: "Training, Awareness and Acceptable Use",
+    title: "Incident Reporting, Escalation and Remediation",
     blocks: [
       {
         type: "p",
-        text: "15.1 The Organisation shall promote an appropriate level of AI literacy across the organisation and provide training proportionate to role and responsibility. Such training may include: general awareness for all personnel; child safeguarding considerations; specialised training for developers, product owners, reviewers and governance stakeholders; legal, ethical, privacy, security and confidentiality obligations; risks associated with generative AI, prompts, outputs and model misuse; and reporting and escalation obligations.",
+        text: "15.1 All personnel must promptly report actual or suspected AI-related incidents, harmful outputs, anomalies, misuse, security concerns, privacy concerns, system failures or breaches of this Policy.",
+      },
+      {
+        type: "p",
+        text: "15.2 The Organisation shall maintain procedures for the identification, triage, investigation, escalation, remediation and documentation of AI-related incidents.",
+      },
+      {
+        type: "p",
+        text: "15.3 Where necessary to prevent or limit harm, the Organisation may suspend, restrict, disable or withdraw an AI system pending review or remediation.",
+      },
+      {
+        type: "p",
+        text: "15.4 Material AI Incidents shall be escalated promptly to the relevant accountable owner, the executive owner for AI governance, and such governance, legal, compliance, privacy, security, risk or management stakeholders as may be appropriate.",
+      },
+      {
+        type: "p",
+        text: "15.5 Following a Material AI Incident, the Organisation shall conduct an appropriate post-incident review, including root-cause analysis, corrective action, control enhancement, record updates and any required regulatory, contractual or stakeholder notifications.",
       },
     ],
   },
   {
     number: "16",
-    title: "Compliance, Exceptions and Enforcement",
+    title: "Training, Awareness and Acceptable Use",
     blocks: [
-      { type: "p", text: "16.1 Compliance with this Policy is mandatory." },
       {
         type: "p",
-        text: "16.2 Any exception to this Policy must be documented, justified and approved by the appropriate authority designated by the Organisation. No exception may be granted in respect of a prohibited use save where required by law and approved at the highest applicable governance level.",
-      },
-      {
-        type: "p",
-        text: "16.3 Any breach of this Policy may result in disciplinary action, suspension of access, contractual consequences, termination of engagement, legal action, regulatory reporting, recovery of losses, or any other appropriate remedial measure.",
-      },
-      {
-        type: "p",
-        text: "16.4 Any business unit, project team or individual that develops, deploys or uses AI outside approved governance channels may be required to suspend such activity immediately and undertake remedial review or corrective action.",
+        text: "16.1 The Organisation shall promote an appropriate level of AI literacy across the organisation and provide training proportionate to role and responsibility. Such training may include: general awareness for all personnel; child safeguarding considerations; specialised training for developers, product owners, reviewers and governance stakeholders; legal, ethical, privacy, security and confidentiality obligations; risks associated with generative AI, prompts, outputs and model misuse; and reporting and escalation obligations.",
       },
     ],
   },
   {
     number: "17",
-    title: "Review and Continuous Improvement",
+    title: "Compliance, Exceptions and Enforcement",
     blocks: [
+      { type: "p", text: "17.1 Compliance with this Policy is mandatory." },
       {
         type: "p",
-        text: "17.1 This Policy shall be reviewed at least annually and more frequently where necessary to reflect changes in applicable law, regulation, standards or guidance; material changes in the Organisation’s AI activities or risk profile; lessons arising from incidents, audits, assessments or reviews; or material technological developments.",
+        text: "17.2 Any exception to this Policy must be documented, justified and approved by the appropriate authority designated by the Organisation. No exception may be granted in respect of a prohibited use save where required by law and approved at the highest applicable governance level.",
       },
       {
         type: "p",
-        text: "17.2 The Organisation shall continue to refine its AI governance framework, implementation standards and control environment in line with evolving best practice, regulations, law, or stakeholder expectations.",
+        text: "17.3 Any breach of this Policy may result in disciplinary action, suspension of access, contractual consequences, termination of engagement, legal action, regulatory reporting, recovery of losses, or any other appropriate remedial measure.",
+      },
+      {
+        type: "p",
+        text: "17.4 Any team, project, programme, or individual that develops, deploys or uses AI outside approved governance channels may be required to suspend such activity immediately and undertake remedial review or corrective action.",
       },
     ],
   },
   {
     number: "18",
+    title: "Review and Continuous Improvement",
+    blocks: [
+      {
+        type: "p",
+        text: "18.1 This Policy shall be reviewed at least annually and more frequently where necessary to reflect changes in applicable law, regulation, standards or guidance; material changes in the Organisation’s AI activities or risk profile; lessons arising from incidents, audits, assessments or reviews; or material technological developments.",
+      },
+      {
+        type: "p",
+        text: "18.2 The Organisation shall continue to refine its AI governance framework, implementation standards and control environment in line with evolving best practice, regulations, law, or stakeholder expectations.",
+      },
+    ],
+  },
+  {
+    number: "19",
     title: "Public Commitment",
     blocks: [
       {
         type: "p",
-        text: "18.1 TDT recognises that responsible AI governance is fundamental to trust, innovation and long-term corporate accountability. The Organisation is committed to developing and using AI in a manner that is lawful, ethical, accountable, secure and aligned with the interests of its stakeholders and the broader public.",
+        text: "19.1 The Destiny Trust recognises that responsible AI governance is fundamental to trust, safeguarding, innovation, and the wellbeing of the children and communities it serves. The Organisation is committed to developing and using AI in a manner that is lawful, ethical, accountable, secure and aligned with the interests of its stakeholders and the broader public.",
+      },
+      {
+        type: "p",
+        text: "The implementation of this Policy shall be supported by an AI Impact Assessment template, an AI Systems Inventory, approved AI usage guidance, and such additional procedures or controls as may be required by the Organisation. The Executive Director shall ensure that these supporting instruments are established within a 60-day period following adoption of this Policy.",
       },
     ],
   },
 ];
 
 const policyMeta: { label: string; value: string }[] = [
-  { label: "Effective Date", value: "June 1, 2026" },
+  { label: "Effective Date", value: "June 7, 2026" },
   { label: "Approver", value: "Board of Trustees" },
   { label: "Review Cycle", value: "Annually" },
 ];
@@ -829,10 +935,8 @@ function renderBlock(block: Block, key: number) {
 
 const AIEthicsPolicyPage = () => {
   return (
-    <Container>
-      <main className="mx-auto max-w-7xl py-12 sm:py-16">
-        <div className="">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
+    <PolicyLayout>
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
             The Destiny Trust Children Foundation
           </p>
           <h1 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -889,9 +993,7 @@ const AIEthicsPolicyPage = () => {
               Get involved
             </Link>
           </div>
-        </div>
-      </main>
-    </Container>
+    </PolicyLayout>
   );
 };
 

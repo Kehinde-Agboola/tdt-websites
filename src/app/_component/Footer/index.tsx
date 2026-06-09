@@ -68,11 +68,6 @@ function buildFooterSectionsFromNav(): FooterNavSection[] {
 
 const footerNavSections = buildFooterSectionsFromNav();
 
-/** Bottom-bar legal/policy links (T&C-style row near the copyright). */
-const FOOTER_LEGAL_LINKS: { label: string; href: string }[] = [
-  { label: "Destiny Trust AI Policy", href: "/ai-ethics-policy" },
-  { label: "Child Safeguarding Policy", href: "/child-safeguarding-policy" },
-];
 
 function ContactBlock() {
   return (
@@ -203,26 +198,21 @@ const Footer = () => {
                     </ul>
                   </div>
                 ))}
-              </div>
-            </nav>
 
-            {/* Legal / policy links — directly under the site-map nav */}
-            <nav
-              aria-label="Legal"
-              className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm lg:justify-center"
-            >
-              {FOOTER_LEGAL_LINKS.map((link, i) => (
-                <span key={link.href} className="flex items-center gap-x-4">
-                  {i > 0 && (
-                    <span aria-hidden className="text-white/30">
-                      |
-                    </span>
-                  )}
-                  <Link href={link.href} className={footerLinkClass}>
-                    {link.label}
-                  </Link>
-                </span>
-              ))}
+                {/* Policies — single link to the policies hub */}
+                <div>
+                  <p className="mb-3 text-sm font-semibold text-[#FFB400]">
+                    Policies
+                  </p>
+                  <ul className="space-y-2 text-sm text-white/90">
+                    <li>
+                      <Link href="/policies" className={footerLinkClass}>
+                        View all policies
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </nav>
           </motion.div>
 

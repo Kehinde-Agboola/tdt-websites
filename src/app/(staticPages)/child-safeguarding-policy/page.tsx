@@ -1,5 +1,5 @@
-import Container from "@/app/_component/shared";
 import Link from "next/link";
+import PolicyLayout from "@/app/_component/PolicyLayout";
 
 type Block =
   | { type: "p"; text: string }
@@ -839,10 +839,8 @@ function renderSections(sections: Section[]) {
 
 const ChildSafeguardingPolicyPage = () => {
   return (
-    <Container>
-      <main className="mx-auto max-w-7xl py-12 sm:py-16">
-        <div className="">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
+    <PolicyLayout>
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
             The Destiny Trust
           </p>
           <h1 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -1034,9 +1032,7 @@ const ChildSafeguardingPolicyPage = () => {
               Get involved
             </Link>
           </div>
-        </div>
-      </main>
-    </Container>
+    </PolicyLayout>
   );
 };
 
