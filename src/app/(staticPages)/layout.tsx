@@ -4,7 +4,7 @@ import Footer from "@/app/_component/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "The Destiny Trust ",
+    default: "The Destiny Trust | Education, shelter, care, and empowerment for children",
     template: "%s | The Destiny Trust",
   },
   description:
