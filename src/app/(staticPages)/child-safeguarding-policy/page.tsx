@@ -17,7 +17,7 @@ const policySections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "The Destiny Trust Children Foundation (“The Destiny Trust”) is committed to creating and sustaining a safe, inclusive, and child-centred environment for every child and young person who engages with, benefits from, or is affected by our work.",
+        text: "The Destiny Trust Children (“The Destiny Trust”) is committed to creating and sustaining a safe, inclusive, and child-centred environment for every child and young person who engages with, benefits from, or is affected by our work.",
       },
       {
         type: "p",
@@ -776,7 +776,7 @@ function renderBlock(block: Block, key: number) {
         <ul key={key} className="space-y-3 pl-1">
           {block.items.map((item, i) => (
             <li key={i} className="flex gap-3 text-sm leading-relaxed text-gray-700">
-              <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FFB400]" />
+              <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-yellow" />
               <span>
                 {item.title && (
                   <span className="font-semibold text-gray-900">
@@ -829,7 +829,7 @@ function renderSections(sections: Section[]) {
   return sections.map((section) => (
     <section key={section.number} className="space-y-4">
       <h2 className="text-xl font-bold text-gray-900">
-        <span className="text-[#9A6B00]">{section.number}.</span>{" "}
+        <span className="text-yellow">{section.number}.</span>{" "}
         {section.title}
       </h2>
       {section.blocks.map((block, i) => renderBlock(block, i))}
@@ -840,7 +840,7 @@ function renderSections(sections: Section[]) {
 const ChildSafeguardingPolicyPage = () => {
   return (
     <PolicyLayout>
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow">
             The Destiny Trust
           </p>
           <h1 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -855,7 +855,7 @@ const ChildSafeguardingPolicyPage = () => {
           <dl className="mt-6 grid gap-3 rounded-2xl bg-[#FFF8E5] p-5 sm:grid-cols-4">
             {policyMeta.map((meta) => (
               <div key={meta.label}>
-                <dt className="text-xs font-semibold uppercase tracking-wide text-[#9A6B00]">
+                <dt className="text-xs font-semibold uppercase tracking-wide text-yellow">
                   {meta.label}
                 </dt>
                 <dd className="mt-1 text-sm font-medium text-gray-900">
@@ -869,7 +869,7 @@ const ChildSafeguardingPolicyPage = () => {
 
           {/* Annexure I — Code of Conduct */}
           <div className="mt-14 border-t border-gray-200 pt-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow">
               Annexure I
             </p>
             <h2 className="mt-2 text-2xl font-bold text-gray-900">
@@ -904,7 +904,7 @@ const ChildSafeguardingPolicyPage = () => {
 
           {/* Annexure II — Acknowledgement and Declaration */}
           <div className="mt-14 border-t border-gray-200 pt-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow">
               Annexure II
             </p>
             <h2 className="mt-2 text-2xl font-bold text-gray-900">
@@ -946,7 +946,7 @@ const ChildSafeguardingPolicyPage = () => {
                   >
                     <span
                       aria-hidden
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FFB400]"
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-yellow"
                     />
                     <span>{text}</span>
                   </li>
@@ -968,7 +968,7 @@ const ChildSafeguardingPolicyPage = () => {
                 "Date",
               ].map((label) => (
                 <div key={label}>
-                  <dt className="text-xs font-semibold uppercase tracking-wide text-[#9A6B00]">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-yellow">
                     {label}
                   </dt>
                   <dd className="mt-3 border-b border-dashed border-gray-400" />
@@ -985,7 +985,7 @@ const ChildSafeguardingPolicyPage = () => {
               </p>
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-[#9A6B00]">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-yellow">
                     For and on behalf of the Board of Trustees
                   </p>
                   <p className="mt-2 font-semibold text-gray-900">
@@ -997,7 +997,7 @@ const ChildSafeguardingPolicyPage = () => {
                   </p>
                 </div>
                 <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-[#9A6B00]">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-yellow">
                     For and on behalf of Management
                   </p>
                   <p className="mt-2 font-semibold text-gray-900">

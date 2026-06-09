@@ -18,8 +18,8 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "The Destiny Trust Foundation",
-  description: "The Destiny Trust Foundation",
+  title: "The Destiny Trust ",
+  description: "The Destiny Trust",
 };
 
 export default function RootLayout({

@@ -9,7 +9,7 @@ type Block =
 const blocks: Block[] = [
   {
     type: "p",
-    text: "Welcome to The Destiny Trust Children Foundation (“The Destiny Trust”), a non-profit registered under the Laws of the Federal Republic of Nigeria with registration number CAC/IT/NO 58124. These Terms of Use, along with our Privacy Policy, govern your use of our website. As used in these Terms of Use, \"our service\" or \"the service\" means the activities and service provided on our sites located at www.destinytrust.org (“the Website”), including all features and functionalities, website, and user interfaces, as well as software associated with the Service.",
+    text: "Welcome to The Destiny Trust Children (“The Destiny Trust”), a non-profit registered under the Laws of the Federal Republic of Nigeria with registration number CAC/IT/NO 58124. These Terms of Use, along with our Privacy Policy, govern your use of our website. As used in these Terms of Use, \"our service\" or \"the service\" means the activities and service provided on our sites located at www.destinytrust.org (“the Website”), including all features and functionalities, website, and user interfaces, as well as software associated with the Service.",
   },
   {
     type: "p",
@@ -17,7 +17,7 @@ const blocks: Block[] = [
   },
   {
     type: "p",
-    text: "The following words used in this Statement of Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements shall have the following meaning: \"You\" and \"Your\" refers to you, the person using our services and accepting this Terms and Conditions. \"The Destiny Trust Children Foundation\", \"The Destiny Trust\", “TDT”, \"Ourselves\", “Our”, \"We\" and \"Us\", refers to The Destiny Trust. \"Party\", \"Parties\" refers to both you and ourselves, or either you or ourselves. These terms apply to the entire contents of our website and to any correspondence between you and us.",
+    text: "The following words used in this Statement of Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements shall have the following meaning: \"You\" and \"Your\" refers to you, the person using our services and accepting this Terms and Conditions. \"The Destiny Trust Children\", \"The Destiny Trust\", “TDT”, \"Ourselves\", “Our”, \"We\" and \"Us\", refers to The Destiny Trust. \"Party\", \"Parties\" refers to both you and ourselves, or either you or ourselves. These terms apply to the entire contents of our website and to any correspondence between you and us.",
   },
   {
     type: "p",
@@ -230,7 +230,7 @@ function renderBlock(block: Block, key: number) {
               key={i}
               className="flex gap-3 text-sm leading-relaxed text-gray-700"
             >
-              <span className="shrink-0 font-medium text-[#9A6B00]">
+              <span className="shrink-0 font-medium text-yellow">
                 {item.id}.
               </span>
               <span>
@@ -251,8 +251,8 @@ function renderBlock(block: Block, key: number) {
 const TermsOfUsePage = () => {
   return (
     <PolicyLayout>
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
-            The Destiny Trust Children Foundation
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow">
+            The Destiny Trust Children
           </p>
           <h1 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
             Terms of Use

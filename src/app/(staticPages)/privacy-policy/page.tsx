@@ -183,7 +183,7 @@ function renderBlock(block: Block, key: number) {
       );
     case "h3":
       return (
-        <h3 key={key} className="text-base font-semibold text-[#9A6B00]">
+        <h3 key={key} className="text-base font-semibold text-yellow">
           {block.text}
         </h3>
       );
@@ -197,7 +197,7 @@ function renderBlock(block: Block, key: number) {
             >
               <span
                 aria-hidden
-                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FFB400]"
+                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-yellow"
               />
               <span>{item}</span>
             </li>
@@ -210,8 +210,8 @@ function renderBlock(block: Block, key: number) {
 const PrivacyPolicyPage = () => {
   return (
     <PolicyLayout>
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
-            The Destiny Trust Children Foundation
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow">
+            The Destiny Trust Children
           </p>
           <h1 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
             Privacy Policy

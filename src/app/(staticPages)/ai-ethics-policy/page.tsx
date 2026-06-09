@@ -17,7 +17,7 @@ const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "1.1 The Destiny Trust Children Foundation (“TDT” or the “Organisation”) recognises the significant opportunities presented by Artificial Intelligence (“AI”) to enhance programme effectiveness, operational efficiency, innovation, research, fundraising, monitoring and evaluation, and beneficiary support services.",
+        text: "1.1 The Destiny Trust Children (“TDT” or the “Organisation”) recognises the significant opportunities presented by Artificial Intelligence (“AI”) to enhance programme effectiveness, operational efficiency, innovation, research, fundraising, monitoring and evaluation, and beneficiary support services.",
       },
       {
         type: "p",
@@ -890,7 +890,7 @@ function renderBlock(block: Block, key: number) {
           {block.items.map((item, i) => (
             <li key={i} className="flex gap-3 text-sm leading-relaxed text-gray-700">
               {item.id && (
-                <span className="shrink-0 font-medium text-[#9A6B00]">
+                <span className="shrink-0 font-medium text-yellow">
                   {item.id}.
                 </span>
               )}
@@ -904,7 +904,7 @@ function renderBlock(block: Block, key: number) {
         <ul key={key} className="space-y-3 pl-1">
           {block.items.map((item, i) => (
             <li key={i} className="flex gap-3 text-sm leading-relaxed text-gray-700">
-              <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FFB400]" />
+              <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-yellow" />
               <span>
                 {item.title && (
                   <span className="font-semibold text-gray-900">
@@ -936,8 +936,8 @@ function renderBlock(block: Block, key: number) {
 const AIEthicsPolicyPage = () => {
   return (
     <PolicyLayout>
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9A6B00]">
-            The Destiny Trust Children Foundation
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow">
+            The Destiny Trust Children
           </p>
           <h1 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
             AI Ethics and Governance Policy
@@ -952,7 +952,7 @@ const AIEthicsPolicyPage = () => {
           <dl className="mt-6 grid gap-3 rounded-2xl bg-[#FFF8E5] p-5 sm:grid-cols-3">
             {policyMeta.map((meta) => (
               <div key={meta.label}>
-                <dt className="text-xs font-semibold uppercase tracking-wide text-[#9A6B00]">
+                <dt className="text-xs font-semibold uppercase tracking-wide text-yellow">
                   {meta.label}
                 </dt>
                 <dd className="mt-1 text-sm font-medium text-gray-900">
@@ -966,7 +966,7 @@ const AIEthicsPolicyPage = () => {
             {sections.map((section) => (
               <section key={section.number} className="space-y-4">
                 <h2 className="text-xl font-bold text-gray-900">
-                  <span className="text-[#9A6B00]">{section.number}.</span>{" "}
+                  <span className="text-yellow">{section.number}.</span>{" "}
                   {section.title}
                 </h2>
                 {section.blocks.map((block, i) => renderBlock(block, i))}
