@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "upload-blob": "node scripts/upload-blob.mjs"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
@@ -44,6 +45,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vercel/blob": "^2.4.0",
     "eslint": "^8",
     "eslint-config-next": "15.5.9",
     "playwright": "^1.56.1",

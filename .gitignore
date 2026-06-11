@@ -47,4 +47,7 @@ public/videos.mp4
 
 # Local videos are stored outside git (use Supabase Storage URLs instead)
 public/videos/*
+
+# Financial/impact report PDFs are too large for GitHub — served from cloud storage
+public/files/*
 !public/videos/.gitkeep

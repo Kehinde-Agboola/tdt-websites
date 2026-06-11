@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { supabase } from '@/lib/supabase';
 import { Button } from '@/app/_component/atom/button';
 import { ModalSelect } from '@/app/_component/ui/ModalSelect';
 
@@ -40,13 +41,25 @@ export default function VolunteerForm() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://your-admin-domain.vercel.app/api/admin/submissions/volunteer_submissions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      if (!supabase) {
+        setSubmitStatus('error');
+        setIsSubmitting(false);
+        return;
+      }
 
-      if (!response.ok) throw new Error('Submission failed');
+      const { error } = await supabase.from('volunteer_submissions').insert([
+        {
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          availability: formData.availability,
+          skills: formData.skills,
+          message: formData.message,
+        },
+      ]);
+
+      if (error) throw error;
 
       setSubmitStatus('success');
       setFormData({

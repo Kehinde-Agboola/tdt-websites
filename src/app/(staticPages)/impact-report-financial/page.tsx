@@ -7,97 +7,105 @@ import { Eye, Download } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import Link from "next/link";
 
+// PDFs are served from Vercel Blob in production (too large to ship in the repo).
+// Falls back to local /public/files in development when the env var is unset.
+const BLOB_BASE = process.env.NEXT_PUBLIC_BLOB_BASE_URL ?? "";
+const fileUrl = (name: string) =>
+  BLOB_BASE
+    ? `${BLOB_BASE}/${encodeURIComponent(name)}`
+    : `/files/${encodeURIComponent(name)}`;
+
 // Reports Data
 const reports = [
   {
     year: 2025,
     title: "2025 Impact Report",
-    file: "/files/The Destiny Trust Mid-year Report 2024_.pdf",
+    file: fileUrl("The Destiny Trust Mid-year Report 2024_.pdf"),
   },
   {
     year: 2024,
     title: "2024 Mid-year Report",
-    file: "/files/The Destiny Trust Mid-year Report 2024_.pdf",
+    file: fileUrl("The Destiny Trust Mid-year Report 2024_.pdf"),
   },
   {
     year: 2023,
     title: "2023 Annual Report",
-    file: "/files/TDT 2023 Annual Report.pdf",
+    file: fileUrl("TDT 2023 Annual Report.pdf"),
   },
   {
     year: 2022,
     title: "2022 Annual Report",
-    file: "/files/TDT 2022 Annual Report.pdf",
+    file: fileUrl("TDT 2022 Annual Report.pdf"),
   },
   {
     year: 2022,
     title: "2022 Impact Story",
-    file: "/files/The Destiny Trust Impact Report 2022.pdf",
+    file: fileUrl("The Destiny Trust Impact Report 2022.pdf"),
   },
   {
     year: 2021,
     title: "2021 Impact Story",
-    file: "/files/2021 Destiny Trust Impact Report.pdf",
+    file: fileUrl("2021 Destiny Trust Impact Report.pdf"),
   },
   {
     year: 2020,
     title: "Financials",
-    file: "/files/2020 TDT Financials.pdf",
+    file: fileUrl("2020 TDT Financials.pdf"),
   },
   {
     year: 2020,
     title: "2020 Impact Story",
-    file: "/files/2020 TDT Financials.pdf",
+    file: fileUrl("2020 TDT Financials.pdf"),
   },
   {
     year: 2019,
     title: "Financials",
-    file: "/files/2019 TDT Financials.pdf",
+    file: fileUrl("2019 TDT Financials.pdf"),
   },
   {
     year: 2019,
     title: "2019 Impact Story",
-    file: "/files/2019 TDT Impact Report.pdf",
+    file: fileUrl("2019 TDT Impact Report.pdf"),
   },
   {
     year: 2018,
     title: "Financials",
-    file: "/files/2018 TDT Financials.pdf",
+    file: fileUrl("2018 TDT Financials.pdf"),
   },
   {
     year: 2018,
     title: "2018 Impact Story",
-    file: "/files/2018 TDT Impact Report.pdf",
+    file: fileUrl("2018 TDT Impact Report.pdf"),
   },
   {
     year: 2017,
     title: "Financials",
-    file: "/files/2017 TDT Financials.pdf",
+    file: fileUrl("2017 TDT Financials.pdf"),
   },
   {
     year: 2016,
     title: "Financials",
-    file: "/files/2016 TDT Financials.pdf",
+    file: fileUrl("2016 TDT Financials.pdf"),
   },
   {
     year: 2015,
     title: "Financials",
-    file: "/files/2015 TDT Financials.pdf",
+    file: fileUrl("2015 TDT Financials.pdf"),
   },
   {
     year: 2014,
     title: "Financials",
-    file: "/files/2014 TDT Financials.pdf",
+    file: fileUrl("2014 TDT Financials.pdf"),
   },
   {
     year: 2013,
     title: "Financials",
-    file: "/files/2013 TDT Financials.pdf",
+    file: fileUrl("2013 TDT Financials.pdf"),
   },
   {
     year: 2012,
     title: "Financials",
-    file: "/files/2012 TDT Financials.pdf",
+    file: fileUrl("2012 TDT Financials.pdf"),
   },
 ];
 
@@ -168,7 +176,7 @@ const FinancialReports = () => {
               onClick={() =>
                 openPDFViewer({
                   title: "2025 Impact Report",
-                  file: "/files/The Destiny Trust Mid-year Report 2024_.pdf",
+                  file: fileUrl("The Destiny Trust Mid-year Report 2024_.pdf"),
                 })
               }
               className="mt-5 inline-flex rounded-full bg-[#FFB400] px-5 py-3 text-sm font-medium text-black transition-colors hover:bg-[#e0a800]"
