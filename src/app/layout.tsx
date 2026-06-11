@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Head from "next/head";
 import { Open_Sans, Raleway } from "next/font/google";
 import { LoadingProvider } from "@/contexts/LoadingContext";
 import ClientOnlyProgressBar from "@/components/ui/ClientOnlyProgressBar";
@@ -18,8 +17,13 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "The Destiny Trust ",
+  title: "The Destiny Trust",
   description: "The Destiny Trust",
+  icons: {
+    icon: "/destinytrust-logo-white.png",
+    shortcut: "/destinytrust-logo-white.png",
+    apple: "/destinytrust-logo-white.png",
+  },
 };
 
 export default function RootLayout({
@@ -32,9 +36,6 @@ export default function RootLayout({
       lang="en"
       className={`${raleway.variable} ${openSans.variable}`}
     >
-      <Head>The Destiny Trust Foundation</Head>
-      <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
-
       <body
         className={`${raleway.className} font-sans antialiased text-gray-900`}
         suppressHydrationWarning={true}

@@ -1,8 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Container from "@/app/_component/shared";
-import PDFBookViewer from "@/app/_component/ui/PDFBookViewer";
 import { Eye, Download } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import Link from "next/link";
@@ -110,29 +109,6 @@ const reports = [
 ];
 
 const FinancialReports = () => {
-  const [selectedReport, setSelectedReport] = useState<{
-    title: string;
-    file: string;
-  } | null>(null);
-  const [isPDFViewerOpen, setIsPDFViewerOpen] = useState(false);
-
-  const openPDFViewer = (report: { title: string; file: string }) => {
-    setSelectedReport(report);
-    setIsPDFViewerOpen(true);
-  };
-
-  const closePDFViewer = () => {
-    setIsPDFViewerOpen(false);
-    setSelectedReport(null);
-  };
-
-  const handleDownload = (report: { title: string; file: string }, e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent opening the viewer when downloading
-    const link = document.createElement('a');
-    link.href = report.file;
-    link.download = `${report.title}.pdf`;
-    link.click();
-  };
   return (
     <Container>
       <AnimatedSection as="section" className="my-10 px-0 sm:my-14 md:my-16">
@@ -171,18 +147,14 @@ const FinancialReports = () => {
             <p className="mt-3 text-sm leading-relaxed text-gray-700">
               Open the latest impact report from The Destiny Trust.
             </p>
-            <button
-              type="button"
-              onClick={() =>
-                openPDFViewer({
-                  title: "2025 Impact Report",
-                  file: fileUrl("The Destiny Trust Mid-year Report 2024_.pdf"),
-                })
-              }
+            <a
+              href={fileUrl("The Destiny Trust Mid-year Report 2024_.pdf")}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-5 inline-flex rounded-full bg-[#FFB400] px-5 py-3 text-sm font-medium text-black transition-colors hover:bg-[#e0a800]"
             >
               Read report
-            </button>
+            </a>
           </div>
         </motion.div>
 
@@ -208,51 +180,48 @@ const FinancialReports = () => {
                 scale: 1.02,
                 boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1)",
               }}
-              className="group flex cursor-pointer flex-col justify-between rounded-lg border border-gray-200 bg-white p-5 shadow-sm"
+              className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"
             >
-              {/* Year */}
-              <div className="mb-2 text-sm font-medium text-gray-700">
-                {report.year}
-              </div>
-
-              {/* Title */}
-              <div className="mb-4 flex items-center text-lg font-semibold text-gray-900">
-                {report.title}
-                <span className="ml-2 rounded bg-yellow-400 px-2 py-1 text-xs text-white">
+              {/* Year banner — acts as the card image */}
+              <div className="relative flex h-32 items-center justify-center bg-gradient-to-br from-[#FFB400] to-[#9A6B00]">
+                <span className="text-5xl font-extrabold tracking-tight text-white drop-shadow-md">
+                  {report.year}
+                </span>
+                <span className="absolute right-3 top-3 rounded bg-black/25 px-2 py-1 text-xs font-medium uppercase tracking-wide text-white">
                   .pdf
                 </span>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex gap-2">
-                <button
-                  onClick={() => openPDFViewer(report)}
-                  className="flex flex-1 items-center justify-center gap-2 rounded bg-[#FFB400] px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-[#e0a800]"
-                >
-                  <Eye size={16} />
-                  Read
-                </button>
-                <button
-                  onClick={(e) => handleDownload(report, e)}
-                  className="flex items-center justify-center rounded border border-gray-300 px-3 py-2 text-gray-700 transition-colors hover:bg-gray-50"
-                  title="Download PDF"
-                >
-                  <Download size={16} />
-                </button>
+              {/* Body */}
+              <div className="flex flex-1 flex-col justify-between p-5">
+                <h3 className="mb-4 text-lg font-semibold text-gray-900">
+                  {report.title}
+                </h3>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2">
+                  <a
+                    href={report.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-1 items-center justify-center gap-2 rounded bg-[#FFB400] px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-[#e0a800]"
+                  >
+                    <Eye size={16} />
+                    Read
+                  </a>
+                  <a
+                    href={report.file}
+                    download={`${report.title}.pdf`}
+                    className="flex items-center justify-center rounded border border-gray-300 px-3 py-2 text-gray-700 transition-colors hover:bg-gray-50"
+                    title="Download PDF"
+                  >
+                    <Download size={16} />
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* PDF Book Viewer Modal */}
-        {selectedReport && (
-          <PDFBookViewer
-            isOpen={isPDFViewerOpen}
-            onClose={closePDFViewer}
-            pdfUrl={selectedReport.file}
-            title={selectedReport.title}
-          />
-        )}
       </AnimatedSection>
     </Container>
   );
