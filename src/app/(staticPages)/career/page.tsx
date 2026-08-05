@@ -132,35 +132,35 @@ export default function CareerPage() {
   };
 
   return (
-    <main className="min-w-0 bg-[#f7f5ef] text-slate-900">
+    <main className="min-w-0 bg-white text-gray-900">
       <AnimatedSection
         as="section"
         animateOnMount
-        className="relative overflow-hidden border-b border-black/5 bg-[radial-gradient(circle_at_top_right,_rgba(255,180,0,0.18),_transparent_32%),linear-gradient(180deg,_#fff8e8_0%,_#f7f5ef_100%)] px-4 py-20 sm:px-6 lg:px-8"
+        className="relative overflow-hidden border-b border-gray-100 bg-gradient-to-b from-gray-50 to-white px-4 py-16 sm:px-6 lg:px-8"
       >
         <Container className="relative z-10">
           <div className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center rounded-full border border-[#FFB400]/25 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#8a6400] shadow-sm backdrop-blur">
+            {/* <span className="inline-flex items-center rounded-full bg-[#FFB400] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-black shadow-sm">
               Careers at The Destiny Trust
-            </span>
-            <h1 className="mt-6 font-heading text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            </span> */}
+            <h1 className="mt-6 font-heading text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Open roles that help children learn, thrive and stay in school.
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
+            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-gray-600 sm:text-lg">
               Current vacancies are listed below. Each opening supports our work
               across education, systems strengthening, care and operations.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-black/5">
+              <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
                 <MapPin className="h-4 w-4 text-[#FFB400]" />
                 Kaduna State and Lagos State
               </div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-black/5">
+              {/* <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
                 <BriefcaseBusiness className="h-4 w-4 text-[#FFB400]" />
                 2 current openings
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-black/5">
+              </div> */}
+              <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
                 <Clock3 className="h-4 w-4 text-[#FFB400]" />
                 Deadline: August 15, 2026
               </div>
@@ -173,16 +173,16 @@ export default function CareerPage() {
         <Container>
           <div className="mb-10 flex items-end justify-between gap-6">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#8a6400]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#FFB400]">
                 Current openings
               </p>
-              <h2 className="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
+              <h2 className="mt-3 font-heading text-2xl font-bold text-gray-900 sm:text-3xl">
                 Find the role that fits your experience.
               </h2>
             </div>
             <a
               href="mailto:hello@destinytrust.org"
-              className="hidden items-center gap-2 text-sm font-medium text-[#9a6b00] transition-colors hover:text-[#6e4d00] sm:inline-flex"
+              className="hidden items-center gap-2 text-sm font-medium text-gray-900 transition-colors hover:text-[#FFB400] sm:inline-flex"
             >
               hello@destinytrust.org
               <ArrowRight className="h-4 w-4" />
@@ -197,40 +197,40 @@ export default function CareerPage() {
               return (
                 <Card
                   key={role.id}
-                  className="overflow-hidden border border-black/5 bg-white/95 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur transition-all"
+                  className="overflow-hidden border border-gray-200 bg-white shadow-sm transition-all"
                 >
                   {/* Dropdown Trigger Header */}
                   <button
                     type="button"
                     onClick={() => toggleRole(role.id)}
-                    className="w-full text-left transition-colors hover:bg-[#fffdf5]"
+                    className="w-full text-left transition-colors hover:bg-gray-50"
                     aria-expanded={isOpen}
                   >
-                    <CardHeader className="bg-gradient-to-r from-[#fff7dd] to-white p-6">
+                    <CardHeader className="bg-white p-6">
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex-1">
-                          <CardDescription className="text-xs font-semibold uppercase tracking-[0.24em] text-[#8a6400]">
+                          <CardDescription className="text-xs font-semibold uppercase tracking-[0.24em] text-[#FFB400]">
                             Open position
                           </CardDescription>
-                          <CardTitle className="mt-2 text-xl text-slate-900 sm:text-2xl">
+                          <CardTitle className="mt-2 font-heading text-xl text-gray-900 sm:text-2xl">
                             {role.title}
                           </CardTitle>
 
                           <div className="mt-3 flex flex-wrap gap-2 text-xs">
-                            <span className="rounded-full bg-[#FFB400]/10 px-3 py-1 font-medium text-[#7b5600]">
+                            <span className="rounded-full bg-[#FFB400]/10 px-3 py-1 font-medium text-black">
                               {role.location}
                             </span>
-                            <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-700">
+                            <span className="rounded-full bg-gray-100 px-3 py-1 font-medium text-gray-700">
                               {role.employmentType}
                             </span>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-3">
-                          <span className="hidden text-xs font-semibold text-[#8a6400] sm:inline">
+                          <span className="hidden text-xs font-semibold text-gray-600 sm:inline">
                             {isOpen ? "Hide details" : "View details"}
                           </span>
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-black/5">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm">
                             <ChevronDown
                               className={`h-5 w-5 text-[#FFB400] transition-transform duration-200 ${
                                 isOpen ? "rotate-180" : "rotate-0"
@@ -244,40 +244,40 @@ export default function CareerPage() {
 
                   {/* Dropdown Expandable Content */}
                   {isOpen && (
-                    <CardContent className="space-y-8 border-t border-black/5 p-6 sm:p-8">
+                    <CardContent className="space-y-8 border-t border-gray-100 p-6 sm:p-8">
                       {/* Meta Breakdown */}
-                      <div className="grid gap-4 rounded-2xl bg-slate-50 p-4 ring-1 ring-black/5 sm:grid-cols-3">
+                      <div className="grid gap-4 rounded-2xl bg-gray-50 p-4 sm:grid-cols-3">
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
                             Location
                           </p>
-                          <p className="mt-1 text-sm font-medium text-slate-900">
+                          <p className="mt-1 text-sm font-medium text-gray-900">
                             {role.location}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
                             Employment type
                           </p>
-                          <p className="mt-1 text-sm font-medium text-slate-900">
+                          <p className="mt-1 text-sm font-medium text-gray-900">
                             {role.employmentType}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
                             Reports to
                           </p>
-                          <p className="mt-1 text-sm font-medium text-slate-900">
+                          <p className="mt-1 text-sm font-medium text-gray-900">
                             {role.reportsTo}
                           </p>
                         </div>
                       </div>
 
                       <section>
-                        <h3 className="text-lg font-semibold text-slate-900">
+                        <h3 className="font-heading text-lg font-semibold text-gray-900">
                           Role Purpose
                         </h3>
-                        <div className="mt-4 space-y-4 text-base leading-8 text-slate-600">
+                        <div className="mt-4 space-y-4 text-base leading-8 text-gray-600">
                           {role.summary.map((paragraph) => (
                             <p key={paragraph}>{paragraph}</p>
                           ))}
@@ -285,14 +285,14 @@ export default function CareerPage() {
                       </section>
 
                       <section>
-                        <h3 className="text-lg font-semibold text-slate-900">
+                        <h3 className="font-heading text-lg font-semibold text-gray-900">
                           Key responsibilities
                         </h3>
                         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                           {role.responsibilities.map((item) => (
                             <li
                               key={item}
-                              className="rounded-2xl border border-black/5 bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-700"
+                              className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 text-gray-700"
                             >
                               {item}
                             </li>
@@ -301,14 +301,14 @@ export default function CareerPage() {
                       </section>
 
                       <section>
-                        <h3 className="text-lg font-semibold text-slate-900">
+                        <h3 className="font-heading text-lg font-semibold text-gray-900">
                           Qualifications and experience
                         </h3>
                         <ul className="mt-4 space-y-3">
                           {role.qualifications.map((item) => (
                             <li
                               key={item}
-                              className="flex gap-3 text-sm leading-6 text-slate-700"
+                              className="flex gap-3 text-sm leading-6 text-gray-700"
                             >
                               <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#FFB400]" />
                               <span>{item}</span>
@@ -317,14 +317,14 @@ export default function CareerPage() {
                         </ul>
                       </section>
 
-                      <div className="flex flex-col gap-3 border-t border-black/5 pt-6 sm:flex-row sm:items-center sm:justify-between">
-                        <div className="flex items-center gap-2 text-sm text-slate-600">
+                      <div className="flex flex-col gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Mail className="h-4 w-4 text-[#FFB400]" />
                           Apply to hello@destinytrust.org with the job title in the subject line.
                         </div>
                         <Button
                           asChild
-                          className="w-full bg-[#FFB400] text-slate-950 hover:bg-[#f2aa00] sm:w-auto"
+                          className="w-full bg-[#FFB400] text-black hover:bg-[#e6a200] sm:w-auto"
                         >
                           <a href={createMailTo(role.title)}>
                             Apply by email
@@ -341,7 +341,7 @@ export default function CareerPage() {
         </Container>
       </AnimatedSection>
 
-      <AnimatedSection as="section" className="px-4 pb-20 sm:px-6 lg:px-8">
+     <AnimatedSection as="section" className="px-4 pb-20 sm:px-6 lg:px-8">
         <Container>
           <div className="rounded-3xl border border-[#FFB400]/20 bg-[#1e1c17] px-6 py-8 text-white shadow-[0_18px_60px_rgba(15,23,42,0.18)] sm:px-8 sm:py-10">
             <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
