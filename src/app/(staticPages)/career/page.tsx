@@ -150,20 +150,6 @@ export default function CareerPage() {
              Put your skills to work in programmes that transform the lives of children and strengthen systems that support them.
             </p>
 
-            {/* <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm">
-              <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
-                <MapPin className="h-4 w-4 text-[#FFB400]" />
-                Kaduna State and Lagos State
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
-                <BriefcaseBusiness className="h-4 w-4 text-[#FFB400]" />
-                2 current openings
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
-                <Clock3 className="h-4 w-4 text-[#FFB400]" />
-                Deadline: August 15, 2026
-              </div>
-            </div> */}
           </div>
         </Container>
       </AnimatedSection>
