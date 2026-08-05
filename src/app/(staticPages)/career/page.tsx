@@ -124,7 +124,7 @@ function createMailTo(jobTitle: string) {
 
 export default function CareerPage() {
   const [openRoleId, setOpenRoleId] = useState<string | null>(
-    roles[0]?.id || null
+    roles.length > 0 ? roles[0].id : null
   );
 
   const toggleRole = (id: string) => {
@@ -132,49 +132,83 @@ export default function CareerPage() {
   };
 
   return (
-    <main className="min-w-0 bg-white text-gray-900">
+    <main className="min-w-0 bg-[#faf8f3] text-gray-900">
       <AnimatedSection
         as="section"
         animateOnMount
-        className="relative overflow-hidden border-b border-gray-100 bg-gradient-to-b from-gray-50 to-white px-4 py-16 sm:px-6 lg:px-8"
+        className="relative overflow-hidden border-b border-black/5 bg-[radial-gradient(circle_at_top_left,_rgba(255,180,0,0.18),_transparent_30%),linear-gradient(180deg,_#fffdf7_0%,_#faf8f3_100%)] px-4 py-16 sm:px-6 lg:px-8"
       >
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-[#FFB400]/10 blur-3xl" />
+          <div className="absolute right-0 top-24 h-40 w-40 rounded-full bg-black/5 blur-3xl" />
+        </div>
+
         <Container className="relative z-10">
           <div className="mx-auto max-w-4xl text-center">
-            {/* <span className="inline-flex items-center rounded-full bg-[#FFB400] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-black shadow-sm">
+            {/* <span className="inline-flex items-center gap-2 rounded-full border border-[#FFB400]/20 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#8a6300] shadow-sm backdrop-blur">
+              <BriefcaseBusiness className="h-3.5 w-3.5 text-[#FFB400]" />
               Careers at The Destiny Trust
             </span> */}
-            <h1 className="mt-6 font-heading text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
-            Join Our Team, Help Create Lasting Change
+            <h1 className="mt-6 font-heading text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-4xl">
+              Join our team and help create lasting change.
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-gray-600 sm:text-lg">
-             Put your skills to work in programmes that transform the lives of children and strengthen systems that support them.
+            <p className="mx-auto mt-6 max-w-[70%] text-base leading-8 text-black sm:text-lg">
+              Put your skills to work in programmes that transform the lives of
+              children and strengthen the systems that support them.
             </p>
 
+            {/* <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {[
+                { label: "Open roles", value: `${roles.length}` },
+                { label: "Locations", value: "Kaduna + Lagos" },
+                { label: "Apply by", value: "Email only" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl border border-black/5 bg-white/85 p-4 text-left shadow-[0_10px_30px_rgba(15,23,42,0.06)] backdrop-blur"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-500">
+                    {item.label}
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-gray-950">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div> */}
           </div>
         </Container>
       </AnimatedSection>
 
-      <AnimatedSection as="section" className="px-4 py-16 sm:px-6 lg:px-8">
+      <AnimatedSection
+        as="section"
+        animateOnMount
+        className="px-4 py-16 sm:px-6 lg:px-8"
+      >
         <Container>
-          <div className="mb-10 flex items-end justify-between gap-6">
+          <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#FFB400]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-yellow">
                 Current openings
               </p>
-              <h2 className="mt-3 font-heading text-2xl font-bold text-gray-900 sm:text-3xl">
+              <h2 className="mt-3 max-w-2xl font-heading text-3xl font-bold text-gray-950 sm:text-4xl">
                 Find the role that fits your experience.
               </h2>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600">
+                We are looking for people who are thoughtful, collaborative and
+                ready to deliver meaningful work with care and precision.
+              </p>
             </div>
+
             <a
               href="mailto:hello@destinytrust.org"
-              className="hidden items-center gap-2 text-sm font-medium text-gray-900 transition-colors hover:text-[#FFB400] sm:inline-flex"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-yellow"
             >
               hello@destinytrust.org
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
 
-          {/* Collapsible Dropdown Cards */}
           <div className="grid gap-6">
             {roles.map((role) => {
               const isOpen = openRoleId === role.id;
@@ -182,42 +216,43 @@ export default function CareerPage() {
               return (
                 <Card
                   key={role.id}
-                  className="overflow-hidden border border-gray-200 bg-white shadow-sm transition-all"
+                  className="overflow-hidden border border-black/5 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(15,23,42,0.11)]"
                 >
-                  {/* Dropdown Trigger Header */}
                   <button
                     type="button"
                     onClick={() => toggleRole(role.id)}
-                    className="w-full text-left transition-colors hover:bg-gray-50"
+                    className="w-full text-left transition-colors hover:bg-[#fffaf0]"
                     aria-expanded={isOpen}
                   >
-                    <CardHeader className="bg-white p-6">
+                    <CardHeader className="bg-white p-6 sm:p-7">
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex-1">
-                          <CardDescription className="text-xs font-semibold uppercase tracking-[0.24em] text-[#FFB400]">
+                          <CardDescription className="text-xs font-semibold uppercase tracking-[0.24em] text-yellow">
                             Open position
                           </CardDescription>
-                          <CardTitle className="mt-2 font-heading text-xl text-gray-900 sm:text-2xl">
+                          <CardTitle className="mt-2 font-heading text-2xl text-gray-950 sm:text-3xl">
                             {role.title}
                           </CardTitle>
 
-                          <div className="mt-3 flex flex-wrap gap-2 text-xs">
-                            <span className="rounded-full bg-[#FFB400]/10 px-3 py-1 font-medium text-black">
+                          <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 font-medium text-black">
+                              <MapPin className="h-3.5 w-3.5" />
                               {role.location}
                             </span>
-                            <span className="rounded-full bg-gray-100 px-3 py-1 font-medium text-gray-700">
+                            <span className="inline-flex items-center gap-1.5  font-medium text-black">
+                              <Clock3 className="h-3.5 w-3.5" />
                               {role.employmentType}
                             </span>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-3">
-                          <span className="hidden text-xs font-semibold text-gray-600 sm:inline">
+                          <span className="hidden text-xs font-semibold text-black sm:inline">
                             {isOpen ? "Hide details" : "View details"}
                           </span>
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/5 bg-yellow shadow-sm">
                             <ChevronDown
-                              className={`h-5 w-5 text-[#FFB400] transition-transform duration-200 ${
+                              className={`h-5 w-5 text-white transition-transform duration-200 ${
                                 isOpen ? "rotate-180" : "rotate-0"
                               }`}
                             />
@@ -227,39 +262,37 @@ export default function CareerPage() {
                     </CardHeader>
                   </button>
 
-                  {/* Dropdown Expandable Content */}
                   {isOpen && (
-                    <CardContent className="space-y-8 border-t border-gray-100 p-6 sm:p-8">
-                      {/* Meta Breakdown */}
-                      <div className="grid gap-4 rounded-2xl bg-gray-50 p-4 sm:grid-cols-3">
+                    <CardContent className="space-y-8 border-t border-black/5 bg-[#fcfbf7] p-6 sm:p-8">
+                      <div className="grid gap-4 rounded-2xl border border-black/5 bg-white p-4 shadow-sm sm:grid-cols-3">
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gra">
                             Location
                           </p>
-                          <p className="mt-1 text-sm font-medium text-gray-900">
+                          <p className="mt-2 text-sm font-semibold text-black">
                             {role.location}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black">
                             Employment type
                           </p>
-                          <p className="mt-1 text-sm font-medium text-gray-900">
+                          <p className="mt-2 text-sm font-semibold text-black">
                             {role.employmentType}
                           </p>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black">
                             Reports to
                           </p>
-                          <p className="mt-1 text-sm font-medium text-gray-900">
+                          <p className="mt-2 text-sm font-semibold text-gray-950">
                             {role.reportsTo}
                           </p>
                         </div>
                       </div>
 
                       <section>
-                        <h3 className="font-heading text-lg font-semibold text-gray-900">
+                        <h3 className="font-heading text-lg font-semibold text-gray-950 sm:text-xl">
                           Role Purpose
                         </h3>
                         <div className="mt-4 space-y-4 text-base leading-8 text-gray-600">
@@ -270,14 +303,14 @@ export default function CareerPage() {
                       </section>
 
                       <section>
-                        <h3 className="font-heading text-lg font-semibold text-gray-900">
+                        <h3 className="font-heading text-lg font-semibold text-gray-950 sm:text-xl">
                           Key responsibilities
                         </h3>
                         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                           {role.responsibilities.map((item) => (
                             <li
                               key={item}
-                              className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 text-gray-700"
+                              className="rounded-2xl border border-black/5 bg-white px-4 py-3 text-sm leading-6 text-gray-700 shadow-sm"
                             >
                               {item}
                             </li>
@@ -286,7 +319,7 @@ export default function CareerPage() {
                       </section>
 
                       <section>
-                        <h3 className="font-heading text-lg font-semibold text-gray-900">
+                        <h3 className="font-heading text-lg font-semibold text-gray-950 sm:text-xl">
                           Qualifications and experience
                         </h3>
                         <ul className="mt-4 space-y-3">
@@ -302,14 +335,14 @@ export default function CareerPage() {
                         </ul>
                       </section>
 
-                      <div className="flex flex-col gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="flex flex-col gap-3 rounded-2xl border border-black/5 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
                         <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Mail className="h-4 w-4 text-[#FFB400]" />
+                          <Mail className="h-4 w-4 text-[#c08a00]" />
                           Apply to hello@destinytrust.org with the job title in the subject line.
                         </div>
                         <Button
                           asChild
-                          className="w-full bg-[#FFB400] text-black hover:bg-[#e6a200] sm:w-auto"
+                          className="w-full bg-[#FFB400] text-black shadow-sm hover:bg-[#e6a200] sm:w-auto"
                         >
                           <a href={createMailTo(role.title)}>
                             Apply by email
@@ -326,9 +359,13 @@ export default function CareerPage() {
         </Container>
       </AnimatedSection>
 
-     <AnimatedSection as="section" className="px-4 pb-20 sm:px-6 lg:px-8">
+      <AnimatedSection
+        as="section"
+        animateOnMount
+        className="px-4 pb-20 sm:px-6 lg:px-8"
+      >
         <Container>
-          <div className="rounded-3xl border border-[#FFB400]/20 bg-[#1e1c17] px-6 py-8 text-white shadow-[0_18px_60px_rgba(15,23,42,0.18)] sm:px-8 sm:py-10">
+          <div className="rounded-3xl border border-[#FFB400]/20 bg-black px-6 py-8 text-white shadow-[0_18px_60px_rgba(15,23,42,0.18)] sm:px-8 sm:py-10">
             <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#FFD56A]">
@@ -342,13 +379,14 @@ export default function CareerPage() {
                   subject line. Only successful applicants will be contacted.
                 </p>
               </div>
-              <div className="rounded-2xl bg-white/10 p-5 ring-1 ring-white/10">
+              <div className="rounded-2xl bg-black ">
                 <p className="text-sm text-white/70">Deadline</p>
-                <p className="mt-1 text-2xl font-bold text-white">
-                  August 15, 2026
-                </p>
+                <p className="mt-1 text-2xl font-bold text-white">August 15, 2026</p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  <Button asChild className="bg-[#FFB400] text-slate-950 hover:bg-[#f2aa00]">
+                  <Button
+                    asChild
+                    className="bg-[#FFB400] text-slate-950 shadow-sm hover:bg-[#f2aa00]"
+                  >
                     <a href="mailto:hello@destinytrust.org?subject=Career%20Application">
                       <Mail className="h-4 w-4" />
                       Email now
