@@ -143,28 +143,27 @@ export default function CareerPage() {
             {/* <span className="inline-flex items-center rounded-full bg-[#FFB400] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-black shadow-sm">
               Careers at The Destiny Trust
             </span> */}
-            <h1 className="mt-6 font-heading text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              Open roles that help children learn, thrive and stay in school.
+            <h1 className="mt-6 font-heading text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+            Join Our Team, Help Create Lasting Change
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-gray-600 sm:text-lg">
-              Current vacancies are listed below. Each opening supports our work
-              across education, systems strengthening, care and operations.
+             Put your skills to work in programmes that transform the lives of children and strengthen systems that support them.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm">
+            {/* <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm">
               <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
                 <MapPin className="h-4 w-4 text-[#FFB400]" />
                 Kaduna State and Lagos State
               </div>
-              {/* <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
                 <BriefcaseBusiness className="h-4 w-4 text-[#FFB400]" />
                 2 current openings
-              </div> */}
+              </div>
               <div className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 shadow-sm">
                 <Clock3 className="h-4 w-4 text-[#FFB400]" />
                 Deadline: August 15, 2026
               </div>
-            </div>
+            </div> */}
           </div>
         </Container>
       </AnimatedSection>
