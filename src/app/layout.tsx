@@ -17,8 +17,12 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "The Destiny Trust",
-  description: "The Destiny Trust",
+  title: {
+    default: "The Destiny Trust",
+    template: "%s | The Destiny Trust",
+  },
+  description:
+    "Empowering homeless and vulnerable children through education, care, and empowerment initiatives.",
   icons: {
     icon: "/destinytrust-logo-white.png",
     shortcut: "/destinytrust-logo-white.png",
