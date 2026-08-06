@@ -3,7 +3,6 @@
 import { useState } from "react";
 import {
   ArrowRight,
-  BriefcaseBusiness,
   ChevronDown,
   Clock3,
   Mail,
@@ -123,12 +122,12 @@ function createMailTo(jobTitle: string) {
 }
 
 export default function CareerPage() {
-  const [openRoleId, setOpenRoleId] = useState<string | null>(
-    roles.length > 0 ? roles[0].id : null
-  );
+  const [expandedRoleIds, setExpandedRoleIds] = useState<string[]>([]);
 
   const toggleRole = (id: string) => {
-    setOpenRoleId((prev) => (prev === id ? null : id));
+    setExpandedRoleIds((prev) =>
+      prev.includes(id) ? prev.filter((roleId) => roleId !== id) : [...prev, id]
+    );
   };
 
   return (
@@ -211,7 +210,7 @@ Join us to make lasting change
 
           <div className="grid gap-6">
             {roles.map((role) => {
-              const isOpen = openRoleId === role.id;
+              const isOpen = expandedRoleIds.includes(role.id);
 
               return (
                 <Card
