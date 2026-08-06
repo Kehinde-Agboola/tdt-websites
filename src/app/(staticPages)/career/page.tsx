@@ -149,10 +149,10 @@ export default function CareerPage() {
               <BriefcaseBusiness className="h-3.5 w-3.5 text-[#FFB400]" />
               Careers at The Destiny Trust
             </span> */}
-            <h1 className="mt-6 font-heading text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-4xl">
+            <h1 className="mt-6 mx-auto max-w-full md:max-w-[80%] font-heading text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-5xl">
               Join our team and help create lasting change.
             </h1>
-            <p className="mx-auto mt-6 max-w-[70%] text-base leading-8 text-black sm:text-lg">
+            <p className="mx-auto mt-6 max-w-full md:max-w-[70%] text-base leading-8 text-black sm:text-lg">
               Put your skills to work in programmes that transform the lives of
               children and strengthen the systems that support them.
             </p>
