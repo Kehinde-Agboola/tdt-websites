@@ -191,8 +191,8 @@ export default function CareerPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-yellow">
                 Current openings
               </p>
-              <h2 className="mt-3 max-w-2xl font-heading text-3xl font-bold text-gray-950 sm:text-4xl">
-                Find the role that fits your experience.
+              <h2 className="mt-3 max-w-2xl font-heading text-2xl font-bold text-gray-950 sm:text-3xl">
+Join us to make lasting change
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600">
                 We are looking for people who are thoughtful, collaborative and
