@@ -2,26 +2,20 @@
 import React from 'react';
 import Container from '../../_component/shared';
 import Teacher from "../../../../public/assets/edu/teacherbg.png";
-// import WritingGirl from "../../../../public/assets/scholarship/girlwriting.png";
 import Image from 'next/image';
 import Line from "../../../../public/assets/home/line.png";
-import { Button } from '@/app/_component/atom/button';
 import Link from 'next/link'; 
 import { motion } from 'framer-motion';
 
-const reports = {
-  2025: "/../../../../../files/The Destiny Trust Mid-year Report 2024_.pdf",
-};
+const BLOB_BASE = process.env.NEXT_PUBLIC_BLOB_BASE_URL ?? "";
+const fileUrl = (name: string) =>
+  BLOB_BASE
+    ? `${BLOB_BASE}/${encodeURIComponent(name)}`
+    : `/files/${encodeURIComponent(name)}`;
 
-// Function to open and download a file
-const openAndDownloadFile = (fileUrl: string, fileName: string) => {
-  const link = document.createElement('a');
-  link.href = fileUrl; 
-  link.download = fileName; 
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+const report2026 = fileUrl(
+  "The Destiny Trust Mid-Year Report 2026 _20260724_131212_0000.pdf"
+);
 
 const Impact = () => {
   return (
@@ -85,18 +79,14 @@ const Impact = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               viewport={{ once: false, amount: 0.4 }}
             >
-              <Button
-                type="button"
-                className="btn-landing btn-landing--outline !w-full min-h-[48px] bg-transparent px-6 text-sm md:!w-auto md:shrink-0"
-                onClick={() =>
-                  openAndDownloadFile(
-                    reports[2025],
-                    "2024-TDT-Impact-Report.pdf"
-                  )
-                }
+              <a
+                href={report2026}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-landing btn-landing--outline inline-flex !w-full min-h-[48px] min-w-0 select-none items-center justify-center bg-transparent px-6 text-center text-sm font-medium transition-all duration-200 ease-out will-change-transform hover:-translate-y-0.5 hover:bg-black hover:text-white active:translate-y-0 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFB400] focus-visible:ring-offset-2 md:!w-auto md:shrink-0"
               >
-                2025 Impact Reports
-              </Button>
+                2026 Mid-Year Report
+              </a>
               <Link
                 href="/impact-report-financial"
                 className="btn-landing btn-landing--outline inline-flex !w-full min-h-[48px] min-w-0 select-none items-center justify-center bg-transparent px-6 text-center text-sm font-medium transition-all duration-200 ease-out will-change-transform hover:-translate-y-0.5 hover:bg-black hover:text-white active:translate-y-0 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFB400] focus-visible:ring-offset-2 md:!w-auto md:shrink-0"
@@ -112,3 +102,4 @@ const Impact = () => {
 };
 
 export default Impact;
+

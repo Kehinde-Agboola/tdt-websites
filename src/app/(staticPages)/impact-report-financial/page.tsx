@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Container from "@/app/_component/shared";
 import { Eye, Download } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import Link from "next/link";
 
 // PDFs are served from Vercel Blob in production (too large to ship in the repo).
 // Falls back to local /public/files in development when the env var is unset.
@@ -14,22 +13,47 @@ const fileUrl = (name: string) =>
     ? `${BLOB_BASE}/${encodeURIComponent(name)}`
     : `/files/${encodeURIComponent(name)}`;
 
-// Reports Data
+// Reports Data (Chronological: Newest to Oldest)
 const reports = [
+  {
+    year: 2026,
+    title: "2026 Mid-Year Report",
+    file: fileUrl("The Destiny Trust Mid-Year Report 2026 _20260724_131212_0000.pdf"),
+  },
   {
     year: 2025,
     title: "2025 Impact Report",
-    file: fileUrl("The Destiny Trust Mid-year Report 2024_.pdf"),
+    file: fileUrl("Destiny Trust Impact Report 2025.pdf"),
+  },
+  {
+    year: 2025,
+    title: "2025 Mid-Year Report",
+    file: fileUrl("Mid-year Report 2025.pdf"),
+  },
+  {
+    year: 2025,
+    title: "Financials",
+    file: fileUrl("DESTINY_TRUST_AUDITED FINANCIAL_2025.pdf"),
   },
   {
     year: 2024,
-    title: "2024 Mid-year Report",
-    file: fileUrl("The Destiny Trust Mid-year Report 2024_.pdf"),
+    title: "2024 Impact Report",
+    file: fileUrl("2024 Impact Report.pdf"),
+  },
+  {
+    year: 2024,
+    title: "Financials",
+    file: fileUrl("DESTINY_TRUST_AUDITED FINANCIAL_2024.pdf"),
   },
   {
     year: 2023,
     title: "2023 Annual Report",
     file: fileUrl("TDT 2023 Annual Report.pdf"),
+  },
+  {
+    year: 2023,
+    title: "Financials",
+    file: fileUrl("DESTINY_TRUST_AUDITED FINANCIAL_2023.pdf"),
   },
   {
     year: 2022,
@@ -52,9 +76,9 @@ const reports = [
     file: fileUrl("2020 TDT Financials.pdf"),
   },
   {
-    year: 2020,
-    title: "2020 Impact Story",
-    file: fileUrl("2020 TDT Financials.pdf"),
+    year: 2019,
+    title: "2019 Impact Story",
+    file: fileUrl("2019 TDT Impact Report.pdf"),
   },
   {
     year: 2019,
@@ -62,19 +86,14 @@ const reports = [
     file: fileUrl("2019 TDT Financials.pdf"),
   },
   {
-    year: 2019,
-    title: "2019 Impact Story",
-    file: fileUrl("2019 TDT Impact Report.pdf"),
+    year: 2018,
+    title: "2018 Impact Story",
+    file: fileUrl("2018 TDT Impact Report.pdf"),
   },
   {
     year: 2018,
     title: "Financials",
     file: fileUrl("2018 TDT Financials.pdf"),
-  },
-  {
-    year: 2018,
-    title: "2018 Impact Story",
-    file: fileUrl("2018 TDT Impact Report.pdf"),
   },
   {
     year: 2017,
@@ -112,52 +131,6 @@ const FinancialReports = () => {
   return (
     <Container>
       <AnimatedSection as="section" className="my-10 px-0 sm:my-14 md:my-16">
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7 }}
-          className="mb-8 grid gap-4 rounded-2xl bg-[#FFF8E5] p-5 sm:p-6 md:grid-cols-2"
-        >
-          <div className="rounded-xl border border-[#F4D27A] bg-white p-5 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9A6B00]">
-              Policy
-            </p>
-            <h2 className="mt-2 text-2xl font-bold text-gray-900">
-              TDT Child Safeguarding Policy
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-gray-700">
-              Read how we protect children across our programmes, centres, and
-              partnerships.
-            </p>
-            <Link
-              href="/child-safeguarding-policy"
-              className="mt-5 inline-flex rounded-full bg-black px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800"
-            >
-              View policy
-            </Link>
-          </div>
-
-          <div className="rounded-xl border border-[#F4D27A] bg-white p-5 shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9A6B00]">
-              Featured report
-            </p>
-            <h2 className="mt-2 text-2xl font-bold text-gray-900">
-              2025 Impact Report
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-gray-700">
-              Open the latest impact report from The Destiny Trust.
-            </p>
-            <a
-              href={fileUrl("The Destiny Trust Mid-year Report 2024_.pdf")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex rounded-full bg-[#FFB400] px-5 py-3 text-sm font-medium text-black transition-colors hover:bg-[#e0a800]"
-            >
-              Read report
-            </a>
-          </div>
-        </motion.div>
-
         {/* Heading */}
         <motion.h2
           initial={{ y: -20, opacity: 0 }}
@@ -228,3 +201,5 @@ const FinancialReports = () => {
 };
 
 export default FinancialReports;
+
+
