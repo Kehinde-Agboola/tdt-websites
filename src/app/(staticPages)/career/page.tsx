@@ -26,6 +26,7 @@ type CareerRole = {
   location: string;
   employmentType: string;
   reportsTo: string;
+  deadline: string;
   summary: string[];
   responsibilities: string[];
   qualifications: string[];
@@ -38,6 +39,7 @@ const roles: CareerRole[] = [
     location: "Kaduna State",
     employmentType: "Full-time, Fixed-term",
     reportsTo: "Chief Operating Officer",
+    deadline: "August 15, 2026",
     summary: [
       "Lead the day-to-day delivery of a multi-year girls' education programme focused on school re-entry, policy adoption, implementation readiness and collaboration with public education systems.",
       "Translate policy objectives into practical implementation approaches, help education actors identify readiness gaps, test workable tools and generate evidence that supports adoption and wider rollout.",
@@ -75,6 +77,7 @@ const roles: CareerRole[] = [
     location: "Lagos State",
     employmentType: "Full-time",
     reportsTo: "Chief Operating Officer",
+    deadline: "August 15, 2026",
     summary: [
       "Support effective financial management, grant administration and day-to-day administrative operations across the organisation.",
       "Support the financial and administrative requirements of designated grant-funded programmes while contributing to wider finance, procurement, records management and operational processes.",
@@ -108,6 +111,79 @@ const roles: CareerRole[] = [
       "Good understanding of regulatory compliance, financial controls and procurement.",
       "Proficiency in Microsoft Excel and other standard office applications; experience with accounting or financial management software is desirable.",
       "Strong numerical and analytical ability, excellent attention to detail and high standards of integrity.",
+    ],
+  },
+  {
+    id: "education-community-officer",
+    title: "Education and Community Officer",
+    location: "Kaduna State (Kaduna South, Chikun and Igabi Local Governments)",
+    employmentType: "Full-time, Fixed-term",
+    reportsTo: "Programmes Coordinator",
+    deadline: "November 1, 2026",
+    summary: [
+      "The Education and Community Officer will support the delivery of a multi-year girls' education programme focused on school re-entry, community support and strengthening the capacity of schools and local education systems to respond effectively to girls at risk of educational exclusion.",
+      "The Officer will work directly with schools, girls, families, community leaders, Local Government education actors and partner organisations. The role combines community mobilisation with practical education support, including identifying barriers to school re-entry, supporting follow-up and referrals, strengthening school-level processes and ensuring that learning from communities and schools informs wider programme implementation.",
+    ],
+    responsibilities: [
+      "Work with participating schools and Local Government education actors to support girls' school re-entry, follow-up and retention.",
+      "Support the identification of girls whose education has been interrupted and help connect them with appropriate school re-entry pathways.",
+      "Work with school focal persons, teachers, counsellors and school leaders to address practical barriers affecting return to school.",
+      "Support schools to use agreed re-entry, follow-up and referral tools and processes.",
+      "Follow up with schools and families to identify emerging attendance, retention or reintegration concerns.",
+      "Support implementation-readiness assessments and other school-level activities coordinated by the programme.",
+      "Help identify gaps in school readiness and communicate these to the Programme Coordinator for appropriate action.",
+      "Build and maintain relationships with parents, caregivers, community leaders, women's groups, faith and traditional leaders and other relevant community actors.",
+      "Mobilise communities for dialogues, consultations, awareness activities and other programme events.",
+      "Engage families and community members on the importance of girls' education, school re-entry and continued participation in education.",
+      "Support peer groups, safe spaces, mentorship and other activities designed to strengthen girls' confidence and connection to education.",
+      "Identify community attitudes, practices or practical barriers affecting girls' return to school and support appropriate local responses.",
+      "Work with local organisations and partners to coordinate community activities and avoid duplication.",
+      "Provide appropriate first-line information and support to girls and families seeking school re-entry.",
+      "Identify needs that require referral to education, child protection, psychosocial, social welfare or other available services.",
+      "Make and follow up referrals in accordance with approved programme and safeguarding procedures.",
+      "Maintain appropriate records of re-entry, follow-up and referral actions.",
+      "Use the programme's integrated tracking system to record agreed information on school re-entry, follow-up and referral progress.",
+      "Promptly escalate safeguarding, protection or other serious concerns through approved channels.",
+      "Maintain confidentiality and ensure sensitive information is handled appropriately.",
+      "Maintain regular contact with assigned schools and relevant Local Government education officers.",
+      "Support meetings, consultations and review sessions with schools, communities and public education actors.",
+      "Communicate implementation challenges and emerging issues from assigned communities and schools to the programme team.",
+      "Support follow-up on agreed actions arising from school, LGA and community meetings.",
+      "Coordinate appropriately with partner organisations working in participating locations.",
+      "Maintain accurate records of field activities, participants, school engagement, follow-up and referrals.",
+      "Collect programme monitoring information using approved tools.",
+      "Support periodic assessments, surveys, feedback exercises and learning reviews.",
+      "Document practical lessons, implementation challenges and examples of change from schools and communities.",
+      "Work with the Monitoring, Evaluation and Learning function to ensure timely and accurate data collection.",
+      "Contribute to periodic programme reports and field updates.",
+      "Obtain and document feedback from girls, families, schools and community stakeholders to support programme improvement.",
+      "Develop and maintain a regular field workplan for assigned schools and communities.",
+      "Support the organisation of training, community dialogues, school activities and stakeholder meetings.",
+      "Maintain appropriate programme materials, registers and records.",
+      "Participate in team planning, review and learning meetings.",
+      "Carry out other programme responsibilities reasonably related to the role and assigned by the Programme Coordinator.",
+      "Comply fully with the organisation's safeguarding, child protection, confidentiality and code of conduct requirements.",
+      "Ensure that engagement with girls and other vulnerable participants is respectful, safe and appropriate.",
+      "Follow approved procedures for consent, documentation, referral and reporting of safeguarding concerns.",
+      "Protect the dignity, privacy and best interests of children and programme participants at all times.",
+    ],
+    qualifications: [
+      "A degree, NCE or other relevant qualification in Education, Social Sciences, Social Work, Community Development or a related field will be an advantage. Applicants without formal qualifications may also be considered where they demonstrate strong, relevant experience delivering community-based social interventions and working effectively with children, families, schools or local stakeholders.",
+      "At least two years' relevant experience in education, community mobilisation, girls' education, child protection, youth development or related programming.",
+      "Experience working with schools, communities or Local Government institutions will be an advantage.",
+      "Understanding of barriers affecting girls' education, school participation and re-entry.",
+      "Experience in field data collection, case follow-up or referral processes will be an advantage.",
+      "Good knowledge of the local context in Kaduna State and the ability to work effectively within participating communities.",
+      "Ability to communicate in relevant local languages is highly desirable.",
+      "Strong community engagement and relationship-building skills.",
+      "Ability to work effectively with children, families, schools and public officials.",
+      "Good facilitation and communication skills.",
+      "Strong organisational and follow-up skills.",
+      "Ability to maintain accurate field records and use simple digital tracking tools.",
+      "Good judgement and sensitivity when working with vulnerable girls and families.",
+      "Ability to identify concerns and escalate them appropriately rather than attempting to manage matters outside the scope of the role.",
+      "Ability to work independently in the field while remaining accountable to the wider programme team.",
+      "Commitment to safeguarding, confidentiality, inclusion and the right of every child to education.",
     ],
   },
 ];
@@ -263,7 +339,7 @@ Join us to make lasting change
 
                   {isOpen && (
                     <CardContent className="space-y-8 border-t border-black/5 bg-[#fcfbf7] p-6 sm:p-8">
-                      <div className="grid gap-4 rounded-2xl border border-black/5 bg-white p-4 shadow-sm sm:grid-cols-3">
+                      <div className="grid gap-4 rounded-2xl border border-black/5 bg-white p-4 shadow-sm sm:grid-cols-4">
                         <div>
                           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gra">
                             Location
@@ -286,6 +362,14 @@ Join us to make lasting change
                           </p>
                           <p className="mt-2 text-sm font-semibold text-gray-950">
                             {role.reportsTo}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black">
+                            Apply by
+                          </p>
+                          <p className="mt-2 text-sm font-semibold text-gray-950">
+                            {role.deadline}
                           </p>
                         </div>
                       </div>
@@ -379,8 +463,11 @@ Join us to make lasting change
                 </p>
               </div>
               <div className="rounded-2xl bg-black ">
-                <p className="text-sm text-white/70">Deadline</p>
-                <p className="mt-1 text-2xl font-bold text-white">August 15, 2026</p>
+                <p className="text-sm text-white/70">Deadlines</p>
+                <p className="mt-1 text-sm font-medium text-white/90">
+                  Each role has its own application deadline — see the listing
+                  above for details.
+                </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <Button
                     asChild
